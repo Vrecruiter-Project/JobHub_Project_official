@@ -20,7 +20,7 @@ export const admin = {
   STUDENTS_DATA: BASE_URL + "/admins/students-data",
   SELECTED_STUDENTS_DATA: BASE_URL + "/admins/selected-students-data",
 };
-78;
+
 export const jobs = {
   CREATE_JOB: BASE_URL + "/jobs/create-job",
   UPDATE_JOB: BASE_URL + "/jobs/update-job",
@@ -35,6 +35,7 @@ export const students = {
   APPLY_JOB: BASE_URL + "/students/applyjob",
   ALL_JOBS: BASE_URL + "/students/jobs",
 };
+
 // export const registeredcandidates = {
 //   REGISTERED_CANDIDATES: BASE_URL + "/registeredcandidates",
 // };
