@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon -r dotenv/config --experimental-json-modules src/index.js",
-    "start": "node -r dotenv/config --experimental-json-modules src/index.js"
+    "start": "node api/index.js"
   },
   "keywords": [],
   "author": "",
@@ -27,6 +27,8 @@
     "mongoose": "^8.8.3",
     "multer": "^1.4.5-lts.1",
     "nodemailer": "^6.9.16",
-    "twilio": "^5.3.7"
+    "twilio": "^5.3.7",
+      "@vercel/node": "^2.0.0"
   }
+  
 }
