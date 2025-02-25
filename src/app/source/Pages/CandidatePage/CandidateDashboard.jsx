@@ -79,15 +79,16 @@ const CandidateDashboard = () => {
           <Box
             sx={{
               position: 'absolute',
-                          top: '50%',
-                          left: '50%',
-                          transform: 'translate(-50%, -50%)',
-                          // boxShadow: 24,
-                          scrollbarWidth: 'none',
-                          p: 4,
-                          overflowY: 'auto',
-                          maxHeight: '80vh',
-                          borderRadius: 2,
+              top: '50%',
+              left: '50%',
+              transform: 'translate(-50%, -50%)',
+
+              scrollbarWidth: 'none',
+
+              overflowY: 'auto',
+              maxHeight: '80vh',
+              border: 'none',
+
             }}
           >
             <RegistrationPage onSubmit={handleFormSubmit} />
