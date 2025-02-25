@@ -1,6 +1,5 @@
 import axios from "axios";
-const API_URL =
-  "https://job-hub-project-official-8yjk.vercel.app/api/candidates";
+const API_URL = "http://localhost:3000/api/candidates";
 
 const registerCandidate = async (formData) => {
   try {
