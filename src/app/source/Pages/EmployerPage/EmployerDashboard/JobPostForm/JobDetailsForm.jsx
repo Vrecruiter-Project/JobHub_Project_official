@@ -1,3 +1,4 @@
+//job details form three steps
 import React, { useState } from "react";
 import {
   Container,
@@ -227,6 +228,18 @@ const JobDetailsForm = () => {
                 "Hotel-Staff",
                 "Ware-House-Staff",
                 "Factory-Workers",
+                "Digital Marketing",
+                "Content Writing",
+                "SEO",
+                "video Editing",
+                "Photography",
+                "Photo Editing",
+                "Accounting",
+                "HR",
+                "Electrical",
+                "Plumbing",
+                "Mechanical",
+                "Technical",
               ])}
             </Box>
             {renderTextField(

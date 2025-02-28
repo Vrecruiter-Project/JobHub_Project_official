@@ -7,9 +7,14 @@ const { ALL_JOBS, APPLY_JOB } = students;
 export const allJobs = async () => {
   try {
     const response = await apiConnector("GET", ALL_JOBS);
-    return response.data.jobs;
+    return response.data.jobs.map((job) => ({
+      ...job,
+      jobTitle: job.jobTitle
+        .toLowerCase()
+        .replace(/\b\w/g, (char) => char.toUpperCase()),
+    }));
   } catch (error) {
-    toast.error(error.response.data.message);
+    toast.error(error.response?.data?.message || "Something went wrong!");
   }
 };
 

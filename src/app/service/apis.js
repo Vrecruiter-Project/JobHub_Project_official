@@ -36,6 +36,3 @@ export const students = {
   ALL_JOBS: BASE_URL + "/students/jobs",
 };
 
-// export const registeredcandidates = {
-//   REGISTERED_CANDIDATES: BASE_URL + "/registeredcandidates",
-// };

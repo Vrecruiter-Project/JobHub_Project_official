@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import CandidateDashboardNav from "./Components/CandidateDashboardNavbar/CandidateDashboardNav";
 import { Outlet } from "react-router-dom";
@@ -11,7 +10,6 @@ const CandidateDashboard = () => {
 
   const handleFormSubmit = () => {
     setIsFormSubmitted(true); // Hide the modal after submission
-    
   };
 
   return (
