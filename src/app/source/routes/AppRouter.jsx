@@ -12,10 +12,10 @@ const About = lazy(() => import('../Pages/About/About.jsx'));
 const Contact = lazy(() => import('../Pages/Contact/Contact'));
 const CandidateSignIn = lazy(() => import('../Pages/CandidatePage/SignInUpPage/CandidateSignIn.jsx'));
 const CandidateSignUp = lazy(() => import('../Pages/CandidatePage/SignInUpPage/CandidateSignUp.jsx'));
-const LogInPage = lazy(() => import('../Pages/AdminPage/SigninUpPage/SignIn/LogIn.jsx'));
-const SignUpPage = lazy(() => import('../Pages/AdminPage/SigninUpPage/SignUp/SignUpPage.jsx'));
+// const LogInPage = lazy(() => import('../Pages/AdminPage/SigninUpPage/SignIn/LogIn.jsx'));
+// const SignUpPage = lazy(() => import('../Pages/AdminPage/SigninUpPage/SignUp/SignUpPage.jsx'));
 const ContactVerify = lazy(() => import('../Pages/PhoneVerification/ContactVerify/ContactVerify.jsx'));
-const AdminDetailsForm = lazy(() => import('../Pages/AdminPage/AdminDetailsForm'));
+// const AdminDetailsForm = lazy(() => import('../Pages/AdminPage/AdminDetailsForm'));
 const EmployeeForm = lazy(() => import('../Pages/EmployerPage/EmployeerForm.jsx'));
 const EmployerDashboard = lazy(() => import('../Pages/EmployerPage/EmployerDashboard/EmployerDashboard.jsx'));
 const JobDetailsForm = lazy(() => import('../Pages/EmployerPage/EmployerDashboard/JobPostForm/JobDetailsForm.jsx'));
@@ -28,12 +28,12 @@ const CandidateFullJobDetails = lazy(() => import('../Pages/CandidatePage/Compon
 const FormComponent = lazy(() => import('../Pages/CandidatePage/FormComponent.jsx'));
 const MyJobs = lazy(() => import('../Pages/EmployerPage/EmployerDashboard/Components/Main-Post-Card/MyJobs.jsx'));
 const SelectedCandidates = lazy(() => import('../Pages/EmployerPage/EmployerDashboard/Components/SelectedCandidates/SelectedCandidates.jsx'));
-const AdminDashboard = lazy(() => import('../Pages/AdminPage/AdminDashboard/AdminDashboard.jsx'));
-const AdminProfile = lazy(() => import('../Pages/AdminPage/AdminDashboard/Components/AdminProfile/AdminProfile.jsx'));
-const EmployerInsights = lazy(() => import('../Pages/AdminPage/AdminDashboard/Components/EmployerInsights/EmployerInsights.jsx'));
-const JobListings = lazy(() => import('../Pages/AdminPage/AdminDashboard/Components/JobListings/JobListings.jsx'));
-const ShortlistedTalent = lazy(() => import('../Pages/AdminPage/AdminDashboard/Components/ShortlistedTalent/ShortlistedTalent.jsx'));
-const AdminLandingPage = lazy(() => import('../Pages/AdminPage/AdminDashboard/Components/AdminLandingPage/AdminLandingPage.jsx'));
+// const AdminDashboard = lazy(() => import('../Pages/AdminPage/AdminDashboard/AdminDashboard.jsx'));
+// const AdminProfile = lazy(() => import('../Pages/AdminPage/AdminDashboard/Components/AdminProfile/AdminProfile.jsx'));
+// const EmployerInsights = lazy(() => import('../Pages/AdminPage/AdminDashboard/Components/EmployerInsights/EmployerInsights.jsx'));
+// const JobListings = lazy(() => import('../Pages/AdminPage/AdminDashboard/Components/JobListings/JobListings.jsx'));
+// const ShortlistedTalent = lazy(() => import('../Pages/AdminPage/AdminDashboard/Components/ShortlistedTalent/ShortlistedTalent.jsx'));
+// const AdminLandingPage = lazy(() => import('../Pages/AdminPage/AdminDashboard/Components/AdminLandingPage/AdminLandingPage.jsx'));
 const TelecallerJob = lazy(() => import('../../components/PageComponent/PopularJobs/DifferentCardPages/TelecallerJob/TelecallerJob'));
 const DocVerifyJob = lazy(() => import('../../components/PageComponent/PopularJobs/DifferentCardPages/DocVerifyJob/DocVerifyJob'));
 const DataEntryJob = lazy(() => import('../../components/PageComponent/PopularJobs/DifferentCardPages/DataEntryJob/DataEntryJob'));
@@ -62,10 +62,10 @@ const AppRouter = () => {
             "/contact": <Contact />,
             "/candidatelogin": <CandidateSignIn />,
             "/candidatesignup": <CandidateSignUp />,
-            "/login": <LogInPage />,
-            "/signup": <SignUpPage />,
+            // "/login": <LogInPage />,
+            // "/signup": <SignUpPage />,
             "/verification": <ContactVerify />,
-            "/admin-registration-form": <AdminDetailsForm />,
+           // "/admin-registration-form": <AdminDetailsForm />,
             "/employeregistration": <EmployeeForm />,
             "/telecaller": <TelecallerJob />,
             "/documentverification": <DocVerifyJob />,
@@ -126,31 +126,31 @@ const AppRouter = () => {
                 },
               ],
             },
-            "/admin": {
-              element: <AdminDashboard />,
-              children: [
-                { 
-                  path: "/admin/", 
-                  element: <AdminLandingPage /> 
-                },
-                { 
-                  path: "adminprofile", 
-                  element: <AdminProfile /> 
-                },
-                {
-                  path: "employer-insights",
-                  element: <EmployerInsights />
-                },
-                {
-                  path: "job-listings",
-                  element: <JobListings />
-                },
-                { 
-                  path: "shortlisted-talent", 
-                  element: <ShortlistedTalent /> 
-                },
-              ],
-            },
+            // "/admin": {
+            //   element: <AdminDashboard />,
+            //   children: [
+            //     { 
+            //       path: "/admin/", 
+            //       element: <AdminLandingPage /> 
+            //     },
+            //     { 
+            //       path: "adminprofile", 
+            //       element: <AdminProfile /> 
+            //     },
+            //     {
+            //       path: "employer-insights",
+            //       element: <EmployerInsights />
+            //     },
+            //     {
+            //       path: "job-listings",
+            //       element: <JobListings />
+            //     },
+            //     { 
+            //       path: "shortlisted-talent", 
+            //       element: <ShortlistedTalent /> 
+            //     },
+            //   ],
+            // },
           }}
 
         />
