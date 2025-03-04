@@ -28,12 +28,6 @@ const CandidateFullJobDetails = lazy(() => import('../Pages/CandidatePage/Compon
 const FormComponent = lazy(() => import('../Pages/CandidatePage/FormComponent.jsx'));
 const MyJobs = lazy(() => import('../Pages/EmployerPage/EmployerDashboard/Components/Main-Post-Card/MyJobs.jsx'));
 const SelectedCandidates = lazy(() => import('../Pages/EmployerPage/EmployerDashboard/Components/SelectedCandidates/SelectedCandidates.jsx'));
-// const AdminDashboard = lazy(() => import('../Pages/AdminPage/AdminDashboard/AdminDashboard.jsx'));
-// const AdminProfile = lazy(() => import('../Pages/AdminPage/AdminDashboard/Components/AdminProfile/AdminProfile.jsx'));
-// const EmployerInsights = lazy(() => import('../Pages/AdminPage/AdminDashboard/Components/EmployerInsights/EmployerInsights.jsx'));
-// const JobListings = lazy(() => import('../Pages/AdminPage/AdminDashboard/Components/JobListings/JobListings.jsx'));
-// const ShortlistedTalent = lazy(() => import('../Pages/AdminPage/AdminDashboard/Components/ShortlistedTalent/ShortlistedTalent.jsx'));
-// const AdminLandingPage = lazy(() => import('../Pages/AdminPage/AdminDashboard/Components/AdminLandingPage/AdminLandingPage.jsx'));
 const TelecallerJob = lazy(() => import('../../components/PageComponent/PopularJobs/DifferentCardPages/TelecallerJob/TelecallerJob'));
 const DocVerifyJob = lazy(() => import('../../components/PageComponent/PopularJobs/DifferentCardPages/DocVerifyJob/DocVerifyJob'));
 const DataEntryJob = lazy(() => import('../../components/PageComponent/PopularJobs/DifferentCardPages/DataEntryJob/DataEntryJob'));
@@ -62,10 +56,7 @@ const AppRouter = () => {
             "/contact": <Contact />,
             "/candidatelogin": <CandidateSignIn />,
             "/candidatesignup": <CandidateSignUp />,
-            // "/login": <LogInPage />,
-            // "/signup": <SignUpPage />,
             "/verification": <ContactVerify />,
-           // "/admin-registration-form": <AdminDetailsForm />,
             "/employeregistration": <EmployeeForm />,
             "/telecaller": <TelecallerJob />,
             "/documentverification": <DocVerifyJob />,
@@ -86,8 +77,7 @@ const AppRouter = () => {
             "/Termsandconditions": <Termsconditions />,
             "/Privacypolicy": <Privacypolicy />,
             "/interviewtips": <InterviewTips />,
-            "/events": <Event/>,
-            // Employer Dashboard with nested routes
+            "/events": <Event />,
             "/employerdashboard": {
               element: <EmployerDashboard />,
               children: [
@@ -109,7 +99,6 @@ const AppRouter = () => {
             "/candidatedashboard": {
               element: <CandidateDashboard />,
               children: [
-                // {path: "",
                 {
                   path: "/candidatedashboard/",
                   element: <CandidateJobPostCard />,
@@ -126,31 +115,6 @@ const AppRouter = () => {
                 },
               ],
             },
-            // "/admin": {
-            //   element: <AdminDashboard />,
-            //   children: [
-            //     { 
-            //       path: "/admin/", 
-            //       element: <AdminLandingPage /> 
-            //     },
-            //     { 
-            //       path: "adminprofile", 
-            //       element: <AdminProfile /> 
-            //     },
-            //     {
-            //       path: "employer-insights",
-            //       element: <EmployerInsights />
-            //     },
-            //     {
-            //       path: "job-listings",
-            //       element: <JobListings />
-            //     },
-            //     { 
-            //       path: "shortlisted-talent", 
-            //       element: <ShortlistedTalent /> 
-            //     },
-            //   ],
-            // },
           }}
 
         />
