@@ -17,6 +17,6 @@ router
   .route("/selected-students-data")
   .get(verifyJWT, isAdmin, allSelectedStudentsData); //Done
 //router.route("/alljobs").get(verifyJWT, isAdmin, allJobs); //Done
-router.route("/alljobs ").get(allJobs); 
+router.route("/alljobs").get(allJobs); 
 
 export default router;
