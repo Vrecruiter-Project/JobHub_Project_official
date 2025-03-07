@@ -14,10 +14,10 @@ const candidateSchema = new mongoose.Schema(
     qualification: { type: String, required: true },
     gender: { type: String, required: true },
     address: { type: String, required: true },
-    resume: { type: String }, // Stores filename or file URL
+   // resume: { type: String }, // Stores filename or file URL
   },
   { timestamps: true }
 );
 
-const Candidate = mongoose.model("Candidate", candidateSchema);
+const Candidate = mongoose.model("registeredcandidates", candidateSchema);
 export default Candidate;
