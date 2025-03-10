@@ -1,8 +1,117 @@
 import { Employee } from "../models/employee.model.js";
 import { Job } from "../models/job.model.js";
 
+// export const createJob = async (req, res) => {
+//   try {
+//     const {
+//       company,
+//       jobTitle,
+//       positions,
+//       jobType,
+//       workType,
+//       salary,
+//       benefits,
+//       jobLocation,
+//       postDate,
+//       jobRole,
+//     } = req.body.jobDetails;
+
+//     const {
+//       minimumEducation,
+//       englishLevelRequired,
+//       totalExperienceRequired,
+//       gender,
+//       age,
+//       jobDescription,
+//       interviewMethod,
+//       communicationPreferences,
+//     } = req.body.candidatesInterviewer;
+
+//     const employeeId = req.user._id;
+
+//     if (
+//       [
+//         company,
+//         jobTitle,
+//         jobType,
+//         workType,
+//         salary,
+//         jobLocation,
+//         postDate,
+//         minimumEducation,
+//         englishLevelRequired,
+//         totalExperienceRequired,
+//         gender,
+//         age,
+//         jobDescription,
+//         interviewMethod,
+//         communicationPreferences,
+//         jobRole,
+//       ].some((data) => data?.trim() === "")
+//     ) {
+//       return res.status(400).json({
+//         message: "Required all fields",
+//       });
+//     }
+
+//     const newJob = await Job.create({
+//       age,
+//       benefits,
+//       communication: communicationPreferences,
+//       companyName: company,
+//       description: jobDescription,
+//       education: minimumEducation,
+//       english: englishLevelRequired,
+//       experience: totalExperienceRequired,
+//       ExpireJob: postDate,
+//       gender,
+//       interviewMode: interviewMethod,
+//       jobLocation,
+//       jobTitle,
+//       jobType,
+//       numberOfPosition: positions,
+//       salary,
+//       workType,
+//       jobRole,
+//     });
+
+//     const addedEntryInEmployee = await Employee.findByIdAndUpdate(employeeId, {
+//       $push: {
+//         jobs: newJob._id,
+//       },
+//     });
+
+//     if (!addedEntryInEmployee) {
+//       return res.status(500).json({
+//         message: "Refernce is not passed!",
+//       });
+//     }
+
+//     return res.status(200).json({
+//       message: "Job is Create",
+//       job: newJob,
+//     });
+//   } catch (error) {
+//     console.error("Error while creating job:", error);
+//     return res.status(500).json({
+//       message: "Something went wrong while creating Job",
+//     });
+// }
+
+// };
+
 export const createJob = async (req, res) => {
   try {
+    const {
+      employeeId, // Optional
+      jobDetails,
+      candidatesInterviewer,
+    } = req.body;
+
+    if (!jobDetails || !candidatesInterviewer) {
+      return res.status(400).json({ message: "Job details and candidate details are required" });
+    }
+
     const {
       company,
       jobTitle,
@@ -14,7 +123,7 @@ export const createJob = async (req, res) => {
       jobLocation,
       postDate,
       jobRole,
-    } = req.body.jobDetails;
+    } = jobDetails;
 
     const {
       minimumEducation,
@@ -25,10 +134,9 @@ export const createJob = async (req, res) => {
       jobDescription,
       interviewMethod,
       communicationPreferences,
-    } = req.body.candidatesInterviewer;
+    } = candidatesInterviewer;
 
-    const employeeId = req.user._id;
-
+    // Validate required fields (excluding employeeId)
     if (
       [
         company,
@@ -47,13 +155,14 @@ export const createJob = async (req, res) => {
         interviewMethod,
         communicationPreferences,
         jobRole,
-      ].some((data) => data?.trim() === "")
+      ].some((data) => !data || data?.trim() === "")
     ) {
       return res.status(400).json({
-        message: "Required all fields",
+        message: "All fields are required",
       });
     }
 
+    // Create new job entry
     const newJob = await Job.create({
       age,
       benefits,
@@ -75,28 +184,31 @@ export const createJob = async (req, res) => {
       jobRole,
     });
 
-    const addedEntryInEmployee = await Employee.findByIdAndUpdate(employeeId, {
-      $push: {
-        jobs: newJob._id,
-      },
-    });
-
-    if (!addedEntryInEmployee) {
-      return res.status(500).json({
-        message: "Refernce is not passed!",
+    // If employeeId is provided, update Employee document
+    if (employeeId) {
+      const addedEntryInEmployee = await Employee.findByIdAndUpdate(employeeId, {
+        $push: { jobs: newJob._id },
       });
+
+      if (!addedEntryInEmployee) {
+        return res.status(500).json({
+          message: "Employee reference is not passed!",
+        });
+      }
     }
 
-    return res.status(200).json({
-      message: "Job is Create",
+    return res.status(201).json({
+      message: "Job Created Successfully",
       job: newJob,
     });
   } catch (error) {
+    console.error("Error while creating job:", error);
     return res.status(500).json({
       message: "Something went wrong while creating Job",
     });
   }
 };
+
 
 export const updateJob = async (req, res) => {
   try {
@@ -240,7 +352,7 @@ export const multipleDeleteJob = async (req, res) => {
   }
 };
 
-export const searchedJobs= async (req, res) => {
+export const searchedJobs = async (req, res) => {
   try {
     const { keywords } = req.body;
 
