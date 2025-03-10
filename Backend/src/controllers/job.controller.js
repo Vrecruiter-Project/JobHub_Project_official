@@ -240,7 +240,7 @@ export const multipleDeleteJob = async (req, res) => {
   }
 };
 
-export const searchedJobs = async (req, res) => {
+export const searchedJobs= async (req, res) => {
   try {
     const { keywords } = req.body;
 
