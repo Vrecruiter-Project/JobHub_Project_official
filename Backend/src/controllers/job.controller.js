@@ -209,6 +209,101 @@ export const createJob = async (req, res) => {
   }
 };
 
+export const createJobadmin = async (req, res) => {
+  try {
+    const { employeeId, jobDetails } = req.body;
+
+    if (!jobDetails) {
+      return res.status(400).json({ message: "Job details are required" });
+    }
+
+    const {
+      companyName,
+      jobTitle,
+      jobRole,
+      numberOfPosition,
+      jobType,
+      workType,
+      salary,
+      benefits,
+      jobLocation,
+      ExpireJob,
+      education,
+      english,
+      experience,
+      gender,
+      age,
+      description,
+      interviewMode,
+      communication,
+    } = jobDetails;
+
+    if (
+      [
+        companyName,
+        jobTitle,
+        jobRole,
+        numberOfPosition,
+        jobType,
+        workType,
+        salary,
+        benefits,
+        jobLocation,
+        ExpireJob,
+        education,
+        english,
+        experience,
+        gender,
+        age,
+        description,
+        interviewMode,
+        communication,
+      ].some((data) => !data || data?.toString().trim() === "")
+    ) {
+      return res.status(400).json({
+        message: "All fields are required",
+      });
+    }
+
+    const newJob = await Job.create({
+      companyName,
+      jobTitle,
+      jobRole,
+      numberOfPosition,
+      jobType,
+      workType,
+      salary,
+      benefits,
+      jobLocation,
+      ExpireJob,
+      education,
+      english,
+      experience,
+      gender,
+      age,
+      description,
+      interviewMode,
+      communication,
+    });
+
+    if (employeeId) {
+      await Employee.findByIdAndUpdate(employeeId, {
+        $push: { jobs: newJob._id },
+      });
+    }
+
+    return res.status(201).json({
+      message: "Job Created Successfully",
+      job: newJob,
+    });
+  } catch (error) {
+    console.error("Error while creating job:", error);
+    return res.status(500).json({
+      message: "Something went wrong while creating the job",
+    });
+  }
+};
+
 
 export const updateJob = async (req, res) => {
   try {
