@@ -3,9 +3,27 @@ import Candidate from "../models/registeredcandidates.model.js";
 // Create a new candidate
 export const registerCandidate = async (req, res) => {
   try {
-    const { fullname, email, position, dob, number, qualification, gender, address } = req.body;
+    const {
+      fullname,
+      email,
+      position,
+      dob,
+      number,
+      qualification,
+      gender,
+      address,
+    } = req.body;
 
-    if (!fullname || !email || !position || !dob || !number || !qualification || !gender || !address) {
+    if (
+      !fullname ||
+      !email ||
+      !position ||
+      !dob ||
+      !number ||
+      !qualification ||
+      !gender ||
+      !address
+    ) {
       return res.status(400).json({ message: "All fields are required" });
     }
 
@@ -42,7 +60,9 @@ export const updateCandidate = async (req, res) => {
     const { id } = req.params;
     const updates = req.body;
 
-    const updatedCandidate = await Candidate.findByIdAndUpdate(id, updates, { new: true });
+    const updatedCandidate = await Candidate.findByIdAndUpdate(id, updates, {
+      new: true,
+    });
 
     if (!updatedCandidate) {
       return res.status(404).json({ message: "Candidate not found" });
@@ -56,4 +76,3 @@ export const updateCandidate = async (req, res) => {
     res.status(500).json({ message: "Server error", error: error.message });
   }
 };
-
