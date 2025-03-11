@@ -109,7 +109,9 @@ export const createJob = async (req, res) => {
     } = req.body;
 
     if (!jobDetails || !candidatesInterviewer) {
-      return res.status(400).json({ message: "Job details and candidate details are required" });
+      return res
+        .status(400)
+        .json({ message: "Job details and candidate details are required" });
     }
 
     const {
@@ -186,9 +188,12 @@ export const createJob = async (req, res) => {
 
     // If employeeId is provided, update Employee document
     if (employeeId) {
-      const addedEntryInEmployee = await Employee.findByIdAndUpdate(employeeId, {
-        $push: { jobs: newJob._id },
-      });
+      const addedEntryInEmployee = await Employee.findByIdAndUpdate(
+        employeeId,
+        {
+          $push: { jobs: newJob._id },
+        }
+      );
 
       if (!addedEntryInEmployee) {
         return res.status(500).json({
@@ -227,7 +232,7 @@ export const createJobadmin = async (req, res) => {
       salary,
       benefits,
       jobLocation,
-      ExpireJob,
+
       education,
       english,
       experience,
@@ -249,7 +254,7 @@ export const createJobadmin = async (req, res) => {
         salary,
         benefits,
         jobLocation,
-        ExpireJob,
+
         education,
         english,
         experience,
@@ -275,7 +280,7 @@ export const createJobadmin = async (req, res) => {
       salary,
       benefits,
       jobLocation,
-      ExpireJob,
+
       education,
       english,
       experience,
@@ -303,7 +308,6 @@ export const createJobadmin = async (req, res) => {
     });
   }
 };
-
 
 export const updateJob = async (req, res) => {
   try {

@@ -26,7 +26,6 @@ export const registerCandidate = async (req, res) => {
     ) {
       return res.status(400).json({ message: "All fields are required" });
     }
-
     const existingCandidate = await Candidate.findOne({ email });
     if (existingCandidate) {
       return res.status(400).json({ message: "Email already registered" });
