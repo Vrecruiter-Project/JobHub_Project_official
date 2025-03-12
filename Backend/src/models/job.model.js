@@ -31,11 +31,9 @@ const jobSchema = new Schema(
     },
     ExpireJob: {
       type: String,
-   
     },
     benefits: {
       type: [String],
-     
     },
     salary: {
       type: String,
@@ -43,15 +41,14 @@ const jobSchema = new Schema(
     },
     jobLocation: {
       type: String,
-    
+      required: true,
     },
     education: {
       type: String,
-   
+      required: true,
     },
     english: {
       type: String,
-   
     },
     experience: {
       type: String,
@@ -63,7 +60,7 @@ const jobSchema = new Schema(
     },
     age: {
       type: String,
-      
+      required: true,
     },
     description: {
       type: String,
@@ -75,7 +72,7 @@ const jobSchema = new Schema(
     },
     communication: {
       type: String,
-    
+      required: true,
     },
     students: [
       {
@@ -90,7 +87,6 @@ const jobSchema = new Schema(
       },
     ],
   },
-  { timestamps: true } 
-
+  { timestamps: true }
 );
 export const Job = mongoose.model("Job", jobSchema);

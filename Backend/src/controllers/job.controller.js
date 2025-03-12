@@ -209,11 +209,13 @@ export const createJob = async (req, res) => {
   }
 };
 
+
 export const createJobadmin = async (req, res) => {
   try {
     const { employeeId, jobDetails } = req.body;
 
-    if (!jobDetails) {
+    // Ensure jobDetails exists and is an object
+    if (!jobDetails || typeof jobDetails !== "object") {
       return res.status(400).json({ message: "Job details are required" });
     }
 
@@ -238,8 +240,9 @@ export const createJobadmin = async (req, res) => {
       communication,
     } = jobDetails;
 
+    // Check for missing fields
     if (
-      [
+      Object.values({
         companyName,
         jobTitle,
         jobRole,
@@ -258,13 +261,19 @@ export const createJobadmin = async (req, res) => {
         description,
         interviewMode,
         communication,
-      ].some((data) => !data || data?.toString().trim() === "")
+      }).some((data) => data == null || data.toString().trim() === "")
     ) {
+      return res.status(400).json({ message: "All fields are required" });
+    }
+
+    // Ensure numeric fields are valid
+    if (isNaN(numberOfPosition) || isNaN(salary) || isNaN(age)) {
       return res.status(400).json({
-        message: "All fields are required",
+        message: "numberOfPosition, salary, and age must be valid numbers",
       });
     }
 
+    // Create new job
     const newJob = await Job.create({
       companyName,
       jobTitle,
@@ -286,7 +295,12 @@ export const createJobadmin = async (req, res) => {
       communication,
     });
 
+    // If employeeId exists, associate job with the employee
     if (employeeId) {
+      const employee = await Employee.findById(employeeId);
+      if (!employee) {
+        return res.status(404).json({ message: "Employee not found" });
+      }
       await Employee.findByIdAndUpdate(employeeId, {
         $push: { jobs: newJob._id },
       });
@@ -300,10 +314,10 @@ export const createJobadmin = async (req, res) => {
     console.error("Error while creating job:", error);
     return res.status(500).json({
       message: "Something went wrong while creating the job",
+      error: error.message,
     });
   }
 };
-
 
 export const updateJob = async (req, res) => {
   try {
