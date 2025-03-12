@@ -31,11 +31,11 @@ const jobSchema = new Schema(
     },
     ExpireJob: {
       type: String,
-      required: true,
+   
     },
     benefits: {
       type: [String],
-      required: true,
+     
     },
     salary: {
       type: String,
@@ -43,15 +43,15 @@ const jobSchema = new Schema(
     },
     jobLocation: {
       type: String,
-      required: true,
+    
     },
     education: {
       type: String,
-      required: true,
+   
     },
     english: {
       type: String,
-      required: true,
+   
     },
     experience: {
       type: String,
@@ -63,7 +63,7 @@ const jobSchema = new Schema(
     },
     age: {
       type: String,
-      required: true,
+      
     },
     description: {
       type: String,
@@ -75,7 +75,7 @@ const jobSchema = new Schema(
     },
     communication: {
       type: String,
-      required: true,
+    
     },
     students: [
       {
