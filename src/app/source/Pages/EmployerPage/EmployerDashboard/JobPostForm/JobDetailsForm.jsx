@@ -240,6 +240,22 @@ const JobDetailsForm = () => {
                 "Plumbing",
                 "Mechanical",
                 "Technical",
+                'Sales',
+                "Marketing",
+                "Trainer",
+                "Teacher",
+                "Nurse",
+                "Doctor",
+                "Engineer",
+                "Architect",
+                "Designer",
+                "Chef",
+                "Waiter",
+                "Waitress",
+                "Clerk",
+                "Cashier",
+                "Receptionist",
+                'other',
               ])}
             </Box>
             {renderTextField(
