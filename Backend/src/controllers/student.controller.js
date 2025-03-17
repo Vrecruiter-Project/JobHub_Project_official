@@ -1,5 +1,5 @@
 import { Student } from "../models/student.model.js";
-//import { Job } from "../models/job.model.js";
+import { Job } from "../models/job.model.js";
 import { mailSender } from "../utils/emailSender.utils.js";
 import { thanksEmailTemplate } from "../templates/thanks.template.js";
 
@@ -96,17 +96,29 @@ export const applyForJob = async (req, res) => {
   }
 };
 
+
+//get jobs
+// export const allJobsForStudents = async (req, res) => {
+//   try {
+//     const gettingAllJobs = await Job.find();
+
+//     return res.status(200).json({
+//       message: "All Jobs fetched successfully",
+//       jobs: gettingAllJobs,
+//     });
+//   } catch (error) {
+//     return res.status(500).json({
+//       message: "Something went wrong while getting all jobs",
+//     });
+//   }
+// };
+
+
 export const allJobsForStudents = async (req, res) => {
   try {
-    const gettingAllJobs = await Job.find({});
-
-    return res.status(200).json({
-      message: "All Jobs fetched successfully",
-      jobs: gettingAllJobs,
-    });
+    const candidates = await Job.find();
+    res.status(200).json(candidates);
   } catch (error) {
-    return res.status(500).json({
-      message: "Something went wrong while getting all jobs",
-    });
+    res.status(500).json({ message: "Server error", error: error.message });
   }
 };
