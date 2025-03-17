@@ -1,7 +1,17 @@
 import { Student } from "../models/student.model.js";
-import { Job } from "../models/job.model.js";
+//import { Job } from "../models/job.model.js";
 import { mailSender } from "../utils/emailSender.utils.js";
 import { thanksEmailTemplate } from "../templates/thanks.template.js";
+
+// Fetch all students
+export const getstudents = async (req, res) => {
+  try {
+    const candidates = await Student.find();
+    res.status(200).json(candidates);
+  } catch (error) {
+    res.status(500).json({ message: "Server error", error: error.message });
+  }
+};
 
 export const applyForJob = async (req, res) => {
   try {
@@ -31,7 +41,7 @@ export const applyForJob = async (req, res) => {
         qualification,
         role,
         address,
-        jobId
+        jobId,
       ].some((data) => data?.trim === "")
     ) {
       return res.status(400).json({
