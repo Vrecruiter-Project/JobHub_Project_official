@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import {Box, Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import PhoneIcon from "@mui/icons-material/Phone";
 import PlaceIcon from "@mui/icons-material/Place";
 import EmailIcon from "@mui/icons-material/Email";
@@ -33,9 +33,10 @@ const CompanyAddress = () => {
       title: "Phone",
       content: (
         <>
-          +91 95180-35030
+          +91 98187 37641
           <br />
-          +91 89084-67890
+          +91 90564 76584
+
         </>
       ),
     },
@@ -99,9 +100,10 @@ const CompanyAddress = () => {
         {contactDetails.map((detail, index) => (
           <Grid
             size={{
-            xs:12,
-            sm:6,
-            md:4}}
+              xs: 12,
+              sm: 6,
+              md: 4
+            }}
             key={index}
             data-aos="fade-up"
             data-aos-delay={index * 200}
