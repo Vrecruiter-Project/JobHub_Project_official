@@ -343,6 +343,11 @@ export const updateJob = async (req, res) => {
       jobRole,
     } = req.body;
 
+    // Check if jobId is provided
+    if (!jobId) {
+      return res.status(400).json({ message: "Job ID is required" });
+    }
+
     const updatedJob = await Job.findByIdAndUpdate(
       jobId,
       {
@@ -368,16 +373,24 @@ export const updateJob = async (req, res) => {
       { new: true }
     );
 
+    // Check if job was found and updated
+    if (!updatedJob) {
+      return res.status(404).json({ message: "Job not found" });
+    }
+
     return res.status(200).json({
-      message: "Job is update",
+      message: "Job is updated successfully",
       job: updatedJob,
     });
   } catch (error) {
+    console.error("Error updating job:", error);
     return res.status(500).json({
       message: "Something went wrong while updating the job",
+      error: error.message,
     });
   }
 };
+
 
 export const deleteJob = async (req, res) => {
   try {
