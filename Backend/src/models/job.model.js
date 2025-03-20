@@ -71,7 +71,7 @@ const jobSchema = new Schema(
       required: true,
     },
     communication: {
-      type: [Number, String],
+      type: String,
       required: true,
     },
     students: [
