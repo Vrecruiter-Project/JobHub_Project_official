@@ -20,6 +20,6 @@ router.route("/create-job").post(verifyJWT, isEmployee, createJob); //Done
 router.route("/create-job-admin").post(createJobadmin); //Done
 router.route("/delete-job").delete(verifyJWT, isEmployee, deleteJob); //Done
 router.route("/multi-delete").delete(verifyJWT, isEmployee, multipleDeleteJob); //Done
-router.route("/update-job:id").put(updateJob); //Done
+router.route("/update-job").put(updateJob); //Done
 
 export default router;
