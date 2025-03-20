@@ -109,7 +109,9 @@ export const createJob = async (req, res) => {
     } = req.body;
 
     if (!jobDetails || !candidatesInterviewer) {
-      return res.status(400).json({ message: "Job details and candidate details are required" });
+      return res
+        .status(400)
+        .json({ message: "Job details and candidate details are required" });
     }
 
     const {
@@ -186,9 +188,12 @@ export const createJob = async (req, res) => {
 
     // If employeeId is provided, update Employee document
     if (employeeId) {
-      const addedEntryInEmployee = await Employee.findByIdAndUpdate(employeeId, {
-        $push: { jobs: newJob._id },
-      });
+      const addedEntryInEmployee = await Employee.findByIdAndUpdate(
+        employeeId,
+        {
+          $push: { jobs: newJob._id },
+        }
+      );
 
       if (!addedEntryInEmployee) {
         return res.status(500).json({
@@ -208,7 +213,6 @@ export const createJob = async (req, res) => {
     });
   }
 };
-
 
 export const createJobadmin = async (req, res) => {
   try {
@@ -238,7 +242,7 @@ export const createJobadmin = async (req, res) => {
       description,
       interviewMode,
       communication,
-      contactNumber
+      contactNumber,
     } = jobDetails;
 
     // Check for missing fields
@@ -343,6 +347,7 @@ export const updateJob = async (req, res) => {
       communication,
       jobId,
       jobRole,
+      contactNumber,
     } = req.body;
 
     // Check if jobId is provided
@@ -371,6 +376,7 @@ export const updateJob = async (req, res) => {
         interviewMode,
         communication,
         jobRole,
+        contactNumber,
       },
       { new: true }
     );
@@ -392,7 +398,6 @@ export const updateJob = async (req, res) => {
     });
   }
 };
-
 
 export const deleteJob = async (req, res) => {
   try {
