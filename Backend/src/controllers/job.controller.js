@@ -238,6 +238,7 @@ export const createJobadmin = async (req, res) => {
       description,
       interviewMode,
       communication,
+      contactNumber
     } = jobDetails;
 
     // Check for missing fields
@@ -292,6 +293,7 @@ export const createJobadmin = async (req, res) => {
       age,
       description,
       interviewMode,
+      contactNumber,
       communication,
     });
 
