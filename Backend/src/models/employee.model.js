@@ -12,6 +12,10 @@ const employeeSchema = new Schema(
       type: String,
       required: true
     },
+    password: {
+      type: String,
+      required: true,
+    } ,
     companyName: {
       type: String,
       required: true,

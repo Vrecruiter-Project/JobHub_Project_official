@@ -7,6 +7,7 @@ import Privacypolicy from '../../components/PageComponent/TermsComponent/Privacy
 import AllCandidates from '../Pages/EmployerPage/EmployerDashboard/Components/AllCandidates/AllCandidates.jsx';
 import InterviewTips from '../../components/PageComponent/FooterKnowledge/Interview.jsx';
 import Event from '../../components/PageComponent/FooterKnowledge/Events.jsx';
+import EmployerSignIn from '../Pages/PhoneVerification/ContactVerify/EmployerSignIn.jsx';
 const Home = lazy(() => import('../Pages/Home/Home'));
 const About = lazy(() => import('../Pages/About/About.jsx'));
 const Contact = lazy(() => import('../Pages/Contact/Contact'));
@@ -57,6 +58,7 @@ const AppRouter = () => {
             "/candidatelogin": <CandidateSignIn />,
             "/candidatesignup": <CandidateSignUp />,
             "/verification": <ContactVerify />,
+            "/employerlogin": <EmployerSignIn />,
             "/employeregistration": <EmployeeForm />,
             "/telecaller": <TelecallerJob />,
             "/documentverification": <DocVerifyJob />,
@@ -116,7 +118,6 @@ const AppRouter = () => {
               ],
             },
           }}
-
         />
       </Suspense>
     </>

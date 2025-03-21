@@ -4,6 +4,7 @@ import { Job } from "../models/job.model.js";
 import { uploadOnCloudinary } from "../configs/cloudinary.js";
 import { mailSender } from "../utils/emailSender.utils.js";
 import { otpTemplate } from "../templates/otpSenderMail.js";
+import bcrypt from "bcrypt";
 
 const generateAccessToken = async (employeeId) => {
   try {
@@ -104,6 +105,7 @@ export const checkOtp = async (req, res) => {
   }
 };
 
+//register
 export const employeeAccount = async (req, res) => {
   try {
     const {
@@ -114,6 +116,8 @@ export const employeeAccount = async (req, res) => {
       gender,
       gstNumber,
       fromWhere,
+      password,
+      confirmPassword,
     } = req.body;
 
     if (
@@ -125,14 +129,22 @@ export const employeeAccount = async (req, res) => {
         gender,
         gstNumber,
         fromWhere,
+        password,
+        confirmPassword,
       ].some((data) => data?.trim() === "")
     ) {
-      res.status(400).json({
+      return res.status(400).json({
         message: "Required all fields",
       });
     }
 
-    const avatarLocalPath = req.file.path;
+    if (password !== confirmPassword) {
+      return res.status(400).json({
+        message: "Passwords do not match",
+      });
+    }
+
+    const avatarLocalPath = req.file?.path;
 
     if (!avatarLocalPath) {
       return res.status(404).json({
@@ -142,6 +154,9 @@ export const employeeAccount = async (req, res) => {
 
     const avatar = await uploadOnCloudinary(avatarLocalPath);
 
+    // Hash the password
+    const hashedPassword = await bcrypt.hash(password, 10);
+
     const newEmployee = await Employee.create({
       companyName,
       email,
@@ -150,6 +165,7 @@ export const employeeAccount = async (req, res) => {
       gender,
       gstNumber,
       mobileNumber,
+      password: hashedPassword,
       avatar:
         avatar.url ||
         `https://api.dicebear.com/5.x/initials/svg?seed=${fullName}`,
@@ -157,6 +173,56 @@ export const employeeAccount = async (req, res) => {
 
     // Generate Token
     const { accessToken } = await generateAccessToken(newEmployee._id);
+    const options = {
+      httpOnly: true,
+      secure: true,
+    };
+
+    return res.status(200).cookie("accessToken", accessToken, options).json({
+      success: true,
+      message: "Signup Successfully!",
+      employee: newEmployee,
+      accessToken,
+    });
+  } catch (error) {
+    console.error("Error during registration:", error);
+    res.status(500).json({
+      message: "Something went wrong while registration",
+    });
+  }
+};
+//login
+export const employeeLogin = async (req, res) => {
+  try {
+    const { email, password } = req.body;
+
+    if (email === "" || password === "") {
+      return res.status(400).json({
+        message: "All fields required!",
+      });
+    }
+
+    const employeeExists = await Employee.findOne({ email });
+
+    if (!employeeExists) {
+      return res.status(404).json({
+        message: "User not found",
+      });
+    }
+
+    const isPasswordCorrect = await bcrypt.compare(
+      password,
+      employeeExists.password
+    );
+
+    if (!isPasswordCorrect) {
+      return res.status(403).json({
+        message: "Password is incorrect",
+      });
+    }
+
+    // Generate Token
+    const { accessToken } = await generateAccessToken(employeeExists._id);
 
     const options = {
       httpOnly: true,
@@ -165,14 +231,26 @@ export const employeeAccount = async (req, res) => {
 
     return res.status(200).cookie("accessToken", accessToken, options).json({
       success: true,
-      message: "Signup Successfully !",
-      employee: newEmployee,
+      message: "Login Successfully !",
+      employee: employeeExists,
       accessToken,
     });
   } catch (error) {
-    console.log(error);
-    res.status(500).json({
-      message: "Something went wrong while registeration",
+    return res.status(500).json({
+      message: "Something went wrong while login",
+    });
+  }
+};
+//logout
+export const employeeLogout = async (req, res) => {
+  try {
+    res.clearCookie("accessToken");
+    return res.status(200).json({
+      message: "Logout Successfully !",
+    });
+  } catch (error) {
+    return res.status(500).json({
+      message: "Something went wrong while logout",
     });
   }
 };

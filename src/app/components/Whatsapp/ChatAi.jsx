@@ -95,7 +95,7 @@ const ChatAi = () => {
               {content}
             </Typography>
             <Button
-              href='https://wa.me/+919518035030?text=Hello%20Jobhub.world%2C%20I%20would%20like%20to%20know%20more%20about%20your%20Jobs.'
+              href='https://wa.me/+919818737641?text=Hello%20Jobhub.world%2C%20I%20would%20like%20to%20know%20more%20about%20your%20Jobs.'
               target='_blank'
               rel='noopener noreferrer'
               variant='contained'

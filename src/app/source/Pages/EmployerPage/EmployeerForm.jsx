@@ -22,25 +22,25 @@ const EmployeeForm = () => {
   if (token) {
     return <EmployerDashboard />;
   }
+
   const email = localStorage.getItem("email");
   const navigate = useNavigate();
 
   const initialEmployerData = {
-    avatar: "",
-    companyName: "",
     fullName: "",
+    avatar: "",
+    password: "",
+    companyName: "",
     mobileNumber: "",
     email,
     gender: "",
-    country: "",
-    city: "",
     gstNumber: "",
     fromWhere: "",
+    confirmPassword: "",
   };
 
   const [employerData, setEmployerData] = useState(initialEmployerData);
   const [profileImg, setProfileImg] = useState("");
-  const [image, setImage] = useState("");
 
   // Handler to update employer data
   const updateEmployerData = (field, value) => {
@@ -54,9 +54,8 @@ const EmployeeForm = () => {
       const reader = new FileReader();
       reader.onload = () => {
         const base64Image = reader.result;
-        setProfileImg(base64Image); // Store base64 image data
+        setProfileImg(base64Image);
         updateEmployerData("avatar", file);
-        setImage(file);
       };
       reader.readAsDataURL(file);
     }
@@ -65,12 +64,15 @@ const EmployeeForm = () => {
   // Handle form submission
   const handleSubmit = async (event) => {
     event.preventDefault();
+    if (employerData.password !== employerData.confirmPassword) {
+      return toast.error("Passwords do not match");
+    }
     try {
       await registerEmployee(employerData, navigate);
       localStorage.removeItem("email");
       navigate("/employerdashboard");
     } catch (error) {
-      toast.error("Not Submit");
+      toast.error("Registration failed. Please try again.");
     }
   };
 
@@ -97,166 +99,104 @@ const EmployeeForm = () => {
         }}
       >
         <Box textAlign="center" mb={5}>
-          <Typography
-            variant="h3"
-            sx={{ fontSize: { xs: "35px", lg: "45px" } }}
-            gutterBottom
-          >
+          <Typography variant="h3" sx={{ fontSize: { xs: "35px", lg: "45px" } }} gutterBottom>
             Employer Registration Form
           </Typography>
           <Typography variant="h6">
             Kindly complete the registration form to find talented candidates
           </Typography>
         </Box>
-        <form
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            gap: "20px",
-          }}
-          onSubmit={handleSubmit}
-        >
+
+        <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
           <Button variant="outlined" component="label" fullWidth>
             Upload Profile Image
-            <input
-              type="file"
-              accept="image/*"
-              hidden
-              onChange={handleImageUpload}
-            />
+            <input type="file" accept="image/*" hidden onChange={handleImageUpload} />
           </Button>
           {profileImg && (
             <Box alignSelf="center" textAlign="center" mt={2}>
               <img
                 src={profileImg}
                 alt="Uploaded Preview"
-                style={{
-                  width: "150px",
-                  height: "150px",
-                  borderRadius: "50%",
-                  objectFit: "cover",
-                }}
+                style={{ width: "150px", height: "150px", borderRadius: "50%", objectFit: "cover" }}
               />
             </Box>
           )}
+
+          <TextField
+            fullWidth
+            label="Full Name"
+            required
+            value={employerData.fullName}
+            onChange={(e) => updateEmployerData("fullName", e.target.value)}
+          />
+
           <TextField
             fullWidth
             label="Company Name"
-            variant="outlined"
-            placeholder="Enter Your Company Name"
             required
             value={employerData.companyName}
             onChange={(e) => updateEmployerData("companyName", e.target.value)}
           />
-          <Box sx={{ display: "flex", gap: "20px" }}>
-            <TextField
-              fullWidth
-              label="Full Name"
-              variant="outlined"
-              placeholder="Enter Your Name"
+
+          <TextField
+            fullWidth
+            label="Mobile Number"
+            required
+            value={employerData.mobileNumber}
+            onChange={(e) => updateEmployerData("mobileNumber", e.target.value)}
+          />
+
+          <TextField fullWidth label="Email" value={employerData.email} disabled />
+
+          <FormControl fullWidth>
+            <InputLabel>Gender</InputLabel>
+            <Select
+              value={employerData.gender}
+              label="Gender"
+              onChange={(e) => updateEmployerData("gender", e.target.value)}
               required
-              value={employerData.fullName}
-              onChange={(e) => updateEmployerData("fullName", e.target.value)}
-            />
-            <TextField
-              fullWidth
-              label="Mobile"
-              variant="outlined"
-              placeholder="Enter Mobile Number"
-              required
-              value={employerData.mobileNumber}
-              onChange={(e) =>
-                updateEmployerData("mobileNumber", e.target.value)
-              }
-            />
-          </Box>
-          <Box sx={{ display: "flex", gap: "20px" }}>
-            <TextField
-              fullWidth
-              label="Email"
-              variant="outlined"
-              placeholder="Enter Your Email"
-              // required
-              value={employerData.email}
-              disabled
-              onChange={(e) => updateEmployerData("email", e.target.value)}
-            />
-            <FormControl fullWidth>
-              <InputLabel>Gender</InputLabel>
-              <Select
-                value={employerData.gender}
-                onChange={(e) => updateEmployerData("gender", e.target.value)}
-                label="Gender"
-                required
-              >
-                <MenuItem value="Male">Male</MenuItem>
-                <MenuItem value="Female">Female</MenuItem>
-                <MenuItem value="Other">Other</MenuItem>
-              </Select>
-            </FormControl>
-          </Box>
-          <Box sx={{ display: "flex", gap: "20px" }}>
-            <FormControl fullWidth>
-              <InputLabel>Country</InputLabel>
-              <Select
-                value={employerData.country}
-                onChange={(e) => updateEmployerData("country", e.target.value)}
-                label="Country"
-                required
-              >
-                <MenuItem value="India">India</MenuItem>
-                <MenuItem value="USA">USA</MenuItem>
-                <MenuItem value="Canada">Canada</MenuItem>
-                <MenuItem value="Australia">Australia</MenuItem>
-              </Select>
-            </FormControl>
-            <TextField
-              fullWidth
-              label="City"
-              variant="outlined"
-              placeholder="Enter City"
-              required
-              value={employerData.city}
-              onChange={(e) => updateEmployerData("city", e.target.value)}
-            />
-          </Box>
+            >
+              <MenuItem value="Male">Male</MenuItem>
+              <MenuItem value="Female">Female</MenuItem>
+              <MenuItem value="Other">Other</MenuItem>
+            </Select>
+          </FormControl>
+
           <TextField
             fullWidth
             label="GST Number"
-            variant="outlined"
-            placeholder="Enter GST Number"
             value={employerData.gstNumber}
             onChange={(e) => updateEmployerData("gstNumber", e.target.value)}
           />
+
           <TextField
             fullWidth
-            label="From where you heard about this"
-            variant="outlined"
-            placeholder="Enter Source"
-            required
+            label="How did you hear about us?"
             value={employerData.fromWhere}
             onChange={(e) => updateEmployerData("fromWhere", e.target.value)}
           />
-          <Box textAlign="center">
-            <Typography variant="h6" sx={{ fontSize: "14px", color: "green" }}>
-              *Kindly ensure all fields are filled out accurately, as this form
-              can only be submitted once. Your attention to detail is highly
-              appreciated.
-            </Typography>
-          </Box>
-          <Box textAlign="center">
-            <Button
-              type="submit"
-              style={{
-                border: "1px solid green",
-                padding: "15px 60px",
-                backgroundColor: "green",
-                color: "white",
-              }}
-            >
-              Submit
-            </Button>
-          </Box>
+
+          <TextField
+            fullWidth
+            label="Password"
+            required
+            type="password"
+            value={employerData.password}
+            onChange={(e) => updateEmployerData("password", e.target.value)}
+          />
+
+          <TextField
+            fullWidth
+            label="Confirm Password"
+            required
+            type="password"
+            value={employerData.confirmPassword}
+            onChange={(e) => updateEmployerData("confirmPassword", e.target.value)}
+          />
+
+          <Button type="submit" style={{ backgroundColor: "green", color: "white", padding: "15px" }}>
+            Submit
+          </Button>
         </form>
       </Container>
     </Box>

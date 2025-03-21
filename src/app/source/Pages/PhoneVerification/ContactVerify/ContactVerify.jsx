@@ -11,10 +11,11 @@ import {
 } from "@mui/material";
 import { toast } from "react-toastify";
 import { motion } from "framer-motion";
-import { useNavigate } from "react-router-dom";
+import { useNavigate , Link } from "react-router-dom";
 import PhoneVBg from "../../../../assets/Images/bgImages/PhoneVBg.png";
 import { checkOtp, sendOtp } from "../../../../service/operations/employeeApi";
 import EmployerDashboard from "../../EmployerPage/EmployerDashboard/EmployerDashboard";
+import { teal } from "@mui/material/colors";
 
 const ContactVerify = () => {
   const token = JSON.parse(localStorage.getItem("token"));
@@ -24,15 +25,15 @@ const ContactVerify = () => {
   const navigate = useNavigate();
 
   const handleOpenOtp = async () => {
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Regex to validate email address
-  if (emailRegex.test(email)) {
-    await sendOtp(email);
-    setOpenOtp(true);
-    toast.success("Otp sent");
-  } else {
-    toast.error("Please enter a valid email address.");
-  }
-};
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Regex to validate email address
+    if (emailRegex.test(email)) {
+      await sendOtp(email);
+      setOpenOtp(true);
+      toast.success("Otp sent");
+    } else {
+      toast.error("Please enter a valid email address.");
+    }
+  };
 
   const handleCloseOtp = () => {
     setOpenOtp(false);
@@ -85,7 +86,7 @@ const ContactVerify = () => {
                 flex: 1,
                 padding: "100px",
                 background:
-                  "linear-gradient(178deg, rgba(1,148,11,1) 0%, rgba(93,198,112,1) 0%, rgba(58,179,74,1) 0%, rgba(87,196,106,1) 0%, rgba(8,152,19,1) 0%, rgba(81,191,99,1) 0%, rgba(59,180,75,1) 0%, rgba(93,199,113,1) 5%, rgba(88,196,107,1) 20%, rgba(116,210,138,1) 26%, rgba(100,202,120,1) 42%, rgba(100,202,121,1) 43%, rgba(120,213,142,1) 54%, rgba(134,220,158,1) 64%, rgba(118,211,140,1) 73%, rgba(93,199,113,1) 94%, rgba(200,255,230,1) 100%, rgba(81,192,99,1) 100%, rgba(87,196,106,1) 100%, rgba(111,207,132,1) 100%)",
+                  "linear-gradient(135deg, #00C853, #B2FF59)",
                 color: "#fff",
                 display: "flex",
                 flexDirection: "column",
@@ -171,7 +172,26 @@ const ContactVerify = () => {
                 >
                   Verify
                 </Button>
+
               </motion.div>
+              <div className="mt-4  ">
+                Already have an account?
+                <Link to="/employerlogin">
+                  <span
+                    className="mx-1"
+                    style={{
+                      color: "green",
+                      cursor: "pointer",
+                      textDecoration: "none",
+
+                    }}
+                    onMouseEnter={(e) => (e.target.style.textDecoration = "underline")}
+                    onMouseLeave={(e) => (e.target.style.textDecoration = "none")}
+
+                  >
+                    Login
+                  </span></Link>
+              </div>
             </Box>
           </Box>
         </Box>

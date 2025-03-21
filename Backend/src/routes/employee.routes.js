@@ -9,17 +9,20 @@ import {
   myJobApplyStudents,
   deSelectingStudents,
   selectingStudentsData,
+  employeeLogin,
+  employeeLogout,
 } from "../controllers/employee.controller.js";
-import {
-  verifyJWT,
-  isEmployee,
-} from "../middleware/auth.middleware.js";
+import { verifyJWT, isEmployee } from "../middleware/auth.middleware.js";
 import { upload } from "../middleware/mutler.middleware.js";
 const router = Router();
 
 router.route("/otp-send").post(otpGenerateSystem);
 router.route("/check-otp").post(checkOtp);
+///////register , login , logout /////////////
 router.route("/register").post(upload.single("avatar"), employeeAccount);
+router.route("/login").post(employeeLogin);
+router.route("/logout").get(employeeLogout);
+//////////////////////////////////////////////
 router
   .route("/edit-profile")
   .put(upload.single("avatar"), verifyJWT, isEmployee, editProfile);
