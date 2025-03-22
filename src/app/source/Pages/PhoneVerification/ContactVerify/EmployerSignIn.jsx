@@ -28,6 +28,7 @@ const EmployerSignIn = () => {
         toast.success("Login Successful");
         // Store token in localStorage
         localStorage.setItem("token", JSON.stringify(data.accessToken));
+        localStorage.setItem("employee", JSON.stringify(data.employee));
         navigate("/employerdashboard");
       }
     } catch (error) {
