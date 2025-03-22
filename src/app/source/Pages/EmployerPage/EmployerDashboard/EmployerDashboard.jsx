@@ -20,7 +20,7 @@
 //         sx={{
 //           height: "100vh",
 //           width: "100%",
-         
+
 //           background:
 //             "linear-gradient(to bottom, #ffffff, rgba(7, 188, 12, 0.3))",
 //           overflowX: "hidden",
@@ -100,37 +100,26 @@
 
 
 import React from 'react';
-import axios from 'axios';
+import EmployeeForm from '../EmployeerForm';
 
 export default function EmployerDashboard() {
 
-  // const handleLogout = async () => {
-  //   try {
-  //     const response = await axios.get('http://localhost:3000/api/v1/employees/logout', {
-  //       withCredentials: true,
-  //     });
-
-  //     if (response.status === 200) {
-  //       alert(response.data.message);
-  //       window.location.href = '/login'; // Redirect to login page
-  //     } else {
-  //       alert('Logout failed!');
-  //     }
-  //   } catch (error) {
-  //     alert(error.response?.data?.message || 'Logout failed!');
-  //   }
-  // };
   const handleLogout = () => {
     //clear local storage and nevigate to home page
     localStorage.clear();
     window.location.href = '/';
   }
+  const token = localStorage.getItem("token");
 
-  return (
+
+  return !token ? (
+    <EmployeeForm />
+  ) : (
+
     <div>
       <h1 className="text-3xl font-bold mb-4">Employer Dashboard</h1>
-      <button 
-        onClick={handleLogout} 
+      <button
+        onClick={handleLogout}
         className="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition duration-300"
       >
         Logout

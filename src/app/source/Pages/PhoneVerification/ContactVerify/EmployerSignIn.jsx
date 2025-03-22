@@ -5,6 +5,8 @@ import { motion } from "framer-motion";
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import PhoneVBg from "../../../../assets/Images/bgImages/PhoneVBg.png";
+import { employerLogin } from "../../../../service/operations/employeeApi";
+
 
 const EmployerSignIn = () => {
   const token = JSON.parse(localStorage.getItem("token"));
@@ -20,25 +22,16 @@ const EmployerSignIn = () => {
       toast.error("Please fill all fields");
       return;
     }
-
     try {
-      const response = await axios.post("http://localhost:3000/api/v1/employees/login", {
-        email,
-        password,
-      }, { withCredentials: true });
-
-      if (response.data.success) {
+      const data = await employerLogin(email, password);
+      if (data.success) {
         toast.success("Login Successful");
-
         // Store token in localStorage
-        localStorage.setItem("token", JSON.stringify(response.data.accessToken));
-
+        localStorage.setItem("token", JSON.stringify(data.accessToken));
         navigate("/employerdashboard");
       }
     } catch (error) {
-      toast.error(
-        error.response?.data?.message || "Login failed. Please try again."
-      );
+      toast.error(error);
     }
   };
 

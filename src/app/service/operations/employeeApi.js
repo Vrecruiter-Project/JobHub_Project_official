@@ -8,6 +8,7 @@ const {
   MYJOBS,
   SEND_OTP,
   SIGNUP_LOGIN,
+  SIGNIN,
   My_STUDENTS,
   SELECT_STUDENTS,
   MY_SELECTED_STUDENTS,
@@ -66,6 +67,30 @@ export const registerEmployee = async (employerData, navigate) => {
     }
   } catch (error) {
     toast.error(error.response.data.message);
+  }
+};
+
+// export const employerLogin = async (email, password) => {
+//   try {
+//     const response = await axios.post(
+//       `${SIGNIN}`,
+//       { email, password },
+//       { withCredentials: true }
+//     );
+
+//     return response.data;
+//   } catch (error) {
+//     throw error.response?.data?.message || "Login failed. Please try again.";
+//   }
+// };
+
+
+export const employerLogin = async (email, password) => {
+  try {
+    const response = await apiConnector("POST", { SIGNIN }, { email, password });
+    return response.data;
+  } catch (error) {
+    throw error.response?.data?.message || "Login failed. Please try again.";
   }
 };
 
