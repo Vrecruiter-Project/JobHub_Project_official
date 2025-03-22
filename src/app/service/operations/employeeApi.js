@@ -84,10 +84,12 @@ export const registerEmployee = async (employerData, navigate) => {
 //   }
 // };
 
-
 export const employerLogin = async (email, password) => {
   try {
-    const response = await apiConnector("POST", { SIGNIN }, { email, password });
+    const response = await apiConnector("POST", `${SIGNIN}`, {
+      email,
+      password,
+    });
     return response.data;
   } catch (error) {
     throw error.response?.data?.message || "Login failed. Please try again.";
