@@ -1,5 +1,5 @@
-const BASE_URL = "https://jobhub-project-official-1.onrender.com/api/v1";
-//const BASE_URL = "http://localhost:9000/api/v1";
+//const BASE_URL = "https://jobhub-project-official-1.onrender.com/api/v1";
+const BASE_URL = "http://localhost:9000/api/v1";
 
 export const employee = {
   SEND_OTP: BASE_URL + "/employees/otp-send",
