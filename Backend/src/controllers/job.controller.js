@@ -1,104 +1,6 @@
 import { Employee } from "../models/employee.model.js";
 import { Job } from "../models/job.model.js";
 
-// export const createJob = async (req, res) => {
-//   try {
-//     const {
-//       company,
-//       jobTitle,
-//       positions,
-//       jobType,
-//       workType,
-//       salary,
-//       benefits,
-//       jobLocation,
-//       postDate,
-//       jobRole,
-//     } = req.body.jobDetails;
-
-//     const {
-//       minimumEducation,
-//       englishLevelRequired,
-//       totalExperienceRequired,
-//       gender,
-//       age,
-//       jobDescription,
-//       interviewMethod,
-//       communicationPreferences,
-//     } = req.body.candidatesInterviewer;
-
-//     const employeeId = req.user._id;
-
-//     if (
-//       [
-//         company,
-//         jobTitle,
-//         jobType,
-//         workType,
-//         salary,
-//         jobLocation,
-//         postDate,
-//         minimumEducation,
-//         englishLevelRequired,
-//         totalExperienceRequired,
-//         gender,
-//         age,
-//         jobDescription,
-//         interviewMethod,
-//         communicationPreferences,
-//         jobRole,
-//       ].some((data) => data?.trim() === "")
-//     ) {
-//       return res.status(400).json({
-//         message: "Required all fields",
-//       });
-//     }
-
-//     const newJob = await Job.create({
-//       age,
-//       benefits,
-//       communication: communicationPreferences,
-//       companyName: company,
-//       description: jobDescription,
-//       education: minimumEducation,
-//       english: englishLevelRequired,
-//       experience: totalExperienceRequired,
-//       ExpireJob: postDate,
-//       gender,
-//       interviewMode: interviewMethod,
-//       jobLocation,
-//       jobTitle,
-//       jobType,
-//       numberOfPosition: positions,
-//       salary,
-//       workType,
-//       jobRole,
-//     });
-
-//     const addedEntryInEmployee = await Employee.findByIdAndUpdate(employeeId, {
-//       $push: {
-//         jobs: newJob._id,
-//       },
-//     });
-
-//     if (!addedEntryInEmployee) {
-//       return res.status(500).json({
-//         message: "Refernce is not passed!",
-//       });
-//     }
-
-//     return res.status(200).json({
-//       message: "Job is Create",
-//       job: newJob,
-//     });
-//   } catch (error) {
-//     console.error("Error while creating job:", error);
-//     return res.status(500).json({
-//       message: "Something went wrong while creating Job",
-//     });
-// }
-
-// };
 
 // export const createJob = async (req, res) => {
 //   try {
@@ -125,6 +27,7 @@ import { Job } from "../models/job.model.js";
 //       jobLocation,
 //       postDate,
 //       jobRole,
+//       contactNumber, // Add contactNumber to jobDetails
 //     } = jobDetails;
 
 //     const {
@@ -138,7 +41,7 @@ import { Job } from "../models/job.model.js";
 //       communicationPreferences,
 //     } = candidatesInterviewer;
 
-//     // Validate required fields (excluding employeeId)
+//     // Validate required fields (including contactNumber)
 //     if (
 //       [
 //         company,
@@ -157,6 +60,7 @@ import { Job } from "../models/job.model.js";
 //         interviewMethod,
 //         communicationPreferences,
 //         jobRole,
+//         contactNumber, // Include validation for contactNumber
 //       ].some((data) => !data || data?.trim() === "")
 //     ) {
 //       return res.status(400).json({
@@ -164,7 +68,7 @@ import { Job } from "../models/job.model.js";
 //       });
 //     }
 
-//     // Create new job entry
+//     // Create new job entry with contactNumber
 //     const newJob = await Job.create({
 //       age,
 //       benefits,
@@ -184,6 +88,7 @@ import { Job } from "../models/job.model.js";
 //       salary,
 //       workType,
 //       jobRole,
+//       contactNumber, // Add contactNumber to job creation
 //     });
 
 //     // If employeeId is provided, update Employee document
@@ -217,17 +122,19 @@ import { Job } from "../models/job.model.js";
 export const createJob = async (req, res) => {
   try {
     const {
-      employeeId, // Optional
+      employeeId, // Required: ID of the employer creating the job
       jobDetails,
       candidatesInterviewer,
     } = req.body;
 
-    if (!jobDetails || !candidatesInterviewer) {
-      return res
-        .status(400)
-        .json({ message: "Job details and candidate details are required" });
+    // Check if required fields/objects are provided
+    if (!employeeId || !jobDetails || !candidatesInterviewer) {
+      return res.status(400).json({
+        message: "employeeId, job details, and candidate details are required",
+      });
     }
 
+    // Destructure fields from jobDetails and candidatesInterviewer
     const {
       company,
       jobTitle,
@@ -239,7 +146,7 @@ export const createJob = async (req, res) => {
       jobLocation,
       postDate,
       jobRole,
-      contactNumber, // Add contactNumber to jobDetails
+      contactNumber,
     } = jobDetails;
 
     const {
@@ -253,85 +160,86 @@ export const createJob = async (req, res) => {
       communicationPreferences,
     } = candidatesInterviewer;
 
-    // Validate required fields (including contactNumber)
-    if (
-      [
-        company,
-        jobTitle,
-        jobType,
-        workType,
-        salary,
-        jobLocation,
-        postDate,
-        minimumEducation,
-        englishLevelRequired,
-        totalExperienceRequired,
-        gender,
-        age,
-        jobDescription,
-        interviewMethod,
-        communicationPreferences,
-        jobRole,
-        contactNumber, // Include validation for contactNumber
-      ].some((data) => !data || data?.trim() === "")
-    ) {
+    // Validate required fields
+    const requiredFields = [
+      employeeId,
+      company,
+      jobTitle,
+      positions,
+      jobType,
+      workType,
+      salary,
+      jobLocation,
+      postDate,
+      jobRole,
+      contactNumber,
+      minimumEducation,
+      englishLevelRequired,
+      totalExperienceRequired,
+      gender,
+      age,
+      jobDescription,
+      interviewMethod,
+      communicationPreferences,
+    ];
+
+    if (requiredFields.some((field) => !field || (typeof field === "string" && field.trim() === ""))) {
       return res.status(400).json({
-        message: "All fields are required",
+        message: "All required fields must be provided and non-empty",
       });
     }
 
-    // Create new job entry with contactNumber
+    // Create new job entry
     const newJob = await Job.create({
-      age,
-      benefits,
-      communication: communicationPreferences,
       companyName: company,
-      description: jobDescription,
+      jobTitle,
+      jobRole,
+      numberOfPosition: positions,
+      jobType,
+      workType,
+      salary,
+      benefits: benefits || [], // Default to empty array if not provided
+      jobLocation,
+      ExpireJob: postDate,
       education: minimumEducation,
       english: englishLevelRequired,
       experience: totalExperienceRequired,
-      ExpireJob: postDate,
       gender,
+      age,
+      description: jobDescription,
       interviewMode: interviewMethod,
-      jobLocation,
-      jobTitle,
-      jobType,
-      numberOfPosition: positions,
-      salary,
-      workType,
-      jobRole,
-      contactNumber, // Add contactNumber to job creation
+      communication: communicationPreferences,
+      contactNumber,
+      employeeId, // Link job to employee (required)
     });
 
-    // If employeeId is provided, update Employee document
-    if (employeeId) {
-      const addedEntryInEmployee = await Employee.findByIdAndUpdate(
-        employeeId,
-        {
-          $push: { jobs: newJob._id },
-        }
-      );
+    // Update the Employee's jobs array
+    const updatedEmployee = await Employee.findByIdAndUpdate(
+      employeeId,
+      { $push: { jobs: newJob._id } },
+      { new: true } // Return the updated document (optional)
+    );
 
-      if (!addedEntryInEmployee) {
-        return res.status(500).json({
-          message: "Employee reference is not passed!",
-        });
-      }
+    if (!updatedEmployee) {
+      // Rollback job creation if employee update fails
+      await Job.findByIdAndDelete(newJob._id);
+      return res.status(404).json({
+        message: "Employee not found. Job creation aborted.",
+      });
     }
 
     return res.status(201).json({
-      message: "Job Created Successfully",
+      message: "Job created successfully",
       job: newJob,
     });
   } catch (error) {
     console.error("Error while creating job:", error);
     return res.status(500).json({
-      message: "Something went wrong while creating Job",
+      message: "Something went wrong while creating the job",
+      error: error.message,
     });
   }
 };
-
-
 export const createJobadmin = async (req, res) => {
   try {
     const { employeeId, jobDetails } = req.body;

@@ -78,6 +78,9 @@ const jobSchema = new Schema(
       type: String,
       required: true,
     },
+    employeeId: {
+      type: String,
+    },
     students: [
       {
         type: Schema.Types.ObjectId,

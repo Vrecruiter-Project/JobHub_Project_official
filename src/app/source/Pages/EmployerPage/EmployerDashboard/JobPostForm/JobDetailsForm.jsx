@@ -117,7 +117,7 @@
 //         : [];
 //     const currentSection = activeStep === 0 ? jobDetails : candidatesInterviewer;
 //     const isValid = requiredFields.every((field) => currentSection[field]);
-  
+
 //     if (!isValid) {
 //       toast.error("Please fill all required fields!");
 //       return false;
@@ -297,7 +297,7 @@
 //               ])}
 //             </Box>
 //             {renderDatePicker("Post Date", "jobDetails", "postDate")}
-          
+
 
 //             <Box sx={{ display: "flex", gap: "20px" }}>
 //               {renderSelectField(
@@ -591,6 +591,7 @@ const JobDetailsForm = () => {
   const [activeStep, setActiveStep] = React.useState(0);
   const navigate = useNavigate();
   const [formData, dispatch] = useReducer(formReducer, {
+    employeeId: employe._id,
     jobDetails: {
       company: employe.companyName,
       jobTitle: "",
@@ -603,7 +604,7 @@ const JobDetailsForm = () => {
       postDate: "",
       jobLocation: "",
       contactNumber: "",
-      employeeId: employe._id,
+
     },
     candidatesInterviewer: {
       minimumEducation: "10th Pass",
@@ -641,8 +642,8 @@ const JobDetailsForm = () => {
     if (!validateFormData()) return;
     try {
       await createJob(formData, token, navigate);
-    
-      setActiveStep(0); 
+      // console.log(formData);
+      setActiveStep(0);
     } catch (error) {
       toast.error("Failed to post job: " + error.message);
     }
@@ -653,24 +654,24 @@ const JobDetailsForm = () => {
     const requiredFields =
       activeStep === 0
         ? [
-            "company",
-            "jobTitle",
-            "jobRole",
-            "positions",
-            "jobType",
-            "workType",
-            "salary",
-            "jobLocation",
-            "contactNumber",
-          ]
+          "company",
+          "jobTitle",
+          "jobRole",
+          "positions",
+          "jobType",
+          "workType",
+          "salary",
+          "jobLocation",
+          "contactNumber",
+        ]
         : activeStep === 1
-        ? [
+          ? [
             "minimumEducation",
             "englishLevelRequired",
             "totalExperienceRequired",
             "age",
           ]
-        : [];
+          : [];
     const currentSection = activeStep === 0 ? jobDetails : candidatesInterviewer;
     const isValid = requiredFields.every((field) => currentSection[field]);
 
