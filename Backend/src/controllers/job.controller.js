@@ -100,6 +100,120 @@ import { Job } from "../models/job.model.js";
 
 // };
 
+// export const createJob = async (req, res) => {
+//   try {
+//     const {
+//       employeeId, // Optional
+//       jobDetails,
+//       candidatesInterviewer,
+//     } = req.body;
+
+//     if (!jobDetails || !candidatesInterviewer) {
+//       return res
+//         .status(400)
+//         .json({ message: "Job details and candidate details are required" });
+//     }
+
+//     const {
+//       company,
+//       jobTitle,
+//       positions,
+//       jobType,
+//       workType,
+//       salary,
+//       benefits,
+//       jobLocation,
+//       postDate,
+//       jobRole,
+//     } = jobDetails;
+
+//     const {
+//       minimumEducation,
+//       englishLevelRequired,
+//       totalExperienceRequired,
+//       gender,
+//       age,
+//       jobDescription,
+//       interviewMethod,
+//       communicationPreferences,
+//     } = candidatesInterviewer;
+
+//     // Validate required fields (excluding employeeId)
+//     if (
+//       [
+//         company,
+//         jobTitle,
+//         jobType,
+//         workType,
+//         salary,
+//         jobLocation,
+//         postDate,
+//         minimumEducation,
+//         englishLevelRequired,
+//         totalExperienceRequired,
+//         gender,
+//         age,
+//         jobDescription,
+//         interviewMethod,
+//         communicationPreferences,
+//         jobRole,
+//       ].some((data) => !data || data?.trim() === "")
+//     ) {
+//       return res.status(400).json({
+//         message: "All fields are required",
+//       });
+//     }
+
+//     // Create new job entry
+//     const newJob = await Job.create({
+//       age,
+//       benefits,
+//       communication: communicationPreferences,
+//       companyName: company,
+//       description: jobDescription,
+//       education: minimumEducation,
+//       english: englishLevelRequired,
+//       experience: totalExperienceRequired,
+//       ExpireJob: postDate,
+//       gender,
+//       interviewMode: interviewMethod,
+//       jobLocation,
+//       jobTitle,
+//       jobType,
+//       numberOfPosition: positions,
+//       salary,
+//       workType,
+//       jobRole,
+//     });
+
+//     // If employeeId is provided, update Employee document
+//     if (employeeId) {
+//       const addedEntryInEmployee = await Employee.findByIdAndUpdate(
+//         employeeId,
+//         {
+//           $push: { jobs: newJob._id },
+//         }
+//       );
+
+//       if (!addedEntryInEmployee) {
+//         return res.status(500).json({
+//           message: "Employee reference is not passed!",
+//         });
+//       }
+//     }
+
+//     return res.status(201).json({
+//       message: "Job Created Successfully",
+//       job: newJob,
+//     });
+//   } catch (error) {
+//     console.error("Error while creating job:", error);
+//     return res.status(500).json({
+//       message: "Something went wrong while creating Job",
+//     });
+//   }
+// };
+
 export const createJob = async (req, res) => {
   try {
     const {
@@ -125,6 +239,7 @@ export const createJob = async (req, res) => {
       jobLocation,
       postDate,
       jobRole,
+      contactNumber, // Add contactNumber to jobDetails
     } = jobDetails;
 
     const {
@@ -138,7 +253,7 @@ export const createJob = async (req, res) => {
       communicationPreferences,
     } = candidatesInterviewer;
 
-    // Validate required fields (excluding employeeId)
+    // Validate required fields (including contactNumber)
     if (
       [
         company,
@@ -157,6 +272,7 @@ export const createJob = async (req, res) => {
         interviewMethod,
         communicationPreferences,
         jobRole,
+        contactNumber, // Include validation for contactNumber
       ].some((data) => !data || data?.trim() === "")
     ) {
       return res.status(400).json({
@@ -164,7 +280,7 @@ export const createJob = async (req, res) => {
       });
     }
 
-    // Create new job entry
+    // Create new job entry with contactNumber
     const newJob = await Job.create({
       age,
       benefits,
@@ -184,6 +300,7 @@ export const createJob = async (req, res) => {
       salary,
       workType,
       jobRole,
+      contactNumber, // Add contactNumber to job creation
     });
 
     // If employeeId is provided, update Employee document
@@ -213,6 +330,7 @@ export const createJob = async (req, res) => {
     });
   }
 };
+
 
 export const createJobadmin = async (req, res) => {
   try {
