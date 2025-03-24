@@ -100,7 +100,7 @@ const EmployerDashboard = () => {
         },
         signOut: () => {
           localStorage.removeItem('token');
-          router.push('/login');
+          window.location.href = '/';
         },
       }}
       navigation={navigationWithActiveIcons}

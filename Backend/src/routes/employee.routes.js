@@ -27,7 +27,8 @@ router
   .route("/edit-profile")
   .put(upload.single("avatar"), verifyJWT, isEmployee, editProfile);
 
-router.route("/my-jobs").get(verifyJWT, isEmployee, myJobs);
+//router.route("/my-jobs").get(verifyJWT, isEmployee, myJobs);
+router.route("/my-jobs").get(myJobs);
 router.route("/my-students").get(verifyJWT, isEmployee, myJobApplyStudents);
 router
   .route("/my-selecting-students")

@@ -403,13 +403,14 @@ const JobDetailsForm = () => {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
+       mt:"50px"
       }}
     >
       <Container
         sx={{
           boxShadow: "0px 3px 5px -1px rgba(0, 0, 0, 0.2)",
           borderRadius: "10px",
-          backgroundColor: "white",
+     
           padding: "30px",
         }}
       >
