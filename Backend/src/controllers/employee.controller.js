@@ -196,7 +196,7 @@ export const employeeLogin = async (req, res) => {
   try {
     const { email, password } = req.body;
 
-    if (email === "" || password === "") {
+    if (!email || !password) {
       return res.status(400).json({
         message: "All fields required!",
       });
@@ -241,6 +241,8 @@ export const employeeLogin = async (req, res) => {
     });
   }
 };
+
+
 //logout
 export const employeeLogout = async (req, res) => {
   try {

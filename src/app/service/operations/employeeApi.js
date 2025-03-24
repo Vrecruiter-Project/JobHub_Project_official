@@ -70,20 +70,6 @@ export const registerEmployee = async (employerData, navigate) => {
   }
 };
 
-// export const employerLogin = async (email, password) => {
-//   try {
-//     const response = await axios.post(
-//       `${SIGNIN}`,
-//       { email, password },
-//       { withCredentials: true }
-//     );
-
-//     return response.data;
-//   } catch (error) {
-//     throw error.response?.data?.message || "Login failed. Please try again.";
-//   }
-// };
-
 export const employerLogin = async (email, password) => {
   try {
     const response = await apiConnector("POST", `${SIGNIN}`, {

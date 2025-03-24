@@ -20,7 +20,7 @@ router.route("/otp-send").post(otpGenerateSystem);
 router.route("/check-otp").post(checkOtp);
 ///////register , login , logout /////////////
 router.route("/register").post(upload.single("avatar"), employeeAccount);
-router.route("/login").get(employeeLogin);
+router.route("/login").post(employeeLogin);
 router.route("/logout").get(employeeLogout);
 //////////////////////////////////////////////
 router

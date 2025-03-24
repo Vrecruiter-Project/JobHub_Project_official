@@ -3,7 +3,6 @@ import { Box, Button, Typography, TextField } from "@mui/material";
 import { toast } from "react-toastify";
 import { motion } from "framer-motion";
 import { useNavigate, Link } from "react-router-dom";
-import axios from "axios";
 import PhoneVBg from "../../../../assets/Images/bgImages/PhoneVBg.png";
 import { employerLogin } from "../../../../service/operations/employeeApi";
 
