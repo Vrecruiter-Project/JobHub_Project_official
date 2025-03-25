@@ -1,13 +1,15 @@
-import { AppProvider } from '@toolpad/core/AppProvider';
-import { DashboardLayout } from '@toolpad/core/DashboardLayout';
+import { AppProvider } from '@toolpad/core';
+import { DashboardLayout, ThemeSwitcher } from '@toolpad/core/DashboardLayout';
 import WorkIcon from '@mui/icons-material/Work';
 import HailIcon from '@mui/icons-material/Hail';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { useDemoRouter } from '@toolpad/core/internal';
 import DashboardIcon from '@mui/icons-material/Dashboard';
-import GroupIcon from '@mui/icons-material/Group';
-import PersonIcon from '@mui/icons-material/Person';
-import React, { useEffect } from 'react';
+// import { useNavigate } from 'react-router-dom';
+// import { useEffect } from 'react';
+// import GroupIcon from '@mui/icons-material/Group';
+// import PersonIcon from '@mui/icons-material/Person';
+import React from 'react';
 import Logo from '/log.svg';
 import MyJobs from '../../EmployerPage/EmployerDashboard/Components/Main-Post-Card/MyJobs';
 import AllCandidates from '../../EmployerPage/EmployerDashboard/Components/AllCandidates/AllCandidates';
@@ -17,6 +19,12 @@ import EmployerForm from '../EmployeerForm';
 import { useNavigate } from 'react-router-dom';
 
 import { employerLogout } from '../../../../service/operations/employeeApi';
+
+import { Tooltip } from '@mui/material';
+import {   Menu, Avatar } from '@mui/material';
+import EmployerProfile from './Components/EmployerProfile/EmployerProfile';
+import Cards from './Components/EmployerProfile/Dashboard/CardDashboard';
+
 
 
 // Navigation configuration
@@ -29,34 +37,102 @@ const NAVIGATION = [
     segment: 'candidate',
     title: 'ALL CANDIDATE',
     icon: <HailIcon />,
-    children: [
-      { segment: 'allCandidates', title: 'All Candidates', icon: <GroupIcon />, path: '/candidate/allCandidates' },
-      { segment: 'interestedCandidate', title: 'Interested Candidates', icon: <PersonIcon />, path: '/candidate/interestedCandidate' },
-    ],
+    // children: [
+    //   { segment: 'allCandidates', title: 'All Candidates', icon: <GroupIcon />, path: '/candidate/allCandidates' },
+    //   { segment: 'interestedCandidate', title: 'Interested Candidates', icon: <PersonIcon />, path: '/candidate/interestedCandidate' },
+    // ],
   },
   { segment: 'logout', title: 'Logout', icon: <LogoutIcon />, path: '/logout' },
 ];
 
+
+function ToolbarActionsSearch() {
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const open = Boolean(anchorEl);
+
+  const employee = JSON.parse(localStorage.getItem('employee') || {});
+  const avatar = employee.avatar || '/default-avatar.png';
+  const name = employee.fullName || 'User';
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  return (
+    <div className="flex items-center gap-4">
+      <ThemeSwitcher />
+      {/* Profile */}
+      <Tooltip title="Profile">
+        <div
+          className="flex items-center gap-2 cursor-pointer"
+          onClick={handleClick}
+        >
+          <Avatar
+            alt={name}
+            src={avatar}
+            sx={{
+              width: "10%",
+              height: "auto",
+              objectFit: 'cover',
+              maxWidth: 56,
+              minWidth: 40,
+            }}
+          />
+          <div className="hidden md:block">
+            <p className="font-medium text-sm">{name}</p>
+          </div>
+        </div>
+      </Tooltip>
+
+      {/* Profile Menu */}
+      <Menu
+        anchorEl={anchorEl}
+        open={open}
+        onClose={handleClose}
+      >
+        <EmployerProfile />
+        
+      </Menu>
+    </div>
+  );
+}
 const EmployerDashboard = () => {
+
   const router = useDemoRouter('/dashboard');
-  const token = localStorage.getItem('token');
-
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    if (!token && router.pathname !== '/login') {
-      navigate('/');
-    }
-  }, [token, router]);
+    const token = localStorage.getItem('token');
+    
+    
+  // Redirect to root if no token (optional enhancement)
+//   useEffect(() => {
+//     if (!token && router.pathname !== '/login') {
+//       router.push('/login'); // Redirect to login if no token
+//     }
+//   }, [token, router]);
 
   const renderPage = () => {
     switch (router.pathname) {
+      case '/dashboard':
+        return <Cards />;
       case '/jobs':
         return <JobDetailsForm />;
       case '/myjob':
         return <MyJobs />;
       case '/candidate/allCandidates':
         return <AllCandidates />;
+        return <MyJobs />;
+        case '/candidate':
+          return <AllCandidates />;
+      // case '/candidate/allCandidates':
+      //   return <AllCandidates />;
+      // case '/candidate/interestedCandidate':
+      //   return "<SelectedCandidate />";
+      case '/logout':
+        localStorage.removeItem('token');
+        router.push('/login'); // Consistent redirect to /login
+        return null;
       default:
         return <JobDetailsForm />;
     }
@@ -123,8 +199,12 @@ const EmployerDashboard = () => {
     return <EmployerForm />;
   }
 
+
+
   return (
     <AppProvider
+      
+    
       navigation={navigationWithActiveIcons}
       router={router}
       branding={{
@@ -132,7 +212,11 @@ const EmployerDashboard = () => {
         logo: <img className="w-10" src={Logo} alt="job hub" />,
       }}
     >
-      <DashboardLayout>{renderPage()}</DashboardLayout>
+      <DashboardLayout
+        slots={{
+          toolbarActions: ToolbarActionsSearch
+      }}
+      >{renderPage()}</DashboardLayout>
     </AppProvider>
   );
 };
