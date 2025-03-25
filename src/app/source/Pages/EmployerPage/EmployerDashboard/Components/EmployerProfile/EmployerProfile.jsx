@@ -9,6 +9,8 @@ import {
   InputBase,
 } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
+import VisibilityOff from "@mui/icons-material/VisibilityOff";
+import Visibility from "@mui/icons-material/Visibility";
 
 const EmployerProfile = () => {
   const initialData = {
@@ -24,15 +26,25 @@ const EmployerProfile = () => {
     gstNumber: "22AAAAA0000A1Z5",
   };
 
-  // const [profileData, setProfileData] = useState(() => {
-  //   const savedData = localStorage.getItem("employerFormData");
-  //   return savedData ? JSON.parse(savedData) : initialData;
-  // });
-
-  const profileData = JSON.parse(localStorage.getItem("employee"))
+  const [profileData, setProfileData] = useState(() => {
+    const savedData = localStorage.getItem("employerFormData");
+    return savedData ? JSON.parse(savedData) : initialData;
+  });
 
   const [editingField, setEditingField] = useState(null);
   const [showEdit, setShowEdit] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+
+  // Safe logging function that hides sensitive fields
+  const safeLogProfileData = (data) => {
+    const sanitizedData = {...data};
+    if (sanitizedData.password) {
+      sanitizedData.password = '••••••••';
+    }
+    console.log("Profile Data:", sanitizedData);
+  };
+
+  safeLogProfileData(profileData);
 
   // Update field data
   const handleChange = (field, value) => {
@@ -42,9 +54,7 @@ const EmployerProfile = () => {
   // Save data on blur
   const handleBlur = () => {
     setEditingField(null);
-
     localStorage.setItem("employerFormData", JSON.stringify(profileData));
-
   };
 
   // Handle image upload
@@ -62,16 +72,24 @@ const EmployerProfile = () => {
     }
   };
 
+  // Format display value for sensitive fields
+  const formatDisplayValue = (key, value) => {
+    if (key === 'password') {
+      return showPassword ? value : '•••••••••';
+    }
+    // if (key === 'mobileNumber') {
+    //   return value.toString().replace(/\d(?=\d{4})/g, '•');
+    // }
+    return value;
+  };
+
   return (
     <Box
       sx={{
-  
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        // background: "linear-gradient(to bottom, #4caf50, #ffffff)",   
         padding: "10px",
-       
       }}
     >
       <Card
@@ -81,8 +99,8 @@ const EmployerProfile = () => {
           p: 3,
           boxShadow: "0 4px 10px rgba(0, 0, 0, 0.2)",
           borderRadius: 3,
-         maxHeight: "79vh",
-          overflowY: "auto", // Interactive Scroll
+          maxHeight: "79vh",
+          overflowY: "auto",
           "&::-webkit-scrollbar": {
             display: "none",
           },
@@ -126,24 +144,21 @@ const EmployerProfile = () => {
               mt: 2,
               color: "gray",
             }}
-            onClick={() => setShowEdit(!showEdit)} // Toggle Edit Visibility
+            onClick={() => setShowEdit(!showEdit)}
           >
             <Typography variant="body2">Click to Edit Fields</Typography>
           </Box>
         </Box>
 
         {/* Profile Fields */}
-
-        {/* {Object.entries(profileData).map(
-          ([key, value]) =>
-            key !== "profileImg" && ( */}
-
         {Object.entries(profileData).map(([key, value]) => {
-          const excludedKeys = ["_id","jobs", "avatar", "updatedAt", "createdAt", "__v","otp"];
-
+          const excludedKeys = ["_id", "jobs", "avatar", "updatedAt", "createdAt", "__v", "otp"];
+          
           if (excludedKeys.includes(key)) return null;
+          
+          const displayValue = formatDisplayValue(key, value);
+          
           return (
-
             <Box
               key={key}
               sx={{
@@ -160,19 +175,31 @@ const EmployerProfile = () => {
               >
                 {key.replace(/([A-Z])/g, " $1").trim()}
               </Typography>
+              
               {editingField === key ? (
-                <InputBase
-                  value={value}
-                  onChange={(e) => handleChange(key, e.target.value)}
-                  onBlur={handleBlur}
-                  autoFocus
-                  sx={{
-                    ml: 2,
-                    border: "1px solid #ccc",
-                    px: 1,
-                    borderRadius: "4px",
-                  }}
-                />
+                <Box sx={{ display: "flex", alignItems: "center" }}>
+                  <InputBase
+                    value={value}
+                    onChange={(e) => handleChange(key, e.target.value)}
+                    onBlur={handleBlur}
+                    autoFocus
+                    sx={{
+                      ml: 2,
+                      border: "1px solid #ccc",
+                      px: 1,
+                      borderRadius: "4px",
+                    }}
+                    type={key === 'password' ? (showPassword ? 'text' : 'password') : 'text'}
+                  />
+                  {key === 'password' && (
+                    <IconButton
+                      onClick={() => setShowPassword(!showPassword)}
+                      edge="end"
+                    >
+                      {showPassword ? <VisibilityOff /> : <Visibility />}
+                    </IconButton>
+                  )}
+                </Box>
               ) : (
                 <Box
                   sx={{
@@ -182,8 +209,21 @@ const EmployerProfile = () => {
                   }}
                   onClick={() => setEditingField(key)}
                 >
-                  <Typography>{value}</Typography>
-                  {showEdit && (
+                  <Typography>
+                    {displayValue}
+                  </Typography>
+                  {key === 'password' && (
+                    <IconButton
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setShowPassword(!showPassword);
+                      }}
+                      size="small"
+                    >
+                      {showPassword ? <VisibilityOff /> : <Visibility />}
+                    </IconButton>
+                  )}
+                  {showEdit && key !== 'password' && (
                     <IconButton size="small">
                       <EditIcon fontSize="small" />
                     </IconButton>
@@ -191,9 +231,8 @@ const EmployerProfile = () => {
                 </Box>
               )}
             </Box>
-          )
-        }
-        )}
+          );
+        })}
       </Card>
     </Box>
   );

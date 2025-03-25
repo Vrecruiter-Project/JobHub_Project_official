@@ -1,72 +1,61 @@
-import React, { useState, useEffect } from "react";
+import  { useState, useEffect } from "react";
 import Box from "@mui/material/Box";
-import { toast } from "react-toastify";
-// import Button from '@mui/material/Button';
-// import AddIcon from '@mui/icons-material/Add';
-// import EditIcon from '@mui/icons-material/Edit';
-// import DeleteIcon from '@mui/icons-material/DeleteOutlined';
-// import SaveIcon from '@mui/icons-material/Save';
-// import CancelIcon from '@mui/icons-material/Close';
 import {
   DataGrid,
   GridToolbar,
   GridToolbarContainer,
-  // GridRowsProp,
-  // GridRowModesModel,
-  // GridRowModes,
-  // GridColDef,
-  // GridToolbarContainer,
-  // GridActionsCellItem,
-  // GridEventListener,
-  // GridRowId,
-  // GridRowModel,
-  // GridRowEditStopReasons,
-  // GridSlotProps,
 } from "@mui/x-data-grid";
-
-import { Typography, IconButton, Button } from "@mui/material";
+import { Typography, IconButton,  } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import FullscreenIcon from "@mui/icons-material/Fullscreen";
 import {
   myStudents,
-  selectingStudents,
+  // selectingStudents,
 } from "../../../../../../service/operations/employeeApi";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 export default function AllCandidates() {
   const token = JSON.parse(localStorage.getItem("token"));
-  const [gridData, setGridData] = useState([]); // State for rows
-  const [loading, setLoading] = useState(true); // State for loading
+  const [gridData, setGridData] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [selectedStudentsId, setSelectedStudentsId] = useState([]);
   const navigate = useNavigate();
+  const { jobId } = useParams(); // Get jobId from URL params
+
+  // Get job IDs from localStorage
+  const employeeData = JSON.parse(localStorage.getItem('employee'));
+  const employeeJobIds = employeeData?.jobs || [];
 
   // Fetch data from MongoDB
   const fetchStudents = async () => {
     try {
       const response = await myStudents(token);
       if (response.students && response.students.length > 0) {
-        response.students.map((data, index) => {
-          const formattedData = data.map((item) => ({
-            id: item._id,
-            firstName: item.firstName,
-            lastName: item.lastName,
-            email: item.email,
-            mobileNumber: item.mobileNumber,
-            dob: item.dob,
-            gender: item.gender,
-            qualification: item.qualification,
-            role: item.role,
-            address: item.address,
-            file: item.file,
-            jobs: item.jobs,
-          }));
-          setGridData((data) => {
-            const uniqueData = formattedData.filter(
-              (newItem) => !data.some((prevItem) => prevItem.id === newItem.id)
-            );
-            return [...data, ...uniqueData];
-          });
-        });
+        // Filter students who have applied for any of the employee's jobs or the specific job from URL
+        const targetJobIds = jobId ? [jobId] : employeeJobIds;
+        
+        const filteredStudents = response.students.flatMap(studentGroup => 
+          studentGroup.filter(student => 
+            student.jobs && student.jobs.some(job => targetJobIds.includes(job))
+          )
+        );
+
+        const formattedData = filteredStudents.map((item) => ({
+          id: item._id,
+          firstName: item.firstName,
+          lastName: item.lastName,
+          email: item.email,
+          mobileNumber: item.mobileNumber,
+          dob: item.dob,
+          gender: item.gender,
+          qualification: item.qualification,
+          role: item.role,
+          address: item.address,
+          file: item.file,
+          jobs: item.jobs,
+        }));
+
+        setGridData(formattedData);
       } else {
         return (
           <div>
@@ -83,7 +72,7 @@ export default function AllCandidates() {
 
   useEffect(() => {
     fetchStudents();
-  }, []);
+  }, [jobId, employeeJobIds]); // Add jobId and employeeJobIds to dependency array
 
   // Define columns
   const columns = [
@@ -101,20 +90,36 @@ export default function AllCandidates() {
     },
     { field: "role", headerName: "Role", flex: 1, width: "250px" },
     { field: "address", headerName: "Address", flex: 1, width: "250px" },
-    { field: "file", headerName: "File", flex: 1, width: "250px" },
-    { field: "jobs", headerName: "Jobs", flex: 1, width: "250px" },
+    // { 
+    //   field: "file", 
+    //   headerName: "Resume", 
+    //   flex: 1, 
+    //   width: "250px",
+    //   renderCell: (params) => (
+    //     <a 
+    //       href={`https://jobhub-project-official-1.onrender.com/uploads/${params.value}`} 
+    //       target="_blank" 
+    //       rel="noopener noreferrer"
+    //     >
+    //       View Resume
+    //     </a>
+    //   ),
+    // },
   ];
 
-  const selectedStudentsHandler = async () => {
-    if (selectedStudentsId.length === 0) {
-      toast.error("Please select at least one student");
-    } else {
-      const selected = gridData
-        .filter((student) => selectedStudentsId.includes(student.id))
-        .map((student) => ({ studentId: student.id, jobId: student.jobs[0] }));
-      await selectingStudents(token, selected, navigate);
-    }
-  };
+  // const selectedStudentsHandler = async () => {
+  //   if (selectedStudentsId.length === 0) {
+  //     toast.error("Please select at least one student");
+  //   } else {
+  //     const selected = gridData
+  //       .filter((student) => selectedStudentsId.includes(student.id))
+  //       .map((student) => ({ 
+  //         studentId: student.id, 
+  //         jobId: jobId || employeeJobIds[0] // Use the jobId from URL or first job from employee's jobs
+  //       }));
+  //     await selectingStudents(token, selected, navigate);
+  //   }
+  // };
 
   const handleFullScreenToggle = () => {
     if (!document.fullscreenElement) {
@@ -134,45 +139,35 @@ export default function AllCandidates() {
 
   const CustomToolbar = () => (
     <GridToolbarContainer className="flex justify-between">
-      <IconButton sx={{ mb: 1 }}>
+      <IconButton sx={{ mb: 1 }} onClick={() => navigate(-1)}>
         <ArrowBackIcon />
       </IconButton>
       <GridToolbar />
       <div>
-        <Button
+        {/* <Button
           variant="text"
           color="success"
           onClick={selectedStudentsHandler}
         >
           Select Students
-        </Button>
+        </Button> */}
         <IconButton onClick={handleFullScreenToggle}>
           <FullscreenIcon />
         </IconButton>
       </div>
     </GridToolbarContainer>
   );
+
+  
   return (
     <Box sx={{ height: 520, width: "100%" }}>
-      <Typography
-        variant="h3"
-        component="h3"
-        sx={{
-          textAlign: "center",
-          mt: 3,
-          mb: 3,
-        }}
-      >
-        All Candidates
-      </Typography>
       <DataGrid
         slots={{ toolbar: CustomToolbar }}
         rowHeight={40}
         checkboxSelection
-        RowSelectionOnClick
         onRowSelectionModelChange={(e) => setSelectedStudentsId(e)}
-        rows={gridData} // Pass fetched rows
-        columns={columns} // Pass defined columns
+        rows={gridData}
+        columns={columns}
         pageSize={5}
         loading={loading}
       />
