@@ -26,7 +26,7 @@ export const sendOtp = async (email) => {
       console.log("No response from backend");
     }
   } catch (error) {
-    toast.error(error.response.data.message);
+    console.error(error.response.data.message);
   }
 };
 
@@ -41,14 +41,14 @@ export const checkOtp = async (otp, email, navigate) => {
       localStorage.setItem("token", JSON.stringify(response.data.accessToken));
       localStorage.setItem("employee", JSON.stringify(response.data.employee));
       localStorage.removeItem("email");
-      toast.success(response.data.message);
+      //to.success(response.data.message);
       navigate("/employerdashboard");
     } else {
       localStorage.setItem("email", email);
       navigate("/employeregistration");
     }
   } catch (error) {
-    toast.error(error.response.data.message);
+    console.error(error.response.data.message);
   }
 };
 
@@ -61,13 +61,13 @@ export const registerEmployee = async (employerData, navigate) => {
     if (response.data.success) {
       localStorage.setItem("employee", JSON.stringify(response.data.employee));
       localStorage.setItem("token", JSON.stringify(response.data.accessToken));
-      toast.success(response.data.message);
+    //  console.success(response.data.message);
       navigate("/employerdashboard");
     } else {
       navigate("/employeregistration");
     }
   } catch (error) {
-    toast.error(error.response.data.message);
+    console.error(error.response.data.message);
   }
 };
 
@@ -103,10 +103,10 @@ export const myJobs = async (token) => {
         Authorization: `Bearer ${token}`,
       }
     );
-    toast.success(response.data.message);
+   // console.success(response.data.message);
     return response.data.employee.jobs;
   } catch (error) {
-    toast.error(error.response.data.message);
+    console.error(error.response.data.message);
   }
 };
 
@@ -116,9 +116,9 @@ export const updateProfile = async (token, data) => {
       "Content-Type": "multipart/form-data",
       Authorization: `Bearer ${token}`,
     });
-    console.log(response.data);
+   // console.log(response.data);
   } catch (error) {
-    toast.error(error.response.data.message);
+    console.error(error.response.data.message);
   }
 };
 
@@ -133,10 +133,10 @@ export const myStudents = async (token) => {
       }
     );
 
-    toast.success(response.data.message);
+   // console.success(response.data.message);
     return response.data;
   } catch (error) {
-    toast.error(error.response.data.message);
+    console.error(error.response.data.message);
   }
 };
 
@@ -145,10 +145,10 @@ export const selectingStudents = async (token, data, navigate) => {
     const response = await apiConnector("POST", SELECT_STUDENTS, data, {
       Authorization: `Bearer ${token}`,
     });
-    toast.success(response.data.message);
+    console.success(response.data.message);
     navigate("/employerdashboard/selected-candidates");
   } catch (error) {
-    toast.error(error.response.data.message);
+    console.error(error.response.data.message);
   }
 };
 
@@ -157,10 +157,10 @@ export const deSelectingStudents = async (token, data, navigate) => {
     const response = await apiConnector("POST", DE_SELECT_STUDENTS, data, {
       Authorization: `Bearer ${token}`,
     });
-    toast.success(response.data.message);
+    console.success(response.data.message);
     navigate("/employerdashboard/all-candidates");
   } catch (error) {
-    toast.error(error.response.data.message);
+    console.error(error.response.data.message);
   }
 };
 
@@ -174,9 +174,9 @@ export const fetchSelectingStudentsData = async (token) => {
         Authorization: `Bearer ${token}`,
       }
     );
-    toast.success(response.data.message);
+    console.success(response.data.message);
     return response.data;
   } catch (error) {
-    toast.error(error.response.data.message);
+    console.error(error.response.data.message);
   }
 };
