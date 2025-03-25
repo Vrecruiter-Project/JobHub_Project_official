@@ -55,8 +55,8 @@ const RegistrationPage = ({ onSubmit }) => {
           borderRadius: "10px",
           backgroundColor: "white",
           padding: "30px",
-          width: "100%",
-          maxWidth: "600px",
+          // width: "100%",
+          // maxWidth: "600px",
         }}
       >
         <Typography variant="h5" component="h1" gutterBottom fontWeight="bold" textAlign="center">

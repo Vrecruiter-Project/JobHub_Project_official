@@ -13,10 +13,14 @@ import MyJobs from '../../EmployerPage/EmployerDashboard/Components/Main-Post-Ca
 import AllCandidates from '../../EmployerPage/EmployerDashboard/Components/AllCandidates/AllCandidates';
 import WorkOutlineIcon from '@mui/icons-material/WorkOutline';
 import JobDetailsForm from './JobPostForm/JobDetailsForm';
-import EmployerForm from '../EmployeerForm'; 
+import EmployerForm from '../EmployeerForm';
+import { useNavigate } from 'react-router-dom';
+
+import { employerLogout } from '../../../../service/operations/employeeApi';
+
 
 // Navigation configuration
-const Navigation = [
+const NAVIGATION = [
   { kind: 'header', title: 'Employer Overview' },
   { segment: 'dashboard', title: 'DASHBOARD', icon: <DashboardIcon />, path: '/dashboard' },
   { segment: 'jobs', title: 'CREATE NEW JOB', icon: <WorkOutlineIcon />, path: '/jobs' },
@@ -37,40 +41,66 @@ const EmployerDashboard = () => {
   const router = useDemoRouter('/dashboard');
   const token = localStorage.getItem('token');
 
-  // Redirect to root if no token (optional enhancement)
+  const navigate = useNavigate();
+
   useEffect(() => {
     if (!token && router.pathname !== '/login') {
-      router.push('/login'); // Redirect to login if no token
+      navigate('/');
     }
   }, [token, router]);
 
   const renderPage = () => {
     switch (router.pathname) {
-      case '/dashboard':
-        return" <DashboardPage />";
       case '/jobs':
         return <JobDetailsForm />;
       case '/myjob':
-        return "<MyJobs />";
+        return <MyJobs />;
       case '/candidate/allCandidates':
         return <AllCandidates />;
-      case '/candidate/interestedCandidate':
-        return "<SelectedCandidate />";
-      case '/logout':
-        localStorage.removeItem('token');
-        router.push('/login'); // Consistent redirect to /login
-        return null;
       default:
-        return <div>404 - Page Not Found</div>;
+        return <JobDetailsForm />;
     }
   };
 
-  const navigationWithActiveIcons = Navigation.map((item) => {
+  // Logout function
+  const handleLogout = async () => {
+    try {
+      await employerLogout();
+      //console.log("Logged out successfully:", result.message);
+      localStorage.clear();
+      navigate('/');
+    } catch (error) {
+      console.error("Logout error:", error);
+    }
+  };
+
+  const isActive = (pathname, segment) => {
+    return pathname === segment;
+  };
+
+  const navigationWithActiveIcons = NAVIGATION.map((item) => {
+    if (item.segment === 'logout') {
+      return {
+        ...item,
+        icon: React.cloneElement(item.icon, {
+          onClick: () => handleLogout(),
+        }),
+        title: (
+          <div
+            style={{ padding: '10px', cursor: 'pointer' }}
+            onClick={() => handleLogout()}
+          >
+            {item.title}
+          </div>
+        ),
+      };
+    }
+
     if (item.segment) {
       return {
         ...item,
         icon: React.cloneElement(item.icon, {
-          style: { color: router.pathname === item.path ? 'green' : 'inherit' },
+          style: { color: isActive(router.pathname, item.segment) ? 'green' : 'inherit' },
         }),
       };
     }
@@ -80,29 +110,21 @@ const EmployerDashboard = () => {
         children: item.children.map((child) => ({
           ...child,
           icon: React.cloneElement(child.icon, {
-            style: { color: router.pathname === child.path ? 'green' : 'inherit' },
+            style: { color: isActive(router.pathname, child.segment) ? 'green' : 'inherit' },
           }),
         })),
       };
     }
+
     return item;
   });
 
   if (!token) {
-    return <EmployerForm />; 
+    return <EmployerForm />;
   }
 
   return (
     <AppProvider
-      authentication={{
-        signIn: () => {
-          console.log('Sign in logic here');
-        },
-        signOut: () => {
-          localStorage.removeItem('token');
-          window.location.href = '/';
-        },
-      }}
       navigation={navigationWithActiveIcons}
       router={router}
       branding={{

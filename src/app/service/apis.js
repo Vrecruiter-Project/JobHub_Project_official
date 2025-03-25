@@ -5,7 +5,8 @@ export const employee = {
   SEND_OTP: BASE_URL + "/employees/otp-send",
   CHECK_OTP: BASE_URL + "/employees/check-otp",
   SIGNUP_LOGIN: BASE_URL + "/employees/register",
-  SIGNIN: BASE_URL + "/employees/login",
+  SIGNIN: BASE_URL + "/employees/login", //login
+  LOGOUT: BASE_URL + "/employees/logout",//logout
   MYJOBS: BASE_URL + "/employees/my-jobs",
   EDIT_PROFILE: BASE_URL + "/employees/edit-jobs",
   My_STUDENTS: BASE_URL + "/employees/my-students",

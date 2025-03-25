@@ -9,6 +9,7 @@ const {
   SEND_OTP,
   SIGNUP_LOGIN,
   SIGNIN,
+  LOGOUT,
   My_STUDENTS,
   SELECT_STUDENTS,
   MY_SELECTED_STUDENTS,
@@ -79,6 +80,16 @@ export const employerLogin = async (email, password) => {
     return response.data;
   } catch (error) {
     throw error.response?.data?.message || "Login failed. Please try again.";
+  }
+};
+
+export const employerLogout = async () => {
+  try {
+    const response = await apiConnector("POST", `${LOGOUT}`, {
+    });
+    return response.data; 
+  } catch (error) {
+    throw error.response?.data?.message || "Logout failed. Please try again.";
   }
 };
 

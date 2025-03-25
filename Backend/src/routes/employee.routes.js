@@ -21,7 +21,7 @@ router.route("/check-otp").post(checkOtp);
 ///////register , login , logout /////////////
 router.route("/register").post(upload.single("avatar"), employeeAccount);
 router.route("/login").post(employeeLogin);
-router.route("/logout").get(employeeLogout);
+router.route("/logout").post(employeeLogout);
 //////////////////////////////////////////////
 router
   .route("/edit-profile")
