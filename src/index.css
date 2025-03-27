@@ -1,3 +1,173 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+
+@media (max-width:769px) {
+    .MuiGrid2-root.MuiGrid2-container.MuiGrid2-direction-xs-row.MuiGrid2-spacing-xs-2.css-1qabwpx-MuiGrid2-root {
+        flex-direction: column-reverse;
+    };
+}
+.root1 {
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 10px;
+    width: 100%;
+    background-color: #F8FAFC;
+     color: #333;
+     border-radius: 5px;
+  }
+  
+.apart {
+    display: flex;
+    align-items: center;
+  }
+  .apart h3 {
+    font-size: 30px;
+  }
+  .contPart {
+    margin-bottom: 20px;
+  }
+  .location {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .currn {
+    display: flex;
+    align-items: center;
+  }
+  .potinatial {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #E1FFBB;
+    font-size: larger;
+    border-radius: 5px;
+    margin-top: 20px;
+  }
+  
+  .workType {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+  }
+  
+  .workType > div {
+      background-color: #BCCCDC;
+      padding: 5px;
+      margin-top: 10px;
+      gap: 2px;
+      display: flex;
+      font-size: 0.74rem;
+      align-items: center;
+      border-radius: 5px;
+  }
+  
+  .sendJob {
+    width: 100%;
+    padding: 5px;
+    text-align: center;
+    font-size: large;
+    border-radius: 5px;
+  }
+  
+  .jobHighlight {
+      padding: 5px;
+    display: flex;
+    flex-direction: column;
+    line-height: 2;
+    font-size: larger;
+    border: 2px solid skyblue;
+    border-radius: 5px;
+    margin-top: 10px;
+    background-color: #C6E7FF;
+  }
+  
+  .avia-1{    display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: large;
+  }
+  
+  .interviwe{
+    display: flex;
+    gap: 5px;
+    font-size: small;
+    margin-left: 40px;
+    align-items: center;
+  }
+  
+  
+  .benifits{
+    border-bottom: 1px solid grey;
+  }
+  .datBeni{
+    display: flex;
+    padding: 5px;
+    gap: 5px;
+    justify-content: center;
+  
+  }
+  .intemList{
+    background-color: #A084E8;
+    padding: 0 3px 0 3px ;
+    font-size: 13px;
+    border-radius: 5px;
+  }
+  
+  .mode{
+    border: 1px solid aqua;
+    border-radius: 5px;
+    padding: 0 5px  0 5px;
+    font-size: 16px;
+    background-color:rgb(22, 179, 240);
+  }
+  .jobDesc{
+      margin-top: 10px;
+      border-top: 1px solid grey;
+      border-bottom:  1px solid grey;
+      padding: 10px 0 10px 0;
+      line-height: 2
+  }
+  
+  .jobdec{
+      font-weight: 700;
+  }
+  
+  .jobRoleCont{
+      display: flex;
+      margin-top: 20px;
+      padding-bottom: 20px;
+      width: 100%;
+      gap: 10px;
+      border-bottom: 1px solid grey;
+  }
+  
+  .wLocation{
+      padding: 5px;
+      display: flex;
+      background-color: #BCCCDC;
+      border-radius: 5px;
+      gap: 5px;
+      margin-bottom: 10px;
+  }
+  
+  .timer{
+      display: grid;
+  }
+  
+  .TextJob{
+      margin-top: 10px;
+      font-size: larger;
+  }
+  
+  .JobRequire{
+      display: flex;
+      margin-top: 20px;
+      padding-bottom: 20px;
+      width: 100%;
+      gap: 10px;
+      border-bottom: 1px solid grey;
+  }
