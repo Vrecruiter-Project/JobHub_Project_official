@@ -212,10 +212,8 @@ const CandidateDashboardNav = () => {
   return (
     <>
       {/* Desktop View */}
-      <Box sx={{ ...navStyles, display: { xs: 'none', md: 'flex' } }}>
+      {/* <Box sx={{ ...navStyles, display: { xs: 'none', md: 'flex' } }}>
 
-
-        {/* Search Bar */}
         <Box sx={{ display: 'flex', flexDirection: 'column', flexGrow: 1, margin: '0px 10px 10px 20px' }}>
           <Box sx={{ display: 'flex', alignItems: 'center' }}>
             <TextField
@@ -266,8 +264,6 @@ const CandidateDashboardNav = () => {
             />
           </Box>
 
-
-          {/* Job Filters */}
           <Box sx={{ display: 'flex', gap: '10px' }}>
             <TextField
               select
@@ -336,7 +332,7 @@ const CandidateDashboardNav = () => {
 
         </Box>
 
-      </Box>
+      </Box> */}
 
       {/* Mobile View */}
       {/* <Box sx={{ ...navStyles, display: { xs: 'flex', md: 'none' } }}>

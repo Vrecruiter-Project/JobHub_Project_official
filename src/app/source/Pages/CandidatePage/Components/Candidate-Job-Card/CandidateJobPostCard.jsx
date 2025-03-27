@@ -1,19 +1,31 @@
-
 import React, { useEffect, useState } from "react";
-import { Box, Container, Card, Typography, Button } from "@mui/material";
+import {
+  Box,
+  Container,
+  Card,
+  Typography,
+  Button,
+  TextField,
+  MenuItem,
+} from "@mui/material";
 import Grid from "@mui/material/Grid2";
 import { useNavigate } from "react-router-dom";
 import CandidateFullJobDetails from "./CandidateFullJobDetails";
 import { allJobs } from "../../../../../service/operations/studentApi";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
-import jobimg from '../../../../../assets/Images/job-.png';
+import jobimg from "../../../../../assets/Images/job-.png";
 
 const CandidateJobPostCard = () => {
   const navigate = useNavigate();
   const [jobsData, setJobsData] = useState([]);
   const [isViewJobDetails, setIsViewJobDetails] = useState("");
   const [isLoading, setIsLoading] = useState(true);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [workModeFilter, setWorkModeFilter] = useState(""); // New state for work mode filter
+  const [locationFilter, setLocationFilter] = useState(""); // New state for location filter
+  const [salaryFilter, setSalaryFilter] = useState(""); // New state for salary filter
+  const [experienceFilter, setExperienceFilter] = useState(""); // New state for experience filter
 
   const fetchAllJobs = async () => {
     setIsLoading(true);
@@ -37,12 +49,135 @@ const CandidateJobPostCard = () => {
     navigate("/candidatedashboard/registration");
   };
 
+  const filteredJobs = jobsData.filter((job) => {
+    // Search by text query (job title or company name)
+    const matchesSearchQuery = 
+      searchQuery === "" ||
+      job.jobTitle.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      job.companyName.toLowerCase().includes(searchQuery.toLowerCase());
+    
+    // Filter by work mode
+    const matchesWorkMode = 
+      workModeFilter === "" || 
+      job.workType.toLowerCase() === workModeFilter.toLowerCase();
+    
+    // Filter by location
+    const matchesLocation = 
+      locationFilter === "" ||
+      job.jobLocation.toLowerCase().includes(locationFilter.toLowerCase());
+    
+    // Filter by salary (you'll need to implement proper salary range comparison)
+    const matchesSalary = 
+      salaryFilter === "" ||
+      (() => {
+        // Implement your salary range comparison logic here
+        // This is just a placeholder - adjust based on your salary data structure
+        if (salaryFilter === "0-10k") return job.salary <= 10000;
+        if (salaryFilter === "30k-70k") return job.salary >= 30000 && job.salary <= 70000;
+        // Add other salary ranges as needed
+        return true;
+      })();
+    
+    // Filter by experience
+    const matchesExperience = 
+      experienceFilter === "" ||
+      job.experience.toLowerCase().includes(experienceFilter.toLowerCase());
+    
+    return matchesSearchQuery && matchesWorkMode && matchesLocation && matchesSalary && matchesExperience;
+  });
+
   return (
     <Box
       sx={{
         py: 4,
       }}
     >
+      <Box sx={{ display: 'flex', flexDirection: 'column', flexGrow: 1, margin: '20px 10px 10px 20px' }}>
+        <Box sx={{ display: 'flex', gap: '10px' }}>
+          <TextField
+            select
+            label="Work Mode"
+            variant="outlined"
+            size="small"
+            sx={{
+              width: '10%',
+              backgroundColor: "#f1f1f1"
+            }}
+            value={workModeFilter}
+            onChange={(e) => setWorkModeFilter(e.target.value)}
+          >
+            <MenuItem value="">All</MenuItem>
+            <MenuItem value="Remote">Remote</MenuItem>
+            <MenuItem value="On-site">On Site</MenuItem>
+            <MenuItem value="Hybrid">Hybrid</MenuItem>
+          </TextField>
+          
+          <TextField
+            select
+            label="Location"
+            variant="outlined"
+            size="small"
+            sx={{
+              width: '10%',
+              backgroundColor: "#f1f1f1"
+            }}
+            value={locationFilter}
+            onChange={(e) => setLocationFilter(e.target.value)}
+          >
+            <MenuItem value="">All</MenuItem>
+            <MenuItem value="Chandigarh">Chandigarh</MenuItem>
+            <MenuItem value="Zirkpur">Zirkpur</MenuItem>
+            <MenuItem value="Mohali">Mohali</MenuItem>
+            <MenuItem value="Panchkula">Panchkula</MenuItem>
+            <MenuItem value="Remote">Remote</MenuItem>
+          </TextField>
+          
+          <TextField
+            select
+            label="Salary"
+            variant="outlined"
+            size="small"
+            sx={{
+              width: '10%',
+              backgroundColor: "#f1f1f1"
+            }}
+            value={salaryFilter}
+            onChange={(e) => setSalaryFilter(e.target.value)}
+          >
+            <MenuItem value="">All</MenuItem>
+            <MenuItem value="0-10k">0-10k</MenuItem>
+            <MenuItem value="30k-70k">30k-70k</MenuItem>
+            <MenuItem value="70k-100k">70k-100K</MenuItem>
+            <MenuItem value="100k+">100K+</MenuItem>
+          </TextField>
+          
+          <TextField
+            select
+            label="Experience"
+            variant="outlined"
+            size="small"
+            sx={{
+              width: '10%',
+              backgroundColor: "#f1f1f1"
+            }}
+            value={experienceFilter}
+            onChange={(e) => setExperienceFilter(e.target.value)}
+          >
+            <MenuItem value="">All</MenuItem>
+            <MenuItem value="Fresher">Fresher</MenuItem>
+            <MenuItem value="1-2 years">1-2 years</MenuItem>
+            <MenuItem value="3-5 years">3-5 years</MenuItem>
+            <MenuItem value="5+ years">5+ years</MenuItem>
+          </TextField>
+        </Box>
+      </Box>
+
+      <TextField
+        label="Search Jobs"
+        sx={{ mb: 3, mx: 2 }}
+        value={searchQuery}
+        onChange={(e) => setSearchQuery(e.target.value)}
+      />
       <Grid container spacing={2} sx={{ mx: 2 }}>
         {/* Left Grid: Job Listings */}
         <Grid item size={{ xs: 12, sm: 12, md: 6, lg: 6, xl: 6 }}>
@@ -77,8 +212,8 @@ const CandidateJobPostCard = () => {
                 mb: 2,
               }}
             >
-              {isLoading
-                ? Array(5)
+              {isLoading ? (
+                Array(5)
                   .fill(0)
                   .map((_, index) => (
                     <Grid key={index} item size={12}>
@@ -94,14 +229,48 @@ const CandidateJobPostCard = () => {
                         }}
                       >
                         <Skeleton height={30} width="60%" />
-                        <Skeleton height={20} width="40%" style={{ margin: "10px 0" }} />
+                        <Skeleton
+                          height={20}
+                          width="40%"
+                          style={{ margin: "10px 0" }}
+                        />
                         <Skeleton height={20} width="80%" />
-                        <Skeleton height={20} width="50%" style={{ marginTop: 10 }} />
-                        <Skeleton height={40} width="100%" style={{ marginTop: 20 }} />
+                        <Skeleton
+                          height={20}
+                          width="50%"
+                          style={{ marginTop: 10 }}
+                        />
+                        <Skeleton
+                          height={40}
+                          width="100%"
+                          style={{ marginTop: 20 }}
+                        />
                       </Card>
                     </Grid>
                   ))
-                : jobsData.map((data) => (
+              ) : filteredJobs.length === 0 ? (
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    width: "100%",
+                    height: "100vh",
+                  }}
+                >
+                  <div
+                    style={{
+                      fontSize: "34px",
+                      fontFamily: "arial",
+                      height: "20vh",
+                      display: "flex",
+                      flexDirection: "column-reverse",
+                    }}
+                  >
+                    Search Not Found
+                  </div>
+                </div>
+              ) : (
+                filteredJobs.map((data) => (
                   <Grid key={data.id} item size={12}>
                     <Card
                       sx={{
@@ -142,7 +311,8 @@ const CandidateJobPostCard = () => {
                             color: "#000",
                           }}
                         >
-                          {data.salary} a month | {data.jobType} | {data.workType}
+                          {data.salary} a month | {data.jobType} |{" "}
+                          {data.workType}
                         </Typography>
                       </Box>
                       <Box
@@ -199,15 +369,14 @@ const CandidateJobPostCard = () => {
                       </Box>
                     </Card>
                   </Grid>
-                ))}
+                ))
+              )}
             </Grid>
           </Card>
         </Grid>
         {/* Right Grid: Dynamic Content */}
 
-
-        <Grid
-          item size={{ xs: 12, sm: 12, md: 6, lg: 6, xl: 6 }}>
+        <Grid item size={{ xs: 12, sm: 12, md: 6, lg: 6, xl: 6 }}>
           <Card
             sx={{
               background: "white",
@@ -227,7 +396,6 @@ const CandidateJobPostCard = () => {
               >
                 Job Details
               </Typography>
-
             </Box>
             {!isViewJobDetails ? (
               <Box
@@ -236,22 +404,21 @@ const CandidateJobPostCard = () => {
                   placeItems: "center",
                   height: "calc(100vh - 64px)",
 
-
-
                   mb: 2,
                 }}
               >
                 <img
                   src={jobimg}
-
                   alt="job"
                   style={{ width: "70%", objectFit: "contain" }}
                 />
               </Box>
             ) : (
-              <CandidateFullJobDetails jobId={isViewJobDetails} />
+              <CandidateFullJobDetails
+                jobId={isViewJobDetails}
+                jobsData={jobsData}
+              />
             )}
-
           </Card>
         </Grid>
       </Grid>
@@ -260,4 +427,3 @@ const CandidateJobPostCard = () => {
 };
 
 export default CandidateJobPostCard;
-

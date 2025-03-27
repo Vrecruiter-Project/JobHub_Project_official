@@ -16,7 +16,7 @@ import AllCandidates from '../../EmployerPage/EmployerDashboard/Components/AllCa
 import WorkOutlineIcon from '@mui/icons-material/WorkOutline';
 import JobDetailsForm from './JobPostForm/JobDetailsForm';
 import EmployerForm from '../EmployeerForm';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 
 import { employerLogout } from '../../../../service/operations/employeeApi';
 
@@ -121,8 +121,7 @@ const EmployerDashboard = () => {
       case '/myjob':
         return <MyJobs />;
       case '/candidate/allCandidates':
-        return <AllCandidates />;
-        return <MyJobs />;
+        return <AllCandidates />;       
         case '/candidate':
           return <AllCandidates />;
       // case '/candidate/allCandidates':
@@ -144,7 +143,7 @@ const EmployerDashboard = () => {
       await employerLogout();
       //console.log("Logged out successfully:", result.message);
       localStorage.clear();
-      navigate('/');
+      // navigate('/');
     } catch (error) {
       console.error("Logout error:", error);
     }
