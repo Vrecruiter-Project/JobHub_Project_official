@@ -184,7 +184,7 @@ export default function Privacypolicy() {
             SUSHMA Infinium,  Zirakpur, Chandigarh, India
           </Typography>
           <Typography paragraph>
-            Phone: +91 95180-35030, +91 89084-67890
+            Phone: 88006 12814 , 98187 37641
           </Typography>
           <Typography paragraph>
             Email: <a href="mailto:vrecruitersofficial@gmail.com">vrecruitersofficial@gmail.com</a>
