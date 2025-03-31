@@ -7,7 +7,7 @@ import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import Logo from "/log.svg";
 
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import EmImage from "../../../../../../../assets/Images/EmployerDashboardAsset/employerDashboardImage.png";
+import EmImage from "../../../../../../../assets/Images/EmployerDashboardAsset/employer.png";
 import { BASE_URL } from "../../../../../../../service/apis";
 // theme.background.paper
 // Create custom dark theme
