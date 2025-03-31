@@ -434,7 +434,7 @@ const Cards = () => {
                       fontWeight={500}
                       sx={{ color: theme.palette.text.primary }}
                     >
-                      {job.companyName}
+                      {job.jobTitle}
                     </Typography>
                     <Typography
                       variant="caption"
