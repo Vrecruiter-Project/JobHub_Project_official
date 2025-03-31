@@ -1,16 +1,16 @@
 import React, { useState } from "react";
-import { Box, Button, Typography, TextField } from "@mui/material";
+import { Box, Button, Typography, TextField, CircularProgress } from "@mui/material";
 import { toast } from "react-toastify";
 import { motion } from "framer-motion";
 import { useNavigate, Link } from "react-router-dom";
 import PhoneVBg from "../../../../assets/Images/bgImages/PhoneVBg.png";
 import { employerLogin } from "../../../../service/operations/employeeApi";
 
-
 const EmployerSignIn = () => {
   const token = JSON.parse(localStorage.getItem("token"));
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false); // Loading state
   const navigate = useNavigate();
 
   // Handle Form Submission
@@ -21,6 +21,9 @@ const EmployerSignIn = () => {
       toast.error("Please fill all fields");
       return;
     }
+
+    setLoading(true); // Set loading to true when the request starts
+
     try {
       const data = await employerLogin(email, password);
       if (data.success) {
@@ -32,6 +35,8 @@ const EmployerSignIn = () => {
       }
     } catch (error) {
       toast.error(error);
+    } finally {
+      setLoading(false); 
     }
   };
 
@@ -48,8 +53,30 @@ const EmployerSignIn = () => {
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center",
         backgroundSize: "cover",
+        position: "relative", 
       }}
     >
+      {/* Full-page Loading Spinner Overlay */}
+      {loading && (
+        <Box
+          sx={{
+            position: "absolute", 
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            backgroundColor: "rgba(255, 255, 255, 0.7)", 
+            zIndex: 10, 
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            backdropFilter: "blur(5px)", 
+          }}
+        >
+          <CircularProgress size={60} sx={{ color: "#00C853" }} />
+        </Box>
+      )}
+
       <motion.div
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
@@ -63,6 +90,8 @@ const EmployerSignIn = () => {
             overflow: "hidden",
             boxShadow: "0 15px 40px rgba(0,0,0,0.2)",
             backgroundColor: "#ffffff",
+            position: "relative", 
+            zIndex: 2, 
           }}
         >
           <Box
@@ -109,6 +138,8 @@ const EmployerSignIn = () => {
                 padding: "100px",
                 background: "#f9f9f9",
                 textAlign: "center",
+                position: "relative",
+                zIndex: 2, 
               }}
             >
               <Typography variant="h4" fontWeight="bold" sx={{ mb: 3 }}>
@@ -148,6 +179,7 @@ const EmployerSignIn = () => {
                         background: "linear-gradient(135deg, #00C853, #76FF03)",
                       },
                     }}
+                    disabled={loading} // Disable button while loading
                   >
                     Login
                   </Button>
