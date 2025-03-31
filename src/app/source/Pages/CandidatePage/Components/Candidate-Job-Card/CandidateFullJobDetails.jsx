@@ -1,8 +1,12 @@
-import React, { useEffect, useState } from "react";
-import { Box, Typography, Divider, Card, CardContent } from "@mui/material";
-import WorkOutlineIcon from "@mui/icons-material/WorkOutline";
-import { ApartmentRounded, Business, BusinessCenter, BusinessOutlined, BusinessSharp, CastForEducation, CurrencyRupee, LanguageTwoTone, LightMode, LockClockOutlined, People, Person, Person2, Person2Outlined, PrecisionManufacturing, RollerShadesClosed, Timelapse } from "@mui/icons-material";
-// import GroupIcon from "@mui/icons-material/Group";
+import { useEffect, useState } from "react";
+import { Typography, Card, CardContent } from "@mui/material";
+import {
+  BusinessCenter,
+  CurrencyRupee,
+  LocationOn,
+  Person,
+  Timelapse,
+} from "@mui/icons-material";
 
 const CandidateFullJobDetails = ({ jobId, jobsData }) => {
   const [jobData, setJobData] = useState(null);
@@ -21,172 +25,85 @@ const CandidateFullJobDetails = ({ jobId, jobsData }) => {
       </Typography>
     );
   }
-
   return (
-    <Card sx={{ mt: 3, p: 2 , wdith: '100%'}}>
-      <CardContent>
-        <div className='root1'>
-          <div className="contPart">
-            <div className='apart'>
-              <WorkOutlineIcon sx={{ width: '50px', height: '50px', }} />
-              <h3>{jobData.jobTitle}</h3>
-            </div>
-            <div>{jobData.companyName}</div>
+    <>
+      <Card sx={{ marginTop: "2px" , maxHeight: "90vh", overflow: "auto"}}>
+        <CardContent>
+          <div className="text-4xl font-bold">{jobData.companyName}</div>
+          <div className="flex justify-between text-1xl text-gray-500">
+            {jobData.jobLocation} | {jobData.workType} | {jobData.jobType}
           </div>
-          <div className='location'>
-            <div className='location'>
-              <Business sx={{ width: '20px', height: '20px' }} />
+          <div className="mt-4 grid grid-cols-2 gap-4">
+            <div className="flex items-center">
+              <BusinessCenter
+                sx={{ marginRight: "5px", color: "lightgreen" }}
+              />
+              <span className="font-bold mr-1">Role: </span>
+              {jobData.jobRole}
+            </div>
+            {/* <div className="flex items-center">
+              <LocationOn sx={{ marginRight: "5px", color: "lightgreen" }} />
+              <span className="font-bold">Location: </span>
               {jobData.jobLocation}
+            </div> */}
+
+            <div className="flex items-center">
+              <CurrencyRupee sx={{ marginRight: "5px", color: "lightgreen" }} />
+              <span className="font-bold mr-1">Salary: </span>
+              {jobData.salary}/month
             </div>
-            <div className='currn'>
-              <CurrencyRupee sx={{ width: '20px', height: '20px' }} />
-              {jobData.salary} monthly
+            <div className="flex items-center">
+              <Timelapse sx={{ marginRight: "5px", color: "lightgreen" }} />
+              <span className="font-bold mr-1">Shift: </span>Morning/Night
             </div>
-          </div>
-          <div className='workType'>
-            <div>
-              <BusinessOutlined sx={{ width: '18px' }} /> {jobData.workType}
-            </div>
-            <div>
-              <LockClockOutlined sx={{ width: '18px' }} /> {jobData.jobType}
-            </div>
-            <div>
-              <BusinessCenter sx={{ width: '18px' }} /> {jobData.experience}
-            </div>
-            <div>
-              <LanguageTwoTone sx={{ width: '18px' }} /> {jobData.english}
+
+            <div className="flex items-center">
+              <Person sx={{ marginRight: "5px", color: "lightgreen" }} />
+              <span className="font-bold mr-1">Age: </span>
+              {jobData.age}yr
             </div>
           </div>
-          <div className='jobHighlight'>
-            Job highlights
-            <div className='avia-1'>
-              <People /> {jobData.numberOfPosition} Candidates
-              <div className='interviwe'>
-                InterviewMode:
-                <div className='mode'>{jobData.interviewMode}</div>
-              </div>
+          <div className="mt-5">
+            <div className="text-2xl font-bold">Job Description</div>
+            <div className="mt-2">{jobData.description}</div>
+          </div>
+          <div>
+            <div className="flex justify-between mt-5 border-b-2 pb-1">
+              <div>Requirements</div>
+              <div>Detials</div>
             </div>
-            <div>
-              <h3 className='benifits'>Benefits</h3>
-              <div className='datBeni'>
+            <div className="flex justify-between mt-5 border-b-2 pb-1">
+              <div>Interview Mode</div>
+              <div>{jobData.interviewMode}</div>
+            </div>
+            <div className="flex justify-between mt-5 border-b-2 pb-1">
+              <div>Experience</div>
+              <div>{jobData.experience}</div>
+            </div>
+            <div className="flex justify-between mt-5 border-b-2 pb-1">
+              <div>Education</div>
+              <div>{jobData.education}</div>
+            </div>
+            <div className="flex justify-between mt-5 border-b-2 pb-1">
+              <div>English Level</div>
+              <div>{jobData.english}</div>
+            </div>
+            <div className="flex justify-between mt-5 border-b-2 pb-1">
+              <div>Gender</div>
+              <div>{jobData.gender}</div>
+            </div>
+            <div className="flex justify-between mt-5 border-b-2 pb-1">
+              <div>Benifits</div>
+              <div>
                 {jobData.benefits.map((item, index) => (
-                  <div className='intemList' key={index}>{item}</div>
+                  <span key={index}>{`${item}, `}</span>
                 ))}
               </div>
             </div>
           </div>
-          <div className='jobDesc'>
-            <span className='jobdec'>Job Description</span>
-            <br />
-            {jobData.description}
-          </div>
-          <h2 className='TextJob'>Job Role</h2>
-          <div className='jobRoleCont'>
-            <div className='part-1'>
-              <div className='wLocation'>
-                <div><BusinessOutlined /></div>
-                <div className='timer'>
-                  <span>Work Location</span>
-                  <span>{jobData.jobLocation}</span>
-                </div>
-              </div>
-              <div className='wLocation'>
-                <div><RollerShadesClosed /></div>
-                <div className='timer'>
-                  <span>Role / Category</span>
-                  <span>{jobData.jobRole}</span>
-                </div>
-              </div>
-              <div className='wLocation'>
-                <div><LightMode /></div>
-                <div className='timer'>
-                  <span>Shift</span>
-                  <span>Morning / Night</span>
-                </div>
-              </div>
-            </div>
-            <div className='part-1'>
-              <div className='wLocation'>
-                <div><PrecisionManufacturing /></div>
-                <div className='timer'>
-                  <span>Department</span>
-                  <span>{jobData.jobTitle}</span>
-                </div>
-              </div>
-              <div className='wLocation'>
-                <div><Timelapse /></div>
-                <div className='timer'>
-                  <span>Employment type</span>
-                  <span>{jobData.jobType}</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <h2 className='TextJob'>Job Requirement</h2>
-          <div className='JobRequire'>
-            <div className='part-1'>
-              <div className='wLocation'>
-                <div><Person2Outlined /></div>
-                <div className='timer'>
-                  <span>Age</span>
-                  <span>{jobData.age}</span>
-                </div>
-              </div>
-              <div className='wLocation'>
-                <div><BusinessCenter /></div>
-                <div className='timer'>
-                  <span>Experience</span>
-                  <span>{jobData.experience}</span>
-                </div>
-              </div>
-              <div className='wLocation'>
-                <div><LanguageTwoTone /></div>
-                <div className='timer'>
-                  <span>English level</span>
-                  <span>{jobData.english}</span>
-                </div>
-              </div>
-            </div>
-            <div className='part-1'>
-              <div className='wLocation'>
-                <div><CastForEducation /></div>
-                <div className='timer'>
-                  <span>Education</span>
-                  <span>{jobData.education}</span>
-                </div>
-              </div>
-              <div className='wLocation'>
-                <div><Person /></div>
-                <div className='timer'>
-                  <span>Gender</span>
-                  <span>{jobData.gender}</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <h2 className='TextJob'>About Company</h2>
-          <div>
-            <div className='part-1'>
-              <div className='wLocation'>
-                <div><BusinessSharp /></div>
-                <div className='timer'>
-                  <span>Name</span>
-                  <span>{jobData.companyName}</span>
-                </div>
-              </div>
-              <div className='wLocation'>
-                <div><ApartmentRounded /></div>
-                <div className='timer'>
-                  <span>Address</span>
-                  <span>{jobData.jobLocation}</span>
-                </div>
-              </div>
-            </div>
-            <div className='part-1'></div>
-          </div>
-        </div>
-      </CardContent>
-    </Card>
+        </CardContent>
+      </Card>
+    </>
   );
 };
 
