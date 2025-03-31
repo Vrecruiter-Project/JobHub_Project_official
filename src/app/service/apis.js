@@ -1,5 +1,5 @@
 //const BASE_URL = "https://jobhub-project-official-1.onrender.com/api/v1";
-const BASE_URL = "https://jobhub-project.onrender.com/api/v1"; //backup url
+export const BASE_URL = "https://jobhub-project.onrender.com/api/v1"; //backup url
 //const BASE_URL = "http://localhost:9000/api/v1";
 
 export const employee = {
