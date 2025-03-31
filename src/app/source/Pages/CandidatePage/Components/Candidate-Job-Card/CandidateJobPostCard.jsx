@@ -376,12 +376,10 @@ const CandidateJobPostCard = () => {
         </Grid>
         {/* Right Grid: Dynamic Content */}
 
-        <Grid item size={{ xs: 12, sm: 12, md: 6, lg: 6, xl: 6 }}>
+        <Grid item size={{ xs: 12, sm: 12, md: 6, lg: 6, xl: 6 }} >
           <Card
             sx={{
               background: "white",
-              boxShadow:
-                "rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px",
             }}
           >
             <Box>
@@ -414,7 +412,7 @@ const CandidateJobPostCard = () => {
                 />
               </Box>
             ) : (
-              <CandidateFullJobDetails
+                <CandidateFullJobDetails
                 jobId={isViewJobDetails}
                 jobsData={jobsData}
               />

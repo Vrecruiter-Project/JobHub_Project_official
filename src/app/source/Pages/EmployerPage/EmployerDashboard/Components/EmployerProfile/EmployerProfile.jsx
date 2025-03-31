@@ -27,7 +27,7 @@ const EmployerProfile = () => {
   };
 
   const [profileData, setProfileData] = useState(() => {
-    const savedData = localStorage.getItem("employerFormData");
+    const savedData = localStorage.getItem("employee");
     return savedData ? JSON.parse(savedData) : initialData;
   });
 
@@ -54,7 +54,7 @@ const EmployerProfile = () => {
   // Save data on blur
   const handleBlur = () => {
     setEditingField(null);
-    localStorage.setItem("employerFormData", JSON.stringify(profileData));
+    localStorage.setItem("employee", JSON.stringify(profileData));
   };
 
   // Handle image upload
@@ -152,7 +152,7 @@ const EmployerProfile = () => {
 
         {/* Profile Fields */}
         {Object.entries(profileData).map(([key, value]) => {
-          const excludedKeys = ["_id", "jobs", "avatar", "updatedAt", "createdAt", "__v", "otp"];
+          const excludedKeys = ["_id","password", "jobs", "avatar", "updatedAt", "createdAt", "__v", "otp"];
           
           if (excludedKeys.includes(key)) return null;
           
