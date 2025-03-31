@@ -1,8 +1,4 @@
 import axios from "axios";
-<<<<<<< Updated upstream
-=======
-//import { BASE_URL } from "./apis";
->>>>>>> Stashed changes
 //const API_URL = "https://jobhub-project-official-1.onrender.com/api/candidates";
 const BASE_URL="https://jobhub-project.onrender.com/api/candidates"; //backup url
 
