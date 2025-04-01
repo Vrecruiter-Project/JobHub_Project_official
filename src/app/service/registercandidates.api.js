@@ -1,12 +1,13 @@
 import axios from "axios";
-//const API_URL = "https://jobhub-project-official-1.onrender.com/api/candidates";
-const BASE_URL="https://jobhub-project.onrender.com/api/candidates"; //backup url
+import { SERVER_URL } from "./apis";
+
+const URL=`${SERVER_URL}/api/candidates` //backup url
 
 
 const registerCandidate = async (formData) => {
   try {
     const response = await axios.post(
-      `${BASE_URL}/registercandidate`,
+      `${URL}/registercandidate`,
       formData,
       {
         headers: { "Content-Type": "application/json" },
