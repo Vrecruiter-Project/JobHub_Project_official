@@ -1,7 +1,7 @@
 import axios from "axios";
 import { SERVER_URL } from "./apis";
 
-const URL=`${SERVER_URL}/api/candidates` //backup url
+const URL=`${SERVER_URL}/api/candidates`
 
 
 const registerCandidate = async (formData) => {

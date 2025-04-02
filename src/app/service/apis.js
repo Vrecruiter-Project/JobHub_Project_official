@@ -1,5 +1,4 @@
 //Base url is used in this file and in refistercandidates.api.js only
-//const BASE_URL = "http://localhost:9000/api/v1"; //aws url
 
 export const SERVER_URL = import.meta.env.VITE_BASE_URL; //aws url
 
