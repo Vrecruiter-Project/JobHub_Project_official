@@ -8,10 +8,11 @@ import {
   Button,
   Typography,
   TextField,
+  CircularProgress, // Add CircularProgress import
 } from "@mui/material";
 import { toast } from "react-toastify";
 import { motion } from "framer-motion";
-import { useNavigate , Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import PhoneVBg from "../../../../assets/Images/bgImages/PhoneVBg.png";
 import { checkOtp, sendOtp } from "../../../../service/operations/employeeApi";
 import EmployerDashboard from "../../EmployerPage/EmployerDashboard/EmployerDashboard";
@@ -22,13 +23,16 @@ const ContactVerify = () => {
   const [openOtp, setOpenOtp] = useState(false);
   const [email, setEmail] = useState("");
   const [otp, setOtp] = useState("");
+  const [loading, setLoading] = useState(false); // Add loading state
   const navigate = useNavigate();
 
   const handleOpenOtp = async () => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Regex to validate email address
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (emailRegex.test(email)) {
+      setLoading(true); // Set loading to true
       await sendOtp(email);
       setOpenOtp(true);
+      setLoading(false); // Set loading to false after OTP sent
       toast.success("Otp sent");
     } else {
       toast.error("Please enter a valid email address.");
@@ -40,7 +44,9 @@ const ContactVerify = () => {
   };
 
   const handleSubmit = async () => {
+    setLoading(true); // Set loading to true when submitting OTP
     await checkOtp(otp, email, navigate);
+    setLoading(false); // Set loading to false after OTP is verified
   };
 
   return token ? (
@@ -57,8 +63,30 @@ const ContactVerify = () => {
         backgroundPosition: "center",
         backgroundSize: "cover",
         padding: "20px",
+        position: "relative", // Important for the overlay
       }}
     >
+      {/* Full Screen Loader and Background Blur */}
+      {loading && (
+        <Box
+          sx={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            background: "rgba(0, 0, 0, 0.5)", // Dark overlay
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            backdropFilter: "blur(10px)", // Background blur
+            zIndex: 9999,
+          }}
+        >
+          <CircularProgress size={60} sx={{ color: "#fff" }} />
+        </Box>
+      )}
+
       <motion.div
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
@@ -72,6 +100,8 @@ const ContactVerify = () => {
             overflow: "hidden",
             boxShadow: "0 15px 40px rgba(0,0,0,0.2)",
             backgroundColor: "#ffffff",
+            zIndex: 100, // Ensure this is above the loader
+            position: "relative", // So it doesn't get covered by loader
           }}
         >
           <Box
@@ -151,6 +181,7 @@ const ContactVerify = () => {
                 }}
               />
 
+              {/* Verify Button with Spinner */}
               <motion.div
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -168,13 +199,28 @@ const ContactVerify = () => {
                     "&:hover": {
                       background: "linear-gradient(135deg, #00C853, #76FF03)",
                     },
+                    position: "relative",
+                    pointerEvents: loading ? "none" : "auto", // Disable interactions during loading
                   }}
                 >
-                  Verify
+                  {loading ? (
+                    <CircularProgress
+                      size={24}
+                      sx={{
+                        color: "#fff",
+                        position: "absolute",
+                        left: "50%",
+                        top: "50%",
+                        marginTop: "-12px",
+                        marginLeft: "-12px",
+                      }}
+                    />
+                  ) : (
+                    "Verify"
+                  )}
                 </Button>
-
               </motion.div>
-              <div className="mt-4  ">
+              <div className="mt-4">
                 Already have an account?
                 <Link to="/employerlogin">
                   <span
@@ -183,14 +229,13 @@ const ContactVerify = () => {
                       color: "green",
                       cursor: "pointer",
                       textDecoration: "none",
-
                     }}
                     onMouseEnter={(e) => (e.target.style.textDecoration = "underline")}
                     onMouseLeave={(e) => (e.target.style.textDecoration = "none")}
-
                   >
                     Login
-                  </span></Link>
+                  </span>
+                </Link>
               </div>
             </Box>
           </Box>
@@ -243,9 +288,24 @@ const ContactVerify = () => {
               "&:hover": {
                 background: "linear-gradient(135deg, #00C853, #76FF03)",
               },
+              pointerEvents: loading ? "none" : "auto", // Disable button during loading
             }}
           >
-            Verify & Proceed
+            {loading ? (
+              <CircularProgress
+                size={24}
+                sx={{
+                  color: "#fff",
+                  position: "absolute",
+                  left: "50%",
+                  top: "50%",
+                  marginTop: "-12px",
+                  marginLeft: "-12px",
+                }}
+              />
+            ) : (
+              "Verify & Proceed"
+            )}
           </Button>
         </DialogActions>
       </Dialog>

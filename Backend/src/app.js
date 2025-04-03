@@ -30,4 +30,5 @@ app.use("/api/v1/jobs", jobRoute);
 //registeredcandidates
 app.use("/api/candidates", registeredcandidates);
 
+
 export { app };
