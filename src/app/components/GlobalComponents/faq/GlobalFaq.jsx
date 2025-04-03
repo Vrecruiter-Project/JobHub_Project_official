@@ -47,7 +47,7 @@ export default function GlobalFaq({ faqItems, id }) {
             data-aos="fade-up"
             sx={{
               fontSize: {
-                xs: "35px", md: "45px",
+                xs: "35px", md: "46px",
                 backgroundImage: `url(${FaqsBg})`,
                 backgroundRepeat: "no-repeat",
                 backgroundSize: "cover",
