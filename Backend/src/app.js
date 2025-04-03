@@ -29,5 +29,11 @@ app.use("/api/v1/employees", employeeRoute);
 app.use("/api/v1/jobs", jobRoute);
 //registeredcandidates
 app.use("/api/candidates", registeredcandidates);
+// Health Check Route
+// This route is used to check if the server is running and healthy
+app.get('/health', (req, res) => {
+  res.status(200).send('OK');
+});
+
 
 export { app };
