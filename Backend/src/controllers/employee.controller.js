@@ -106,6 +106,197 @@ export const checkOtp = async (req, res) => {
 };
 
 //register
+// export const employeeAccount = async (req, res) => {
+//   try {
+//     const {
+//       fullName,
+//       companyName,
+//       mobileNumber,
+//       email,
+//       gender,
+//       gstNumber,
+//       fromWhere,
+//       password,
+//       confirmPassword,
+//     } = req.body;
+
+//     if (
+//       [
+//         fullName,
+//         companyName,
+//         mobileNumber,
+//         email,
+//         gender,
+//         gstNumber,
+//         fromWhere,
+//         password,
+//         confirmPassword,
+//       ].some((data) => data?.trim() === "")
+//     ) {
+//       return res.status(400).json({
+//         message: "Required all fields",
+//       });
+//     }
+
+//     if (password !== confirmPassword) {
+//       return res.status(400).json({
+//         message: "Passwords do not match",
+//       });
+//     }
+
+//     const avatarLocalPath = req.file?.path;
+
+//     if (!avatarLocalPath) {
+//       return res.status(404).json({
+//         message: "Image not found",
+//       });
+//     }
+
+//     const avatar = await uploadOnCloudinary(avatarLocalPath);
+
+//     // Hash the password
+//     const hashedPassword = await bcrypt.hash(password, 10);
+
+//     const newEmployee = await Employee.create({
+//       companyName,
+//       email,
+//       fromWhere,
+//       fullName,
+//       gender,
+//       gstNumber,
+//       mobileNumber,
+//       password: hashedPassword,
+//       avatar:
+//         avatar.url ||
+//         `https://api.dicebear.com/5.x/initials/svg?seed=${fullName}`,
+//     });
+
+//     // Generate Token
+//     const { accessToken } = await generateAccessToken(newEmployee._id);
+//     const options = {
+//       httpOnly: true,
+//       secure: true,
+//     };
+
+//     return res.status(200).cookie("accessToken", accessToken, options).json({
+//       success: true,
+//       message: "Signup Successfully!",
+//       employee: newEmployee,
+//       accessToken,
+//     });
+//   } catch (error) {
+//     console.error("Error during registration:", error);
+//     res.status(500).json({
+//       message: "Something went wrong while registration",
+//     });
+//   }
+// };
+// export const employeeAccount = async (req, res) => {
+//   try {
+//     console.log("Request Body:", req.body);
+//     console.log("Uploaded File:", req.file);
+
+//     const {
+//       fullName,
+//       companyName,
+//       mobileNumber,
+//       email,
+//       gender,
+//       gstNumber,
+//       fromWhere,
+//       password,
+//       confirmPassword,
+//     } = req.body;
+
+//     if (
+//       [
+//         fullName,
+//         companyName,
+//         mobileNumber,
+//         email,
+//         gender,
+//         gstNumber,
+//         fromWhere,
+//         password,
+//         confirmPassword,
+//       ].some((data) => data?.trim() === "")
+//     ) {
+//       console.log("Missing field(s)");
+//       return res.status(400).json({
+//         message: "Required all fields",
+//       });
+//     }
+
+//     if (password !== confirmPassword) {
+//       console.log("Passwords do not match");
+//       return res.status(400).json({
+//         message: "Passwords do not match",
+//       });
+//     }
+
+//     const avatarLocalPath = req.file?.path;
+//     console.log("Avatar Local Path:", avatarLocalPath);
+
+//     if (!avatarLocalPath) {
+//       return res.status(404).json({
+//         message: "Image not found",
+//       });
+//     }
+
+//     let avatar;
+//     try {
+//       console.log("Uploading to Cloudinary...");
+//       avatar = await uploadOnCloudinary(avatarLocalPath);
+//       console.log("Uploaded avatar:", avatar);
+//     } catch (cloudErr) {
+//       console.error("Cloudinary upload failed:", cloudErr);
+//       return res.status(500).json({
+//         message: "Cloudinary upload failed",
+//         error: cloudErr.message,
+//       });
+//     }
+
+//     const hashedPassword = await bcrypt.hash(password, 10);
+//     console.log("Hashed Password:", hashedPassword);
+
+//     const newEmployee = await Employee.create({
+//       companyName,
+//       email,
+//       fromWhere,
+//       fullName,
+//       gender,
+//       gstNumber,
+//       mobileNumber,
+//       password: hashedPassword,
+//       avatar:
+//         avatar.url ||
+//         `https://api.dicebear.com/5.x/initials/svg?seed=${fullName}`,
+//     });
+
+//     console.log("New Employee Created:", newEmployee);
+
+//     const { accessToken } = await generateAccessToken(newEmployee._id);
+//     console.log("Access Token:", accessToken);
+
+//     const options = {
+//       httpOnly: true,
+//       secure: true,
+//     };
+
+//     return res.status(200).cookie("accessToken", accessToken, options).json({
+//       success: true,
+//       message: "Signup Successfully!",
+//       employee: newEmployee,
+//       accessToken,
+//     });
+//   } catch (error) {
+//     console.error("Error during registration:", error);
+//     res.status(500).json({
+//       message: "Something went wrong while registration",
+//       error: error.message, // helpful for debugging
+//     });
+//   }
+// };
 export const employeeAccount = async (req, res) => {
   try {
     const {
@@ -152,9 +343,16 @@ export const employeeAccount = async (req, res) => {
       });
     }
 
-    const avatar = await uploadOnCloudinary(avatarLocalPath);
+    let avatar;
+    try {
+      avatar = await uploadOnCloudinary(avatarLocalPath);
+    } catch (cloudErr) {
+      return res.status(500).json({
+        message: "Cloudinary upload failed",
+        error: cloudErr.message,
+      });
+    }
 
-    // Hash the password
     const hashedPassword = await bcrypt.hash(password, 10);
 
     const newEmployee = await Employee.create({
@@ -171,7 +369,6 @@ export const employeeAccount = async (req, res) => {
         `https://api.dicebear.com/5.x/initials/svg?seed=${fullName}`,
     });
 
-    // Generate Token
     const { accessToken } = await generateAccessToken(newEmployee._id);
     const options = {
       httpOnly: true,
@@ -185,12 +382,12 @@ export const employeeAccount = async (req, res) => {
       accessToken,
     });
   } catch (error) {
-    console.error("Error during registration:", error);
     res.status(500).json({
       message: "Something went wrong while registration",
     });
   }
 };
+
 //login
 export const employeeLogin = async (req, res) => {
   try {
@@ -241,7 +438,6 @@ export const employeeLogin = async (req, res) => {
     });
   }
 };
-
 
 //logout
 export const employeeLogout = async (req, res) => {

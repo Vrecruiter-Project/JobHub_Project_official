@@ -52,6 +52,7 @@
 // };
 
 // export default CandidateDashboard;
+
 import { useState } from "react";
 import CandidateDashboardNav from "./Components/CandidateDashboardNavbar/CandidateDashboardNav";
 import { Outlet } from "react-router-dom";
