@@ -64,11 +64,18 @@ const EmployeeForm = () => {
   // Handle form submission
   const handleSubmit = async (event) => {
     event.preventDefault();
+
     if (employerData.password !== employerData.confirmPassword) {
       return toast.error("Passwords do not match");
     }
+
+    const formData = new FormData();
+    for (const key in employerData) {
+      formData.append(key, employerData[key]);
+    }
+
     try {
-      await registerEmployee(employerData, navigate);
+      await registerEmployee(formData, navigate); // this should send multipart data
       localStorage.removeItem("email");
       navigate("/employerdashboard");
     } catch (error) {

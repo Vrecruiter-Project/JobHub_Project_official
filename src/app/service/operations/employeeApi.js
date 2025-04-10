@@ -52,22 +52,40 @@ export const checkOtp = async (otp, email, navigate) => {
   }
 };
 
-export const registerEmployee = async (employerData, navigate) => {
+// export const registerEmployee = async (employerData, navigate) => {
+//   try {
+//     const response = await apiConnector("POST", SIGNUP_LOGIN, employerData, {
+//       "Content-Type": "multipart/form-data",
+//     });
+
+//     if (response.data.success) {
+//       localStorage.setItem("employee", JSON.stringify(response.data.employee));
+//       localStorage.setItem("token", JSON.stringify(response.data.accessToken));
+//     //  console.success(response.data.message);
+//       navigate("/employerdashboard");
+//     } else {
+//       navigate("/employeregistration");
+//     }
+//   } catch (error) {
+//     console.error(error.response.data.message);
+//   }
+// };
+
+export const registerEmployee = async (formData, navigate) => {
   try {
-    const response = await apiConnector("POST", SIGNUP_LOGIN, employerData, {
+    const response = await apiConnector("POST", SIGNUP_LOGIN, formData, {
       "Content-Type": "multipart/form-data",
     });
 
     if (response.data.success) {
       localStorage.setItem("employee", JSON.stringify(response.data.employee));
       localStorage.setItem("token", JSON.stringify(response.data.accessToken));
-    //  console.success(response.data.message);
       navigate("/employerdashboard");
     } else {
       navigate("/employeregistration");
     }
   } catch (error) {
-    console.error(error.response.data.message);
+    console.error("API Error:", error?.response?.data?.message || error.message);
   }
 };
 
