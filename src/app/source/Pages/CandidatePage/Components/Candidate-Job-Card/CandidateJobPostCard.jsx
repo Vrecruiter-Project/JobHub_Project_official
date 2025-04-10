@@ -9,31 +9,45 @@ import {
   MenuItem,
 } from "@mui/material";
 import Grid from "@mui/material/Grid2";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import CandidateFullJobDetails from "./CandidateFullJobDetails";
 import { allJobs } from "../../../../../service/operations/studentApi";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import jobimg from "../../../../../assets/Images/job-.png";
 
+
+const useQuery = () => {
+  return new URLSearchParams(useLocation().search);
+};
+
 const CandidateJobPostCard = () => {
+
+  const query = useQuery();
+  const searchParam = query.get("search") || ""; // Get the search parameter from the URL
+  const applyNowParam = query.get("apllyingto") || ""; // Get the apply now parameter from the URL
+  const experienceParam = query.get("experience") || ""; // Get the experience parameter from the URL
+  const cityParam = query.get("city") || ""; // Get the city parameter from the URL
   const navigate = useNavigate();
   const [jobsData, setJobsData] = useState([]);
   const [isViewJobDetails, setIsViewJobDetails] = useState("");
   const [isLoading, setIsLoading] = useState(true);
-  const [searchQuery, setSearchQuery] = useState("");
+  const [searchQuery, setSearchQuery] = useState(applyNowParam || searchParam);
   const [workModeFilter, setWorkModeFilter] = useState(""); // New state for work mode filter
-  const [locationFilter, setLocationFilter] = useState(""); // New state for location filter
+  const [locationFilter, setLocationFilter] = useState(cityParam); // New state for location filter
   const [salaryFilter, setSalaryFilter] = useState(""); // New state for salary filter
-  const [experienceFilter, setExperienceFilter] = useState(""); // New state for experience filter
+  const [experienceFilter, setExperienceFilter] = useState(experienceParam); // New state for experience filter
+  
+  
+  
 
   const fetchAllJobs = async () => {
     setIsLoading(true);
     const response = await allJobs();
-    setTimeout(() => {
-      setJobsData(response);
+   
+      setJobsData(response.reverse());
       setIsLoading(false);
-    }, 3000);
+    
   };
 
   useEffect(() => {
@@ -89,95 +103,127 @@ const CandidateJobPostCard = () => {
   return (
     <Box
       sx={{
-        py: 4,
+        py: 1,
       }}
     >
-      <Box sx={{ display: 'flex', flexDirection: 'column', flexGrow: 1, margin: '20px 10px 10px 20px' }}>
-        <Box sx={{ display: 'flex', gap: '10px' }}>
-          <TextField
-            select
-            label="Work Mode"
-            variant="outlined"
-            size="small"
-            sx={{
-              width: '10%',
-              backgroundColor: "#f1f1f1"
-            }}
-            value={workModeFilter}
-            onChange={(e) => setWorkModeFilter(e.target.value)}
-          >
-            <MenuItem value="">All</MenuItem>
-            <MenuItem value="Remote">Remote</MenuItem>
-            <MenuItem value="On-site">On Site</MenuItem>
-            <MenuItem value="Hybrid">Hybrid</MenuItem>
-          </TextField>
-          
-          <TextField
-            select
-            label="Location"
-            variant="outlined"
-            size="small"
-            sx={{
-              width: '10%',
-              backgroundColor: "#f1f1f1"
-            }}
-            value={locationFilter}
-            onChange={(e) => setLocationFilter(e.target.value)}
-          >
-            <MenuItem value="">All</MenuItem>
-            <MenuItem value="Chandigarh">Chandigarh</MenuItem>
-            <MenuItem value="Zirkpur">Zirkpur</MenuItem>
-            <MenuItem value="Mohali">Mohali</MenuItem>
-            <MenuItem value="Panchkula">Panchkula</MenuItem>
-            <MenuItem value="Remote">Remote</MenuItem>
-          </TextField>
-          
-          <TextField
-            select
-            label="Salary"
-            variant="outlined"
-            size="small"
-            sx={{
-              width: '10%',
-              backgroundColor: "#f1f1f1"
-            }}
-            value={salaryFilter}
-            onChange={(e) => setSalaryFilter(e.target.value)}
-          >
-            <MenuItem value="">All</MenuItem>
-            <MenuItem value="0-10k">0-10k</MenuItem>
-            <MenuItem value="30k-70k">30k-70k</MenuItem>
-            <MenuItem value="70k-100k">70k-100K</MenuItem>
-            <MenuItem value="100k+">100K+</MenuItem>
-          </TextField>
-          
-          <TextField
-            select
-            label="Experience"
-            variant="outlined"
-            size="small"
-            sx={{
-              width: '10%',
-              backgroundColor: "#f1f1f1"
-            }}
-            value={experienceFilter}
-            onChange={(e) => setExperienceFilter(e.target.value)}
-          >
-            <MenuItem value="">All</MenuItem>
-            <MenuItem value="Fresher">Fresher</MenuItem>
-            <MenuItem value="1-2 years">1-2 years</MenuItem>
-            <MenuItem value="3-5 years">3-5 years</MenuItem>
-            <MenuItem value="5+ years">5+ years</MenuItem>
-          </TextField>
-        </Box>
-      </Box>
+
+      <Box
+  sx={{
+    display: 'flex',
+    flexDirection: { xs: 'column', md: 'row' },
+    justifyContent: 'space-around',
+    alignItems: { xs: 'stretch', md: 'center' },
+    gap: 2,
+    p: 2,
+  }}
+>
+  <TextField
+    size="small"
+    label="Search Jobs"
+    sx={{
+      mx: { xs: 0, md: 2 },
+      width: { xs: '100%', md: '47%' },
+    }}
+    value={searchQuery}
+    onChange={(e) => setSearchQuery(e.target.value)}
+  />
+
+  <Box
+    sx={{
+      display: 'flex',
+      flexDirection: 'column',
+      flexGrow: 1,
+      mt: { xs: 1, md: 0 },
+    }}
+  >
+    <Box
+      sx={{
+        display: 'flex',
+        flexDirection: { xs: 'column', sm: 'row' },
+        gap: 2,
+      }}
+    >
+      <TextField
+        select
+        label="Work Mode"
+        variant="outlined"
+        size="small"
+        sx={{
+          width: { xs: '100%', sm: '48%', md: '26%' },
+          backgroundColor: "#f1f1f1",
+        }}
+        value={workModeFilter}
+        onChange={(e) => setWorkModeFilter(e.target.value)}
+      >
+        <MenuItem value="">All</MenuItem>
+        <MenuItem value="Remote">Remote</MenuItem>
+        <MenuItem value="On-site">On Site</MenuItem>
+        <MenuItem value="Hybrid">Hybrid</MenuItem>
+      </TextField>
 
       <TextField
-        label="Search Jobs"
-        sx={{ mb: 3, mx: 2 }}
-        value={searchQuery}
-        onChange={(e) => setSearchQuery(e.target.value)}
-      />
+        select
+        label="Location"
+        variant="outlined"
+        size="small"
+        sx={{
+          width: { xs: '100%', sm: '48%', md: '23%' },
+          backgroundColor: "#f1f1f1",
+        }}
+        value={locationFilter}
+        onChange={(e) => setLocationFilter(e.target.value)}
+      >
+        <MenuItem value="">All</MenuItem>
+        <MenuItem value="Chandigarh">Chandigarh</MenuItem>
+        <MenuItem value="Zirkpur">Zirkpur</MenuItem>
+        <MenuItem value="Mohali">Mohali</MenuItem>
+        <MenuItem value="Panchkula">Panchkula</MenuItem>
+        <MenuItem value="Remote">Remote</MenuItem>
+      </TextField>
+
+      <TextField
+        select
+        label="Salary"
+        variant="outlined"
+        size="small"
+        sx={{
+          width: { xs: '100%', sm: '48%', md: '19%' },
+          backgroundColor: "#f1f1f1",
+        }}
+        value={salaryFilter}
+        onChange={(e) => setSalaryFilter(e.target.value)}
+      >
+        <MenuItem value="">All</MenuItem>
+        <MenuItem value="0-10k">0-10k</MenuItem>
+        <MenuItem value="30k-70k">30k-70k</MenuItem>
+        <MenuItem value="70k-100k">70k-100K</MenuItem>
+        <MenuItem value="100k+">100K+</MenuItem>
+      </TextField>
+
+      <TextField
+        select
+        label="Experience"
+        variant="outlined"
+        size="small"
+        sx={{
+          width: { xs: '100%', sm: '48%', md: '26%' },
+          backgroundColor: "#f1f1f1",
+        }}
+        value={experienceFilter}
+        onChange={(e) => setExperienceFilter(e.target.value)}
+      >
+        <MenuItem value="">All</MenuItem>
+        <MenuItem value="Fresher">Fresher</MenuItem>
+        <MenuItem value="1-2 years">1-2 years</MenuItem>
+        <MenuItem value="3-5 years">3-5 years</MenuItem>
+        <MenuItem value="5+ years">5+ years</MenuItem>
+      </TextField>
+    </Box>
+  </Box>
+</Box>
+
+
+      
       <Grid container spacing={2} sx={{ mx: 2 }}>
         {/* Left Grid: Job Listings */}
         <Grid item size={{ xs: 12, sm: 12, md: 6, lg: 6, xl: 6 }}>
@@ -342,6 +388,7 @@ const CandidateJobPostCard = () => {
                         <Button
                           variant="contained"
                           sx={{
+                            fontSize: {xs: "10px", md: "12px"},
                             backgroundColor: "green",
                             color: "white",
                             mr: 2,
@@ -356,6 +403,7 @@ const CandidateJobPostCard = () => {
                         <Button
                           variant="contained"
                           sx={{
+                            fontSize: {xs: "10px", md: "12px"},
                             backgroundColor: "green",
                             color: "white",
                             "&:hover": {

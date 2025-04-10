@@ -14,13 +14,13 @@ const Testimonial = () => {
 
     return (
         <>
-            <Box sx={{ pt: { xs: 14, md: 4 }, width: '80%', mx: 'auto' }}>
+            <Box sx={{ pt: { xs: 4, md: 4 }, width: '80%', mx: 'auto' }}>
                 <Grid2 container sx={{
                     display: "flex",
                     justifyContent: "center",
                     alignItems: "center",
                     pt: { xs: 6 },
-                    pb: 2
+                    pb: -1
                 }}>
 
                     <Grid2 item xs={12}>

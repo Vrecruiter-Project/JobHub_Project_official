@@ -3,9 +3,17 @@ import { IconArrowLeft, IconArrowRight } from "@tabler/icons-react";
 import { motion, AnimatePresence } from "framer-motion";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-
 export const AnimatedTestimonials = ({ testimonials, autoplay = false }) => {
 
+  const [aosEnabled, setAosEnabled] = useState(true);
+
+useEffect(() => {
+  if (typeof window !== 'undefined') {
+    const isXS = window.innerWidth < 640; // Tailwind's `sm` breakpoint
+    setAosEnabled(!isXS);
+  }
+}, []);
+  
   useEffect(() => {
     AOS.init();
   }, []);
@@ -32,10 +40,10 @@ export const AnimatedTestimonials = ({ testimonials, autoplay = false }) => {
   const randomRotateY = () => Math.floor(Math.random() * 21) - 10;
 
   return (
-    <div className="max-w-sm md:max-w-4xl mx-auto antialiased font-sans px-4 md:px-8 lg:px-2 py-2  lg:mb-[7%]">
+    <div className="max-w-sm md:max-w-4xl mx-auto antialiased font-sans px-4 md:px-8 lg:px-2 py-1  lg:mb-[7%]">
       <div className="relative grid grid-cols-1 md:grid-cols-2 xs:gap-30 md:gap-20 lg:gap-[23%]">
         {/* Left: Testimonial Image Section */}
-        <div>
+        <div className="hidden md:block">
           <div className="relative h-[20rem] w-full" data-aos="flip-left" data-aos-duration='3000'>
             <AnimatePresence>
               {testimonials.map((testimonial, index) => (
@@ -137,7 +145,7 @@ export const AnimatedTestimonials = ({ testimonials, autoplay = false }) => {
           </motion.div>
 
           {/* Navigation Buttons */}
-          <div  data-aos="fade-up" className="flex gap-4 pt-12 md:pt-0">
+          <div  {...(aosEnabled && { 'data-aos': 'fade-up' })} className="flex gap-4 pt-12 md:pt-0">
             <button
               onClick={handlePrev}
               className="h-7 w-7 rounded-full bg-green-500  flex items-center justify-center group/button"

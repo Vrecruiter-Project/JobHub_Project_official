@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import PageComponent from '../../../PageComponent'
 import bgImage from '../../../../../assets/Images/bgImages/bgImage.png';
 import HeaderImage from '../../../../../assets/Images/headerImages/HeaderImage04.png';
@@ -11,7 +11,14 @@ import WhyDocVerify from './Components/WhyDocVerify';
 import { useNavigate } from 'react-router-dom';
 
 const DocVerifyJob = () => {
-  const navigate = useNavigate();
+    const [searchFor, setSearchFor] = useState("");
+    const navigate = useNavigate();
+  
+    const handleSearch = () => {
+      if (!searchFor) return;
+      const applyfor = new URLSearchParams({ apllyingto: searchFor }).toString();
+      navigate(`/candidatedashboard?${applyfor}`);
+    };
   return (
     <>
       <PageComponent>
@@ -24,7 +31,8 @@ const DocVerifyJob = () => {
           subText="Ensure accuracy and trust with our efficient document verification services."
           buttonTitle1="Apply Now"
           buttonTitle2="Search"
-          onButtonClick1={() => navigate('/candidatedashboard')}
+          onSearchReady={setSearchFor} 
+      onButtonClick1={handleSearch}
           onButtonClick2={() => alert("Hire Now clicked!")}
           imgSrc={HeaderImage}
           style= {{

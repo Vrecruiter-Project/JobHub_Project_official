@@ -14,6 +14,10 @@ import GlobalFaq from '../../../components/GlobalComponents/faq/GlobalFaq';
 import { Outlet, useNavigate } from 'react-router-dom';
 import ChatAi from '../../../../app/components/Whatsapp/ChatAi';
 import Resumeswiper from '../../../components/PageComponent/Resumeswiper';
+import { HeroSection } from '../../../components/GlobalComponents/HeaderPage/util/SearchComponent';
+import EmployerHireNow from '../../../components/PageComponent/EmployerHireNow';
+
+import EmployerDashboard from "../EmployerPage/EmployerDashboard/EmployerDashboard"
 
 
 const Home = () => {
@@ -65,7 +69,7 @@ const Home = () => {
     <>
       <PageComponent>
 
-        <HeaderPage
+        {/* <HeaderPage
           backgroundImage={bgImage}
           headerText={
             <>
@@ -86,7 +90,8 @@ const Home = () => {
             height: 'auto',
           }}
           button2
-        />
+        /> */}
+        <HeroSection/>
         <Resumeswiper /> 
         <JobCards />
         <JobDetails />
@@ -94,15 +99,15 @@ const Home = () => {
         <ResumeSection />
         <PartnerSection />
         <ChoiceSection />
+        <EmployerHireNow/>
         <Testimonial />
         <GlobalFaq faqItems={faqItems} />
         <Outlet />
         <ChatAi />
       </PageComponent>
+      
     </>
   );
 };
 
 export default Home;
-
-

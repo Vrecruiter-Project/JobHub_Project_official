@@ -2,6 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
+.MuiInputBase-root.MuiOutlinedInput-root.MuiInputBase-colorPrimary.MuiInputBase-formControl.MuiInputBase-sizeSmall.MuiInputBase-adornedStart.css-4bojcr-MuiInputBase-root-MuiOutlinedInput-root {
+  padding-left: 4px;
+}
+button.MuiButtonBase-root.MuiButton-root.MuiButton-text.MuiButton-textPrimary.MuiButton-sizeMedium.MuiButton-textSizeMedium.MuiButton-colorPrimary.MuiButton-root.MuiButton-text.MuiButton-textPrimary.MuiButton-sizeMedium.MuiButton-textSizeMedium.MuiButton-colorPrimary.css-1n7r7ib-MuiButtonBase-root-MuiButton-root {
+  padding: 1px 8px;
+  color: #fff;
+}
+
+@media (max-width: 426px) {
+  .search-box {
+      max-width: 60%;
+  }
+}
+
 
 
 @media (max-width:769px) {

@@ -53,7 +53,8 @@ const ChatAi = () => {
     <Box
       sx={{
         position: 'sticky',
-        bottom: stickyBottom,
+        // {xs:'0', sm:'0', md:'0', lg:'0', xl:'0'},
+        bottom: {xs:'60px', sm:'10px', lg:'10px'},
         right: '40px', 
         zIndex: 1300,
         display: 'flex',

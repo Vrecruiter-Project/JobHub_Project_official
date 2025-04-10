@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import PageComponent from '../../../PageComponent'
 import bgImage from '../../../../../assets/Images/bgImages/bgImage.png';
 import HeaderImage from '../../../../../assets/Images/headerImages/HeaderImage02.png';
@@ -10,7 +10,15 @@ import JobhubTelecaller from './Components/JobhubTelecaller';
 import { useNavigate } from 'react-router-dom';
 
 const TelecallerJob = () => {
-  const navigate = useNavigate();
+    const [searchFor, setSearchFor] = useState("");
+    const navigate = useNavigate();
+  
+    const handleSearch = () => {
+      if (!searchFor) return;
+      const applyfor = new URLSearchParams({ apllyingto: searchFor }).toString();
+      navigate(`/candidatedashboard?${applyfor}`);
+    };
+  
   return (
     <>
       <PageComponent>
@@ -24,7 +32,8 @@ const TelecallerJob = () => {
           buttonTitle1="Apply Now"
           buttonTitle2="Search"
           // onButtonClick1={handleScrollView}
-          onButtonClick1={() => navigate('/candidatedashboard')}
+          onSearchReady={setSearchFor} 
+      onButtonClick1={handleSearch}
           onButtonClick2={() => alert("Hire Now clicked!")}
           imgSrc={HeaderImage}
           style= {{

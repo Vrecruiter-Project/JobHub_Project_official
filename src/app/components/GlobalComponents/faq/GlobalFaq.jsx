@@ -29,12 +29,12 @@ export default function GlobalFaq({ faqItems, id }) {
   return (
     <>
       <Box sx={{
-        pt: { xs: 14, md: 4 },
+        pt: { xs: 1, md: 4 },
       }}>
         <Container
           id={id}
           sx={{
-            pt: { xs: 4, sm: 12 },
+            pt: { xs: 1, sm: 12 },
             pb: { xs: 8, sm: 16 },
             position: "relative",
             display: "flex",

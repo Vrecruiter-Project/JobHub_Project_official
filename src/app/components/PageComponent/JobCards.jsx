@@ -26,7 +26,7 @@ const JobCards = () => {
                 backgroundSize: "cover",
             }}>
                 <Box sx={{
-                    py: 12,
+                    py: 6,
                     backgroundColor: "rgba(0, 128, 0, 0.3)",
                     width: "100%",
                 }}>
