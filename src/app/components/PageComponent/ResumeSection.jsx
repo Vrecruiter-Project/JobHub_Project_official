@@ -30,8 +30,9 @@ const ResumeSection = () => {
 
   return (
     <>
-      <Box id="resumeSwiper" sx={{ pt: { xs: 14, md: 10 }, width: '80%', mx: 'auto' }}>
+      <Box id="resumeSwiper" sx={{ pt: { xs: 14, md: 10 }, width: '80%', mx: 'auto', display:{xs:'none', md:'block'} }}>
         <Grid2
+        
           container
           sx={{
             display: "flex",

@@ -118,7 +118,7 @@ const ContactVerify = () => {
                 background:
                   "linear-gradient(135deg, #00C853, #B2FF59)",
                 color: "#fff",
-                display: "flex",
+                display: {xs: "none", md: "flex"},
                 flexDirection: "column",
                 justifyContent: "center",
                 alignItems: "center",
@@ -155,29 +155,43 @@ const ContactVerify = () => {
             <Box
               sx={{
                 flex: 1,
-                padding: "100px",
+                padding: {xs: "45px", md: "100px"},
+                width:{xs: "100%", md: "100%"},
                 background: "#f9f9f9",
                 textAlign: "center",
               }}
             >
-              <Typography variant="h4" fontWeight="bold" sx={{ mb: 1 }}>
+              <Typography variant="h4" fontWeight="bold" sx={{ mb: 1, fontSize: { xs: "28px", md: "40px" } }}>
                 Get Started
               </Typography>
-              <Typography variant="body2" color="textSecondary" sx={{ mb: 5 }}>
+              <Typography variant="body2" color="textSecondary" sx={{ mb: 5, fontSize: { xs: "12px", md: "16px" } }}>
                 Enter your details and verify to proceed.
               </Typography>
 
               <TextField
                 variant="outlined"
-                placeholder="Enter Correct Email Address"
+                placeholder="Enter Your Email Address"
                 value={email}
+                
                 onChange={(e) => setEmail(e.target.value)}
-                fullWidth
+                      fullWidth
+                size="small"
+                type="email"
                 sx={{
-                  maxWidth: "400px",
+                  maxWidth: {xs: "90%", md: "400px"},
                   margin: "0 auto",
                   marginBottom: "20px",
                   borderRadius: "8px",
+                }}
+                InputProps={{
+                  sx: {
+                    "&::placeholder": {
+                      fontSize: "16px", 
+                    },
+                    "& input::placeholder": {
+                      fontSize:{xs: "12px", md: "16px"},
+                    },
+                  },
                 }}
               />
 
@@ -194,7 +208,7 @@ const ContactVerify = () => {
                     padding: "10px 20px",
                     background: "linear-gradient(135deg, #00C853, #B2FF59)",
                     color: "#fff",
-                    fontSize: "16px",
+                    fontSize: {xs: "12px", md: "16px"},
                     borderRadius: "8px",
                     "&:hover": {
                       background: "linear-gradient(135deg, #00C853, #76FF03)",
@@ -221,11 +235,14 @@ const ContactVerify = () => {
                 </Button>
               </motion.div>
               <div className="mt-4">
-                Already have an account?
+                <Typography variant="body2" color="textSecondary" sx={{ fontSize: { xs: "12px", md: "16px" } }}>
+                  Already have an account?{" "}</Typography>
                 <Link to="/employerlogin">
                   <span
                     className="mx-1"
                     style={{
+                      fontSize: { xs: "12px", md: "16px" },
+                      
                       color: "green",
                       cursor: "pointer",
                       textDecoration: "none",

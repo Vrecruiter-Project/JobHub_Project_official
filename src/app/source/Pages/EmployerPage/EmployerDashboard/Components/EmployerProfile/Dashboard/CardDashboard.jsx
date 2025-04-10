@@ -140,6 +140,7 @@ const Cards = () => {
 
   return (
     <ThemeProvider theme={darkTheme}>
+      <Box sx={{height:'100vh', overflowY:'auto'}}>
       <Box
         sx={{
           padding: "20px",
@@ -151,6 +152,7 @@ const Cards = () => {
           backgroundColor: theme.palette.background.default,
         }}
       >
+        
         {/* Jobs Card */}
         <Card
           sx={{
@@ -270,7 +272,7 @@ const Cards = () => {
             <span
               style={{ borderBottom: `1px solid  ${theme.palette.divider}` }}
             >
-              AYUSH
+              {employeeData.fullName}
             </span>
           </Typography>
           {/* <Box sx={{ padding: "10px" }}>
@@ -587,6 +589,7 @@ const Cards = () => {
           </Box>
         </Box>
       </Card>
+      </Box>
     </ThemeProvider>
   );
 };

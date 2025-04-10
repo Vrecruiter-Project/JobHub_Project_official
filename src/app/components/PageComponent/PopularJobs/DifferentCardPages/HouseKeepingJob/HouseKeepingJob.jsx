@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import PageComponent from '../../../PageComponent'
 import bgImage from '../../../../../assets/Images/bgImages/bgImage.png';
 import HeaderImage from '../../../../../assets/Images/HousekeepingImages/header.png';
@@ -17,7 +17,14 @@ import GlobaljobCardTwo from '../../../../GlobalComponents/GlobalGrid2Section/Gl
 
 const HouseKeepingJob = () => {
 
+  const [searchFor, setSearchFor] = useState("");
   const navigate = useNavigate();
+
+  const handleSearch = () => {
+    if (!searchFor) return;
+    const applyfor = new URLSearchParams({ apllyingto: searchFor }).toString();
+    navigate(`/candidatedashboard?${applyfor}`);
+  };
 
 
   const imgoneStyle = {
@@ -39,7 +46,8 @@ const HouseKeepingJob = () => {
           buttonTitle1="Apply Now"
           buttonTitle2="Search"
           // onButtonClick1={handleScrollView}
-          onButtonClick1={() => navigate('/candidatedashboard')}
+          onSearchReady={setSearchFor} 
+      onButtonClick1={handleSearch}
           onButtonClick2={() => alert("Hire Now clicked!")}
           imgSrc={HeaderImage}
           style={{

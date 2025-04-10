@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Box, Typography, Card, CardContent, Grid2 } from '@mui/material';
-import Our_Vission_Mission_Image from '../../../assets/Images/AboutPage/Our_Vission_Mission_Image.png';
+import Our_Vission_Mission_Image from '../../../assets/Images/AboutPage/AboutUsVector.svg';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 

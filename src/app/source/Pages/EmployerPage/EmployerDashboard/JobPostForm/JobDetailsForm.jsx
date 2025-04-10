@@ -410,8 +410,7 @@ const JobDetailsForm = () => {
         sx={{
           boxShadow: "0px 3px 5px -1px rgba(0, 0, 0, 0.2)",
           borderRadius: "10px",
-     
-          padding: "30px",
+          marginTop: {xs:"400px", md:"400px",lg:'280px'},
         }}
       >
         <Box textAlign="center" mb={5}>

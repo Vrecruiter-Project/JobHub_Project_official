@@ -19,12 +19,16 @@ import job15 from "../../../assets/Images/PopularJobs/job15.png";
 import DifferentJobCard from '../../GlobalComponents/JobCard/DifferentJobCard';
 import PopularJobsBg from "../../../assets/Images/bgImages/PartnersBg.png";
 import { useNavigate } from 'react-router-dom';
-
+import { useState } from 'react';
+import { Button } from '@mui/material';
+import { useTheme, useMediaQuery } from '@mui/material';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
 const PopularJobs = ({ id }) => {
-
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm')); // True for xs
+  const [showAll, setShowAll] = useState(false);
   useEffect(() => {
     AOS.init();
   }, []);
@@ -47,10 +51,10 @@ const PopularJobs = ({ id }) => {
     { image: job14, title: 'Ware House Staff', onClick: () => navigate('/warehousestaff') },
     { image: job15, title: 'Factory Workers', onClick: () => navigate('/factory') },
   ];
-
+  const visibleCards = isMobile && !showAll ? jobTypes.slice(0, 4) : jobTypes;
   return (
     <>
-      <Box id={id} sx={{ pt: 10, width: '80%', mx: 'auto' }}>
+      <Box id={id} sx={{ pt: 5, width: '80%', mx: 'auto' }}>
         <Grid2
           container
           sx={{
@@ -73,7 +77,7 @@ const PopularJobs = ({ id }) => {
           </Grid2>
         </Grid2>
 
-        <Grid2
+        {/* <Grid2
           container
           spacing={4}
           sx={{
@@ -105,7 +109,56 @@ const PopularJobs = ({ id }) => {
               <DifferentJobCard jobTypes={item} onClick={item.onClick} />
             </Grid2>
           ))}
-        </Grid2>
+        </Grid2> */}
+        <Box
+          sx={{
+            display: 'grid',
+            gridTemplateColumns: {
+              xs: 'repeat(2, 1fr)',
+              sm: 'repeat(3, 1fr)',
+              md: 'repeat(5, 1fr)',
+            },
+            gap: 4,
+            width: '100%',
+            justifyItems: 'center',
+            alignItems: 'center',
+            mt: 5,
+          }}
+        >
+          {visibleCards.map((item, index) => (
+            <Box
+              key={index}
+              data-aos="zoom-out"
+              data-aos-duration="1000"
+              sx={{
+                transition: 'transform 0.3s ease-in-out',
+                '&:hover': {
+                  transform: 'scale(1.05)',
+                },
+              }}
+            >
+              <DifferentJobCard jobTypes={item} onClick={item.onClick} />
+            </Box>
+          ))}
+        </Box>
+
+        {isMobile && !showAll && (
+          <Box sx={{ mt: 4, display: 'flex', justifyContent: 'center' }}>
+            <Button
+              onClick={() => setShowAll(true)}
+              sx={{
+                color:'black',
+                textTransform: 'none',
+                fontSize: '12px',
+                px: 1.5,
+                py: 1,
+                borderRadius: 2,
+              }}
+            >
+              <u>Load More</u><span className='px-1 mx-1 bg-green-500 rounded-sm text-white'>JOBS</span>
+            </Button>
+          </Box>
+        )}
       </Box>
     </>
   );

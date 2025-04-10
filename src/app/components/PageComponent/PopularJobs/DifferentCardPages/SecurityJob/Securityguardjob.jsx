@@ -1,5 +1,5 @@
 
-import React from 'react'
+import React, { useState } from 'react'
 import PageComponent from '../../../PageComponent'
 import bgImage from '../../../../../assets/Images/bgImages/bgImage.png';
 import HeaderImage from '../../../../../assets/Images/secuirtyGuard/header2.png';
@@ -14,11 +14,19 @@ import firImg from '../../../../../assets/Images/secuirtyGuard/first1.png';
 import secImg from '../../../../../assets/Images/secuirtyGuard/second3.png';
 
 export default function Securityguardjob() {
+  const [searchFor, setSearchFor] = useState("");
+  const navigate = useNavigate();
+
+  const handleSearch = () => {
+    if (!searchFor) return;
+    const applyfor = new URLSearchParams({ apllyingto: searchFor }).toString();
+    navigate(`/candidatedashboard?${applyfor}`);
+  };
+
 
   const imageonestyle = { maxHeight: '90%' }
   const imagetwostyle = { maxHeight: '80%' }
 
-  const navigate = useNavigate();
 
   return (
     <>
@@ -29,12 +37,14 @@ export default function Securityguardjob() {
           headerText=
           {<>
             Security <span style={{ color: "green" }}>Guard</span>
+            
           </>}
           subText="Reliable and vigilant professional skilled in ensuring safety, monitoring premises, and responding to emergencies effectively.."
           buttonTitle1="Apply Now"
           buttonTitle2="Search"
           // onButtonClick1={handleScrollView}
-          onButtonClick1={() => navigate('/candidatedashboard')}
+          onSearchReady={setSearchFor} 
+      onButtonClick1={handleSearch}
           onButtonClick2={() => alert("Hire Now clicked!")}
           imgSrc={HeaderImage}
           style={{

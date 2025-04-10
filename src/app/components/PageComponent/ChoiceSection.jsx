@@ -1,5 +1,5 @@
-import { Box, Grid2, Typography } from '@mui/material'
-import React, { useEffect } from 'react'
+import { Box, Grid, Typography } from '@mui/material';
+import React, { useEffect } from 'react';
 import ChoiceBg from '../../assets/Images/bgImages/PartnersBg.png';
 import img1 from '../../assets/Images/Why-Jobhub/img1.png';
 import img2 from '../../assets/Images/Why-Jobhub/img2.png';
@@ -13,11 +13,9 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 
 const ChoiceSection = () => {
-
     useEffect(() => {
-        AOS.init();
+        AOS.init({ duration: 1000 });
     }, []);
-
 
     const iconItems = [
         { icon: img1, title: 'Verified & Authentic Jobs' },
@@ -27,72 +25,113 @@ const ChoiceSection = () => {
         { icon: img5, title: 'Get Help from Our Local Representative' },
         { icon: img6, title: 'No Hidden Charges' },
         { icon: img7, title: 'Helping the Unorganized Sector' },
-    ]
-    return (
-        <>
-            <Box sx={{ width: '80%', mx: 'auto' }}>
-                <Grid2 container sx={{
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    pt: { xs: 6 },
-                    pb: 8
-                }}>
-                    <Grid2 item xs={12} sx={{ position: "relative" }}>
-                        <Typography
-                            data-aos="fade-up" variant='h3' component='h2' align="center" sx={{
-                                fontSize: { xs: "35px", md: "45px" },
-                                '&::after': {
-                                    content: '""',
-                                    display: "block",
-                                    width: '100%',
-                                    height: '40px',
-                                    backgroundImage: `url(${ChoiceBg})`,
-                                    backgroundRepeat: "no-repeat",
-                                    backgroundSize: "cover",
-                                    position: 'absolute',
-                                    bottom: '-30px',
-                                    left: 0,
-                                },
-                            }}>
-                            Why We Choose <span style={{ color: "green" }}>Jobhub</span>
-                        </Typography>
-                    </Grid2>
-                </Grid2>
+    ];
 
-                <Grid2 container spacing={{ xs: 3, lg: 20 }} sx={{
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    pb: 10,
-                    flexDirection: { xs: "column-reverse", sm: "column-reverse", md: "row", lg: "row" }
-                }}>
-                    <Grid2 item xs={12} md={7} sx={{
-                        display: "flex",
-                        flexDirection: "column",
-                        justifyContent: "space-between",
-                        alignItems: "left",
+    return (
+        <Box sx={{ width: '100%', my: 1 }}>
+            <Box
+                sx={{
+                    width: '100%',
+                    backgroundImage: `url(${ChoiceBg})`,
+                    backgroundRepeat: 'no-repeat',
+                    backgroundPosition: 'center',
+                    backgroundSize: 'cover',
+                    py: 5,
+                }}
+            >
+                <Typography
+                    variant="h3"
+                    component="h2"
+                    sx={{
+                        textAlign: 'center',
+
+                        fontSize: { xs: '35px', md: '45px' },
+                        color: 'black',
+                        marginTop: '-24px'
+                    }}
+                >
+                    Why We Choose <span style={{
+                        color: 'green', fontWeight: 'bold',
+                    }}>JOBHUB</span>
+                </Typography>
+            </Box>
+
+            <Box
+                sx={{
+                    px: { xs: 2, md: 19 },
+                    py: 5,
+                }}
+            >
+                <Grid container spacing={4}
+                    sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}
+                >
+                    <Grid item xs={12} md={5} sx={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: {xs:'flex-start',sm:'center', md: 'flex-start'},
+                        marginLeft: { xs: '30px', md: '0' },
                     }}>
                         {iconItems.map((item, index) => (
-                            <Grid2 data-aos="fade-up" container spacing={{ xs: 0, md: 2 }} sx={{ mt: 4 }} key={index}>
-                                <Grid2 item xs={2} md={2}>
-                                    <img src={item.icon} height="30px" width="30px" alt={`icon-${index + 1}`} />
-                                </Grid2>
-                                <Grid2 item xs={10} md={10}>
-                                    <Typography variant='h6' component='h2' align="left">
-                                        {item.title}
-                                    </Typography>
-                                </Grid2>
-                            </Grid2>
+                            <Box
+                                key={index}
+                                sx={{
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    mb: 2,
+                                }}
+                                data-aos="fade-up"
+                            >
+                                <img
+                                    src={item.icon}
+                                    alt={item.title}
+                                    style={{ width: '30px', height: '30px', marginRight: '15px' }}
+                                />
+                                <Typography
+                                    variant="h6"
+                                    sx={{
+                                        fontSize: { xs: '15px', md: '18px' },
+                                        color: 'black',
+                                        textAlign: 'left',
+                                    }}
+                                >
+                                    {item.title}
+                                </Typography>
+                            </Box>
                         ))}
-                    </Grid2>
-                    <Grid2 data-aos="flip-right" data-aos-duration='3000' item xs={12} md={5}>
-                        <img src={img8} width="300px" height="200x" alt="Mobile View" />
-                    </Grid2>
-                </Grid2>
+                    </Grid>
+
+                    <Grid
+                        item
+                        xs={12}
+                        md={6}
+                        sx={{
+                            display: { xs: 'none', md: 'flex' },
+                            justifyContent: 'center',
+                            flexDirection: 'column',
+                            alignItems: 'center',
+                        }}
+                    >
+                        <Box
+                            sx={{
+                                display: 'flex',
+                                justifyContent: 'center',
+                                alignItems: 'center',
+                                width: '100%',
+                            }}
+                        >
+                            <img
+                                src={img8}
+                                alt="Jobhub Mobile App"
+                                style={{ width: '60%', maxWidth: '400px' }}
+                            />
+                        </Box>
+                    </Grid>
+
+
+                </Grid>
             </Box>
-        </>
-    )
-}
+        </Box>
+    );
+};
 
 export default ChoiceSection;

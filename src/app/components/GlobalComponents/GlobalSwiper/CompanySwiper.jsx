@@ -3,8 +3,9 @@ import styled from "styled-components";
 
 const Container = styled.div`
   .slider {
-    margin-top: 70px;
-    padding: 2em 0;
+    margin-top: 0;
+    margin-bottom: 90px;
+    padding: 1em 0;
     overflow: hidden;
     position: relative;
     width: 100%; /* Full width container */

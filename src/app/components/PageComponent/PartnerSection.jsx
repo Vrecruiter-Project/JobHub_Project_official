@@ -42,7 +42,7 @@ const PartnerSection = () => {
 
   return (
     <>
-      <Box sx={{ width: '100%', mx: 'auto' }}>
+      <Box sx={{ width: '100%', }}>
         <Grid2
           container
           xs={12}
@@ -51,7 +51,7 @@ const PartnerSection = () => {
             justifyContent: 'center',
             alignItems: 'center',
             pt: { xs: 8, md: 3 },
-            pb: { xs: 5, md: 3 },
+            pb: { xs: 2, md: 3 },
             backgroundImage: { xs: 'none', md: `url(${PartnersBg})` },
             backgroundRepeat: 'no-repeat',
             backgroundSize: '100%',
