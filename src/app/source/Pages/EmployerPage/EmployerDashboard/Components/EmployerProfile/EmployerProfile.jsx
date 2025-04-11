@@ -41,7 +41,7 @@ const EmployerProfile = () => {
     if (sanitizedData.password) {
       sanitizedData.password = '••••••••';
     }
-    console.log("Profile Data:", sanitizedData);
+    // console.log("Profile Data:", sanitizedData);
   };
 
   safeLogProfileData(profileData);
