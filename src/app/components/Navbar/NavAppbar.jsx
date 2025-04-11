@@ -78,7 +78,7 @@ const NavDrawer = () => {
             transition: 'all 0.3s ease-in-out',
           }}
         >
-          <Toolbar sx={{ justifyContent: 'space-between' }}>
+          <Toolbar sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
             {/* Logo */}
             <Box
               component="img"
@@ -90,40 +90,43 @@ const NavDrawer = () => {
 
             {/* Desktop Menu */}
             {!isMobile && (
-              <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-                {pages.map((page) => (
-                  <Button
-                    key={page.label}
-                    onClick={() => handleNavigate(page.path, page.external)}
-                    sx={{
-                      color: isActiveRoute(page.path) ? 'green' : 'black',
-                      fontWeight: 600,
-                      '&:hover': { color: 'green' },
-                    }}
-                  >
-                    {page.label}
-                  </Button>
-                ))}
-                <ButtonComponent
-                  title="Login"
-                  onClick={handleLogin}
-                  sx={{
-                    px: 4,
-                    py: 1.5,
-                    backgroundColor: 'green',
-                    color: 'white',
-                    fontWeight: 'bold',
-                  }}
-                />
-              </Box>
-            )}
+    <Box sx={{ flex: 1, display: 'flex', justifyContent: 'center', gap: 3 }}>
+      {pages.map((page) => (
+        <Button
+          key={page.label}
+          onClick={() => handleNavigate(page.path, page.external)}
+          sx={{
+            color: isActiveRoute(page.path) ? 'green' : 'black',
+            fontWeight: 600,
+            '&:hover': { color: 'green' },
+          }}
+        >
+          {page.label}
+        </Button>
+      ))}
+    </Box>
+  )}
 
-            {/* Mobile Hamburger Icon */}
-            {isMobile && (
-              <IconButton onClick={toggleDrawer(true)} edge="end" color="inherit">
-                <MenuIcon />
-              </IconButton>
-            )}
+  {/* Right - Login or Menu Icon */}
+  <Box>
+    {!isMobile ? (
+      <ButtonComponent
+        title="Login"
+        onClick={handleLogin}
+        sx={{
+          px: 4,
+          py: 1.5,
+          backgroundColor: 'green',
+          color: 'white',
+          fontWeight: 'bold',
+        }}
+      />
+    ) : (
+      <IconButton onClick={toggleDrawer(true)} edge="end" color="inherit">
+        <MenuIcon />
+      </IconButton>
+    )}
+  </Box>
           </Toolbar>
         </AppBar>
       </HideOnScroll>
