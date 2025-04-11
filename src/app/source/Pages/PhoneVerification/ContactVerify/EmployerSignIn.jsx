@@ -36,7 +36,7 @@ const EmployerSignIn = () => {
     } catch (error) {
       toast.error(error);
     } finally {
-      setLoading(false); 
+      setLoading(false);
     }
   };
 
@@ -53,24 +53,24 @@ const EmployerSignIn = () => {
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center",
         backgroundSize: "cover",
-        position: "relative", 
+        position: "relative",
       }}
     >
       {/* Full-page Loading Spinner Overlay */}
       {loading && (
         <Box
           sx={{
-            position: "absolute", 
+            position: "absolute",
             top: 0,
             left: 0,
             width: "100%",
             height: "100%",
-            backgroundColor: "rgba(255, 255, 255, 0.7)", 
-            zIndex: 10, 
+            backgroundColor: "rgba(255, 255, 255, 0.7)",
+            zIndex: 10,
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            backdropFilter: "blur(5px)", 
+            backdropFilter: "blur(5px)",
           }}
         >
           <CircularProgress size={60} sx={{ color: "#00C853" }} />
@@ -85,13 +85,14 @@ const EmployerSignIn = () => {
         <Box
           sx={{
             maxWidth: "1000px",
-            width: "100%",
+            width: { xs: "90%", md: "100%" },
+            margin:{xs:'20px', sm:'30px', md:'0'},
             borderRadius: "16px",
             overflow: "hidden",
             boxShadow: "0 15px 40px rgba(0,0,0,0.2)",
             backgroundColor: "#ffffff",
-            position: "relative", 
-            zIndex: 2, 
+            position: "relative",
+            zIndex: 2,
           }}
         >
           <Box
@@ -107,7 +108,7 @@ const EmployerSignIn = () => {
                 background:
                   "linear-gradient(135deg, #00C853, #B2FF59)",
                 color: "#fff",
-                display: "flex",
+                display: { xs: "none", md: "flex" },
                 flexDirection: "column",
                 justifyContent: "center",
                 alignItems: "center",
@@ -135,11 +136,12 @@ const EmployerSignIn = () => {
             <Box
               sx={{
                 flex: 1,
-                padding: "100px",
+                padding: { xs: "25px", md: "100px" },
+                paddingTop:'10px',
                 background: "#f9f9f9",
                 textAlign: "center",
                 position: "relative",
-                zIndex: 2, 
+                zIndex: 2,
               }}
             >
               <Typography variant="h4" fontWeight="bold" sx={{ mb: 3 }}>
@@ -152,8 +154,8 @@ const EmployerSignIn = () => {
                   placeholder="Enter Email Address"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  fullWidth
-                  sx={{ mb: 3 }}
+                  size="small"
+                  sx={{ mb: 3, width: { xs: '200px', sm: '300px', md: '400px' } }}
                 />
                 <TextField
                   type="password"
@@ -161,8 +163,10 @@ const EmployerSignIn = () => {
                   placeholder="Enter Password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  fullWidth
-                  sx={{ mb: 4 }}
+
+                  size="small"
+                  sx={{ mb: 3, width: { xs: '200px', sm: '300px', md: '400px' } }}
+
                 />
 
                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
@@ -173,7 +177,7 @@ const EmployerSignIn = () => {
                       padding: "10px 20px",
                       background: "linear-gradient(135deg, #00C853, #B2FF59)",
                       color: "#fff",
-                      fontSize: "16px",
+                      fontSize: {xs:'12px', lg:"16px"},
                       borderRadius: "8px",
                       "&:hover": {
                         background: "linear-gradient(135deg, #00C853, #76FF03)",
