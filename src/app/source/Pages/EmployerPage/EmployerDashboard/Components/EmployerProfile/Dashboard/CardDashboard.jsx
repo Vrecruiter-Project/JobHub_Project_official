@@ -1,16 +1,33 @@
-import { BusinessCenter,  Delete, Group, Task } from "@mui/icons-material";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { BusinessCenter, Delete, Group, InfoOutlined, Task } from "@mui/icons-material";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { myStudents } from "../../../../../../../service/operations/employeeApi";
-import {  useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { Box, Typography, Card, useTheme, Button, Dialog, DialogContent, TextField, Checkbox } from "@mui/material";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import Logo from "/log.svg";
-
+import Avatar from '@mui/material/Avatar';
+import AvatarGroup from '@mui/material/AvatarGroup';
+import Tooltip, { tooltipClasses } from '@mui/material/Tooltip';
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import EmImage from "../../../../../../../assets/Images/EmployerDashboardAsset/employer.png";
 import { BASE_URL } from "../../../../../../../service/apis";
-// theme.background.paper
+import { styled } from '@mui/material/styles';// theme.background.paper
 // Create custom dark theme
+
+const HtmlTooltip = styled(({ className, ...props }) => (
+  <Tooltip {...props} classes={{ popper: className }} />
+))(({ theme }) => ({
+  [`& .${tooltipClasses.tooltip}`]: {
+    backgroundColor: '#f5f5f9',
+    color: 'rgba(0, 0, 0, 0.87)',
+    maxWidth: 220,
+    fontSize: theme.typography.pxToRem(12),
+    border: '1px solid #dadde9',
+  },
+}));
+
+
+
 const darkTheme = createTheme({
   palette: {
     mode: "dark",
@@ -91,20 +108,20 @@ const Cards = () => {
 
 
   const handleSaveTask = () => {
-  if (newTask.description.trim() === '') return;
+    if (newTask.description.trim() === '') return;
 
-  const updatedTasks = [...tasks, {
-    id: Date.now(),
-    description: newTask.description,
-    highPriority: newTask.highPriority
-  }];
+    const updatedTasks = [...tasks, {
+      id: Date.now(),
+      description: newTask.description,
+      highPriority: newTask.highPriority
+    }];
 
-  setTasks(updatedTasks);
-  // localStorage will be updated automatically by the useEffect
-  setNewTask({ description: '', highPriority: false });
-  closeDialog();
+    setTasks(updatedTasks);
+    // localStorage will be updated automatically by the useEffect
+    setNewTask({ description: '', highPriority: false });
+    closeDialog();
   };
-  
+
   const getCandidateNumber = useCallback(async () => {
     const response = await myStudents(token);
     if (response.students && response.students.length > 0) {
@@ -116,7 +133,7 @@ const Cards = () => {
             student.jobs.some((job) => targetJobIds.includes(job))
         )
       );
-      setJobsCount(filteredStudents);  
+      setJobsCount(filteredStudents);
 
     }
   }, [token, jobId, employeeJobIds]);
@@ -124,7 +141,7 @@ const Cards = () => {
   useEffect(() => {
     const getJobs = async () => {
       const response = await fetch(
-      `${BASE_URL}/admins/alljobs`
+        `${BASE_URL}/admins/alljobs`
       );
       const data = await response.json();
       const extracted = data.jobs;
@@ -140,455 +157,510 @@ const Cards = () => {
 
   return (
     <ThemeProvider theme={darkTheme}>
-      <Box sx={{height:'100vh', overflowY:'auto'}}>
-      <Box
-        sx={{
-          padding: "20px",
-          display: "flex",
-          gap: 3,
-          flexWrap: "wrap",
-          justifyContent: "center",
-          mb: 4,
-          backgroundColor: theme.palette.background.default,
-        }}
-      >
-        
-        {/* Jobs Card */}
-        <Card
-          sx={{
-            flex: "1 1 300px",
-            p: 3,
-            borderRadius: 4,
-            boxShadow: theme.shadows[4],
-            background: `linear-gradient(135deg, ${theme.palette.primary.dark} 0%, ${theme.palette.primary.light} 100%)`,
-            transition: "transform 0.3s, box-shadow 0.3s",
-            "&:hover": {
-              transform: "translateY(-5px)",
-              boxShadow: theme.shadows[8],
-            },
-          }}
-        >
-          <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
-            <Box
-              sx={{
-                p: 2,
-                borderRadius: "50%",
-                backgroundColor: theme.palette.primary.main,
-                color: theme.palette.getContrastText(
-                  theme.palette.primary.main
-                ),
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-            >
-              <BusinessCenter fontSize="medium" />
-            </Box>
-            <Box>
-              <Typography variant="subtitle2" color="text.secondary">
-                Total Jobs
-              </Typography>
-              <Typography variant="h4" fontWeight="bold" color="text.primary">
-                {jobsLength.length}
-              </Typography>
-            </Box>
-          </Box>
-        </Card>
-
-        {/* Candidates Card */}
-        <Card
-          sx={{
-            flex: "1 1 300px",
-            p: 3,
-            borderRadius: 4,
-            boxShadow: theme.shadows[4],
-            background: `linear-gradient(135deg, ${theme.palette.secondary.dark} 0%, ${theme.palette.secondary.light} 100%)`,
-            transition: "transform 0.3s, box-shadow 0.3s",
-            "&:hover": {
-              transform: "translateY(-5px)",
-              boxShadow: theme.shadows[8],
-            },
-          }}
-        >
-          <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
-            <Box
-              sx={{
-                p: 2,
-                borderRadius: "50%",
-                backgroundColor: theme.palette.secondary.main,
-                color: theme.palette.getContrastText(
-                  theme.palette.secondary.main
-                ),
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-            >
-              <Group fontSize="medium" />
-            </Box>
-            <Box>
-              <Typography variant="subtitle2" color="text.secondary">
-                Total Candidates
-              </Typography>
-              <Typography variant="h4" fontWeight="bold" color="text.primary">
-                {jobsCount.length}
-              </Typography>
-            </Box>
-          </Box>
-        </Card>
-      </Box>
-
-      <Card
-        sx={{
-          overflowY: "auto",
-          padding: "20px",
-          display: "flex",
-          flexDirection: { xs: "column", md: "row" },
-          justifyContent: "space-between",
-          gap: 3,
-          backgroundColor: theme.palette.background.default,
-        }}
-      >
+      <Box sx={{ height: '100vh', overflowY: 'auto' }}>
         <Box
           sx={{
-            borderRadius: "10px",
-            width: { xs: "100%", md: "40%" },
-            height: "60vh",
-            backgroundColor: theme.palette.background.paper,
+            padding: "20px",
+            display: "flex",
+            gap: 3,
+            flexWrap: "wrap",
+            justifyContent: "center",
+            mb: 4,
+            backgroundColor: theme.palette.background.default,
           }}
         >
-          <Typography
-            variant="h6"
-            color="text.primary"
+
+          {/* Jobs Card */}
+          <Card
             sx={{
-              borderBottom: `1px solid ${theme.palette.divider}`,
-              padding: "10px 20px",
-              backgroundColor: theme.palette.background.paper,
-              color: theme.palette.text.primary,
+              flex: "1 1 300px",
+              p: 3,
+              borderRadius: 4,
+              boxShadow: theme.shadows[4],
+              background: `linear-gradient(135deg, ${theme.palette.primary.dark} 0%, ${theme.palette.primary.light} 100%)`,
+              transition: "transform 0.3s, box-shadow 0.3s",
+              "&:hover": {
+                transform: "translateY(-5px)",
+                boxShadow: theme.shadows[8],
+              },
             }}
           >
-            {/* Welcome {employeeData.firstName} {employeeData.lastName} */}
-            WELCOME{" "}
-            <span
-              style={{ borderBottom: `1px solid  ${theme.palette.divider}` }}
+            <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
+              <Box
+                sx={{
+                  p: 2,
+                  borderRadius: "50%",
+                  backgroundColor: theme.palette.primary.main,
+                  color: theme.palette.getContrastText(
+                    theme.palette.primary.main
+                  ),
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <BusinessCenter fontSize="medium" />
+              </Box>
+              <Box>
+                <Typography variant="subtitle2" color="text.secondary">
+                  Total Jobs
+                </Typography>
+                <Typography variant="h4" fontWeight="bold" color="text.primary">
+                  {jobsLength.length}
+                </Typography>
+              </Box>
+            </Box>
+          </Card>
+
+          {/* Candidates Card */}
+          <Card
+            sx={{
+              flex: "1 1 300px",
+              p: 3,
+              borderRadius: 4,
+              boxShadow: theme.shadows[4],
+              background: `linear-gradient(135deg, ${theme.palette.secondary.dark} 0%, ${theme.palette.secondary.light} 100%)`,
+              transition: "transform 0.3s, box-shadow 0.3s",
+              "&:hover": {
+                transform: "translateY(-5px)",
+                boxShadow: theme.shadows[8],
+              },
+            }}
+          >
+            <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
+              <Box
+                sx={{
+                  p: 2,
+                  borderRadius: "50%",
+                  backgroundColor: theme.palette.secondary.main,
+                  color: theme.palette.getContrastText(
+                    theme.palette.secondary.main
+                  ),
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <Group fontSize="medium" />
+              </Box>
+              <Box>
+                <Typography variant="subtitle2" color="text.secondary">
+                  Total Candidates
+                </Typography>
+                <Typography variant="h4" fontWeight="bold" color="text.primary">
+                  {jobsCount.length}
+                </Typography>
+              </Box>
+            </Box>
+          </Card>
+        </Box>
+
+        <Card
+          sx={{
+            overflowY: "auto",
+            padding: "20px",
+            display: "flex",
+            flexDirection: { xs: "column", md: "row" },
+            justifyContent: "space-between",
+            gap: 3,
+            backgroundColor: theme.palette.background.default,
+          }}
+        >
+          <Box
+            sx={{
+              borderRadius: "10px",
+              width: { xs: "100%", md: "40%" },
+              height: "60vh",
+              backgroundColor: theme.palette.background.paper,
+            }}
+          >
+            <Typography
+              variant="h6"
+              color="text.primary"
+              sx={{
+                borderBottom: `1px solid ${theme.palette.divider}`,
+                padding: "10px 20px",
+                backgroundColor: theme.palette.background.paper,
+                color: theme.palette.text.primary,
+              }}
             >
-              {employeeData.fullName}
-            </span>
-          </Typography>
-          {/* <Box sx={{ padding: "10px" }}>
+              {/* Welcome {employeeData.firstName} {employeeData.lastName} */}
+              WELCOME{" "}
+              <span
+                style={{ borderBottom: `1px solid  ${theme.palette.divider}` }}
+              >
+                {employeeData.fullName}
+              </span>
+            </Typography>
+            {/* <Box sx={{ padding: "10px" }}>
             <LineChart theme={theme} />
           </Box> */}
 
-          <Box
-            sx={{
-              padding: "20px",
-              color: theme.palette.text.primary,
-              height: "53vh",
-              position: "relative",
-              overflow: "hidden", // This will hide any parts of the image that overflow the box
-              backgroundColor: theme.palette.background.paper,
-            }}
-          >
-
             <Box
               sx={{
-                position: "absolute",
-                bottom: 0,
-                left: 0,
-                width: "100%",
-                height: "2%",
-                backgroundColor: "#89c769",
-                borderBottomRightRadius: "10px",
-                borderBottomLeftRadius: "10px",
-                zIndex: 1,
-              }}
-            />
-
-            {/* Content */}
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                height: "100%",
-                position: "relative", // This creates a new stacking context
-                // This ensures content stays above the blue rectangle
-              }}
-            >
-              <img style={{ width: "90px", marginLeft: '-20px' }} src={Logo} alt="job hub image" />
-              <Typography sx={{ fontSize: { xs: "10px", sm: "12px", md: "16px" }, fontWeight: "600", color: theme.palette.text.secondary }}>
-                Thanks for using our service{" "}
-              </Typography>
-              <span
-                style={{
-                  borderBottom: `1px solid ${theme.palette.divider}`,
-                  width: "11%",
-                  marginTop: "20px",
-                }}
-              >
-                {/* be more{" "} */}
-              </span>
-              <Typography
-                sx={{
-                  fontSize: { xs: "4rem", sm: "5rem", md: "6rem" },
-                  lineHeight: "1",
-                  width: "25%",
-                  fontFamily: "monospace",
-                  fontWeight: "900",
-                }}
-              >
-                Hire
-                <br />
-                Now!
-              </Typography>{" "}
-            </div>
-
-            {/* Image positioned behind the blue rectangle */}
-            <img
-              style={{
-                width: "50%",
-                position: "absolute",
-                right: "30px",
-                bottom: "-20px",
-                zIndex: 0,
-              }}
-              src={EmImage}
-              alt=""
-            />
-          </Box>
-        </Box>
-
-        <Box
-          sx={{
-            borderRadius: "10px",
-            width: { xs: "100%", md: "30%" },
-            maxHeight: "calc(100vh - 289px)",
-            display: "flex",
-            flexDirection: "column",
-            position: "sticky",
-            alignSelf: "flex-start",
-            backgroundColor: theme.palette.background.paper,
-          }}
-        >
-          <Typography
-            variant="h6"
-            color="text.primary"
-            sx={{
-              borderTopLeftRadius: "10px",
-              borderTopRightRadius: "10px",
-              borderBottom: `1px solid ${theme.palette.divider}`,
-              padding: "10px 20px",
-              position: "sticky",
-              top: 0,
-              backgroundColor: theme.palette.background.paper,
-              zIndex: 1,
-              color: theme.palette.text.primary,
-            }}
-          >
-            Posted Jobs
-          </Typography>
-          <Box
-            sx={{
-              overflowY: "auto",
-              padding: "0 0 10px 0",
-              "&::-webkit-scrollbar": {
-                width: "6px",
-              },
-              "&::-webkit-scrollbar-track": {
-                background: theme.palette.action.hover,
-                borderRadius: "10px",
-              },
-              "&::-webkit-scrollbar-thumb": {
-                background: theme.palette.text.secondary,
-                borderRadius: "10px",
-              },
-              "&::-webkit-scrollbar-thumb:hover": {
-                background: theme.palette.text.primary,
-              },
-            }}
-          >
-            {getsjobs.map((job, index) => (
-              <Box
-                key={index}
-                sx={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  padding: "10px 20px",
-                  "&:hover": {
-                    backgroundColor: theme.palette.action.hover,
-                    cursor: "pointer",
-                  },
-                }}
-              >
-                <Box sx={{ display: "flex", gap: 2, alignItems: "center" }}>
-                  <img
-                    style={{
-                      width: "25%",
-                      height: "auto",
-                      borderRadius: "50px",
-                      objectFit: "cover",
-                    }}
-                    src={employeeData.avatar}
-                    alt="Company"
-                  />
-                  <Box>
-                    <Typography
-                      variant="body1"
-                      fontWeight={500}
-                      sx={{ color: theme.palette.text.primary }}
-                    >
-                      {job.jobTitle}
-                    </Typography>
-                    <Typography
-                      variant="caption"
-                      sx={{ color: theme.palette.text.secondary }}
-                    >
-                      {`${job.jobType}, ${job.jobLocation}`}
-                    </Typography>
-                  </Box>
-                </Box>
-                <MoreHorizIcon sx={{ color: "text.secondary" }} />
-              </Box>
-            ))}
-          </Box>
-        </Box>
-        <Box
-          sx={{
-            borderRadius: "10px",
-            width: { xs: "100%", md: "30%" },
-            maxHeight: "calc(100vh - 289px)",
-            display: "flex",
-            flexDirection: "column",
-            position: "sticky",
-            alignSelf: "flex-start",
-            backgroundColor: theme.palette.background.paper,
-          }}
-        >
-          <Typography
-            variant="h6"
-            color="text.primary"
-            sx={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "space-between",
-              borderTopLeftRadius: "10px",
-              borderTopRightRadius: "10px",
-              borderBottom: `1px solid ${theme.palette.divider}`,
-              padding: "10px 20px",
-              position: "sticky",
-              top: 0,
-              backgroundColor: theme.palette.background.paper,
-              zIndex: 1,
-              color: theme.palette.text.primary,
-            }}
-          >
-            <div>
-              <Task fontSize="small" sx={{ marginRight: 1 }} /> My Task
-            </div>
-
-            <Button
-              sx={{
-                backgroundColor: "#89c769",
+                padding: "20px",
                 color: theme.palette.text.primary,
+                height: "53vh",
+                position: "relative",
+                overflow: "hidden", // This will hide any parts of the image that overflow the box
+                backgroundColor: theme.palette.background.paper,
               }}
-              onClick={openDialog}
             >
-              Add Task
-            </Button>
-          </Typography>
-          <Dialog open={dialogOpen} onClose={closeDialog}>
-            <DialogContent sx={{backgroundColor:theme.palette.background.paper}}>
-              <TextField
-                label="Description"
-                fullWidth
-                multiline
-                rows={4}
-                value={newTask.description}
-                onChange={handleDescriptionChange}
+
+              <Box
                 sx={{
-                  marginBottom: 2,
-                  '& .MuiInputBase-root': {
-                    color: theme.palette.text.primary,
-                  },
-                  '& .MuiInputLabel-root': {
-                    color: theme.palette.text.secondary,
-                  },
-                  '& .MuiOutlinedInput-root': {
-                    '& fieldset': {
-                      borderColor: theme.palette.divider,
-                    },
-                    '&:hover fieldset': {
-                      borderColor: theme.palette.text.primary,
-                    },
-                  }
+                  position: "absolute",
+                  bottom: 0,
+                  left: 0,
+                  width: "100%",
+                  height: "2%",
+                  backgroundColor: "#89c769",
+                  borderBottomRightRadius: "10px",
+                  borderBottomLeftRadius: "10px",
+                  zIndex: 1,
                 }}
               />
-              <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
-                <Checkbox
-                  checked={newTask.highPriority}
-                  onChange={handlePriorityChange}
-                  sx={{
-                    color: theme.palette.text.primary,
-                    '&.Mui-checked': {
-                      color: '#90c690',
-                    },
-                  }}
-                />
-                <Typography sx={{ color: theme.palette.text.primary }}>
-                  High Priority
+
+              {/* Content */}
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  height: "100%",
+                  position: "relative", // This creates a new stacking context
+                  // This ensures content stays above the blue rectangle
+                }}
+              >
+                <img style={{ width: "90px", marginLeft: '-20px' }} src={Logo} alt="job hub image" />
+                <Typography sx={{ fontSize: { xs: "10px", sm: "12px", md: "16px" }, fontWeight: "600", color: theme.palette.text.secondary }}>
+                  Thanks for using our service{" "}
                 </Typography>
-              </Box>
-              <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
-                <Button
-                  variant="contained"
-                  onClick={handleSaveTask}
+                <span
+                  style={{
+                    borderBottom: `1px solid ${theme.palette.divider}`,
+                    width: "11%",
+                    marginTop: "20px",
+                  }}
+                >
+                  {/* be more{" "} */}
+                </span>
+                <Typography
                   sx={{
-                    backgroundColor: "#89c769",
-                    color: theme.palette.text.primary,
-                    '&:hover': {
-                      backgroundColor: "#7cb85c",
+                    fontSize: { xs: "4rem", sm: "5rem", md: "6rem" },
+                    lineHeight: "1",
+                    width: "25%",
+                    fontFamily: "monospace",
+                    fontWeight: "900",
+                  }}
+                >
+                  Hire
+                  <br />
+                  Now!
+                </Typography>{" "}
+              </div>
+
+              {/* Image positioned behind the blue rectangle */}
+              <img
+                style={{
+                  width: "50%",
+                  position: "absolute",
+                  right: "30px",
+                  bottom: "-20px",
+                  zIndex: 0,
+                }}
+                src={EmImage}
+                alt=""
+              />
+            </Box>
+          </Box>
+
+          <Box
+            sx={{
+              borderRadius: "10px",
+              width: { xs: "100%", md: "30%" },
+              maxHeight: "calc(100vh - 289px)",
+              display: "flex",
+              flexDirection: "column",
+              position: "sticky",
+              alignSelf: "flex-start",
+              backgroundColor: theme.palette.background.paper,
+            }}
+          >
+            <Typography
+              variant="h6"
+              color="text.primary"
+              sx={{
+                borderTopLeftRadius: "10px",
+                borderTopRightRadius: "10px",
+                borderBottom: `1px solid ${theme.palette.divider}`,
+                padding: "10px 20px",
+                position: "sticky",
+                top: 0,
+                backgroundColor: theme.palette.background.paper,
+                zIndex: 1,
+                color: theme.palette.text.primary,
+              }}
+            >
+              Posted Jobs
+            </Typography>
+            <Box
+              sx={{
+                overflowY: "auto",
+                padding: "0 0 10px 0",
+                "&::-webkit-scrollbar": {
+                  width: "6px",
+                },
+                "&::-webkit-scrollbar-track": {
+                  background: theme.palette.action.hover,
+                  borderRadius: "10px",
+                },
+                "&::-webkit-scrollbar-thumb": {
+                  background: theme.palette.text.secondary,
+                  borderRadius: "10px",
+                },
+                "&::-webkit-scrollbar-thumb:hover": {
+                  background: theme.palette.text.primary,
+                },
+              }}
+            >
+              {getsjobs.map((job, index) => (
+                <Box
+                  key={index}
+                  sx={{
+                    display: "flex",
+
+                    justifyContent: "space-between",
+                    padding: "10px 20px",
+                    "&:hover": {
+                      backgroundColor: theme.palette.action.hover,
+
                     },
                   }}
                 >
-                  Save
-                </Button>
-              </Box>
-            </DialogContent>
-          </Dialog>
-          <Box sx={{ padding: "10px", overflowY: "auto" }}>
-            {tasks.map(task => (
-              <div key={task.id} style={{ marginBottom: '16px' }}>
-                <p style={{ color: theme.palette.text.primary }}>
-                  {task.description}
-                </p>
-                <div style={{ display: "flex", justifyContent: "space-between" }}>
-                  <Typography
-                    sx={{ 
-                      backgroundColor: task.highPriority ? "rgb(234, 197, 195)" : "#90c690",
-                      padding: "1px 5px 1px 5px ",
-                      // fontSize: { xs: "4rem", sm: "5rem", md: "6rem" },
-                      fontSize: {xs:"9px", sm:"11px", md:'13px'},
-                      borderRadius: "5px",
-                      marginTop: "5px",
-                      color: task.highPriority ? "red" : "green",
+                  <Box sx={{ display: "flex", gap: 2, alignItems: "center" }}>
+                    <img
+                      style={{
+                        width: "25px",
+                        height: "auto",
+                        borderRadius: "50px",
+                        objectFit: "cover",
+                      }}
+                      src={employeeData.avatar}
+                      alt="Company"
+                    />
+                    <Box>
+                      <Typography
+                        variant="body1"
+                        fontWeight={500}
+                        sx={{ color: theme.palette.text.primary }}
+                      >
+                        {job.jobTitle}
+                      </Typography>
+                      <Typography
+                        variant="caption"
+                        sx={{ color: theme.palette.text.secondary }}
+                      >
+                        {`${job.jobType}, ${job.jobLocation}`}
+                      </Typography>
+                    </Box>
+                  </Box>
+
+                  <Box>
+                    <MoreHorizIcon sx={{ color: "text.secondary" }} />
+
+                    <Box sx={{ display: "flex", gap: 1, alignItems: "center" }}>
+                      {job.students && job.students.length > 0 ? (
+                        <>
+                          <AvatarGroup
+                            max={3}
+                            total={job.students.length > 3 ? job.students.length : undefined}
+                            renderSurplus={(surplus) => <span style={{marginLeft:'6px'}}>{surplus.toString()[0]}<span style={{fontSize:"7px"}}>+</span></span>}
+                          >
+                            
+                            {job.students.slice(0, 3).map((student) => (
+                              <Avatar
+                                key={student._id}
+                                alt={`${student.firstName} ${student.lastName}`}
+                                src="https://t4.ftcdn.net/jpg/03/64/21/11/360_F_364211147_1qgLVxv1Tcq0Ohz3FawUfrtONzz8nq3e.jpg"
+                                sx={{ width: '20px', height: '20px' }}
+                              />
+                              
+                              
+                            ))}
+                            
+                          </AvatarGroup>
+
+                          <Tooltip
+                            placement="top"
+                            title={
+                              <React.Fragment>
+                                <Typography color="inherit">Applicants for <u className="text-green-600">{job.jobTitle}</u></Typography>
+                                {job.students.slice(0,3).map((student) => (
+                                  <div key={student._id} className="inline-flex mx-0.5 py-1 italic" style={{fontSize: '12px'}}>
+                                    <span>
+                                      {student.firstName}
+                                    </span>
+                                  </div>
+                                ))}
+                                <span>and more showed interest in this Job</span>
+                              </React.Fragment>
+                            }
+                          >
+                            <InfoOutlined
+                              sx={{ color: "text.secondary", width: '15px', cursor: 'pointer' }}
+                            />
+                          </Tooltip>
+                        </>
+                      ) : (
+                        <Typography variant="body2" color="text.secondary">
+                          No applicants
+                        </Typography>
+                      )}
+                    </Box>
+
+                  </Box>
+                </Box>
+              ))}
+            </Box>
+          </Box>
+          <Box
+            sx={{
+              borderRadius: "10px",
+              width: { xs: "100%", md: "30%" },
+              maxHeight: "calc(100vh - 289px)",
+              display: "flex",
+              flexDirection: "column",
+              position: "sticky",
+              alignSelf: "flex-start",
+              backgroundColor: theme.palette.background.paper,
+            }}
+          >
+            <Typography
+              variant="h6"
+              color="text.primary"
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+                borderTopLeftRadius: "10px",
+                borderTopRightRadius: "10px",
+                borderBottom: `1px solid ${theme.palette.divider}`,
+                padding: "10px 20px",
+                position: "sticky",
+                top: 0,
+                backgroundColor: theme.palette.background.paper,
+                zIndex: 1,
+                color: theme.palette.text.primary,
+              }}
+            >
+              <div>
+                <Task fontSize="small" sx={{ marginRight: 1 }} /> My Task
+              </div>
+
+              <Button
+                sx={{
+                  backgroundColor: "#89c769",
+                  color: theme.palette.text.primary,
+                }}
+                onClick={openDialog}
+              >
+                Add Task
+              </Button>
+            </Typography>
+            <Dialog open={dialogOpen} onClose={closeDialog}>
+              <DialogContent sx={{ backgroundColor: theme.palette.background.paper }}>
+                <TextField
+                  label="Description"
+                  fullWidth
+                  multiline
+                  rows={4}
+                  value={newTask.description}
+                  onChange={handleDescriptionChange}
+                  sx={{
+                    marginBottom: 2,
+                    '& .MuiInputBase-root': {
+                      color: theme.palette.text.primary,
+                    },
+                    '& .MuiInputLabel-root': {
+                      color: theme.palette.text.secondary,
+                    },
+                    '& .MuiOutlinedInput-root': {
+                      '& fieldset': {
+                        borderColor: theme.palette.divider,
+                      },
+                      '&:hover fieldset': {
+                        borderColor: theme.palette.text.primary,
+                      },
+                    }
+                  }}
+                />
+                <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
+                  <Checkbox
+                    checked={newTask.highPriority}
+                    onChange={handlePriorityChange}
+                    sx={{
+                      color: theme.palette.text.primary,
+                      '&.Mui-checked': {
+                        color: '#90c690',
+                      },
+                    }}
+                  />
+                  <Typography sx={{ color: theme.palette.text.primary }}>
+                    High Priority
+                  </Typography>
+                </Box>
+                <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
+                  <Button
+                    variant="contained"
+                    onClick={handleSaveTask}
+                    sx={{
+                      backgroundColor: "#89c769",
+                      color: theme.palette.text.primary,
+                      '&:hover': {
+                        backgroundColor: "#7cb85c",
+                      },
                     }}
                   >
-                    {task.highPriority ? "High Priority" : "Low Priority"}
-                  </Typography>
-                  <div>
-                    <Delete
-                      sx={{ color: theme.palette.text.primary , cursor:'pointer'}}
-                      
-                      onClick={() => {
-                        setTasks(tasks.filter(t => t.id !== task.id));
+                    Save
+                  </Button>
+                </Box>
+              </DialogContent>
+            </Dialog>
+            <Box sx={{ padding: "10px", overflowY: "auto" }}>
+              {tasks.map(task => (
+                <div key={task.id} style={{ marginBottom: '16px' }}>
+                  <p style={{ color: theme.palette.text.primary }}>
+                    {task.description}
+                  </p>
+                  <div style={{ display: "flex", justifyContent: "space-between" }}>
+                    <Typography
+                      sx={{
+                        backgroundColor: task.highPriority ? "rgb(234, 197, 195)" : "#90c690",
+                        padding: "1px 5px 1px 5px ",
+                        // fontSize: { xs: "4rem", sm: "5rem", md: "6rem" },
+                        fontSize: { xs: "9px", sm: "11px", md: '13px' },
+                        borderRadius: "5px",
+                        marginTop: "5px",
+                        color: task.highPriority ? "red" : "green",
                       }}
-                    />
+                    >
+                      {task.highPriority ? "High Priority" : "Low Priority"}
+                    </Typography>
+                    <div>
+                      <Delete
+                        sx={{ color: theme.palette.text.primary, cursor: 'pointer' }}
+
+                        onClick={() => {
+                          setTasks(tasks.filter(t => t.id !== task.id));
+                        }}
+                      />
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </Box>
           </Box>
-        </Box>
-      </Card>
+        </Card>
       </Box>
     </ThemeProvider>
   );
