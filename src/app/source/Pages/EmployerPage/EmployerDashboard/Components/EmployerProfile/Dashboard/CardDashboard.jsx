@@ -11,9 +11,8 @@ import Tooltip, { tooltipClasses } from '@mui/material/Tooltip';
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import EmImage from "../../../../../../../assets/Images/EmployerDashboardAsset/employer.png";
 import { BASE_URL } from "../../../../../../../service/apis";
-import { styled } from '@mui/material/styles';// theme.background.paper
+import { styled } from '@mui/material/styles'; // theme.background.paper
 // Create custom dark theme
-import { getAllJobs } from "../../../../../../../service/operations/jobApi";
 
 const HtmlTooltip = styled(({ className, ...props }) => (
   <Tooltip {...props} classes={{ popper: className }} />
@@ -123,34 +122,59 @@ const Cards = () => {
     closeDialog();
   };
 
-  const getCandidateNumber = useCallback(async () => {
-    const response = await myStudents(token);
-    if (response.students && response.students.length > 0) {
-      const targetJobIds = jobId ? [jobId] : employeeJobIds;
-      const filteredStudents = response.students.flatMap((studentGroup) =>
-        studentGroup.filter(
-          (student) =>
-            student.jobs &&
-            student.jobs.some((job) => targetJobIds.includes(job))
-        )
-      );
-      setJobsCount(filteredStudents);
+  // const getCandidateNumber = useCallback(async () => {
+  //   const response = await myStudents(token);
+  //   if (response.students && response.students.length > 0) {
+  //     const targetJobIds = jobId ? [jobId] : employeeJobIds;
+  //     const filteredStudents = response.students.flatMap((studentGroup) =>
+  //       studentGroup.filter(
+  //         (student) =>
+  //           student.jobs &&
+  //           student.jobs.some((job) => targetJobIds.includes(job))
+  //       )
+  //     );
+  //     setJobsCount(filteredStudents);
 
-    }
-  }, [token, jobId, employeeJobIds]);
-  useEffect(() => {
-    const fetchJobs = async () => {
-      const jobs = await getAllJobs(token);
-      const filtered = jobs.filter(
-        (job) => job.employeeId === employeeData._id
-      );
-      setGetsJobs(filtered);
-    };
+  //   }
+  // }, [token, jobId, employeeJobIds]);
+
+  // useEffect(() => {
+  //   const getJobs = async () => {
+  //     const response = await fetch(
+  //       `${BASE_URL}/admins/alljobs `,
+  //       {
+  //         method: "GET",
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //           "x-api-key": import.meta.env.VITE_API_SECRET_KEY,
+  //         },
+  //       }
+  //     )
+  //     const data = await response.json();
+  //     const extracted = data.jobs;
+  //     const filteredJobs = extracted.filter(
+  //       (job) => job.employeeId === employeeData._id
+  //     );
+  //     setGetsJobs(filteredJobs);
+  //   };
+
+  //   getCandidateNumber();
+  //   getJobs();
+  // }, [employeeData._id, jobId, employeeJobIds, token, getCandidateNumber]);
+
+  // useEffect(() => {
+  //   const getJobs = async () => {
+  //     const jobs = await allJobs(token);
+  //     const filteredJobs = jobs.filter(
+  //       (job) => job.employeeId === employeeData._id
+  //     );
+  //     setGetsJobs(filteredJobs);
+  //   };
   
-    getCandidateNumber(); // assuming it's defined elsewhere
-  
-    if (employeeData._id) fetchJobs();
-  }, [employeeData._id, jobId, employeeJobIds, token, getCandidateNumber]);
+  //   getCandidateNumber(); // assuming this is defined elsewhere
+  //   if (employeeData._id) getJobs();
+  // }, [employeeData._id, jobId, employeeJobIds, token, getCandidateNumber]);
+
   return (
     <ThemeProvider theme={darkTheme}>
       <Box sx={{ height: '100vh', overflowY: 'auto' }}>
@@ -167,7 +191,7 @@ const Cards = () => {
         >
 
           {/* Jobs Card */}
-          <Card
+          {/* <Card
             sx={{
               flex: "1 1 300px",
               p: 3,
@@ -206,10 +230,10 @@ const Cards = () => {
                 </Typography>
               </Box>
             </Box>
-          </Card>
+          </Card> */}
 
           {/* Candidates Card */}
-          <Card
+          {/* <Card
             sx={{
               flex: "1 1 300px",
               p: 3,
@@ -248,7 +272,7 @@ const Cards = () => {
                 </Typography>
               </Box>
             </Box>
-          </Card>
+          </Card> */}
         </Box>
 
         <Card
@@ -470,9 +494,9 @@ const Cards = () => {
                           <AvatarGroup
                             max={3}
                             total={job.students.length > 3 ? job.students.length : undefined}
-                            renderSurplus={(surplus) => <span style={{ marginLeft: '6px' }}>{surplus.toString()[0]}<span style={{ fontSize: "7px" }}>+</span></span>}
+                            renderSurplus={(surplus) => <span style={{marginLeft:'6px'}}>{surplus.toString()[0]}<span style={{fontSize:"7px"}}>+</span></span>}
                           >
-
+                            
                             {job.students.slice(0, 3).map((student) => (
                               <Avatar
                                 key={student._id}
@@ -480,10 +504,10 @@ const Cards = () => {
                                 src="https://t4.ftcdn.net/jpg/03/64/21/11/360_F_364211147_1qgLVxv1Tcq0Ohz3FawUfrtONzz8nq3e.jpg"
                                 sx={{ width: '20px', height: '20px' }}
                               />
-
-
+                              
+                              
                             ))}
-
+                            
                           </AvatarGroup>
 
                           <Tooltip
@@ -491,8 +515,8 @@ const Cards = () => {
                             title={
                               <React.Fragment>
                                 <Typography color="inherit">Applicants for <u className="text-green-600">{job.jobTitle}</u></Typography>
-                                {job.students.slice(0, 3).map((student) => (
-                                  <div key={student._id} className="inline-flex mx-0.5 py-1 italic" style={{ fontSize: '12px' }}>
+                                {job.students.slice(0,3).map((student) => (
+                                  <div key={student._id} className="inline-flex mx-0.5 py-1 italic" style={{fontSize: '12px'}}>
                                     <span>
                                       {student.firstName}
                                     </span>
@@ -663,3 +687,4 @@ const Cards = () => {
 };
 
 export default Cards;
+

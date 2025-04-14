@@ -36,14 +36,14 @@ export const createJob = async (data, token, navigate) => {
 //   }
 // };
 
-export const getAllJobs = async (token) => {
-  try {
-    const response = await apiConnector("GET", ALL_JOBS, {}, {
-      Authorization: `Bearer ${token}`,
-    });
-    return response.data.jobs;
-  } catch (error) {
-    console.error("Error fetching jobs:", error);
-    return [];
-  }
-};
+// export const getAllJobs = async (token) => {
+//   try {
+//     const response = await apiConnector("GET", ALL_JOBS, {}, {
+//       Authorization: `Bearer ${token}`,
+//     });
+//     return response.data.jobs;
+//   } catch (error) {
+//     console.error("Error fetching jobs:", error);
+//     return [];
+//   }
+// };
