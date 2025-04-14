@@ -4,13 +4,14 @@ import cookieParser from "cookie-parser";
 import secureAccess from "./middleware/xapiheader.js";
 const app = express();
 
-
 app.use(
   cors({
     origin: [
       process.env.CLIENT_URL_1,
       process.env.CLIENT_URL_2,
-       "http://localhost:5173",
+      process.env.CLIENT_URL_3,
+      process.env.CLIENT_URL_4,
+      "http://localhost:5173",
     ],
     credentials: true,
   })
