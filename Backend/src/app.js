@@ -7,10 +7,8 @@ const app = express();
 app.use(
   cors({
     origin: [
-      process.env.CLIENT_URL_1,
-      process.env.CLIENT_URL_2,
-      process.env.CLIENT_URL_3,
-      process.env.CLIENT_URL_4,
+      "https://jobhubadmin.vercel.app",
+      "https://admin.jobhub.world",
       "http://localhost:5173",
     ],
     credentials: true,
