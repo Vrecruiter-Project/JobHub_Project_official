@@ -42,4 +42,6 @@ button.MuiButtonBase-root.MuiButton-root.MuiButton-text.MuiButton-textPrimary.Mu
   width: 20px;
   height: 20px;
   font-size: 12px;
+  border: 2px solid rgb(205 205 205);
+  background-color: #cbcbcb;
 }
