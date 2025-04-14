@@ -9,6 +9,7 @@ app.use(
     origin: [
       "https://jobhubadmin.vercel.app",
       "https://admin.jobhub.world",
+      "https://www.admin.jobhub.world",
       "http://localhost:5173",
     ],
     credentials: true,
