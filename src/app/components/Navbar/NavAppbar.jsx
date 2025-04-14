@@ -59,7 +59,7 @@ const NavDrawer = () => {
   };
 
   const handleLogin = () => {
-    window.open('https://jobhubadmin.vercel.app/', '_blank');
+    window.open('https://admin.jobhub.world/', '_blank');
   };
 
   const isActiveRoute = (path) => location.pathname === path;
@@ -90,43 +90,43 @@ const NavDrawer = () => {
 
             {/* Desktop Menu */}
             {!isMobile && (
-    <Box sx={{ flex: 1, display: 'flex', justifyContent: 'center', gap: 3 }}>
-      {pages.map((page) => (
-        <Button
-          key={page.label}
-          onClick={() => handleNavigate(page.path, page.external)}
-          sx={{
-            color: isActiveRoute(page.path) ? 'green' : 'black',
-            fontWeight: 600,
-            '&:hover': { color: 'green' },
-          }}
-        >
-          {page.label}
-        </Button>
-      ))}
-    </Box>
-  )}
+              <Box sx={{ flex: 1, display: 'flex', justifyContent: 'center', gap: 3 }}>
+                {pages.map((page) => (
+                  <Button
+                    key={page.label}
+                    onClick={() => handleNavigate(page.path, page.external)}
+                    sx={{
+                      color: isActiveRoute(page.path) ? 'green' : 'black',
+                      fontWeight: 600,
+                      '&:hover': { color: 'green' },
+                    }}
+                  >
+                    {page.label}
+                  </Button>
+                ))}
+              </Box>
+            )}
 
-  {/* Right - Login or Menu Icon */}
-  <Box>
-    {!isMobile ? (
-      <ButtonComponent
-        title="Login"
-        onClick={handleLogin}
-        sx={{
-          px: 4,
-          py: 1.5,
-          backgroundColor: 'green',
-          color: 'white',
-          fontWeight: 'bold',
-        }}
-      />
-    ) : (
-      <IconButton onClick={toggleDrawer(true)} edge="end" color="inherit">
-        <MenuIcon />
-      </IconButton>
-    )}
-  </Box>
+            {/* Right - Login or Menu Icon */}
+            <Box>
+              {!isMobile ? (
+                <ButtonComponent
+                  title="Login"
+                  onClick={handleLogin}
+                  sx={{
+                    px: 4,
+                    py: 1.5,
+                    backgroundColor: 'green',
+                    color: 'white',
+                    fontWeight: 'bold',
+                  }}
+                />
+              ) : (
+                <IconButton onClick={toggleDrawer(true)} edge="end" color="inherit">
+                  <MenuIcon />
+                </IconButton>
+              )}
+            </Box>
           </Toolbar>
         </AppBar>
       </HideOnScroll>

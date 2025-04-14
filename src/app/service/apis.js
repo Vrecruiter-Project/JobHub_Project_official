@@ -5,16 +5,16 @@ export const SERVER_URL = import.meta.env.VITE_BASE_URL;
 export const BASE_URL = `${SERVER_URL}/api/v1`; 
 
 export const employee = {
-  SEND_OTP: BASE_URL + "/employees/otp-send",
-  CHECK_OTP: BASE_URL + "/employees/check-otp",
-  SIGNUP_LOGIN: BASE_URL + "/employees/register",
-  SIGNIN: BASE_URL + "/employees/login", //login
-  LOGOUT: BASE_URL + "/employees/logout",//logout
-  MYJOBS: BASE_URL + "/employees/my-jobs",
-  EDIT_PROFILE: BASE_URL + "/employees/edit-jobs",
-  My_STUDENTS: BASE_URL + "/employees/my-students",
-  SELECT_STUDENTS: BASE_URL + "/employees/select-students",
-  DE_SELECT_STUDENTS: BASE_URL + "/employees/deselect-students",
+  SEND_OTP: BASE_URL + "/employees/otp-send", //used
+  CHECK_OTP: BASE_URL + "/employees/check-otp", //used
+  SIGNUP_LOGIN: BASE_URL + "/employees/register", 
+  SIGNIN: BASE_URL + "/employees/login", //used
+  LOGOUT: BASE_URL + "/employees/logout", //used
+  MYJOBS: BASE_URL + "/employees/my-jobs", //used
+  EDIT_PROFILE: BASE_URL + "/employees/edit-jobs", //used
+  My_STUDENTS: BASE_URL + "/employees/my-students", //used
+  SELECT_STUDENTS: BASE_URL + "/employees/select-students", 
+  DE_SELECT_STUDENTS: BASE_URL + "/employees/deselect-students", 
   MY_SELECTED_STUDENTS: BASE_URL + "/employees/my-selecting-students",
 };
 

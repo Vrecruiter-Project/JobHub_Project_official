@@ -1,8 +1,7 @@
+//this is only component not use api connector
 import axios from "axios";
 import { SERVER_URL } from "./apis";
-
-const URL=`${SERVER_URL}/api/candidates`
-
+const URL = `${SERVER_URL}/api/candidates`;
 
 const registerCandidate = async (formData) => {
   try {
@@ -10,7 +9,10 @@ const registerCandidate = async (formData) => {
       `${URL}/registercandidate`,
       formData,
       {
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          "x-api-key": import.meta.env.VITE_API_SECRET_KEY ,
+        },
       }
     );
     return response.data;

@@ -4,6 +4,7 @@ import { jobs } from "../apis";
 
 const {
   CREATE_JOB,
+  ALL_JOBS,
   DELELTE_JOB,
   DETAIL_JOB,
   MULTI_DELETE_JOB,
@@ -21,5 +22,28 @@ export const createJob = async (data, token, navigate) => {
     navigate("/employerdashboard");
   } catch (error) {
     toast.error(error.response.data.message);
+  }
+};
+
+// export const allJobs = async (token) => {
+//   try {
+//     const response = await apiConnector("GET", ALL_JOBS, {}, {
+//       // Authorization: `Bearer ${token}`,
+//     });
+//     return response.data.jobs;
+//   } catch (error) {
+//     toast.error(error.response.data.message);
+//   }
+// };
+
+export const getAllJobs = async (token) => {
+  try {
+    const response = await apiConnector("GET", ALL_JOBS, {}, {
+      Authorization: `Bearer ${token}`,
+    });
+    return response.data.jobs;
+  } catch (error) {
+    console.error("Error fetching jobs:", error);
+    return [];
   }
 };

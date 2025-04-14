@@ -21,6 +21,7 @@ import {
 } from "@mui/material";
 import { Grid } from "@mui/joy";
 import { BASE_URL } from "../../../../../../service/apis";
+import { getAllJobs } from "../../../../../../service/operations/jobApi";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -63,23 +64,18 @@ const MyJobs = () => {
   const closeDialog = () => {
     setDialogOpen(false);
   };
+
   useEffect(() => {
     const fetchJobs = async () => {
       try {
         setLoading(true);
-        const response = await fetch(`${BASE_URL}/admins/alljobs`);
-        
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        
-        const data = await response.json();
-        
-        if (!data.jobs || !Array.isArray(data.jobs)) {
+        const jobsData = await getAllJobs(token);
+  
+        if (!Array.isArray(jobsData)) {
           throw new Error("Invalid data format received from API");
         }
-        
-        setJobs(data.jobs);
+  
+        setJobs(jobsData);
       } catch (err) {
         console.error("Error fetching jobs:", err);
         setError(err.message);
@@ -87,9 +83,37 @@ const MyJobs = () => {
         setLoading(false);
       }
     };
-
+  
     fetchJobs();
   }, []);
+
+  // useEffect(() => {
+  //   const fetchJobs = async () => {
+  //     try {
+  //       setLoading(true);
+  //       const response = await fetch(`${BASE_URL}/admins/alljobs`);
+        
+  //       if (!response.ok) {
+  //         throw new Error(`HTTP error! status: ${response.status}`);
+  //       }
+        
+  //       const data = await response.json();
+        
+  //       if (!data.jobs || !Array.isArray(data.jobs)) {
+  //         throw new Error("Invalid data format received from API");
+  //       }
+        
+  //       setJobs(data.jobs);
+  //     } catch (err) {
+  //       console.error("Error fetching jobs:", err);
+  //       setError(err.message);
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   };
+
+  //   fetchJobs();
+  // }, []);
 
   // Get employee's applied jobs from localStorage
   const employee = JSON.parse(localStorage.getItem('employee'));
