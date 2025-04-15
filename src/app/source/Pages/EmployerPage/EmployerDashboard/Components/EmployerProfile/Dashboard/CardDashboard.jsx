@@ -175,6 +175,56 @@ const Cards = () => {
   //   if (employeeData._id) getJobs();
   // }, [employeeData._id, jobId, employeeJobIds, token, getCandidateNumber]);
 
+
+
+  const getCandidateNumber = useCallback(async () => {
+    try {
+      const response = await myStudents(token);
+      if (response?.students?.length > 0) {
+        const targetJobIds = jobId ? [jobId] : employeeJobIds;
+  
+        const filteredStudents = response.students.flatMap((studentGroup) =>
+          studentGroup.filter(
+            (student) =>
+              student.jobs &&
+              student.jobs.some((job) => targetJobIds.includes(job))
+          )
+        );
+  
+        setJobsCount(filteredStudents);
+      }
+    } catch (error) {
+      console.error("Error fetching candidate numbers:", error);
+    }
+  }, [token, jobId, employeeJobIds]);
+  
+  useEffect(() => {
+    const getJobs = async () => {
+      try {
+        const response = await fetch(`${BASE_URL}/admins/alljobs`, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            "x-api-key": import.meta.env.VITE_API_SECRET_KEY,
+          },
+        });
+  
+        const data = await response.json();
+        const filteredJobs = data.jobs?.filter(
+          (job) => job.employeeId === employeeData._id
+        );
+  
+        setGetsJobs(filteredJobs || []);
+      } catch (error) {
+        console.error("Error fetching jobs:", error);
+      }
+    };
+  
+    getCandidateNumber();
+    getJobs();
+  }, [employeeData._id, jobId, employeeJobIds, token, getCandidateNumber]);
+  
+
   return (
     <ThemeProvider theme={darkTheme}>
       <Box sx={{ height: '100vh', overflowY: 'auto' }}>
@@ -191,7 +241,7 @@ const Cards = () => {
         >
 
           {/* Jobs Card */}
-          {/* <Card
+          <Card
             sx={{
               flex: "1 1 300px",
               p: 3,
@@ -230,10 +280,10 @@ const Cards = () => {
                 </Typography>
               </Box>
             </Box>
-          </Card> */}
+          </Card> 
 
           {/* Candidates Card */}
-          {/* <Card
+           <Card
             sx={{
               flex: "1 1 300px",
               p: 3,
@@ -272,7 +322,7 @@ const Cards = () => {
                 </Typography>
               </Box>
             </Box>
-          </Card> */}
+          </Card>
         </Box>
 
         <Card

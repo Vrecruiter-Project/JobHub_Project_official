@@ -140,23 +140,42 @@ export const updateProfile = async (token, data) => {
   }
 };
 
+// export const myStudents = async (token) => {
+//   try {
+//     const response = await apiConnector(
+//       "GET",
+//       My_STUDENTS,
+//       {},
+//       {
+//         Authorization: `Bearer ${token}`,
+//       }
+//     );
+
+//    // console.success(response.data.message);
+//     return response.data;
+//   } catch (error) {
+//     console.error(error.response.data.message);
+//   }
+// };
+
 export const myStudents = async (token) => {
   try {
     const response = await apiConnector(
       "GET",
       My_STUDENTS,
-      {},
+      null, // No body needed for GET requests
       {
         Authorization: `Bearer ${token}`,
       }
     );
 
-   // console.success(response.data.message);
     return response.data;
   } catch (error) {
-    console.error(error.response.data.message);
+    console.error(error?.response?.data?.message || "Failed to fetch students");
+    return null; // Optional: return null or empty array for better error handling
   }
 };
+
 
 export const selectingStudents = async (token, data, navigate) => {
   try {
