@@ -48,6 +48,7 @@ export const checkOtp = async (otp, email, navigate) => {
       navigate("/employeregistration");
     }
   } catch (error) {
+    toast.error(error.response.data.message);
     console.error(error.response.data.message);
   }
 };

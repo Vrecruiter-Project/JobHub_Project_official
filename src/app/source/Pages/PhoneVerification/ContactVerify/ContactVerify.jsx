@@ -48,6 +48,17 @@ const ContactVerify = () => {
     await checkOtp(otp, email, navigate);
     setLoading(false); // Set loading to false after OTP is verified
   };
+  // const handleSubmit = async () => {
+  //   setLoading(true); // Set loading to true when submitting OTP
+  //   try {
+  //     await checkOtp(otp, email, navigate);
+  //   } catch (error) {
+  //     // Show error toast
+  //     toast.error(error.message || "Invalid OTP");
+  //   } finally {
+  //     setLoading(false); // Always set loading to false
+  //   }
+  // };
 
   return token ? (
     <EmployerDashboard />
