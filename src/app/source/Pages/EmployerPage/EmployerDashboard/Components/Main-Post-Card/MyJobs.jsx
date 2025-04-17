@@ -202,7 +202,7 @@ const MyJobs = () => {
                   <TableCell colSpan={8} align="center" sx={{ py: 4 }}>
                     {searchTerm
                       ? "No matching applications found"
-                      : "You haven't applied to any jobs yet"}
+                      : "You haven't posted jobs yet"}
                   </TableCell>
                 </TableRow>
               )}
