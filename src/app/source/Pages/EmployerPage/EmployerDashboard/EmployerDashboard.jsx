@@ -74,11 +74,6 @@ function ToolbarActionsSearch() {
             alt={name}
             src={avatar}
             sx={{
-              width: "10%",
-              height: "auto",
-              objectFit: 'cover',
-              maxWidth: 56,
-              minWidth: 40,
             }}
           />
           <div className="hidden md:block">

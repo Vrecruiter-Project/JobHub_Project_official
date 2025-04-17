@@ -2,7 +2,7 @@ import { BusinessCenter, Delete, Group, InfoOutlined, Task } from "@mui/icons-ma
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { myStudents } from "../../../../../../../service/operations/employeeApi";
 import { useParams } from "react-router-dom";
-import { Box, Typography, Card, useTheme, Button, Dialog, DialogContent, TextField, Checkbox } from "@mui/material";
+import { Box, Typography, Card, useTheme, Button, Dialog, DialogContent, TextField, Checkbox, DialogTitle, Select, FormControl, InputLabel, MenuItem, ListItemText, } from "@mui/material";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import Logo from "/log.svg";
 import Avatar from '@mui/material/Avatar';
@@ -13,7 +13,7 @@ import EmImage from "../../../../../../../assets/Images/EmployerDashboardAsset/e
 import { BASE_URL } from "../../../../../../../service/apis";
 import { styled } from '@mui/material/styles'; // theme.background.paper
 // Create custom dark theme
-
+import renderCategories from './CustomCategoary'
 const HtmlTooltip = styled(({ className, ...props }) => (
   <Tooltip {...props} classes={{ popper: className }} />
 ))(({ theme }) => ({
@@ -73,6 +73,9 @@ const Cards = () => {
   const { jobId } = useParams();
   const jobsLength = NumberOfJobs.jobs;
 
+  // select
+  const [selectedGamers, setSelectedGamers] = useState([]);
+
   // code to add task by employor
   const [tasks, setTasks] = useState(() => {
     const savedTasks = localStorage.getItem('employerTasks');
@@ -85,7 +88,11 @@ const Cards = () => {
 
   const [dialogOpen, setDialogOpen] = useState(false);
   const [newTask, setNewTask] = useState({
+    title: '',
     description: '',
+    date: '',
+    time: '',
+    category: [],
     highPriority: false
   });
   // function to open dialog box
@@ -97,28 +104,53 @@ const Cards = () => {
     setDialogOpen(false)
   }
 
+  const handleTitleChange = (e) => {
+    setNewTask({ ...newTask, title: e.target.value })
+  };
+
   // handling the employer task operation
   const handleDescriptionChange = (e) => {
     setNewTask({ ...newTask, description: e.target.value })
+  };
+
+
+  const handleDateChange = (e) => {
+    setNewTask({ ...newTask, date: e.target.value })
+  };
+
+  const handleTimeChange = (e) => {
+    setNewTask({ ...newTask, time: e.target.value })
+  };
+
+  const handleCategoryChange = (e) => {
+    const { value } = e.target;
+    setNewTask({ ...newTask, category: typeof value === 'string' ? value.split(',') : value });
   };
 
   const handlePriorityChange = (e) => {
     setNewTask({ ...newTask, highPriority: e.target.checked })
   };
 
-
   const handleSaveTask = () => {
+    if (newTask.title.trim() === '') return;
     if (newTask.description.trim() === '') return;
-
+    if (newTask.date.trim() === '') return
+    if (newTask.time.trim() === '') return
+    if (newTask.category === '') return
     const updatedTasks = [...tasks, {
       id: Date.now(),
+      title: newTask.title,
       description: newTask.description,
+      date: newTask.date,
+      time: newTask.time,
+      category: newTask.category,
       highPriority: newTask.highPriority
+
     }];
 
     setTasks(updatedTasks);
     // localStorage will be updated automatically by the useEffect
-    setNewTask({ description: '', highPriority: false });
+    setNewTask({ title: '', description: '', date: '', time: '', category: '', highPriority: false });
     closeDialog();
   };
 
@@ -170,7 +202,7 @@ const Cards = () => {
   //     );
   //     setGetsJobs(filteredJobs);
   //   };
-  
+
   //   getCandidateNumber(); // assuming this is defined elsewhere
   //   if (employeeData._id) getJobs();
   // }, [employeeData._id, jobId, employeeJobIds, token, getCandidateNumber]);
@@ -182,7 +214,7 @@ const Cards = () => {
       const response = await myStudents(token);
       if (response?.students?.length > 0) {
         const targetJobIds = jobId ? [jobId] : employeeJobIds;
-  
+
         const filteredStudents = response.students.flatMap((studentGroup) =>
           studentGroup.filter(
             (student) =>
@@ -190,14 +222,14 @@ const Cards = () => {
               student.jobs.some((job) => targetJobIds.includes(job))
           )
         );
-  
+
         setJobsCount(filteredStudents);
       }
     } catch (error) {
       console.error("Error fetching candidate numbers:", error);
     }
   }, [token, jobId, employeeJobIds]);
-  
+
   useEffect(() => {
     const getJobs = async () => {
       try {
@@ -208,22 +240,22 @@ const Cards = () => {
             "x-api-key": import.meta.env.VITE_API_SECRET_KEY,
           },
         });
-  
+
         const data = await response.json();
         const filteredJobs = data.jobs?.filter(
           (job) => job.employeeId === employeeData._id
         );
-  
+
         setGetsJobs(filteredJobs || []);
       } catch (error) {
         console.error("Error fetching jobs:", error);
       }
     };
-  
+
     getCandidateNumber();
     getJobs();
   }, [employeeData._id, jobId, employeeJobIds, token, getCandidateNumber]);
-  
+
 
   return (
     <ThemeProvider theme={darkTheme}>
@@ -280,10 +312,10 @@ const Cards = () => {
                 </Typography>
               </Box>
             </Box>
-          </Card> 
+          </Card>
 
           {/* Candidates Card */}
-           <Card
+          <Card
             sx={{
               flex: "1 1 300px",
               p: 3,
@@ -544,9 +576,9 @@ const Cards = () => {
                           <AvatarGroup
                             max={3}
                             total={job.students.length > 3 ? job.students.length : undefined}
-                            renderSurplus={(surplus) => <span style={{marginLeft:'6px'}}>{surplus.toString()[0]}<span style={{fontSize:"7px"}}>+</span></span>}
+                            renderSurplus={(surplus) => <span style={{ marginLeft: '6px' }}>{surplus.toString()[0]}<span style={{ fontSize: "7px" }}>+</span></span>}
                           >
-                            
+
                             {job.students.slice(0, 3).map((student) => (
                               <Avatar
                                 key={student._id}
@@ -554,10 +586,10 @@ const Cards = () => {
                                 src="https://t4.ftcdn.net/jpg/03/64/21/11/360_F_364211147_1qgLVxv1Tcq0Ohz3FawUfrtONzz8nq3e.jpg"
                                 sx={{ width: '20px', height: '20px' }}
                               />
-                              
-                              
+
+
                             ))}
-                            
+
                           </AvatarGroup>
 
                           <Tooltip
@@ -565,8 +597,8 @@ const Cards = () => {
                             title={
                               <React.Fragment>
                                 <Typography color="inherit">Applicants for <u className="text-green-600">{job.jobTitle}</u></Typography>
-                                {job.students.slice(0,3).map((student) => (
-                                  <div key={student._id} className="inline-flex mx-0.5 py-1 italic" style={{fontSize: '12px'}}>
+                                {job.students.slice(0, 3).map((student) => (
+                                  <div key={student._id} className="inline-flex mx-0.5 py-1 italic" style={{ fontSize: '12px' }}>
                                     <span>
                                       {student.firstName}
                                     </span>
@@ -597,7 +629,7 @@ const Cards = () => {
             sx={{
               borderRadius: "10px",
               width: { xs: "100%", md: "30%" },
-              maxHeight: "calc(100vh - 289px)",
+              maxHeight: "calc(100vh - 245px)",
               display: "flex",
               flexDirection: "column",
               position: "sticky",
@@ -638,9 +670,37 @@ const Cards = () => {
               </Button>
             </Typography>
             <Dialog open={dialogOpen} onClose={closeDialog}>
-              <DialogContent sx={{ backgroundColor: theme.palette.background.paper }}>
+              <DialogContent sx={{ backgroundColor: theme.palette.background.paper, width: '500px', }}>
+                <DialogTitle sx={{ color: theme.palette.text.primary, padding: "0 0 15px 0" }}>Create Task</DialogTitle>
+                <Typography sx={{ color: theme.palette.text.primary }}>Title</Typography>
                 <TextField
-                  label="Description"
+                  placeholder="Add title"
+                  fullWidth
+                  multiline
+                  rows={1}
+                  value={newTask.title}
+                  onChange={handleTitleChange}
+                  sx={{
+                    marginBottom: 2,
+                    '& .MuiInputBase-root': {
+                      color: theme.palette.text.primary,
+                    },
+                    '& .MuiInputLabel-root': {
+                      color: theme.palette.text.secondary,
+                    },
+                    '& .MuiOutlinedInput-root': {
+                      '& fieldset': {
+                        borderColor: theme.palette.divider,
+                      },
+                      '&:hover fieldset': {
+                        borderColor: theme.palette.text.primary,
+                      },
+                    }
+                  }}
+                />
+                <Typography sx={{ color: theme.palette.text.primary }}>Description</Typography>
+                <TextField
+                  placeholder="Add breif summary"
                   fullWidth
                   multiline
                   rows={4}
@@ -664,6 +724,85 @@ const Cards = () => {
                     }
                   }}
                 />
+                <Box sx={{ display: 'flex', gap: "5px" }}>
+                  <Box>
+                    <TextField placeholder="Date" type="date" value={newTask.date} onChange={handleDateChange} sx={{
+                      marginBottom: 2,
+                      '& .MuiInputBase-root': {
+                        color: theme.palette.text.primary,
+                      },
+                      '& .MuiInputLabel-root': {
+                        color: theme.palette.text.secondary,
+                      },
+                      '& .MuiOutlinedInput-root': {
+                        '& fieldset': {
+                          borderColor: theme.palette.divider,
+                        },
+                        '&:hover fieldset': {
+                          borderColor: theme.palette.text.primary,
+                        },
+                      }
+                    }} />
+                  </Box>
+                  <Box>
+                    <TextField placeholder="Time" type="time" value={newTask.time} onChange={handleTimeChange} sx={{
+                      marginBottom: 2,
+                      '& .MuiInputBase-root': {
+                        color: theme.palette.text.primary,
+                      },
+                      '& .MuiInputLabel-root': {
+                        color: theme.palette.text.secondary,
+                      },
+                      '& .MuiOutlinedInput-root': {
+                        '& fieldset': {
+                          borderColor: theme.palette.divider,
+                        },
+                        '&:hover fieldset': {
+                          borderColor: theme.palette.text.primary,
+                        },
+                      }
+                    }} />
+                  </Box>
+                  <Box>
+                    <FormControl fullWidth>
+                      <InputLabel id="Category-label" sx={{ color: theme.palette.text.primary }}>Category</InputLabel>
+                      <Select
+
+                        labelId="Category-label"
+                        multiple
+                        value={newTask.category || []} // this should be an array from your component state
+                        onChange={handleCategoryChange}
+                        label="Category"
+                        sx={{
+                          width: "175px",
+                          marginBottom: 2,
+                          color: "#333"
+                        }}
+                        renderValue={(selected) => selected.join(', ')}
+                        MenuProps={{
+                          PaperProps: {
+                            sx: {
+                              backgroundColor: theme.palette.background.paper,
+                              color: theme.palette.text.primary,
+                              boxShadow: theme.shadows[4],
+                              borderRadius: 1,
+                              borderColor: theme.palette.text.primary,
+
+                            },
+                          },
+                        }}
+                      >
+                        {['Meeting', 'Interview', 'Hiring', 'Onboarding', 'Payroll', 'Management'].map((category) => (
+                          <MenuItem key={category} value={category} >
+                            {/* <Checkbox checked={selectedGamers.indexOf(game) > -1} /> */}
+                            <ListItemText primary={category} />
+                          </MenuItem>
+                        ))}
+                      </Select>
+                    </FormControl>
+
+                  </Box>
+                </Box>
                 <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
                   <Checkbox
                     checked={newTask.highPriority}
@@ -698,10 +837,21 @@ const Cards = () => {
             </Dialog>
             <Box sx={{ padding: "10px", overflowY: "auto" }}>
               {tasks.map(task => (
-                <div key={task.id} style={{ marginBottom: '16px' }}>
-                  <p style={{ color: theme.palette.text.primary }}>
+                <div key={task.id} style={{ marginBottom: '16px', borderBottom: `1px solid ${theme.palette.divider}`, paddingBottom: '3px' }}>
+                  <div>
+                    <p className="capitalize" style={{ fontSize: "16px", color: theme.palette.text.primary }}>{task.title}</p>
+                  </div>
+                  <Typography className="capitalize" style={{ color: theme.palette.text.primary, fontSize: "10px" }}>
                     {task.description}
-                  </p>
+                  </Typography>
+                  <div className="flex justify-between px-3 py-1">
+                    <div>
+                      <span style={{ fontSize: '10px', color: theme.palette.text.primary }}>{task.date}</span> <span style={{ fontSize: "12px", color: "#333" }}>|</span> <span style={{ fontSize: '10px', color: theme.palette.text.primary }}>{task.time}</span>
+                    </div>
+                    <div>
+                      {renderCategories(task)}
+                    </div>
+                  </div>
                   <div style={{ display: "flex", justifyContent: "space-between" }}>
                     <Typography
                       sx={{
