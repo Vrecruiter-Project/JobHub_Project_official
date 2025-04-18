@@ -48,6 +48,7 @@ const ContactVerify = () => {
     await checkOtp(otp, email, navigate);
     setLoading(false); // Set loading to false after OTP is verified
   };
+  
   // const handleSubmit = async () => {
   //   setLoading(true); // Set loading to true when submitting OTP
   //   try {

@@ -17,8 +17,9 @@ import {
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import { useLocation, useNavigate } from 'react-router-dom';
-import jobhublogo from '../../assets/Images/logo2.svg';
+// import jobhublogo from '../../assets/Images/logo2.svg';
 import ButtonComponent from '../GlobalComponents/ButtonComponent/ButtonComponent';
+import jobhublogo from '/public/Jobhub logo.png';
 
 const pages = [
   { label: 'Home', path: '/' },
@@ -70,12 +71,16 @@ const NavDrawer = () => {
         <AppBar
           position="fixed"
           sx={{
+            // mt: { xs: 3, md: 3 },
             backgroundColor: 'rgba(255, 255, 255, 0.95)',
             color: 'black',
             height: '90px',
+            
             boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.1)',
             borderBottom: '1px solid #dadada',
             transition: 'all 0.3s ease-in-out',
+            display: 'flex',
+            justifyContent: 'center',
           }}
         >
           <Toolbar sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
@@ -84,7 +89,7 @@ const NavDrawer = () => {
               component="img"
               src={jobhublogo}
               alt="Logo"
-              sx={{ width: 100, height: 'auto', cursor: 'pointer' }}
+              sx={{ width: { xs: '100px', sm: '120px', md: '150px', lg: '180px' }, height: 'auto', cursor: 'pointer' }}
               onClick={() => handleNavigate('/')}
             />
 
