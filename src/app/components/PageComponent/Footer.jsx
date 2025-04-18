@@ -186,10 +186,11 @@
 //     </MuiLink>
 //   );
 // };
-import Logo from '/log.svg'
+// import Logo from '/log.svg'
 import React, { useRef, useState } from 'react';
 import emailjs from '@emailjs/browser';
 import { Snackbar, Alert } from '@mui/material';
+import jobhublogo from '/Jobhub_logo-transparent.png';
 export default function Footer() {
   const formRef = useRef();
 
@@ -266,20 +267,20 @@ export default function Footer() {
           <div className="flex flex-wrap">
             <div className="w-full lg:w-1/3 mb-8">
               <div>
-                <a href="/"><img src={Logo} alt="logo" className="max-w-[200px] mb-6" /></a>
+                <a href="/"><img src={jobhublogo} alt="logo" className="max-w-[200px] mb-6" /></a>
                 <p className="text-sm text-gray-400 leading-7 mb-4">
                   Find Your Career With JOBHUB <br />
                   <span style={{ fontSize: '12px' }}>Comprehensive job portal designed to streamline the employment process for both job seekers and employers </span>
                 </p>
                 <span className="text-lg font-bold block mb-3">Follow us</span>
                 <div className="flex gap-4">
-                  <a href="https://www.facebook.com/profile.php?id=61562070471655&mibextid=ZbWKwL" target='_blank' className="w-10 h-10 flex items-center justify-center rounded-full bg-green-700 text-white">
+                  <a href="#" target='_blank' className="w-10 h-10 flex items-center justify-center rounded-full bg-green-700 text-white">
                     <i className="fab fa-facebook-f"></i>
                   </a>
-                  <a href='https://www.linkedin.com/company/v-recruit-ers/posts/?feedView=all' target="_blank" className="w-10 h-10 flex items-center justify-center rounded-full bg-green-700 text-white">
+                  <a href='#' target="_blank" className="w-10 h-10 flex items-center justify-center rounded-full bg-green-700 text-white">
                     <i className="fa-brands fa-linkedin-in"></i>
                   </a>
-                  <a href='https://www.instagram.com/vrecruiters12/' target="_blank" className="w-10 h-10 flex items-center justify-center rounded-full bg-green-700 text-white">
+                  <a href='#' target="_blank" className="w-10 h-10 flex items-center justify-center rounded-full bg-green-700 text-white">
                     <i className="fa-brands fa-instagram"></i>
                   </a>
                 </div>

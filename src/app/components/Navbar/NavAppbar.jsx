@@ -19,7 +19,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import { useLocation, useNavigate } from 'react-router-dom';
 // import jobhublogo from '../../assets/Images/logo2.svg';
 import ButtonComponent from '../GlobalComponents/ButtonComponent/ButtonComponent';
-import jobhublogo from '/public/Jobhub logo.png';
+import jobhublogo from '/Jobhub logo.png';
 
 const pages = [
   { label: 'Home', path: '/' },
@@ -89,7 +89,7 @@ const NavDrawer = () => {
               component="img"
               src={jobhublogo}
               alt="Logo"
-              sx={{ width: { xs: '100px', sm: '120px', md: '150px', lg: '180px' }, height: 'auto', cursor: 'pointer' }}
+              sx={{ width: { xs: '80px', sm: '100px', md: '100px', lg: '110px' }, height: 'auto', cursor: 'pointer' }}
               onClick={() => handleNavigate('/')}
             />
 

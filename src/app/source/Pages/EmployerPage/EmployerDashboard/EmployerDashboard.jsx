@@ -1,3 +1,4 @@
+
 import { AppProvider } from '@toolpad/core';
 import { DashboardLayout, ThemeSwitcher } from '@toolpad/core/DashboardLayout';
 import WorkIcon from '@mui/icons-material/Work';
@@ -10,7 +11,7 @@ import DashboardIcon from '@mui/icons-material/Dashboard';
 // import GroupIcon from '@mui/icons-material/Group';
 // import PersonIcon from '@mui/icons-material/Person';
 import React from 'react';
-import Logo from '/log.svg';
+import Logo from '/Jobhub_logo-transparent.png';
 import MyJobs from '../../EmployerPage/EmployerDashboard/Components/Main-Post-Card/MyJobs';
 import AllCandidates from '../../EmployerPage/EmployerDashboard/Components/AllCandidates/AllCandidates';
 import WorkOutlineIcon from '@mui/icons-material/WorkOutline';
@@ -202,8 +203,8 @@ const EmployerDashboard = () => {
       navigation={navigationWithActiveIcons}
       router={router}
       branding={{
-        title: 'Job Hub',
-        logo: <img className="w-10" src={Logo} alt="job hub" />,
+        title: ' ',
+        logo: <img className="w-20 py-2" src={Logo} alt="job hub" />,
       }}
     >
       <DashboardLayout

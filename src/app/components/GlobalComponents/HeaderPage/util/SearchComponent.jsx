@@ -24,6 +24,7 @@ import {
 
 import bgImg from '../../../../assets/Images/bgImages/Banner_image.svg';
 import HeaderImage from '../../../../assets/Images/headerImages/HeaderImage01.png';
+import HeaderImage2 from '../../../../assets/Images/headerImages/HeaderImage02.png';
 import '../../../../../../src/index.css';
 const HtmlTooltip = styled(({ className, ...props }) => (
   <Tooltip {...props} classes={{ popper: className }} />
@@ -311,7 +312,7 @@ export const HeroSection = () => {
               onChange={(e) => setCity(e.target.value)}
               size="small"
               sx={{
-                display: { xs: 'none', sm: 'block' },
+                display: { xs: 'none', sm: 'none', md:'block' },
                 fontSize: '16px',
                 minWidth: 60,
                 backgroundColor: 'white',
@@ -350,6 +351,18 @@ export const HeroSection = () => {
 
             display: { xs: 'none', sm: 'none', md: 'block' },
             width: { sm: '30%', md: '45%' },
+
+            height: 'auto',
+          }}
+        />
+        <Box
+          component="img"
+          src={HeaderImage2}
+          alt="Header"
+          sx={{
+
+            display: { xs: 'none', sm: 'block', md: 'none', lg:'none' },
+            width: { sm: '40%', md: '45%' },
 
             height: 'auto',
           }}
