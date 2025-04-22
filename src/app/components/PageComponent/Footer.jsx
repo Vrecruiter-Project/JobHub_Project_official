@@ -274,13 +274,13 @@ export default function Footer() {
                 </p>
                 <span className="text-lg font-bold block mb-3">Follow us</span>
                 <div className="flex gap-4">
-                  <a href="#" target='_blank' className="w-10 h-10 flex items-center justify-center rounded-full bg-green-700 text-white">
+                  <a href="https://www.facebook.com/people/JobHubworld/61575148695953/" target='_blank' className="w-10 h-10 flex items-center justify-center rounded-full bg-green-700 text-white">
                     <i className="fab fa-facebook-f"></i>
                   </a>
-                  <a href='#' target="_blank" className="w-10 h-10 flex items-center justify-center rounded-full bg-green-700 text-white">
+                  <a href='https://www.linkedin.com/in/jobhub-world-5559a7361/' target="_blank" className="w-10 h-10 flex items-center justify-center rounded-full bg-green-700 text-white">
                     <i className="fa-brands fa-linkedin-in"></i>
                   </a>
-                  <a href='#' target="_blank" className="w-10 h-10 flex items-center justify-center rounded-full bg-green-700 text-white">
+                  <a href='https://www.instagram.com/jobhub_world?igsh=a2hsb3dmdDV1azYw' target="_blank" className="w-10 h-10 flex items-center justify-center rounded-full bg-green-700 text-white">
                     <i className="fa-brands fa-instagram"></i>
                   </a>
                 </div>
