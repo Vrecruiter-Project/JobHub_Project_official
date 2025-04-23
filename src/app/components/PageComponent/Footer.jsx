@@ -191,6 +191,7 @@ import React, { useRef, useState } from 'react';
 import emailjs from '@emailjs/browser';
 import { Snackbar, Alert } from '@mui/material';
 import jobhublogo from '/Jobhub_logo-transparent.png';
+import jobhubFooterLogo from '/JobhubFooterlogo.png'
 export default function Footer() {
   const formRef = useRef();
 
@@ -231,11 +232,11 @@ export default function Footer() {
   return (
     <footer className="bg-[#0f1e0f] text-white ">
       <div className="container mx-auto px-4">
-        <div className="border-b border-[#2f4f2f] py-10">
+        <div className="border-b border-[#008000] py-10">
           <div className="flex flex-wrap">
             <div className="w-full md:w-1/3 mb-6">
               <div className="flex items-start">
-                <i className="fas fa-map-marker-alt text-[#32CD32] text-2xl mt-2"></i>
+                <i className="fas fa-map-marker-alt text-[#008000] text-2xl mt-2"></i>
                 <div className="pl-4">
                   <h4 className="text-lg font-semibold mb-1">Find us</h4>
                   <span className="text-sm text-gray-400">25th Unit, 3rd Floor, Zirakpur, Punjab 140603</span>
@@ -244,7 +245,7 @@ export default function Footer() {
             </div>
             <div className="w-full md:w-1/3 mb-6">
               <div className="flex items-start">
-                <i className="fas fa-phone text-[#32CD32] text-2xl mt-2"></i>
+                <i className="fas fa-phone text-[#008000] text-2xl mt-2"></i>
                 <div className="pl-4">
                   <h4 className="text-lg font-semibold mb-1">Call us</h4>
                   <span className="text-sm text-gray-400">+91 98187 37641 <br /> +91 90564 76584</span>
@@ -253,7 +254,7 @@ export default function Footer() {
             </div>
             <div className="w-full md:w-1/3 mb-6">
               <div className="flex items-start">
-                <i className="far fa-envelope-open text-[#32CD32] text-2xl mt-2"></i>
+                <i className="far fa-envelope-open text-[#008000] text-2xl mt-2"></i>
                 <div className="pl-4">
                   <h4 className="text-lg font-semibold mb-1">Mail us</h4>
                   <span className="text-sm text-gray-400">jobhubportal@gmail.com</span>
@@ -267,20 +268,20 @@ export default function Footer() {
           <div className="flex flex-wrap">
             <div className="w-full lg:w-1/3 mb-8">
               <div>
-                <a href="/"><img src={jobhublogo} alt="logo" className="max-w-[200px] mb-6" /></a>
+                <a href="/"><img src={jobhubFooterLogo} alt="logo" className="max-w-[200px] mb-6" /></a>
                 <p className="text-sm text-gray-400 leading-7 mb-4">
                   Find Your Career With JOBHUB <br />
-                  <span style={{ fontSize: '12px' }}>Comprehensive job portal designed to streamline the employment process for both job seekers and employers </span>
+                  <span style={{ fontSize: '12px' }}>Comprehensive job portal designed to streamline the employment <br /> process for both job seekers and employers </span>
                 </p>
                 <span className="text-lg font-bold block mb-3">Follow us</span>
                 <div className="flex gap-4">
-                  <a href="https://www.facebook.com/people/JobHubworld/61575148695953/" target='_blank' className="w-10 h-10 flex items-center justify-center rounded-full bg-green-700 text-white">
+                  <a href="https://www.facebook.com/people/JobHubworld/61575148695953/" target='_blank' className="w-10 h-10 flex items-center justify-center rounded-full bg-[#008000] text-white">
                     <i className="fab fa-facebook-f"></i>
                   </a>
-                  <a href='https://www.linkedin.com/in/jobhub-world-5559a7361/' target="_blank" className="w-10 h-10 flex items-center justify-center rounded-full bg-green-700 text-white">
+                  <a href='https://www.linkedin.com/in/jobhub-world-5559a7361/' target="_blank" className="w-10 h-10 flex items-center justify-center rounded-full bg-[#008000] text-white">
                     <i className="fa-brands fa-linkedin-in"></i>
                   </a>
-                  <a href='https://www.instagram.com/jobhub_world?igsh=a2hsb3dmdDV1azYw' target="_blank" className="w-10 h-10 flex items-center justify-center rounded-full bg-green-700 text-white">
+                  <a href='https://www.instagram.com/jobhub_world?igsh=a2hsb3dmdDV1azYw' target="_blank" className="w-10 h-10 flex items-center justify-center rounded-full bg-[#008000] text-white">
                     <i className="fa-brands fa-instagram"></i>
                   </a>
                 </div>
@@ -288,7 +289,7 @@ export default function Footer() {
             </div>
 
             <div className="w-full lg:w-1/3 md:w-1/2 mb-8">
-              <h3 className="text-lg font-semibold mb-6 relative before:content-[''] before:absolute before:bottom-[-15px] before:left-0 before:w-12 before:h-[2px] before:bg-[#32CD32]">
+              <h3 className="text-lg font-semibold mb-6 relative before:content-[''] before:absolute before:bottom-[-15px] before:left-0 before:w-12 before:h-[2px] before:bg-[#008000]">
                 Useful Links
               </h3>
               <ul className="flex flex-wrap">
@@ -299,41 +300,41 @@ export default function Footer() {
                  
                 ))} */}
                 <li className="w-1/2 mb-3">
-                  <a href="/" className="text-gray-400 hover:text-[#32CD32] capitalize text-sm">Home</a>
+                  <a href="/" className="text-gray-400 hover:text-[#008000] capitalize text-sm">Home</a>
                 </li>
                 <li className="w-1/2 mb-3">
-                  <a href="/about" className="text-gray-400 hover:text-[#32CD32] capitalize text-sm">About</a>
+                  <a href="/about" className="text-gray-400 hover:text-[#008000] capitalize text-sm">About</a>
                 </li>
 
                 <li className="w-1/2 mb-3">
-                  <a href="/contact" className="text-gray-400 hover:text-[#32CD32] capitalize text-sm">Contact us</a>
+                  <a href="/contact" className="text-gray-400 hover:text-[#008000] capitalize text-sm">Contact us</a>
                 </li>
                 <li className="w-1/2 mb-3">
-                  <a href="#popularSection" className="text-gray-400 hover:text-[#32CD32] capitalize text-sm">Fint a job</a>
+                  <a href="#popularSection" className="text-gray-400 hover:text-[#008000] capitalize text-sm">Fint a job</a>
                 </li>
                 <li className="w-1/2 mb-3">
-                  <a href="/verification" className="text-gray-400 hover:text-[#32CD32] capitalize text-sm">Hire Now</a>
+                  <a href="/verification" className="text-gray-400 hover:text-[#008000] capitalize text-sm">Hire Now</a>
                 </li>
                 <li className="w-1/2 mb-3">
-                  <a href="/Privacypolicy" className="text-gray-400 hover:text-[#32CD32] capitalize text-sm">Privacy Policy</a>
+                  <a href="/Privacypolicy" className="text-gray-400 hover:text-[#008000] capitalize text-sm">Privacy Policy</a>
                 </li>
                 <li className="w-1/2 mb-3">
-                  <a href="/Termsandconditions" className="text-gray-400 hover:text-[#32CD32] capitalize text-sm">T<span style={{ fontSize: '10px' }}>&</span>C</a>
+                  <a href="/Termsandconditions" className="text-gray-400 hover:text-[#008000] capitalize text-sm">T<span style={{ fontSize: '10px' }}>&</span>C</a>
                 </li>
                 <li className="w-1/2 mb-3">
-                  <a href="/interviewtips" className="text-gray-400 hover:text-[#32CD32] capitalize text-sm">Interview Tips</a>
+                  <a href="/interviewtips" className="text-gray-400 hover:text-[#008000] capitalize text-sm">Interview Tips</a>
                 </li>
                 <li className="w-1/2 mb-3">
-                  <a href="/events" className="text-gray-400 hover:text-[#32CD32] capitalize text-sm">Events</a>
+                  <a href="/events" className="text-gray-400 hover:text-[#008000] capitalize text-sm">Events</a>
                 </li>
                 <li className="w-1/2 mb-3">
-                  <a href="/candidatedashboard" className="text-gray-400 hover:text-[#32CD32] capitalize text-sm">Jobs</a>
+                  <a href="/candidatedashboard" className="text-gray-400 hover:text-[#008000] capitalize text-sm">Jobs</a>
                 </li>
               </ul>
             </div>
 
             <div className="w-full lg:w-1/3 md:w-1/2 mb-8">
-              <h3 className="text-lg font-semibold mb-6 relative before:content-[''] before:absolute before:bottom-[-15px] before:left-0 before:w-12 before:h-[2px] before:bg-[#32CD32]">
+              <h3 className="text-lg font-semibold mb-6 relative before:content-[''] before:absolute before:bottom-[-15px] before:left-0 before:w-12 before:h-[2px] before:bg-[#008000]">
                 Subscribe
               </h3>
               <p className="text-sm text-gray-400 mb-6">Don’t miss to subscribe to our new feeds, kindly fill the form below.</p>
@@ -348,7 +349,7 @@ export default function Footer() {
                 <input type="hidden" name="time" value={new Date().toLocaleString()} />
                 <button
                   type="submit"
-                  className="absolute top-0 right-0 bg-[#32CD32] px-5 py-[3.6px] border border-[#32CD32]"
+                  className="absolute top-0 right-0 bg-[#008000] px-5 py-[3.6px] border border-[#008000]"
                 >
                   <i className="fab fa-telegram-plane text-white text-xl -rotate-6 my-1"></i>
                 </button>
@@ -372,15 +373,15 @@ export default function Footer() {
         <div className="container mx-auto px-4 flex flex-col lg:flex-row justify-between items-center">
           <div className="text-center lg:text-left text-sm text-gray-400 mb-2 lg:mb-0">
             <p>
-              Copyright © {new Date().getFullYear()}, All Right Reserved <a href="/" className="text-[#32CD32]">Jobhub</a>
+              Copyright © {new Date().getFullYear()}, All Right Reserved <a href="/" className="text-[#008000]">Jobhub</a>
             </p>
           </div>
           <ul className="flex flex-wrap justify-center gap-4 text-sm text-gray-400">
-            <li><a href="/" className="hover:text-[#32CD32]">Home</a></li>
+            <li><a href="/" className="hover:text-[#008000]">Home</a></li>
             {/* <li><a href="#" className="hover:text-[#32CD32]">Terms</a></li> */}
-            <li><a href="/Privacypolicy" className="hover:text-[#32CD32]">Privacy</a></li>
-            <li><a href="/Privacypolicy" className="hover:text-[#32CD32]">Policy</a></li>
-            <li><a href="/contact" className="hover:text-[#32CD32]">Contact</a></li>
+            <li><a href="/Privacypolicy" className="hover:text-[#008000]">Privacy</a></li>
+            <li><a href="/Privacypolicy" className="hover:text-[#008000]">Policy</a></li>
+            <li><a href="/contact" className="hover:text-[#008000]">Contact</a></li>
           </ul>
         </div>
       </div>
