@@ -32,11 +32,11 @@ const ChoiceSection = () => {
             <Box
                 sx={{
                     width: '100%',
-                    backgroundImage: `url(${ChoiceBg})`,
+                    // backgroundImage: `url(${ChoiceBg})`,
                     backgroundRepeat: 'no-repeat',
                     backgroundPosition: 'center',
                     backgroundSize: 'cover',
-                    py: 5,
+
                 }}
             >
                 <Typography
@@ -44,7 +44,7 @@ const ChoiceSection = () => {
                     component="h2"
                     sx={{
                         textAlign: 'center',
-
+                        py: 6,
                         fontSize: { xs: '35px', md: '45px' },
                         color: 'black',
                         marginTop: '-24px'
@@ -68,7 +68,7 @@ const ChoiceSection = () => {
                     <Grid item xs={12} md={5} sx={{
                         display: 'flex',
                         flexDirection: 'column',
-                        alignItems: {xs:'flex-start',sm:'center', md: 'flex-start'},
+                        alignItems: { xs: 'flex-start', sm: 'center', md: 'flex-start' },
                         marginLeft: { xs: '30px', md: '0' },
                     }}>
                         {iconItems.map((item, index) => (

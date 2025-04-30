@@ -52,9 +52,10 @@ const PartnerSection = () => {
             alignItems: 'center',
             pt: { xs: 8, md: 3 },
             pb: { xs: 2, md: 3 },
-            backgroundImage: { xs: 'none', md: `url(${PartnersBg})` },
+           // backgroundImage: { xs: 'none', md: `url(${PartnersBg})` },
             backgroundRepeat: 'no-repeat',
             backgroundSize: '100%',
+           
           }}
         >
           <Grid2 item xs={12}>
@@ -63,8 +64,9 @@ const PartnerSection = () => {
               variant='h3'
               component='h2'
               sx={{
+                py: { xs: 4, md: 0 },
                 textAlign: 'center',
-                pt: { xs: 0, md: 8 },
+                py:6,
                 fontSize: { xs: '35px', md: '45px' },
               }}
             >

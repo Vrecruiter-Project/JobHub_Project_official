@@ -28,9 +28,10 @@ const Testimonial = () => {
                             data-aos="fade-up"
                             variant='h3' component='h2' align="center" sx={{
                                 fontSize: { xs: "35px", md: "45px" },
-                                backgroundImage: `url(${TestimonialBg})`,
+                               // backgroundImage: `url(${TestimonialBg})`,
                                 backgroundRepeat: "no-repeat",
                                 backgroundSize: "cover",
+                                py: 3,
                             }}>
                             Testimonials
                         </Typography>

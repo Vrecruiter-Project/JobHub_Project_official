@@ -54,7 +54,7 @@ const PopularJobs = ({ id }) => {
   const visibleCards = isMobile && !showAll ? jobTypes.slice(0, 4) : jobTypes;
   return (
     <>
-      <Box id={id} sx={{ pt: 5, width: '80%', mx: 'auto' }}>
+      <Box id={id} sx={{  width: '80%', mx: 'auto' }}>
         <Grid2
           container
           sx={{
@@ -69,7 +69,8 @@ const PopularJobs = ({ id }) => {
               data-aos="fade-up"
               variant="h3" component="h2" align="center" sx={{
                 fontSize: { xs: "35px", md: "45px" },
-                backgroundImage: `url(${PopularJobsBg})`,
+                py: 3,
+              //  backgroundImage: `url(${PopularJobsBg})`,
                 backgroundSize: "cover",
               }}>
               Popular <span style={{ color: 'green' }}>Jobs</span>

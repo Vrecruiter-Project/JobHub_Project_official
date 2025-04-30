@@ -8,12 +8,11 @@ export default function Resumeswiper() {
   return (
     <>
       <div className="resume-swiper" style={{
-        background: 'linear-gradient(to right, white,#25D366)',
+        //background: 'linear-gradient(to right, #f0f0f0, #e0e0e0)',
+        background: '#384639',
         borderBottom: '5px solid green',
-        paddingTop: '10px'
-
-
-
+        paddingTop: '10px',
+        color: 'white',
       }}>
         <marquee>
           {Array.from({ length: repeatCount }, (_, index) => (

@@ -3,7 +3,7 @@ import EmpHireSvg from "../../assets/Images/HireNowImage/EmployorHireNow.svg";
 
 const EmployerHireNow = () => {
     return (
-        <div className="w-full flex justify-center items-center py-2 ">
+        <div className="w-full flex justify-center items-center py-24 ">
             <div className="w-11/12 md:w-4/5 lg:w-3/4 xl:w-2/3 max-h-64 bg-white rounded-2xl flex flex-col md:flex-row items-center p-6 md:p-10 transition-shadow duration-300"
                 style={{ boxShadow: '0 8px 30px rgba(155 255 0 / 62%)' }}>
 

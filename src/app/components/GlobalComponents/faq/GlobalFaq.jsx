@@ -29,7 +29,7 @@ export default function GlobalFaq({ faqItems, id }) {
   return (
     <>
       <Box sx={{
-        pt: { xs: 1, md: 4 },
+        py: { xs: 1, md: 5 },
       }}>
         <Container
           id={id}
@@ -48,9 +48,10 @@ export default function GlobalFaq({ faqItems, id }) {
             sx={{
               fontSize: {
                 xs: "35px", md: "46px",
-                backgroundImage: `url(${FaqsBg})`,
+              //  backgroundImage: `url(${FaqsBg})`,
                 backgroundRepeat: "no-repeat",
                 backgroundSize: "cover",
+                py: 5,
               }
             }}>
             Frequently asked <span style={{ color: "green" }}>questions</span>

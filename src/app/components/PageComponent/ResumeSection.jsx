@@ -47,14 +47,16 @@ const ResumeSection = () => {
               variant="h3"
               component="h2"
               align="center"
+            
               sx={{
                 fontSize: {
                   xs: "35px",
                   md: "45px",
                 },
-                backgroundImage: `url(${ResumeBg})`,
+              //  backgroundImage: `url(${ResumeBg})`,
                 backgroundRepeat: "no-repeat",
                 backgroundSize: "cover",
+                py: 3,
               }}
             >
               Build <span style={{ color: "green" }}>Your Resume</span> In Two Minutes

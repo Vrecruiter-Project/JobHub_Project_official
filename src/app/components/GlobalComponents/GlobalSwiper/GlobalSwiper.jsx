@@ -73,7 +73,7 @@ const GlobalSwiper = ({ content, sx, addImg}) => {
             },
           }}
           style={{
-            margin: "8%",
+            margin: "5%",
           }}
           onSwiper={(swiper) => {
             swiperRef.current = swiper;
