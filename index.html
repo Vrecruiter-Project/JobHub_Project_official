@@ -2,21 +2,6 @@
 <html lang="en">
 
 <head>
-  <!-- Fathom - simple website analytics - https://github.com/usefathom/fathom -->
-  <script>
-    (function (f, a, t, h, o, m) {
-      a[h] = a[h] || function () {
-        (a[h].q = a[h].q || []).push(arguments)
-      };
-      o = f.createElement('script'),
-        m = f.getElementsByTagName('script')[0];
-      o.async = 1; o.src = t; o.id = 'fathom-script';
-      m.parentNode.insertBefore(o, m)
-    })(document, window, '//localhost:8080/tracker.js', 'fathom');
-    fathom('set', 'siteId', 'AALMG');
-    fathom('trackPageview');
-  </script>
-  <!-- / Fathom -->
 
   <meta charset="UTF-8" />
   <link rel="icon" type="image/svg+xml" href="/log.svg" />
@@ -25,6 +10,16 @@
     integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
   <title>Job Hub</title>
+  
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DDZ494GRPJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-DDZ494GRPJ');
+</script>
 </head>
 
 <body>
