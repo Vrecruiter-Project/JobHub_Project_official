@@ -181,7 +181,7 @@ import CountUp from "react-countup";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import SectionImage from '/JobhubFooterlogo.png'
-import sectiionImage from  '../../../assets/Images/SectionImages/image_46.png'
+import sectiionImage from '../../../assets/Images/SectionImages/image_46.png'
 // const stats = [
 //   {
 //     id: 1,
@@ -246,88 +246,88 @@ export default function JobDetails() {
         </div>
       </section> */}
       <section className="w-full flex flex-col items-center bg-black">
-  {/* Top Content */}
-  <div className="text-center text-white pt-12 px-4">
-    <p className="text-[28px] sm:text-[34px] font-semibold">
-      Start your Professional journey with
-    </p>
-    <img
-      className="w-[120px] sm:w-[150px] inline-block my-4"
-      src={SectionImage}
-      alt=""
-    />
-    <div className="flex justify-center w-full mb-5">
-      <p className="w-full sm:w-4/5 text-sm sm:text-base leading-relaxed">
-        JobHub is a smart and easy-to-use job search platform designed to help
-        you find the right job, faster. Whether you're a fresher or an
-        experienced professional, JobHub connects you with verified job
-        opportunities across different industries and locations in India. We
-        make job hunting simple with daily job updates, one-click applications,
-        and filters based on your skills, experience, and preferred location.
-        Our goal is to make your career journey smoother by bringing the best
-        job openings to one place — no stress, no confusion, just real
-        opportunities. Start applying today and move one step closer to your
-        dream job with JobHub.
-      </p>
-    </div>
-    <a
-      href="#popularSection"
-      className="inline-block px-5 py-2 bg-green-700 text-white rounded-md"
-    >
-      Explore Job
-    </a>
-  </div>
+        {/* Top Content */}
+        <div className="text-center text-white pt-12 px-4">
+          <p className="text-[28px] sm:text-[34px] font-semibold">
+            Start your Professional journey with
+          </p>
+          <img
+            className="w-[120px] sm:w-[150px] inline-block my-4"
+            src={SectionImage}
+            alt=""
+          />
+          <div className="flex justify-center w-full mb-5">
+            <p className="w-full sm:w-4/5 text-sm sm:text-base leading-relaxed">
+              JobHub is a smart and easy-to-use job search platform designed to help
+              you find the right job, faster. Whether you're a fresher or an
+              experienced professional, JobHub connects you with verified job
+              opportunities across different industries and locations in India. We
+              make job hunting simple with daily job updates, one-click applications,
+              and filters based on your skills, experience, and preferred location.
+              Our goal is to make your career journey smoother by bringing the best
+              job openings to one place — no stress, no confusion, just real
+              opportunities. Start applying today and move one step closer to your
+              dream job with JobHub.
+            </p>
+          </div>
+          <a
+            href="#popularSection"
+            className="inline-block px-5 py-2  bg-green-700 text-white rounded-md"
+          >
+            Explore Job
+          </a>
+        </div>
 
-  {/* Employer Section */}
-  <div className="bg-white w-full mt-5 flex flex-col lg:flex-row justify-center items-center px-4 py-8 gap-8">
-    <div className="lg:w-1/2 w-full px-2 space-y-4 text-black">
-      <h2 className="text-[28px] sm:text-[34px] font-bold">
-        What we offer to <span className="text-green-700">Employers</span>
-      </h2>
-      <div>
-        <span className="font-bold">✅ Excellent Employer Dashboard</span>
-        <p>Manage job listings, track applications, and shortlist candidates.</p>
-      </div>
-      <div>
-        <span className="font-bold">✅ Find the Right Talent</span>
-        <p>
-          Access a large pool of verified candidates based on skills, <br />
-          experience, location, and job role.
-        </p>
-      </div>
-      <div>
-        <span className="font-bold">✅ Post Jobs with Base Salary Details</span>
-        <p>
-          Clearly mention salary expectations to attract serious candidates
-          <br /> and make the hiring process transparent and faster.
-        </p>
-      </div>
-      <div>
-        <span className="font-bold">✅ Smart Filters & Search</span>
-        <p>
-          Easily search and filter candidates based on qualifications, skills,{" "}
-          <br /> and availability.
-        </p>
-      </div>
-    </div>
-    <img
-      className="w-full max-w-[300px] sm:max-w-[400px]"
-      src={sectiionImage}
-      alt=""
-    />
-  </div>
+        {/* Employer Section */}
+        <div className="bg-white w-full mt-5 flex flex-col lg:flex-row justify-center items-center px-4 py-8 gap-8">
+          <div className="lg:w-1/2 w-full px-2 space-y-4 text-black">
+            <h2 className="text-[28px] sm:text-[34px] font-bold">
+              What we offer to <span className="text-green-700">Employers</span>
+            </h2>
+            <div>
+              <span className="font-bold">✅ Excellent Employer Dashboard</span>
+              <p>Manage job listings, track applications, and shortlist candidates.</p>
+            </div>
+            <div>
+              <span className="font-bold">✅ Find the Right Talent</span>
+              <p>
+                Access a large pool of verified candidates based on skills, <br />
+                experience, location, and job role.
+              </p>
+            </div>
+            <div>
+              <span className="font-bold">✅ Post Jobs with Base Salary Details</span>
+              <p>
+                Clearly mention salary expectations to attract serious candidates
+                <br /> and make the hiring process transparent and faster.
+              </p>
+            </div>
+            <div>
+              <span className="font-bold">✅ Smart Filters & Search</span>
+              <p>
+                Easily search and filter candidates based on qualifications, skills,{" "}
+                <br /> and availability.
+              </p>
+            </div>
+          </div>
+          <img
+            className="w-full max-w-[300px] sm:max-w-[400px]"
+            src={sectiionImage}
+            alt=""
+          />
+        </div>
 
-  {/* Stats Section */}
-  <div className="text-white text-center text-base sm:text-xl bg-[#384639] w-full flex flex-col sm:flex-row justify-around items-center py-5 gap-5">
-    <div>
-      Live Jobs: <CountUp start={0} end={1200} duration={6.5} separator="," />
-    </div>
-    <div>Compare Salaries</div>
-    <div>
-      Process: <CountUp start={0} end={550} duration={6.5} separator="," />
-    </div>
-  </div>
-</section>
+        {/* Stats Section */}
+        <div className="text-white text-center text-base sm:text-xl bg-[#384639] w-full flex flex-col sm:flex-row justify-around items-center py-5 gap-5">
+          <div>
+            Live Jobs: <CountUp start={0} end={1200} duration={6.5} separator="," />
+          </div>
+          <div>Compare Salaries</div>
+          <div>
+            Process: <CountUp start={0} end={550} duration={6.5} separator="," />
+          </div>
+        </div>
+      </section>
 
     </>
   );

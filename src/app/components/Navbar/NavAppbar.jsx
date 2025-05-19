@@ -78,7 +78,7 @@ const NavDrawer = () => {
             height: '90px',
             
             boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.1)',
-            borderBottom: '1px solid #dadada',
+           
             transition: 'all 0.3s ease-in-out',
             display: 'flex',
             justifyContent: 'center',
@@ -90,7 +90,7 @@ const NavDrawer = () => {
               component="img"
               src={jobhublogo}
               alt="Logo"
-              sx={{ width: { xs: '80px', sm: '100px', md: '100px', lg: '110px' }, height: 'auto', cursor: 'pointer' }}
+              sx={{ width: { xs: '80px', sm: '100px', md: '100px', lg: '110px' }, marginLeft:"50px" ,height: 'auto', cursor: 'pointer' }}
               onClick={() => handleNavigate('/')}
             />
 
@@ -120,6 +120,7 @@ const NavDrawer = () => {
                   title="Login"
                   onClick={handleLogin}
                   sx={{
+                    marginRight: '70px',
                     px: 4,
                     py: 1.5,
                     backgroundColor: 'green',

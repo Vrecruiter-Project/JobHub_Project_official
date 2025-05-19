@@ -35,7 +35,7 @@ const DifferentJobCard = ({ jobTypes, title, onClick, image, backgroundColor = '
             textAlign: "center",
             pt: 1,
           }}>{jobTypes.title}</Typography>
-          <Button size='small' sx={{backgroundColor: '#008000', color:'white', fontSize:'8px'}}>Apply now</Button>
+          <Button size='small' sx={{backgroundColor: '#008000', color:'white', fontSize:'8px', marginTop:'10px'}}>Apply now</Button>
         </CardContent>
       </Card>
     </>

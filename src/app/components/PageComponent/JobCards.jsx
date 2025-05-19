@@ -32,7 +32,7 @@ const JobCards = () => {
         <>
 <div className="w-full flex justify-center py-12 px-4">
       <div className="max-w-6xl w-full">
-        <p className="text-center text-2xl mb-10">
+        <p className="text-center text-4xl mb-10">
           How <span className="text-green-600 font-bold">JOBHUB</span> works for you
         </p>
 

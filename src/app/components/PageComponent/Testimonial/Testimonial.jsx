@@ -60,7 +60,7 @@ const Testimonial = () => {
                     Testimonials
                 </Typography>
                 <Box sx={{width:'100%',display:'flex', justifyContent:"end" , position:'relative', zIndex:2}}>
-                <Typography sx={{ width:'40%',  fontSize: '30px'  , fontWeight: 'bold', position: 'relative', top: "600px" }}>Jobs can be categorized as paid or unpaid. Examples of unpaid jobs include volunteer, homemaker, mentor, student, and sometimes intern.</Typography>
+                <Typography sx={{ width:'40%',  fontSize: '24px'  ,  position: 'relative', top: "650px" }}>Jobs can be categorized as paid or unpaid. Examples of unpaid jobs include volunteer, homemaker, mentor, student, and sometimes intern.</Typography>
                 </Box>
                 <Box sx={{ display: 'flex', justifyContent: 'center', width: '100%', padding: '20px' }}>
                     <Box sx={{ display: 'flex', justifyContent: 'center', gap: '20px', alignItems: 'center', position: 'relative', zIndex: 2, top: '650px' }}>
@@ -97,7 +97,7 @@ const Testimonial = () => {
                     </Box>
                 </Box>
                 <Box sx={{ display: 'flex', justifyContent: 'space-between', }}>
-                    <Box sx={{ position: 'relative', top: '100px', width: '35%', zIndex: 1 }}><img style={{ objectFit: 'cover' }} src={Ellipse_1} alt="" /><Typography sx={{position:'relative', top:'-560px', paddingInline:'30px', fontSize:'34px',fontWeight:'bold' }}>Everyone Should <br /> Believe  In What Our <br /> Client Say.</Typography></Box>
+                    <Box sx={{ position: 'relative', top: '100px', width: '35%', zIndex: 1 }}><img style={{ objectFit: 'cover' }} src={Ellipse_1} alt="" /><Typography sx={{position:'relative', top:'-560px', paddingInline:'30px', fontSize:'34px', }}>Everyone Should <br /> Believe  In What Our <br /> Client Say.</Typography></Box>
                     <Box sx={{ position: 'relative', }}><img style={{ objectFit: 'cover' }} src={Ellipse_2} alt="" /></Box>
                 </Box>
             </Box>
