@@ -222,7 +222,7 @@ export const HeroSection = () => {
           <Box
             className="flex flex-wrap gap-2 bg-white rounded-lg shadow-md p-3 items-center search-box"
             sx={{
-              maxWidth: { xs: '95%', sm: '60%', md: '85%' },
+              maxWidth: { xs: '95%', sm: '60%', md: '75%' },
             }}
           >
             {/* Search Input */}
