@@ -69,7 +69,8 @@ const PopularJobs = ({ id }) => {
               data-aos="fade-up"
               variant="h3" component="h2" align="center" sx={{
                 fontSize: { xs: "35px", md: "45px" },
-                py: 3,
+                py: 5,
+              
               //  backgroundImage: `url(${PopularJobsBg})`,
                 backgroundSize: "cover",
               }}>
@@ -125,6 +126,7 @@ const PopularJobs = ({ id }) => {
             justifyItems: 'center',
             alignItems: 'center',
             mt: 5,
+            
           }}
         >
           {visibleCards.map((item, index) => (
@@ -133,6 +135,7 @@ const PopularJobs = ({ id }) => {
               data-aos="zoom-out"
               data-aos-duration="1000"
               sx={{
+                mb: 5,
                 transition: 'transform 0.3s ease-in-out',
                 '&:hover': {
                   transform: 'scale(1.05)',

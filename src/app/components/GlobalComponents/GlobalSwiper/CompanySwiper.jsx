@@ -5,10 +5,10 @@ const Container = styled.div`
   .slider {
     margin-top: 0;
     margin-bottom: 90px;
-    padding: 1em 0;
+    padding-bottom: 30px;
     overflow: hidden;
     position: relative;
-    width: 100%; /* Full width container */
+    width: 100%; 
   }
 
   .slide-track {
@@ -30,7 +30,7 @@ const Container = styled.div`
   .slide img {
     max-width: 100%;
     max-height: 100%;
-    object-fit: contain;
+    object-fit: cover;
   }
 
   @keyframes scroll {
