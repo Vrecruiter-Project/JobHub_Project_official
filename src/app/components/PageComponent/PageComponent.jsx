@@ -38,7 +38,7 @@ const PageComponent = ({children}) => {
             height: "100%",
             opacity: "100%",
           }}>
-             <HomeBanner/>
+{/*              <HomeBanner/> */}
         <NavAppBar/>
         {children}
         <Footer/>
