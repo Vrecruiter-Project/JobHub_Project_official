@@ -49,3 +49,6 @@ button.MuiButtonBase-root.MuiButton-root.MuiButton-text.MuiButton-textPrimary.Mu
 .MuiBox-root.css-dsw18m {
     height: 0;
 }
+a.inline-block.px-5.py-2.bg-green-700.text-white.rounded-md {
+    margin-bottom: 30px;
+}

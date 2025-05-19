@@ -18,6 +18,7 @@ import { HeroSection } from '../../../components/GlobalComponents/HeaderPage/uti
 import EmployerHireNow from '../../../components/PageComponent/EmployerHireNow';
 
 import EmployerDashboard from "../EmployerPage/EmployerDashboard/EmployerDashboard"
+import HomeBanner from '../../../components/Banner/Banner';
 
 
 const Home = () => {
@@ -67,7 +68,8 @@ const Home = () => {
 
   return (
     <>
-      <PageComponent>
+    <HomeBanner/>
+    <PageComponent>
 
         {/* <HeaderPage
           backgroundImage={bgImage}

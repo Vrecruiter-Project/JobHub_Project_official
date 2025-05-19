@@ -42,7 +42,7 @@ const PartnerSection = () => {
 
   return (
     <>
-      <Box sx={{ width: '100%',backgroundColor:'black' }}>
+      <Box sx={{ width: '100%' }}>
         <Grid2
           container
           xs={12}
@@ -68,7 +68,7 @@ const PartnerSection = () => {
                 textAlign: 'center',
                 py:6,
                 fontSize: { xs: '35px', md: '45px' },
-                color: 'white',
+                
               }}
             >
               Our{' '}

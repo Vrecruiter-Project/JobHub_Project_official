@@ -1,43 +1,42 @@
-
 const HomeBanner = () => {
     return (
-        <>
-            <div style={styles.banner}>
-                <div style={styles.text}>
+        <div className="bg-green-700 w-full flex justify-center">
+            <div className="w-[90%] p-5 flex flex-col md:flex-row justify-between items-center gap-4 md:gap-0">
+                <div className="text-white text-sm sm:text-base text-center md:text-left">
                     Your dream job is just a click away
                 </div>
-                <div style={styles.text}>
-                    Have any questions?+91 8512827174
+                <div className="text-white text-sm sm:text-base text-center md:text-left">
+                    Have any questions? +91 8512827174
                 </div>
                 <div className="flex gap-4">
-                    <a href="https://www.facebook.com/people/JobHubworld/61575148695953/" target='_blank' className="w-10 h-10 flex items-center justify-center rounded-full bg-[#008000] text-white">
+                    <a
+                        href="https://www.facebook.com/people/JobHubworld/61575148695953/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-10 h-10 flex items-center justify-center rounded-full bg-green-700 text-white"
+                    >
                         <i className="fab fa-facebook-f"></i>
                     </a>
-                    <a href='https://www.linkedin.com/in/jobhub-world-5559a7361/' target="_blank" className="w-10 h-10 flex items-center justify-center rounded-full bg-[#008000] text-white">
-                        <i classNampe="fa-brands fa-linkedin-in"></i>
+                    <a
+                        href="https://www.linkedin.com/in/jobhub-world-5559a7361/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-10 h-10 flex items-center justify-center rounded-full bg-green-700 text-white"
+                    >
+                        <i className="fa-brands fa-linkedin-in"></i>
                     </a>
-                    <a href='https://www.instagram.com/jobhub_world?igsh=a2hsb3dmdDV1azYw' target="_blank" className="w-10 h-10 flex items-center justify-center rounded-full bg-[#008000] text-white">
+                    <a
+                        href="https://www.instagram.com/jobhub_world?igsh=a2hsb3dmdDV1azYw"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-10 h-10 flex items-center justify-center rounded-full bg-green-700 text-white"
+                    >
                         <i className="fa-brands fa-instagram"></i>
                     </a>
                 </div>
             </div>
-        </>
-    )
-}
+        </div>
+    );
+};
 
-const styles = {
-    banner: {
-        padding: '20px',
-        backgroundColor: '#008000',
-        position: 'relative',
-        zIndex: 1,
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-    },
-    text: {
-        fontSize: '16px',
-        color: '#fff',
-    },
-}
 export default HomeBanner;

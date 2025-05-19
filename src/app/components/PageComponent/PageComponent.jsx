@@ -2,7 +2,6 @@ import { Box, styled } from '@mui/material';
 import React from 'react'
 import NavAppBar from '../Navbar/NavAppbar';
 import Footer from './Footer';
-import HomeBanner from '../Banner/Banner';
 
 const Page = styled(Box)(({ theme }) => ({
     position: "relative",

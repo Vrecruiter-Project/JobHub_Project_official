@@ -257,7 +257,7 @@ export default function Footer() {
                 <i className="far fa-envelope-open text-[#008000] text-2xl mt-2"></i>
                 <div className="pl-4">
                   <h4 className="text-lg font-semibold mb-1">Mail us</h4>
-                  <span className="text-sm text-gray-400">jobhubportal@gmail.com</span>
+                  <span className="text-sm text-gray-400">info.jobhubworld@gmail.com</span>
                 </div>
               </div>
             </div>
