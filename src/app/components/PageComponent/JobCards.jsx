@@ -7,90 +7,53 @@ import frame from '../../assets/Images/jobCardIcons/Frame.png';
 import quickApply from '../../assets/Images/jobCardIcons/quickApply.png';
 import cardBg from '../../assets/Images/bgImages/cardBg.png';
 
-import AOS from 'aos';
-import 'aos/dist/aos.css';
-
+const cards = [
+  {
+    imgSrc: search,
+    text: "Find Your Dream Job",
+  },
+  {
+    imgSrc: salary,
+    text: "Compare Salaries",
+  },
+  {
+    imgSrc: frame,
+    text: "Research Companies",
+  },
+  {
+    imgSrc: quickApply,
+    text: "Quick Apply",
+  },
+];
 
 const JobCards = () => {
 
-    useEffect(() => {
-        AOS.init();
-    }, []);
-
     return (
         <>
-            <Box sx={{
-                backgroundImage: `url(${cardBg})`,
-                backgroundRepeat: "no-repeat",
-                backgroundPosition: "center",
-                backgroundSize: "cover",
-            }}>
-                <Box sx={{
-                    py: 6,
-                    backgroundColor: "rgba(0, 128, 0, 0.3)",
-                    width: "100%",
-                }}>
-                    <Grid2 container sx={{
-                        display: 'flex',
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                        flexGrow: 1,
-                        mb: 10,
-                        px: 5
-                    }}>
-                        <Grid2 item xs={12} md={12}>
-                            <Typography
-                                data-aos="fade-up"
-                                data-aos-anchor-placement="top-bottom"
-                                variant="h3" component="h2" sx={{
-                                    textAlign: "center",
-                                    fontSize: { xs: "35px", md: "45px" }
-                                }}>
-                                How <span style={{ color: "green" }}>JOBHUB</span> Works For You
-                            </Typography>
-                        </Grid2>
-                    </Grid2>
-                    
-                    <Grid2 container spacing={8} sx={{
-                        display: 'flex',
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                    }}>
-                        <Grid2 item xs={12} md={3}>
-                            <JobCard
-                                Icon={<>
-                                    <img src={search} alt="salary" style={{ width: 40, height: 40 }} />
-                                </>}
-                                title="Find Your Dream Job"
-                            />
-                        </Grid2>
-                        <Grid2 item xs={12} md={3}>
-                            <JobCard
-                                Icon={<>
-                                    <img src={salary} alt="salary" style={{ width: 40, height: 40 }} />
-                                </>}
-                                title="Compare Salaries"
-                            />
-                        </Grid2>
-                        <Grid2 item xs={12} md={3}>
-                            <JobCard
-                                Icon={<>
-                                    <img src={frame} alt="salary" style={{ width: 40, height: 40 }} />
-                                </>}
-                                title="Research Companies"
-                            />
-                        </Grid2>
-                        <Grid2 item xs={12} md={3}>
-                            <JobCard
-                                Icon={<>
-                                    <img src={quickApply} alt="salary" style={{ width: 40, height: 40 }} />
-                                </>}
-                                title="Quick Apply"
-                            />
-                        </Grid2>
-                    </Grid2>
-                </Box>
-            </Box>
+<div className="w-full flex justify-center py-12 px-4">
+      <div className="max-w-6xl w-full">
+        <p className="text-center text-2xl mb-10">
+          How <span className="text-green-600 font-bold">JOBHUB</span> works for you
+        </p>
+
+        <div className="flex flex-wrap justify-center gap-6">
+          {cards.map((card, index) => (
+            <div
+              key={index}
+              className="relative w-full sm:w-64 h-40 bg-gray-200 group overflow-hidden rounded-lg shadow-md"
+            >
+              <div className="absolute top-0 right-0 bg-green-500 rounded-bl-[999px] w-12 h-12 transition-all duration-300 group-hover:w-full group-hover:h-full group-hover:rounded-none"></div>
+
+              <div className="p-4 relative z-10 flex flex-col items-center justify-center h-full text-center">
+                <img src={card.imgSrc} alt={`Step ${index + 1}`} className="mb-2 w-10 h-10" />
+                <p className="text-lg text-gray-900 font-bold">{card.text}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+
         </>
     )
 }

@@ -92,14 +92,14 @@ const Home = () => {
           button2
         /> */}
         <HeroSection/>
-        <Resumeswiper /> 
+        {/* <Resumeswiper />  */}
         <JobCards />
         <JobDetails />
         <PopularJobs id="popularSection" />
         <ResumeSection />
-        <PartnerSection />
         <ChoiceSection />
-        <EmployerHireNow/>
+        <PartnerSection />
+        {/* <EmployerHireNow/> */}
         <Testimonial />
         <GlobalFaq faqItems={faqItems} />
         <Outlet />

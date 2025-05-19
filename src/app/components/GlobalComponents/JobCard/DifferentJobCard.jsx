@@ -1,4 +1,4 @@
-import { Card, CardContent, Typography } from '@mui/material';
+import { Button, Card, CardContent, Typography } from '@mui/material';
 import React from 'react';
 
 const DifferentJobCard = ({ jobTypes, title, onClick, image, backgroundColor = '#f0f0f0', boxShadow, border = '1px dashed green' }) => {
@@ -6,6 +6,7 @@ const DifferentJobCard = ({ jobTypes, title, onClick, image, backgroundColor = '
     <>
       <Card
         sx={{
+          cursor: 'pointer',
           // width:{ xs: '100%', sm: '100%', md: '120px', lg: '180px' },
           width: { xs: '120px', sm: '170px', md: '155px', lg: '180px' },
           height: { xs: '120px', sm: '170px', md: '155px', lg: '180px' },
@@ -34,6 +35,7 @@ const DifferentJobCard = ({ jobTypes, title, onClick, image, backgroundColor = '
             textAlign: "center",
             pt: 1,
           }}>{jobTypes.title}</Typography>
+          <Button size='small' sx={{backgroundColor: '#008000', color:'white', fontSize:'8px'}}>Apply now</Button>
         </CardContent>
       </Card>
     </>

@@ -42,7 +42,7 @@ const PartnerSection = () => {
 
   return (
     <>
-      <Box sx={{ width: '100%', }}>
+      <Box sx={{ width: '100%',backgroundColor:'black' }}>
         <Grid2
           container
           xs={12}
@@ -50,8 +50,8 @@ const PartnerSection = () => {
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
-            pt: { xs: 8, md: 3 },
-            pb: { xs: 2, md: 3 },
+            pt: { xs: 2, md: 3 },
+            pb: { xs: 1, md: 1 },
            // backgroundImage: { xs: 'none', md: `url(${PartnersBg})` },
             backgroundRepeat: 'no-repeat',
             backgroundSize: '100%',
@@ -68,6 +68,7 @@ const PartnerSection = () => {
                 textAlign: 'center',
                 py:6,
                 fontSize: { xs: '35px', md: '45px' },
+                color: 'white',
               }}
             >
               Our{' '}

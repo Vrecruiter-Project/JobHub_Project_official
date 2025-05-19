@@ -71,6 +71,7 @@ const NavDrawer = () => {
         <AppBar
           position="fixed"
           sx={{
+            position:'relative',
             // mt: { xs: 3, md: 3 },
             backgroundColor: 'rgba(255, 255, 255, 0.95)',
             color: 'black',

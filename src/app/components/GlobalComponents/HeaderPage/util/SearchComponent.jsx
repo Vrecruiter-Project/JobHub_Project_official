@@ -23,7 +23,7 @@ import {
 } from '@mui/icons-material';
 
 import bgImg from '../../../../assets/Images/bgImages/Banner_image.svg';
-import HeaderImage from '../../../../assets/Images/headerImages/HeaderImage01.png';
+import HeaderImage from '../../../../assets/Images/headerImages/HeaderImage01_1.png';
 import HeaderImage2 from '../../../../assets/Images/headerImages/HeaderImage02.png';
 import '../../../../../../src/index.css';
 const HtmlTooltip = styled(({ className, ...props }) => (
@@ -152,11 +152,12 @@ export const HeroSection = () => {
         height: 'auto',
         display: 'flex',
         justifyContent: 'center',
-        backgroundImage: `url(${bgImg})`,
-        backgroundRepeat: 'no-repeat',
-        backgroundPosition: 'center',
-        backgroundSize: 'cover',
-        paddingTop: { xs: '20px', sm: '40px', md: '60px' },
+        // backgroundImage: `url(${bgImg})`,
+        // backgroundRepeat: 'no-repeat',
+        // backgroundPosition: 'center',
+        // backgroundSize: 'cover',
+        backgroundColor: '#010301',
+        paddingTop: { xs: '20px', sm: '40px', md: '30px' },
         paddingBottom: { xs: '40px', sm: '50px', md: '60px' },
       }}
     >
@@ -174,6 +175,7 @@ export const HeroSection = () => {
           <Typography
             //  variant='h2'
             sx={{
+              color: 'white',
               mb: 2, fontWeight: '600'
               , fontSize: { xs: '28px', sm: '42px', md: '60px' },
               lineHeight: { xs: '35px', sm: '45px', md: '60px' },
@@ -182,10 +184,10 @@ export const HeroSection = () => {
             Find Your Career <br /> With{' '}
             <span style={{ color: '#008000' }}>JOBHUB</span>
           </Typography>
-          <Typography sx={{ mb: 4, fontWeight: '600', fontSize: { xs: '12px', sm: '16px', md: '20px' } }}>Your dream job is just a click away</Typography>
+          <Typography sx={{ mb: 4, fontWeight: '600', color:"white", fontSize: { xs: '12px', sm: '16px', md: '20px' } }}>Your dream job is just a click away</Typography>
 
           {/* Employer CTA */}
-          <Box sx={{ mt: 1, marginLeft: '10px' }}>
+          <Box sx={{ mt: 1,mb:2, marginLeft: '10px' }}>
             <Box className="flex items-center gap-1">
               <HtmlTooltip
                 title={
@@ -195,14 +197,16 @@ export const HeroSection = () => {
                   </React.Fragment>
                 }
               >
-                <InfoOutlined fontSize="9px" sx={{ display: { xs: 'none', sm: 'block' }, cursor: 'help' }} />
+                <InfoOutlined fontSize="9px" sx={{color:'white', display: { xs: 'none', sm: 'block' }, cursor: 'help' }} />
               </HtmlTooltip>
-              <Typography sx={{ fontSize: '12px', display: { xs: 'none', sm: 'block' } }}>For Employer</Typography>
+              <Typography sx={{color:'white', fontSize: '12px', display: { xs: 'none', sm: 'block' } }}>For Employer</Typography>
               <Button
                 variant="contained"
                 size="small"
                 sx={{
-                  backgroundColor: '#008000',
+                  padding: '2px 30px',
+                  border: '2px solid #45a049',
+                  backgroundColor: 'transparent',
                   color: 'white',
                   ml: 1,
                   textTransform: 'none',

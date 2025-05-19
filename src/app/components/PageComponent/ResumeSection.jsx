@@ -30,7 +30,7 @@ const ResumeSection = () => {
 
   return (
     <>
-      <Box id="resumeSwiper" sx={{ pt: { xs: 14, md: 10 }, width: '80%', mx: 'auto', display:{xs:'none', md:'block'} }}>
+      <Box id="resumeSwiper" sx={{ pt: { xs: 14, md: 10 }, width: '100%', mx: 'auto', display:{xs:'none', md:'block'}, backgroundColor:"black" }}>
         <Grid2
         
           container
@@ -54,6 +54,7 @@ const ResumeSection = () => {
                   md: "45px",
                 },
               //  backgroundImage: `url(${ResumeBg})`,
+              color: 'white',
                 backgroundRepeat: "no-repeat",
                 backgroundSize: "cover",
                 py: 3,
