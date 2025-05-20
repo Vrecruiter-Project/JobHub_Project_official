@@ -65,17 +65,15 @@ const PartnerSection = () => {
               component='h2'
               sx={{
                 py: { xs: 4, md: 0 },
+                marginBottom: '90px',
                 textAlign: 'center',
-                py:6,
-                fontSize: { xs: '35px', md: '45px' },
+                fontSize: { xs: '28px', md: '45px' },
                 
               }}
             >
               Our{' '}
               <span
-                style={{
-                  color: 'green',
-                }}
+                className='text-[#008000] font-bold shadow-md rounded-sm p-1'
               >
                 Partners
               </span>

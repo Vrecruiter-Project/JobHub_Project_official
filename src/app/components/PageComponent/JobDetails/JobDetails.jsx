@@ -245,14 +245,14 @@ export default function JobDetails() {
           </div>
         </div>
       </section> */}
-      <section className="w-full flex flex-col items-center bg-black">
+      <section className="hidden w-full flex flex-col items-center bg-black sm:block">
         {/* Top Content */}
         <div className="text-center text-white pt-12 px-4">
-          <p className="text-[28px] sm:text-[34px] font-semibold">
+          <p className="text-[28px] sm:text-[40px] font-semibold">
             Start your Professional journey with
           </p>
           <img
-            className="w-[120px] sm:w-[150px] inline-block my-4"
+            className="w-[120px] sm:w-[150px]  inline-block my-4"
             src={SectionImage}
             alt=""
           />
@@ -318,7 +318,7 @@ export default function JobDetails() {
         </div>
 
         {/* Stats Section */}
-        <div className="text-white text-center text-base sm:text-xl bg-[#384639] w-full flex flex-col sm:flex-row justify-around items-center py-5 gap-5">
+        <div className="text-white text-center text-base sm:text-3xl bg-[#384639] w-full flex flex-col sm:flex-row justify-around items-center py-5 gap-5">
           <div>
             Live Jobs: <CountUp start={0} end={1200} duration={6.5} separator="," />
           </div>

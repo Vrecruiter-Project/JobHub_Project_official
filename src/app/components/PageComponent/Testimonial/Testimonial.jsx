@@ -68,17 +68,17 @@ const Testimonial = () => {
                             <Box sx={{ display: 'flex', flexDirection: 'column', marginTop: '20px' }}>
                                 <img style={{ width: "40px", objectFit: 'cover', borderRadius: "100%" }} src="https://e7.pngegg.com/pngimages/328/599/png-clipart-male-avatar-user-profile-profile-heroes-necktie-thumbnail.png" alt="" />
                                 Amit Sharma
-                                <span>Software Engineer, Pune</span>
+                                <span className="text-gray-400">Software Engineer, Pune</span>
                             </Box>
-                            <span>
-                                  “JobHub helped me land my first developer job within two weeks! The daily job updates and filters made it so easy to apply. Highly recommended for freshers.”
+                            <span className="font-bold">
+                                  “JobHub helped me land first developer job within two weeks! Job filters made it so easy to apply. Highly recommended for freshers.”
                             </span>
                         </Box>
                         <Box sx={{ paddingInline: '30px', width: "300px", height: '300px', backgroundColor: 'black', color: 'white', borderRadius: '5px', border: '2px solid #008000' }}>
                             <Box sx={{ display: 'flex', flexDirection: 'column', marginTop: '50px' }}>
                                 <img style={{ width: "40px", objectFit: 'cover', borderRadius: "100%" }} src="https://e7.pngegg.com/pngimages/328/599/png-clipart-male-avatar-user-profile-profile-heroes-necktie-thumbnail.png" alt="" />
                                 Priya Iyer
-                                <span>HR Manager, Chennai</span>
+                                <span className="text-gray-400">HR Manager, Chennai</span>
                             </Box>
                             <span>
                                   “As an employer, JobHub's dashboard made shortlisting candidates fast and accurate. The smart filters saved me a lot of time in hiring.”
@@ -88,16 +88,16 @@ const Testimonial = () => {
                             <Box sx={{ display: 'flex', flexDirection: 'column', marginTop: '10px' }}>
                                 <img style={{ width: "40px", objectFit: 'cover', borderRadius: "100%" }} src="https://e7.pngegg.com/pngimages/328/599/png-clipart-male-avatar-user-profile-profile-heroes-necktie-thumbnail.png" alt="" />
                                 Ravi Verma
-                                <span>Marketing Executive, Delhi</span>
+                                <span className="text-gray-400">Marketing Executive, Delhi</span>
                             </Box>
-                            <span>
+                            <span className="font-bold">
                                 “JobHub is the most user-friendly job portal I’ve ever used. It’s clean, simple, and really helped me understand salary expectations and apply confidently.”
                             </span>
                         </Box>
                     </Box>
                 </Box>
                 <Box sx={{ display: 'flex', justifyContent: 'space-between', }}>
-                    <Box sx={{ position: 'relative', top: '100px', width: '35%', zIndex: 1 }}><img style={{ objectFit: 'cover' }} src={Ellipse_1} alt="" /><Typography sx={{position:'relative', top:'-560px', paddingInline:'30px', fontSize:'34px', }}>Everyone Should <br /> Believe  In What Our <br /> Client Say.</Typography></Box>
+                    <Box sx={{ position: 'relative', top: '100px', width: '35%', zIndex: 1 }}><img style={{ objectFit: 'cover' }} src={Ellipse_1} alt="" /><Typography sx={{position:'relative', top:'-535px',left:"10px", paddingInline:'30px', fontSize:'24px', }}>Everyone Should <br /> Believe  In What Our <br /> Client Say.</Typography></Box>
                     <Box sx={{ position: 'relative', }}><img style={{ objectFit: 'cover' }} src={Ellipse_2} alt="" /></Box>
                 </Box>
             </Box>
