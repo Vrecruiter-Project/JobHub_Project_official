@@ -15,6 +15,7 @@ import {
   ListItem,
   Paper
 } from '@mui/material';
+
 import {
   BusinessCenterOutlined,
   InfoOutlined,
@@ -156,7 +157,7 @@ export const HeroSection = () => {
         // backgroundRepeat: 'no-repeat',
         // backgroundPosition: 'center',
         // backgroundSize: 'cover',
-        backgroundColor: '#010301',
+        backgroundColor: '#0b0a05',
         paddingTop: { xs: '20px', sm: '40px', md: '30px' },
         paddingBottom: { xs: '40px', sm: '50px', md: '60px' },
       }}
