@@ -45,14 +45,12 @@ const ChoiceSection = () => {
                     sx={{
                         textAlign: 'center',
                         py: 6,
-                        fontSize: { xs: '35px', md: '45px' },
+                        fontSize: { xs: '24px', md: '45px' },
                         color: 'black',
                         marginTop: '-24px'
                     }}
                 >
-                    Why We Choose <span style={{
-                        color: 'green', fontWeight: 'bold',
-                    }}>JOBHUB</span>
+                    Why We Choose <span className='text-[#008000] font-bold shadow-md rounded-sm p-1'>JOBHUB</span>
                 </Typography>
             </Box>
 

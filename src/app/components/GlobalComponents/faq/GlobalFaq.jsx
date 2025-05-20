@@ -47,14 +47,14 @@ export default function GlobalFaq({ faqItems, id }) {
             data-aos="fade-up"
             sx={{
               fontSize: {
-                xs: "35px", md: "46px",
+                xs: "20px", md: "46px",
               //  backgroundImage: `url(${FaqsBg})`,
                 backgroundRepeat: "no-repeat",
                 backgroundSize: "cover",
                 py: 5,
               }
             }}>
-            Frequently asked <span style={{ color: "green" }}>questions</span>
+            Frequently asked <span className="text-[#008000] font-bold rounded-sm shadow-md p-1">questions</span>
           </Typography>
           <Box sx={{ width: "100%" }}>
             {faqItems.map((item) => (
