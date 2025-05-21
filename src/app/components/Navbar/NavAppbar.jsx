@@ -102,6 +102,7 @@ const NavDrawer = () => {
                     key={page.label}
                     onClick={() => handleNavigate(page.path, page.external)}
                     sx={{
+                      fontSize:'18px',
                       color: isActiveRoute(page.path) ? 'green' : 'black',
                       fontWeight: 600,
                       '&:hover': { color: 'green' },

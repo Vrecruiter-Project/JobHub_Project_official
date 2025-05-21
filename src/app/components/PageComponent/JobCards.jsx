@@ -41,15 +41,15 @@ const JobCards = () => {
         <Typography
           variant="h4"
           textAlign="center"
-          sx={{ fontSize: { xs: '22px', sm: '34px' }, mb: 6 }}
+          sx={{ fontSize: { xs: '22px', sm: '34px' }, mb: 6 , fontFamily:"Marcelluse",textShadow: '0 3px 4px #333',}}
         >
           How{' '}
           <Box
             component="span"
             sx={{
+              
               color: 'green',
               fontWeight: 'bold',
-              boxShadow: 1,
               borderRadius: 1,
               px: 1,
               

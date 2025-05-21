@@ -68,12 +68,13 @@ const PopularJobs = ({ id }) => {
             <Typography
               data-aos="fade-up"
               variant="h3" component="h2" align="center" sx={{
+                fontFamily:"Marcelluse",textShadow: '0 3px 4px #333',
                 fontSize: { xs: "27px", md: "45px" },
                 py: 5,
               //  backgroundImage: `url(${PopularJobsBg})`,
                 backgroundSize: "cover",
               }}>
-              Popular <span className='text-[#008000] shadow-md rounded p-1 font-bold'>Jobs</span>
+              Popular <span className='text-[#008000]  font-bold'>Jobs</span>
             </Typography>
           </Grid2>
         </Grid2>

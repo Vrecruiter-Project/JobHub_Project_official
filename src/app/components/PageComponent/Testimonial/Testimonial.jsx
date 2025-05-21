@@ -56,7 +56,7 @@ const Testimonial = () => {
     return (
         <>
             <Box sx={{ width: '100%', mx: 'auto', display: { xs: 'none', md: 'flex' }, flexDirection: 'column', justifyContent: 'center', backgroundColor: 'white', height: "400px", marginBottom:"400px" }}>
-                <Typography sx={{ textAlign: 'center', fontSize: { xs: '35px', md: '45px' }, color: '#008000', fontWeight: 'bold', position: 'relative', top: "560px" }}>
+                <Typography sx={{ textAlign: 'center', fontSize: { xs: '35px', md: '45px' }, color: '#008000', fontWeight: 'bold', position: 'relative', top: "560px",fontFamily:"Marcelluse",textShadow: '0 3px 4px #333', }}>
                     Testimonials
                 </Typography>
                 <Box sx={{width:'100%',display:'flex', justifyContent:"end" , position:'relative', zIndex:2}}>
@@ -97,7 +97,7 @@ const Testimonial = () => {
                     </Box>
                 </Box>
                 <Box sx={{ display: 'flex', justifyContent: 'space-between', }}>
-                    <Box sx={{ position: 'relative', top: '100px', width: '35%', zIndex: 1 }}><img style={{ objectFit: 'cover' }} src={Ellipse_1} alt="" /><Typography sx={{position:'relative', top:'-535px',left:"10px", paddingInline:'30px', fontSize:'24px', }}>Everyone Should <br /> Believe  In What Our <br /> Client Say.</Typography></Box>
+                    <Box sx={{ position: 'relative', top: '100px', width: '35%', zIndex: 1 }}><img style={{ objectFit: 'cover' }} src={Ellipse_1} alt="" /><Typography sx={{position:'relative', top:'-535px',left:"90px", paddingInline:'30px', fontSize:'24px', }}>Everyone Should <br /> Believe  In What Our <br /> Client Say.</Typography></Box>
                     <Box sx={{ position: 'relative', }}><img style={{ objectFit: 'cover' }} src={Ellipse_2} alt="" /></Box>
                 </Box>
             </Box>

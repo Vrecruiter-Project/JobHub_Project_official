@@ -52,9 +52,10 @@ export default function GlobalFaq({ faqItems, id }) {
                 backgroundRepeat: "no-repeat",
                 backgroundSize: "cover",
                 py: 5,
+                fontFamily:"Marcelluse",textShadow: '0 3px 4px #333',
               }
             }}>
-            Frequently asked <span className="text-[#008000] font-bold rounded-sm shadow-md p-1">questions</span>
+            Frequently asked <span className="text-[#008000] font-bold">questions</span>
           </Typography>
           <Box sx={{ width: "100%" }}>
             {faqItems.map((item) => (
