@@ -58,6 +58,7 @@ const ResumeSection = () => {
                 backgroundRepeat: "no-repeat",
                 backgroundSize: "cover",
                 py: 3,
+                fontFamily:"Marcelluse",textShadow: '0 3px 4px #333',
               }}
             >
               Build <span style={{ color: "green" }}>Your Resume</span> In Two Minutes

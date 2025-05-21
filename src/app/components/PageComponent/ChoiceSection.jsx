@@ -42,15 +42,16 @@ const ChoiceSection = () => {
                 <Typography
                     variant="h3"
                     component="h2"
-                    sx={{
+                    sx={{   
                         textAlign: 'center',
                         py: 6,
                         fontSize: { xs: '24px', md: '45px' },
                         color: 'black',
-                        marginTop: '-24px'
+                        marginTop: '-24px',
+                        fontFamily:"Marcelluse",textShadow: '0 3px 4px #333',
                     }}
                 >
-                    Why We Choose <span className='text-[#008000] font-bold shadow-md rounded-sm p-1'>JOBHUB</span>
+                    Why We Choose <span className='text-[#008000] font-bold'>JOBHUB</span>
                 </Typography>
             </Box>
 
@@ -73,6 +74,7 @@ const ChoiceSection = () => {
                             <Box
                                 key={index}
                                 sx={{
+                                    
                                     display: 'flex',
                                     alignItems: 'center',
                                     mb: 2,
@@ -82,12 +84,13 @@ const ChoiceSection = () => {
                                 <img
                                     src={item.icon}
                                     alt={item.title}
-                                    style={{ width: '30px', height: '30px', marginRight: '15px' }}
+                                    style={{ width: '50px', height: '50px', marginRight: '15px' }}
                                 />
                                 <Typography
-                                    variant="h6"
+                                    
                                     sx={{
-                                        fontSize: { xs: '15px', md: '18px' },
+                                        lineHeight:3,
+                                        fontSize: { xs: '15px', md: '22px' },
                                         color: 'black',
                                         textAlign: 'left',
                                     }}

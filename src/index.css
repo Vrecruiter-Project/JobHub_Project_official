@@ -52,3 +52,8 @@ button.MuiButtonBase-root.MuiButton-root.MuiButton-text.MuiButton-textPrimary.Mu
 a.inline-block.px-5.py-2.bg-green-700.text-white.rounded-md {
     margin-bottom: 30px;
 }
+
+@font-face {
+  font-family: 'Marcelluse';
+  src: url(./app/font/Marcellus-Regular.ttf);
+}

@@ -248,11 +248,11 @@ export default function JobDetails() {
       <section className="hidden w-full flex flex-col items-center bg-black sm:block">
         {/* Top Content */}
         <div className="text-center text-white pt-12 px-4">
-          <p className="text-[28px] sm:text-[40px] font-semibold">
+          <p className="text-[28px] sm:text-[40px] font-semibold font-['Marcelluse']">
             Start your Professional journey with
           </p>
           <img
-            className="w-[120px] sm:w-[150px]  inline-block my-4"
+            className="w-[120px] sm:w-[150px]  inline-block mb-10"
             src={SectionImage}
             alt=""
           />
@@ -280,8 +280,8 @@ export default function JobDetails() {
 
         {/* Employer Section */}
         <div className="bg-white w-full mt-5 flex flex-col lg:flex-row justify-center items-center px-4 py-8 gap-8">
-          <div className="lg:w-1/2 w-full px-2 space-y-4 text-black">
-            <h2 className="text-[28px] sm:text-[34px] font-bold">
+          <div className="lg:w-1/2 w-full px-2 space-y-4 text-black leading-8 my-20">
+            <h2 className="text-[28px] sm:text-[34px] font-bold font-['Marcelluse']">
               What we offer to <span className="text-green-700">Employers</span>
             </h2>
             <div>
@@ -311,7 +311,7 @@ export default function JobDetails() {
             </div>
           </div>
           <img
-            className="w-full max-w-[300px] sm:max-w-[400px]"
+            className="w-full max-w-[650px] sm:max-w-[650px] rounded-xl"
             src={sectiionImage}
             alt=""
           />

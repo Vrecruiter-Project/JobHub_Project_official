@@ -168,7 +168,7 @@ export const HeroSection = () => {
           flexDirection: { xs: 'row', md: 'row' },
           alignItems: 'center',
           justifyContent: 'space-between',
-          width: '80%',
+          width: '92%',
         }}
       >
         {/* Left Section */}
@@ -223,7 +223,7 @@ export const HeroSection = () => {
           <Box
             className="flex flex-wrap gap-2 bg-white rounded-lg shadow-md p-3 items-center search-box"
             sx={{
-              maxWidth: { xs: '95%', sm: '60%', md: '75%' },
+              maxWidth: { xs: '95%', sm: '60%', md: '60%' },
             }}
           >
             {/* Search Input */}

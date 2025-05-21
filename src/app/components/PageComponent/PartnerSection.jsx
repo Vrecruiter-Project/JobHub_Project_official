@@ -68,12 +68,13 @@ const PartnerSection = () => {
                 marginBottom: '90px',
                 textAlign: 'center',
                 fontSize: { xs: '28px', md: '45px' },
+                fontFamily:"Marcelluse",textShadow: '0 3px 4px #333',
                 
               }}
             >
               Our{' '}
               <span
-                className='text-[#008000] font-bold shadow-md rounded-sm p-1'
+                className='text-[#008000] font-bold'
               >
                 Partners
               </span>
