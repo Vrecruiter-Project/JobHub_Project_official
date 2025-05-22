@@ -28,7 +28,7 @@ const ChoiceSection = () => {
     ];
 
     return (
-        <Box sx={{ width: '100%', my: 1 }}>
+        <Box sx={{ width: '100%', my: 9 }}>
             <Box
                 sx={{
                     width: '100%',
@@ -68,7 +68,7 @@ const ChoiceSection = () => {
                         display: 'flex',
                         flexDirection: 'column',
                         alignItems: { xs: 'flex-start', sm: 'center', md: 'flex-start' },
-                        marginLeft: { xs: '55px', lg: '0px' },
+                        marginLeft: { xs: '55px', lg: '120px' },
                     }}>
                         {iconItems.map((item, index) => (
                             <Box
@@ -124,7 +124,7 @@ const ChoiceSection = () => {
                             <img
                             src={img8}
                             alt="Jobhub Mobile App"
-                            className="w-[60%] md:w-[65%]"
+                            className="w-[60%] md:w-[50%]"
                             />
                         </Box>
                     </Grid>
