@@ -7,7 +7,7 @@ const DifferentJobCard = ({ jobTypes, title, backgroundColor, boxShadow, border,
       sx={{
         position: 'relative',
         cursor: 'pointer',
-        width: { xs: '120px', sm: '170px', md: '155px', lg: '230px' },
+        width: { xs: '120px', sm: '170px', md: '155px', lg: '180px' },
         height: { xs: '120px', sm: '170px', md: '155px', lg: '180px' },
         borderRadius: '20px',
         backgroundColor,

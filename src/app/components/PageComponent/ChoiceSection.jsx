@@ -18,13 +18,13 @@ const ChoiceSection = () => {
     }, []);
 
     const iconItems = [
-        { icon: img1, title: 'Verified & Authentic Jobs' },
-        { icon: img2, title: 'Easily Search Jobs in your Preferred Category' },
-        { icon: img3, title: 'Get the Job in Your Locality' },
-        { icon: img4, title: 'No Need to Create Resume' },
-        { icon: img5, title: 'Get Help from Our Local Representative' },
         { icon: img6, title: 'No Hidden Charges' },
+        { icon: img1, title: 'Verified & Authentic Jobs' },
+        { icon: img4, title: 'No Need to Create Resume' },
+        { icon: img3, title: 'Get the Job in Your Locality' },
         { icon: img7, title: 'Helping the Unorganized Sector' },
+        { icon: img5, title: 'Get Help from Our Local Representative' },
+        { icon: img2, title: 'Easily Search Jobs in your Preferred Category' },
     ];
 
     return (
@@ -62,7 +62,7 @@ const ChoiceSection = () => {
                 }}
             >
                 <Grid container spacing={4}
-                    sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}
+                    sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap:'nowrap' }}
                 >
                     <Grid item xs={12} md={5} sx={{
                         display: 'flex',
