@@ -57,3 +57,10 @@ a.inline-block.px-5.py-2.bg-green-700.text-white.rounded-md {
   font-family: 'Marcelluse';
   src: url(./app/font/Marcellus-Regular.ttf);
 }
+
+@media (min-width: 980px) {
+    .MuiBox-root.css-yljj99 {
+        padding-left: 21px;
+        padding-right: 21px;
+    }
+}
