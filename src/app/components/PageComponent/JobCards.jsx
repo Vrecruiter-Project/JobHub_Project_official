@@ -36,7 +36,7 @@ const JobCards = () => {
         backgroundColor: '#f9f9f9',
       }}
     >
-      <Box sx={{ maxWidth: '1200px', width: '100%' }}>
+      <Box sx={{ maxWidth: '1200px', width: '90%' }}>
         {/* Header */}
         <Typography
           variant="h4"

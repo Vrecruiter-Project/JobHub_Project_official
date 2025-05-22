@@ -279,43 +279,50 @@ export default function JobDetails() {
         </div>
 
         {/* Employer Section */}
-        <div className="bg-white w-full mt-5 flex flex-col lg:flex-row justify-center items-center px-4 py-8 gap-8">
-          <div className="lg:w-1/2 w-full px-2 space-y-4 text-black leading-8 my-20">
-            <h2 className="text-[28px] sm:text-[34px] font-bold font-['Marcelluse']">
-              What we offer to <span className="text-green-700">Employers</span>
-            </h2>
-            <div>
-              <span className="font-bold">✅ Excellent Employer Dashboard</span>
-              <p>Manage job listings, track applications, and shortlist candidates.</p>
-            </div>
-            <div>
-              <span className="font-bold">✅ Find the Right Talent</span>
-              <p>
-                Access a large pool of verified candidates based on skills, <br />
-                experience, location, and job role.
-              </p>
-            </div>
-            <div>
-              <span className="font-bold">✅ Post Jobs with Base Salary Details</span>
-              <p>
-                Clearly mention salary expectations to attract serious candidates
-                <br /> and make the hiring process transparent and faster.
-              </p>
-            </div>
-            <div>
-              <span className="font-bold">✅ Smart Filters & Search</span>
-              <p>
-                Easily search and filter candidates based on qualifications, skills,{" "}
-                <br /> and availability.
-              </p>
-            </div>
-          </div>
-          <img
-            className="w-full max-w-[650px] sm:max-w-[650px] rounded-xl"
-            src={sectiionImage}
-            alt=""
-          />
-        </div>
+        <div className="bg-white w-full mt-5 flex flex-col lg:flex-row justify-center items-center px-4 sm:px-6 lg:px-8 py-8 gap-6 sm:gap-8 lg:gap-12">
+  {/* Text Content (Left Side) */}
+  <div className="w-full lg:w-2/3 xl:w-1/3 px-2 sm:px-4 space-y-4 sm:space-y-6 text-black leading-relaxed my-10 sm:my-20">
+    <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold font-['Marcelluse'] [text-shadow:_0_3px_4px_rgb(51_51_51)]">
+      What we offer to <span className="text-green-700">Employers</span>
+    </h2>
+    
+    {/* Features List */}
+    <div className="space-y-4 sm:space-y-5">
+      <div>
+        <span className="font-bold text-lg sm:text-xl">✅ Excellent Employer Dashboard</span>
+        <p className="text-base sm:text-lg mt-1">Manage job listings, track applications, and shortlist candidates.</p>
+      </div>
+      <div>
+        <span className="font-bold text-lg sm:text-xl">✅ Find the Right Talent</span>
+        <p className="text-base sm:text-lg mt-1">
+          Access a large pool of verified candidates based on skills, experience, location, and job role.
+        </p>
+      </div>
+      <div>
+        <span className="font-bold text-lg sm:text-xl">✅ Post Jobs with Base Salary Details</span>
+        <p className="text-base sm:text-lg mt-1">
+          Clearly mention salary expectations to attract serious candidates and make hiring transparent.
+        </p>
+      </div>
+      <div>
+        <span className="font-bold text-lg sm:text-xl">✅ Smart Filters & Search</span>
+        <p className="text-base sm:text-lg mt-1">
+          Easily search and filter candidates by qualifications, skills, and availability.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  {/* Image (Right Side) */}
+<div className="hidden lg:hidden xl:block w-full lg:w-1/2 justify-center">
+  {/* Your content (e.g., image) */}
+  <img
+    className="w-full max-w-[350px] sm:max-w-[450px] lg:max-w-[750px] rounded-xl"
+    src={sectiionImage}
+    alt="Employer Dashboard"
+  />
+</div>
+</div>
 
         {/* Stats Section */}
         <div className="text-white text-center text-base sm:text-3xl bg-[#384639] w-full flex flex-col sm:flex-row justify-around items-center py-5 gap-5">

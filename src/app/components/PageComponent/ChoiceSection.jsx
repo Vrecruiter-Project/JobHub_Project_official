@@ -62,13 +62,13 @@ const ChoiceSection = () => {
                 }}
             >
                 <Grid container spacing={4}
-                    sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}
+                    sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}
                 >
                     <Grid item xs={12} md={5} sx={{
                         display: 'flex',
                         flexDirection: 'column',
                         alignItems: { xs: 'flex-start', sm: 'center', md: 'flex-start' },
-                        marginLeft: { xs: '30px', md: '0' },
+                        marginLeft: { xs: '55px', lg: '0px' },
                     }}>
                         {iconItems.map((item, index) => (
                             <Box
@@ -84,15 +84,16 @@ const ChoiceSection = () => {
                                 <img
                                     src={item.icon}
                                     alt={item.title}
-                                    style={{ width: '50px', height: '50px', marginRight: '15px' }}
+                                    className='w-[30px] h-[30px] md:w-[35px] md:h-[35px] mr-[15px]'
                                 />
                                 <Typography
                                     
                                     sx={{
                                         lineHeight:3,
-                                        fontSize: { xs: '15px', md: '22px' },
+                                        fontSize: { xs: '15px', md: '14px', lg:'20px' },
                                         color: 'black',
                                         textAlign: 'left',
+                                        fontWeight:{md:"bold", xl:"none"}
                                     }}
                                 >
                                     {item.title}
@@ -121,9 +122,9 @@ const ChoiceSection = () => {
                             }}
                         >
                             <img
-                                src={img8}
-                                alt="Jobhub Mobile App"
-                                style={{ width: '60%', maxWidth: '400px' }}
+                            src={img8}
+                            alt="Jobhub Mobile App"
+                            className="w-[60%] md:w-[65%]"
                             />
                         </Box>
                     </Grid>

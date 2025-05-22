@@ -50,9 +50,27 @@ import Ellipse_2 from '../../../assets/Images/TestimonialImages/Ellipse_28.png'
 import KartikKhurana from '../../../assets/Images/TestimonialImages/Kartik-Khurana.png'
 import PriyankSharma from '../../../assets/Images/TestimonialImages/Shashank-Agniotri.png'
 import VaishaliDevadi from '../../../assets/Images/TestimonialImages/Vaishali-Devadi.png'
+import { useEffect, useRef, useState } from "react"
 
 
 const Testimonial = () => {
+    const boxRef = useRef(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsVisible(entry.isIntersecting);
+      },
+      { threshold: 1 } // Trigger when 10% of the box is visible
+    );
+
+    if (boxRef.current) observer.observe(boxRef.current);
+
+    return () => {
+      if (boxRef.current) observer.unobserve(boxRef.current);
+    };
+  }, []);
     return (
         <>
             <Box sx={{ width: '100%', mx: 'auto', display: { xs: 'none', md: 'flex' }, flexDirection: 'column', justifyContent: 'center', backgroundColor: 'white', height: "400px", marginBottom:"400px" }}>
@@ -74,14 +92,14 @@ const Testimonial = () => {
                                   “JobHub helped me land first developer job within two weeks! Job filters made it so easy to apply. Highly recommended for freshers.”
                             </span>
                         </Box>
-                        <Box sx={{ paddingInline: '30px', width: "300px", height: '300px', backgroundColor: 'black', color: 'white', borderRadius: '5px', border: '2px solid #008000' }}>
+                        <Box ref={boxRef} sx={{ paddingInline: '30px',width: "300px",height: '300px',backgroundColor: isVisible ? 'black' : 'white',color: isVisible ? 'white' : 'black',borderRadius: '5px',border: '2px solid #008000',transition: 'all 0.5s ease-out',}}>
                             <Box sx={{ display: 'flex', flexDirection: 'column', marginTop: '50px' }}>
                                 <img style={{ width: "40px", objectFit: 'cover', borderRadius: "100%" }} src="https://e7.pngegg.com/pngimages/328/599/png-clipart-male-avatar-user-profile-profile-heroes-necktie-thumbnail.png" alt="" />
                                 Priya Iyer
                                 <span className="text-gray-400">HR Manager, Chennai</span>
                             </Box>
                             <span>
-                                  “As an employer, JobHub's dashboard made shortlisting candidates fast and accurate. The smart filters saved me a lot of time in hiring.”
+                                “As an employer, {`JobHub's`} dashboard made shortlisting candidates fast and accurate. The smart filters saved me a lot of time in hiring.”
                             </span>
                         </Box>
                         <Box sx={{ paddingInline: '30px', width: "300px", height: '250px', backgroundColor: 'white', borderRadius: '5px', border: '2px solid #008000' }}>
@@ -97,7 +115,7 @@ const Testimonial = () => {
                     </Box>
                 </Box>
                 <Box sx={{ display: 'flex', justifyContent: 'space-between', }}>
-                    <Box sx={{ position: 'relative', top: '100px', width: '35%', zIndex: 1 }}><img style={{ objectFit: 'cover' }} src={Ellipse_1} alt="" /><Typography sx={{position:'relative', top:'-535px',left:"90px", paddingInline:'30px', fontSize:'24px', }}>Everyone Should <br /> Believe  In What Our <br /> Client Say.</Typography></Box>
+                    <Box sx={{ position: 'relative', top: '100px', width: '35%', zIndex: 1 }}><img style={{ objectFit: 'cover' }} src={Ellipse_1} alt="" /><Typography sx={{position:'relative', top:{sm:'-450px', lg:'-535px'},left:{sm:'4px', lg:"90px"}, paddingInline:'30px', fontSize:'24px', }}>Everyone Should <br /> Believe  In What Our <br /> Client Say.</Typography></Box>
                     <Box sx={{ position: 'relative', }}><img style={{ objectFit: 'cover' }} src={Ellipse_2} alt="" /></Box>
                 </Box>
             </Box>

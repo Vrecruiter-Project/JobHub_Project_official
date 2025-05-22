@@ -70,12 +70,12 @@ const ResumeSection = () => {
           <GlobalSwiper
             data-aos="fade-up"
             content={resumeItems.map((item, index) => ({
-              ...item,
+              ...item,key:index
 
             }))}
             sx={{
-              width: { xs: "300px", md: "250px" },
-              height: { xs: "380px", md: "360px" },
+              width: { xs: "300px", md: "400px", lg:'250px' },
+              height: { xs: "380px", md: "500px", lg:"360px" },
             }}
             addImg
           />
