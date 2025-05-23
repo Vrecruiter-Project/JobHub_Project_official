@@ -192,6 +192,7 @@ import emailjs from '@emailjs/browser';
 import { Snackbar, Alert } from '@mui/material';
 import jobhublogo from '/Jobhub_logo-transparent.png';
 import jobhubFooterLogo from '/JobhubFooterlogo.png'
+// import bgImage from '../../assets/Images/FotterImages/fotterImage.png'
 export default function Footer() {
   const formRef = useRef();
 
@@ -230,159 +231,162 @@ export default function Footer() {
     setSnackbarOpen(false);
   };
   return (
-    <footer className="bg-[#0f1e0f] text-white ">
-      <div className="container mx-auto px-4 lg:w-[90%] xl:w-full">
-        <div className="border-b border-[#008000] py-10">
-          <div className="flex flex-wrap">
-            <div className="w-full md:w-1/3 mb-6">
-              <div className="flex items-start">
-                <i className="fas fa-map-marker-alt text-[#008000] text-2xl mt-2"></i>
-                <div className="pl-4">
-                  <h4 className="text-lg font-semibold mb-1">Find us</h4>
-                  <span className="text-sm text-gray-400">25th Unit, 3rd Floor, Zirakpur, Punjab 140603</span>
+    <footer className="relative bg-[#0f1e0f] text-white h-auto ">
+      {/* Background image with dark overlay */}
+      <div 
+          className="absolute w-[100%]  inset-0 bg-[url(/fotterImage.png)] bg-cover bg-right-bottom opacity-10"
+        aria-hidden="true"
+      ></div>
+      
+      {/* Content container */}
+      <div className="relative z-10">
+        <div className="container mx-auto px-4 lg:w-[90%] xl:w-full">
+          <div className="border-b border-[#008000] py-10">
+            <div className="flex flex-wrap">
+              <div className="w-full md:w-1/3 mb-6">
+                <div className="flex items-start">
+                  <i className="fas fa-map-marker-alt text-[#008000] text-2xl mt-2"></i>
+                  <div className="pl-4">
+                    <h4 className="text-lg font-semibold mb-1">Find us</h4>
+                    <span className="text-sm text-gray-400">25th Unit, 3rd Floor, Zirakpur, Punjab 140603</span>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div className="w-full md:w-1/3 mb-6">
-              <div className="flex items-start">
-                <i className="fas fa-phone text-[#008000] text-2xl mt-2"></i>
-                <div className="pl-4">
-                  <h4 className="text-lg font-semibold mb-1">Call us</h4>
-                  <span className="text-sm text-gray-400">+91 98187 37641 <br /> +91 90564 76584</span>
+              
+              <div className="w-full md:w-1/3 mb-6">
+                <div className="flex items-start">
+                  <i className="fas fa-phone text-[#008000] text-2xl mt-2"></i>
+                  <div className="pl-4">
+                    <h4 className="text-lg font-semibold mb-1">Call us</h4>
+                    <span className="text-sm text-gray-400">+91 98187 37641 <br /> +91 90564 76584</span>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div className="w-full md:w-1/3 mb-6">
-              <div className="flex items-start">
-                <i className="far fa-envelope-open text-[#008000] text-2xl mt-2"></i>
-                <div className="pl-4">
-                  <h4 className="text-lg font-semibold mb-1">Mail us</h4>
-                  <span className="text-sm text-gray-400">info.jobhubworld@gmail.com</span>
+              
+              <div className="w-full md:w-1/3 mb-6">
+                <div className="flex items-start">
+                  <i className="far fa-envelope-open text-[#008000] text-2xl mt-2"></i>
+                  <div className="pl-4">
+                    <h4 className="text-lg font-semibold mb-1">Mail us</h4>
+                    <span className="text-sm text-gray-400">info.jobhubworld@gmail.com</span>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
 
-        <div className="py-10">
-          <div className="flex flex-wrap">
-            <div className="w-full lg:w-1/3 mb-8">
-              <div>
-                <a href="/"><img src={jobhubFooterLogo} alt="logo" className="max-w-[200px] mb-6" /></a>
-                <p className="text-sm text-gray-400 leading-7 mb-4">
-                  Find Your Career With JOBHUB <br />
-                  <span style={{ fontSize: '12px' }}>Comprehensive job portal designed to streamline the employment <br /> process for both job seekers and employers </span>
-                </p>
-                <span className="text-lg font-bold block mb-3">Follow us</span>
-                <div className="flex gap-4">
-                  <a href="https://www.facebook.com/people/JobHubworld/61575148695953/" target='_blank' className="w-10 h-10 flex items-center justify-center rounded-full bg-[#008000] text-white">
-                    <i className="fab fa-facebook-f"></i>
-                  </a>
-                  <a href='https://www.linkedin.com/in/jobhub-world-5559a7361/' target="_blank" className="w-10 h-10 flex items-center justify-center rounded-full bg-[#008000] text-white">
-                    <i className="fa-brands fa-linkedin-in"></i>
-                  </a>
-                  <a href='https://www.instagram.com/jobhub_world?igsh=a2hsb3dmdDV1azYw' target="_blank" className="w-10 h-10 flex items-center justify-center rounded-full bg-[#008000] text-white">
-                    <i className="fa-brands fa-instagram"></i>
-                  </a>
+          <div className="py-10">
+            <div className="flex flex-wrap">
+              <div className="w-full lg:w-1/3 mb-8">
+                <div>
+                  <a href="/"><img src={jobhubFooterLogo} alt="logo" className="max-w-[200px] mb-6" /></a>
+                  <p className="text-sm text-gray-400 leading-7 mb-4">
+                    Find Your Career With JOBHUB <br />
+                    <span style={{ fontSize: '12px' }}>Comprehensive job portal designed to streamline the employment <br /> process for both job seekers and employers </span>
+                  </p>
+                  <span className="text-lg font-bold block mb-3">Follow us</span>
+                  <div className="flex gap-4">
+                    <a href="https://www.facebook.com/people/JobHubworld/61575148695953/" target='_blank' rel="noopener noreferrer" className="w-10 h-10 flex items-center justify-center rounded-full bg-[#008000] text-white hover:bg-[#006600] transition-colors">
+                      <i className="fab fa-facebook-f"></i>
+                    </a>
+                    <a href='https://www.linkedin.com/in/jobhub-world-5559a7361/' target="_blank" rel="noopener noreferrer" className="w-10 h-10 flex items-center justify-center rounded-full bg-[#008000] text-white hover:bg-[#006600] transition-colors">
+                      <i className="fa-brands fa-linkedin-in"></i>
+                    </a>
+                    <a href='https://www.instagram.com/jobhub_world?igsh=a2hsb3dmdDV1azYw' target="_blank" rel="noopener noreferrer" className="w-10 h-10 flex items-center justify-center rounded-full bg-[#008000] text-white hover:bg-[#006600] transition-colors">
+                      <i className="fa-brands fa-instagram"></i>
+                    </a>
+                  </div>
                 </div>
               </div>
-            </div>
 
-            <div className="w-full lg:w-1/3 md:w-1/2 mb-8">
-              <h3 className="text-lg font-semibold mb-6 relative before:content-[''] before:absolute before:bottom-[-15px] before:left-0 before:w-12 before:h-[2px] before:bg-[#008000]">
-                Useful Links
-              </h3>
-              <ul className="flex flex-wrap">
-                {/* {[
-                  "Home", "About", "Services", "Portfolio", "Contact",
-                  "About us", "Our Services", "Expert Team", "Contact us", "Latest News"
-                ].map((link, index) => (
-                 
-                ))} */}
-                <li className="w-1/2 mb-3">
-                  <a href="/" className="text-gray-400 hover:text-[#008000] capitalize text-sm">Home</a>
-                </li>
-                <li className="w-1/2 mb-3">
-                  <a href="/about" className="text-gray-400 hover:text-[#008000] capitalize text-sm">About</a>
-                </li>
+              <div className="w-full lg:w-1/3 md:w-1/2 mb-8">
+                <h3 className="text-lg font-semibold mb-6 relative before:content-[''] before:absolute before:bottom-[-15px] before:left-0 before:w-12 before:h-[2px] before:bg-[#008000]">
+                  Useful Links
+                </h3>
+                <ul className="flex flex-wrap">
+                  <li className="w-1/2 mb-3">
+                    <a href="/" className="text-gray-400 hover:text-[#008000] capitalize text-sm transition-colors">Home</a>
+                  </li>
+                  <li className="w-1/2 mb-3">
+                    <a href="/about" className="text-gray-400 hover:text-[#008000] capitalize text-sm transition-colors">About</a>
+                  </li>
+                  <li className="w-1/2 mb-3">
+                    <a href="/contact" className="text-gray-400 hover:text-[#008000] capitalize text-sm transition-colors">Contact us</a>
+                  </li>
+                  <li className="w-1/2 mb-3">
+                    <a href="#popularSection" className="text-gray-400 hover:text-[#008000] capitalize text-sm transition-colors">Find a job</a>
+                  </li>
+                  <li className="w-1/2 mb-3">
+                    <a href="/verification" className="text-gray-400 hover:text-[#008000] capitalize text-sm transition-colors">Hire Now</a>
+                  </li>
+                  <li className="w-1/2 mb-3">
+                    <a href="/Privacypolicy" className="text-gray-400 hover:text-[#008000] capitalize text-sm transition-colors">Privacy Policy</a>
+                  </li>
+                  <li className="w-1/2 mb-3">
+                    <a href="/Termsandconditions" className="text-gray-400 hover:text-[#008000] capitalize text-sm transition-colors">T<span style={{ fontSize: '10px' }}>&</span>C</a>
+                  </li>
+                  <li className="w-1/2 mb-3">
+                    <a href="/interviewtips" className="text-gray-400 hover:text-[#008000] capitalize text-sm transition-colors">Interview Tips</a>
+                  </li>
+                  <li className="w-1/2 mb-3">
+                    <a href="/events" className="text-gray-400 hover:text-[#008000] capitalize text-sm transition-colors">Events</a>
+                  </li>
+                  <li className="w-1/2 mb-3">
+                    <a href="/candidatedashboard" className="text-gray-400 hover:text-[#008000] capitalize text-sm transition-colors">Jobs</a>
+                  </li>
+                </ul>
+              </div>
 
-                <li className="w-1/2 mb-3">
-                  <a href="/contact" className="text-gray-400 hover:text-[#008000] capitalize text-sm">Contact us</a>
-                </li>
-                <li className="w-1/2 mb-3">
-                  <a href="#popularSection" className="text-gray-400 hover:text-[#008000] capitalize text-sm">Fint a job</a>
-                </li>
-                <li className="w-1/2 mb-3">
-                  <a href="/verification" className="text-gray-400 hover:text-[#008000] capitalize text-sm">Hire Now</a>
-                </li>
-                <li className="w-1/2 mb-3">
-                  <a href="/Privacypolicy" className="text-gray-400 hover:text-[#008000] capitalize text-sm">Privacy Policy</a>
-                </li>
-                <li className="w-1/2 mb-3">
-                  <a href="/Termsandconditions" className="text-gray-400 hover:text-[#008000] capitalize text-sm">T<span style={{ fontSize: '10px' }}>&</span>C</a>
-                </li>
-                <li className="w-1/2 mb-3">
-                  <a href="/interviewtips" className="text-gray-400 hover:text-[#008000] capitalize text-sm">Interview Tips</a>
-                </li>
-                <li className="w-1/2 mb-3">
-                  <a href="/events" className="text-gray-400 hover:text-[#008000] capitalize text-sm">Events</a>
-                </li>
-                <li className="w-1/2 mb-3">
-                  <a href="/candidatedashboard" className="text-gray-400 hover:text-[#008000] capitalize text-sm">Jobs</a>
-                </li>
-              </ul>
-            </div>
-
-            <div className="w-full lg:w-1/3 md:w-1/2 mb-8">
-              <h3 className="text-lg font-semibold mb-6 relative before:content-[''] before:absolute before:bottom-[-15px] before:left-0 before:w-12 before:h-[2px] before:bg-[#008000]">
-                Subscribe
-              </h3>
-              <p className="text-sm text-gray-400 mb-6">Don’t miss to subscribe to our new feeds, kindly fill the form below.</p>
-              <form ref={formRef} onSubmit={sendEmail} className="relative">
-                <input
-                  type="email"
-                  name="user_email"
-                  placeholder="Email Address"
-                  className="w-full py-3 px-6 bg-[#1e2e1e] border border-[#1e2e1e] text-white text-sm outline-none"
-                  required
-                />
-                <input type="hidden" name="time" value={new Date().toLocaleString()} />
-                <button
-                  type="submit"
-                  className="absolute top-0 right-0 bg-[#008000] px-5 py-[3.6px] border border-[#008000]"
+              <div className="w-full lg:w-1/3 md:w-1/2 mb-8">
+                <h3 className="text-lg font-semibold mb-6 relative before:content-[''] before:absolute before:bottom-[-15px] before:left-0 before:w-12 before:h-[2px] before:bg-[#008000]">
+                  Subscribe
+                </h3>
+                <p className="text-sm text-gray-400 mb-6">Don't miss to subscribe to our new feeds, kindly fill the form below.</p>
+                <form ref={formRef} onSubmit={sendEmail} className="relative">
+                  <input
+                    type="email"
+                    name="user_email"
+                    placeholder="Email Address"
+                    className="w-full py-3 px-6 bg-[#1e2e1e] border border-[#1e2e1e] text-white text-sm outline-none focus:border-[#008000] transition-colors"
+                    required
+                  />
+                  <input type="hidden" name="time" value={new Date().toLocaleString()} />
+                  <button
+                    type="submit"
+                    className="absolute top-0 right-0 bg-[#008000] px-5 py-[3.6px] border border-[#008000] hover:bg-[#006600] transition-colors"
+                  >
+                    <i className="fab fa-telegram-plane text-white text-xl -rotate-6 my-1"></i>
+                  </button>
+                </form>
+                <Snackbar
+                  open={snackbarOpen}
+                  autoHideDuration={4000}
+                  onClose={handleClose}
+                  anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
                 >
-                  <i className="fab fa-telegram-plane text-white text-xl -rotate-6 my-1"></i>
-                </button>
-              </form>
-              <Snackbar
-                open={snackbarOpen}
-                autoHideDuration={4000}
-                onClose={handleClose}
-                anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
-              >
-                <Alert onClose={handleClose} severity={snackbarSeverity} sx={{ width: '100%' }}>
-                  {snackbarMessage}
-                </Alert>
-              </Snackbar>
+                  <Alert onClose={handleClose} severity={snackbarSeverity} sx={{ width: '100%' }}>
+                    {snackbarMessage}
+                  </Alert>
+                </Snackbar>
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <div className="bg-[#1a2a1a] py-6">
-        <div className="container mx-auto px-4 flex flex-col lg:flex-row justify-between items-center">
-          <div className="text-center lg:text-left text-sm text-gray-400 mb-2 lg:mb-0">
-            <p>
-              Copyright © {new Date().getFullYear()}, All Right Reserved <a href="/" className="text-[#008000]">Jobhub</a>
-            </p>
+        <div className="bg-[#1a2a1a] py-6 relative">
+          <div className="container mx-auto px-4 flex flex-col lg:flex-row justify-between items-center">
+            <div className="text-center lg:text-left text-sm text-gray-400 mb-2 lg:mb-0">
+              <p>
+                Copyright © {new Date().getFullYear()}, All Right Reserved <a href="/" className="text-[#008000] hover:text-[#006600] transition-colors">Jobhub</a>
+              </p>
+            </div>
+            <ul className="flex flex-wrap justify-center gap-4 text-sm text-gray-400">
+              <li><a href="/" className="hover:text-[#008000] transition-colors">Home</a></li>
+              <li><a href="/Privacypolicy" className="hover:text-[#008000] transition-colors">Privacy</a></li>
+              <li><a href="/Privacypolicy" className="hover:text-[#008000] transition-colors">Policy</a></li>
+              <li><a href="/contact" className="hover:text-[#008000] transition-colors">Contact</a></li>
+            </ul>
           </div>
-          <ul className="flex flex-wrap justify-center gap-4 text-sm text-gray-400">
-            <li><a href="/" className="hover:text-[#008000]">Home</a></li>
-            {/* <li><a href="#" className="hover:text-[#32CD32]">Terms</a></li> */}
-            <li><a href="/Privacypolicy" className="hover:text-[#008000]">Privacy</a></li>
-            <li><a href="/Privacypolicy" className="hover:text-[#008000]">Policy</a></li>
-            <li><a href="/contact" className="hover:text-[#008000]">Contact</a></li>
-          </ul>
         </div>
       </div>
     </footer>
