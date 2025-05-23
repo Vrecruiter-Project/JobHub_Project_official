@@ -248,7 +248,7 @@ export default function Footer() {
                   <i className="fas fa-map-marker-alt text-[#008000] text-2xl mt-2"></i>
                   <div className="pl-4">
                     <h4 className="text-lg font-semibold mb-1">Find us</h4>
-                    <span className="text-sm text-gray-400">25th Unit, 3rd Floor, Zirakpur, Punjab 140603</span>
+                    <span className="text-sm text-gray-400">25th Unit, 3rd Floor, Sushma Infinium Zirakpur, Punjab 140603</span>
                   </div>
                 </div>
               </div>
