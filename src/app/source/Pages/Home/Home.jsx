@@ -19,6 +19,7 @@ import EmployerHireNow from '../../../components/PageComponent/EmployerHireNow';
 
 import EmployerDashboard from "../EmployerPage/EmployerDashboard/EmployerDashboard"
 import HomeBanner from '../../../components/Banner/Banner';
+import { Helmet } from 'react-helmet';
 
 
 const Home = () => {
