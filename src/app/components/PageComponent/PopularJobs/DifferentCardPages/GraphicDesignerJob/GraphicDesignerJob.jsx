@@ -12,7 +12,7 @@ import SecImg from '../../../../../assets/Images/GraphicImages/Color Theory.png'
 import tickImg from '../../../../../assets/Images/DocVerifyImage/tickImg.png';
 import GlobalJobCardOne from '../../../../GlobalComponents/GlobalGrid2Section/GlobalJobCardOne';
 import GraphicDesigningTools from './Components/GraphicTools';
-
+import { Helmet } from 'react-helmet-async';
 const GraphicDesignerJob = () => {
   const imgTwoStyle = {
     // marginTop: '30%',
@@ -34,6 +34,116 @@ const GraphicDesignerJob = () => {
   return (
     <>
       <PageComponent>
+        <Helmet>
+  {/* Primary Meta Tags */}
+  <title>Graphic Designer Jobs in Tricity & Zirakpur | Hiring Now - JobHub.world</title>
+  <meta name="description" content="🚀 800+ Graphic Designer Jobs in Chandigarh Tricity & Zirakpur. Adobe Photoshop/Illustrator jobs | ₹18K-75K/month | Full-time/Part-time | Print & Digital Media | Apply Today!"/>
+  <meta name="keywords" content="graphic designer jobs Zirakpur, Chandigarh design jobs, Mohali creative jobs, Panchkula designer hiring, Adobe Photoshop jobs, Illustrator designer Tricity, print media jobs, digital design jobs, fresher designer jobs, freelance graphic design"/>
+  <meta name="author" content="JobHub.world - Tricity's Top Creative Job Platform"/>
+  <meta name="robots" content="index, follow, max-image-preview:large"/>
+  <meta name="revisit-after" content="5 days"/>
+  <link rel="canonical" href="https://www.jobhub.world/graphicdesigner"/>
+
+  {/* Open Graph / Facebook Meta Tags */}
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://www.jobhub.world/graphicdesigner"/>
+  <meta property="og:title" content="🎨 800+ Graphic Designer Jobs in Tricity & Zirakpur - JobHub.world"/>
+  <meta property="og:description" content="Hiring graphic designers for agencies, print shops & e-commerce companies in Chandigarh, Mohali, Panchkula & Zirakpur. Salary up to ₹75K. Portfolio required."/>
+  <meta property="og:image" content="https://cdn.jsdelivr.net/gh/Vrecruiter-Project/socialAssests@latest/assets/seo/Graphic%20Designer.png"/>
+  <meta property="og:image:width" content="1200"/>
+  <meta property="og:image:height" content="630"/>
+  <meta property="og:site_name" content="JobHub.world"/>
+  <meta property="og:locale" content="en_IN"/>
+  <meta property="fb:app_id" content="YOUR_FB_APP_ID"/>
+
+  {/* Twitter Meta Tags */}
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:site" content="@JobHubTricity"/>
+  <meta name="twitter:creator" content="@JobHubDesign"/>
+  <meta name="twitter:title" content="Graphic Designer Openings in Tricity/Zirakpur"/>
+  <meta name="twitter:description" content="800+ design jobs in Chandigarh region: Logo design, branding, packaging & digital media. #TricityJobs #DesignHiring"/>
+  <meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/Vrecruiter-Project/socialAssests@latest/assets/seo/Graphic%20Designer.png"/>
+
+  {/* Schema.org Markup */}
+  <script type="application/ld+json">
+    {`
+      [{
+        "@context": "https://schema.org",
+        "@type": "JobPosting",
+        "title": "Graphic Designer",
+        "description": "Creating visual concepts for branding, advertising, and digital media. Must be proficient in Adobe Creative Suite. Multiple openings across Chandigarh, Mohali, Panchkula and Zirakpur.",
+        "hiringOrganization": {
+          "@type": "Organization",
+          "name": "JobHub.world",
+          "sameAs": "https://www.jobhub.world",
+          "logo": "https://www.jobhub.world/Jobhub%20logo.png"
+        },
+        "jobLocation": [{
+          "@type": "Place",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Zirakpur",
+            "addressRegion": "Punjab",
+            "postalCode": "140603",
+            "addressCountry": "IN"
+          }
+        },
+        {
+          "@type": "Place",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Chandigarh",
+            "addressRegion": "Chandigarh",
+            "addressCountry": "IN"
+          }
+        }],
+        "baseSalary": {
+          "@type": "MonetaryAmount",
+          "currency": "INR",
+          "value": {
+            "@type": "QuantitativeValue",
+            "minValue": 18000,
+            "maxValue": 75000,
+            "unitText": "MONTH"
+          }
+        },
+        "datePosted": "${new Date().toISOString().split('T')[0]}",
+        "validThrough": "${new Date(new Date().setMonth(new Date().getMonth() + 3)).toISOString().split('T')[0]}",
+        "employmentType": ["FULL_TIME", "PART_TIME", "FREELANCE"],
+        "skills": ["Adobe Photoshop", "Illustrator", "InDesign", "Branding", "Print Design", "Digital Media"],
+        "experienceRequirements": {
+          "@type": "OccupationalExperienceRequirements",
+          "monthsOfExperience": 0
+        }
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [{
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Jobs",
+          "item": "https://www.jobhub.world/graphicdesigner"
+        },{
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Creative Jobs",
+          "item": "https://www.jobhub.world/graphicdesigner"
+        },{
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Graphic Designers in Tricity",
+          "item": "https://www.jobhub.world/graphicdesigner"
+        }]
+      }]
+    `}
+  </script>
+
+  {/* Geo Targeting */}
+  <meta name="geo.position" content="30.7046;76.7179"/>
+  <meta name="geo.placename" content="Chandigarh Tricity Region"/>
+  <meta name="geo.region" content="IN-CH;IN-PB"/>
+</Helmet>
         <HeaderPage
           backgroundImage={bgImage}
           headerText={

@@ -11,7 +11,7 @@ import secImg from '../../../../../assets/Images/DeliveryImages/second1.png';
 import tickImg from '../../../../../assets/Images/DocVerifyImage/tickImg.png';
 import GlobalJobCardOne from '../../../../GlobalComponents/GlobalGrid2Section/GlobalJobCardOne';
 import GlobalJobCardTwo from '../../../../GlobalComponents/GlobalGrid2Section/GlobalJobCardTwo';
-
+import { Helmet } from 'react-helmet-async';
 
 
 
@@ -29,6 +29,102 @@ const DeliveryJob = () => {
   return (
     <>
       <PageComponent>
+        <Helmet>
+  {/* Primary Meta Tags */}
+  <title>Delivery Jobs | Driver, Rider & Logistics Roles - JobHub.world</title>
+  <meta name="description" content="🚚 3000+ Delivery & Transportation Jobs | Food/Grocery Delivery, Logistics, Courier Services | ₹15K-50K/month | Bike/Car/Truck Drivers | Apply Today!"/>
+  <meta name="keywords" content="delivery jobs, food delivery jobs, Swiggy Zomato delivery, grocery delivery jobs, logistics jobs, truck driver jobs, bike rider jobs, courier jobs, transport jobs, last mile delivery jobs"/>
+  <meta name="author" content="JobHub.world - India's Largest Delivery Job Platform"/>
+  <meta name="robots" content="index, follow, max-image-preview:large"/>
+  <meta name="revisit-after" content="3 days"/>
+  <link rel="canonical" href="https://www.jobhub.world/delivery"/>
+
+  {/* Open Graph / Facebook Meta Tags */}
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://www.jobhub.world/delivery"/>
+  <meta property="og:title" content="🛵 3000+ Delivery/Transport Jobs - Immediate Hiring | JobHub.world"/>
+  <meta property="og:description" content="Urgent openings: Food Delivery (₹15K-35K), Grocery Delivery (₹18K-30K), Truck Drivers (₹25K-50K), Courier Executives (₹15K-28K). Vehicle & DL required for most roles."/>
+  <meta property="og:image" content="https://www.jobhub.world/images/og/delivery-jobs-og.jpg"/>
+  <meta property="og:image:width" content="1200"/>
+  <meta property="og:image:height" content="630"/>
+  <meta property="og:site_name" content="JobHub.world"/>
+  <meta property="og:locale" content="en_IN"/>
+  <meta property="fb:app_id" content="YOUR_FB_APP_ID"/>
+
+  {/* Twitter Meta Tags */}
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:site" content="@JobHubDelivery"/>
+  <meta name="twitter:creator" content="@JobHubLogistics"/>
+  <meta name="twitter:title" content="Delivery/Transport Jobs - 3000+ Openings"/>
+  <meta name="twitter:description" content="Food/grocery delivery, logistics & courier jobs available. Daily payout options. #DeliveryJobs #DriverJobs"/>
+  <meta name="twitter:image" content="https://www.jobhub.world/images/twitter/delivery-jobs-card.jpg"/>
+
+  {/* Schema.org Markup */}
+  <script type="application/ld+json">
+    {`
+      [{
+        "@context": "https://schema.org",
+        "@type": "JobPosting",
+        "title": "Delivery & Transport Professional",
+        "description": "Multiple roles available in food delivery, grocery delivery, logistics and courier services. Requires valid driving license and own/company vehicle depending on position.",
+        "hiringOrganization": {
+          "@type": "Organization",
+          "name": "JobHub.world",
+          "sameAs": "https://www.jobhub.world",
+          "logo": "https://www.jobhub.world/Jobhub%20logo.png"
+        },
+        "industry": "Transportation",
+        "jobLocation": {
+          "@type": "Place",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Multiple Locations",
+            "addressRegion": "India",
+            "addressCountry": "IN"
+          }
+        },
+        "baseSalary": {
+          "@type": "MonetaryAmount",
+          "currency": "INR",
+          "value": {
+            "@type": "QuantitativeValue",
+            "minValue": 15000,
+            "maxValue": 50000,
+            "unitText": "MONTH"
+          }
+        },
+        "jobBenefits": "Daily Payouts, Fuel Allowance, Flexible Hours",
+        "datePosted": "${new Date().toISOString().split('T')[0]}",
+        "validThrough": "${new Date(new Date().setMonth(new Date().getMonth() + 3)).toISOString().split('T')[0]}",
+        "employmentType": ["FULL_TIME", "PART_TIME", "CONTRACTOR"],
+        "experienceRequirements": {
+          "@type": "OccupationalExperienceRequirements",
+          "monthsOfExperience": 0
+        },
+        "requirements": "Valid Driving License, Own Vehicle (for some roles)"
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [{
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Logistics Jobs",
+          "item": "https://www.jobhub.world/delivery"
+        },{
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Delivery & Transport Jobs",
+          "item": "https://www.jobhub.world/delivery"
+        }]
+      }]
+    `}
+  </script>
+
+  {/* Industry-Specific SEO */}
+  <meta name="vehicle-types" content="bike, car, truck, tempo"/>
+  <meta name="delivery-categories" content="food, grocery, e-commerce, courier"/>
+  <meta name="logistics-services" content="last mile, freight, warehouse"/>
+</Helmet>
         <HeaderPage
           backgroundImage={bgImage}
           headerText=

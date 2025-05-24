@@ -12,7 +12,7 @@ import SecImg from '../../../../../assets/Images/FactoryWorkImages/second.png';
 import tickImg from '../../../../../assets/Images/DocVerifyImage/tickImg.png';
 import GlobalJobCardOne from '../../../../GlobalComponents/GlobalGrid2Section/GlobalJobCardOne';
 import GlobalJobCardTwo from '../../../../GlobalComponents/GlobalGrid2Section/GlobalJobCardTwo';
-
+import { Helmet } from 'react-helmet-async';
 
 const FactoryJob = () => {
     const [searchFor, setSearchFor] = useState("");
@@ -33,6 +33,101 @@ const FactoryJob = () => {
   return (
     <>
       <PageComponent>
+        <Helmet>
+  {/* Primary Meta Tags */}
+  <title>Factory Worker Jobs | Production & Manufacturing Roles - JobHub.world</title>
+  <meta name="description" content="🏭 2500+ Factory Worker Jobs | Machine Operators, Assemblers, Packers | ₹12K-50K/month | Textile, Automotive, FMCG Factories Hiring | Apply Today!"/>
+  <meta name="keywords" content="factory jobs, production worker jobs, machine operator jobs, assembly line jobs, textile factory jobs, FMCG factory jobs, automotive factory jobs, packaging jobs, fresher factory jobs, industrial jobs"/>
+  <meta name="author" content="JobHub.world - India's Leading Manufacturing Job Platform"/>
+  <meta name="robots" content="index, follow, max-image-preview:large"/>
+  <meta name="revisit-after" content="5 days"/>
+  <link rel="canonical" href="https://www.jobhub.world/factory"/>
+
+  {/* Open Graph / Facebook Meta Tags */}
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://www.jobhub.world/factory"/>
+  <meta property="og:title" content="⚙️ 2500+ Factory Worker Jobs - Immediate Hiring | JobHub.world"/>
+  <meta property="og:description" content="Urgent openings in manufacturing units: Machine Operators (₹15K-35K), Assemblers (₹12K-25K), Quality Inspectors (₹18K-40K). Overtime pay available. Freshers trained."/>
+  <meta property="og:image" content="https://www.jobhub.world/images/og/factory-jobs-og.jpg"/>
+  <meta property="og:image:width" content="1200"/>
+  <meta property="og:image:height" content="630"/>
+  <meta property="og:site_name" content="JobHub.world"/>
+  <meta property="og:locale" content="en_IN"/>
+  <meta property="fb:app_id" content="YOUR_FB_APP_ID"/>
+
+  {/* Twitter Meta Tags */}
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:site" content="@JobHubFactory"/>
+  <meta name="twitter:creator" content="@JobHubManufacturing"/>
+  <meta name="twitter:title" content="Factory Worker Jobs - Production & Assembly Roles"/>
+  <meta name="twitter:description" content="2500+ manufacturing jobs available with overtime pay. #FactoryJobs #IndustrialJobs"/>
+  <meta name="twitter:image" content="https://www.jobhub.world/images/twitter/factory-jobs-card.jpg"/>
+
+  {/* Schema.org Markup */}
+  <script type="application/ld+json">
+    {`
+      [{
+        "@context": "https://schema.org",
+        "@type": "JobPosting",
+        "title": "Factory Worker",
+        "description": "Production, assembly and quality control roles in manufacturing facilities across industries including textiles, automotive and consumer goods.",
+        "hiringOrganization": {
+          "@type": "Organization",
+          "name": "JobHub.world",
+          "sameAs": "https://www.jobhub.world",
+          "logo": "https://www.jobhub.world/Jobhub%20logo.png"
+        },
+        "industry": "Manufacturing",
+        "jobLocation": {
+          "@type": "Place",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Multiple Locations",
+            "addressRegion": "India",
+            "addressCountry": "IN"
+          }
+        },
+        "baseSalary": {
+          "@type": "MonetaryAmount",
+          "currency": "INR",
+          "value": {
+            "@type": "QuantitativeValue",
+            "minValue": 12000,
+            "maxValue": 50000,
+            "unitText": "MONTH"
+          }
+        },
+        "jobBenefits": "Overtime Pay, Shift Allowance, Safety Training",
+        "datePosted": "${new Date().toISOString().split('T')[0]}",
+        "validThrough": "${new Date(new Date().setMonth(new Date().getMonth() + 3)).toISOString().split('T')[0]}",
+        "employmentType": ["FULL_TIME", "PART_TIME", "CONTRACT"],
+        "experienceRequirements": {
+          "@type": "OccupationalExperienceRequirements",
+          "monthsOfExperience": 0
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [{
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Industrial Jobs",
+          "item": "https://www.jobhub.world/factory"
+        },{
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Factory Worker Jobs",
+          "item": "https://www.jobhub.world/factory"
+        }]
+      }]
+    `}
+  </script>
+
+  {/* Industry-Specific SEO */}
+  <meta name="manufacturing-types" content="textile, automotive, fmcg, electronics"/>
+  <meta name="factory-roles" content="operator, assembler, inspector, packer"/>
+  <meta name="shifts" content="day, night, rotational"/>
+</Helmet>
         <HeaderPage
           backgroundImage={bgImage}
           headerText=
