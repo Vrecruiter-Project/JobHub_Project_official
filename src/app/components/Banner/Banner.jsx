@@ -1,7 +1,7 @@
 const HomeBanner = () => {
     return (
         <div className="bg-green-700 w-full flex justify-center hidden md:flex">
-            <div className="sm:w-[90%] w-[92%] p-5 flex flex-col md:flex-row justify-between items-center gap-4 md:gap-0">
+            <div className="sm:w-[92%] w-[92%] p-5 flex flex-col md:flex-row justify-between items-center gap-4 md:gap-0">
                 <div className="text-white text-sm sm:text-xl text-center md:text-left">
                     Your dream job is just a click away
                 </div>
