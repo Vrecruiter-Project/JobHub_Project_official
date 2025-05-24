@@ -13,7 +13,7 @@ import secImg from '../../../../../assets/Images/HousekeepingImages/secondimg.pn
 import tickImg from '../../../../../assets/Images/DocVerifyImage/tickImg.png';
 import GlobalJobCardOne from '../../../../GlobalComponents/GlobalGrid2Section/GlobalJobCardOne';
 import GlobaljobCardTwo from '../../../../GlobalComponents/GlobalGrid2Section/GlobalJobCardTwo';
-
+import { Helmet } from 'react-helmet-async';
 
 const HouseKeepingJob = () => {
 
@@ -36,6 +36,101 @@ const HouseKeepingJob = () => {
   return (
     <>
       <PageComponent>
+        <Helmet>
+  {/* Primary Meta Tags */}
+  <title>Housekeeping Jobs | Hotel & Facility Cleaning Roles - JobHub.world</title>
+  <meta name="description" content="🧹 900+ Housekeeping Jobs in Hotels, Hospitals & Offices | Room Attendant, Cleaner, Supervisor Roles | ₹10K-35K/month | Immediate Hiring | Apply Today!"/>
+  <meta name="keywords" content="housekeeping jobs, hotel housekeeping jobs, cleaner jobs, room attendant jobs, housekeeping supervisor jobs, hospital cleaning jobs, office cleaning jobs, house maid jobs, facility maintenance jobs, sanitation worker jobs"/>
+  <meta name="author" content="JobHub.world - India's Leading Hospitality Job Platform"/>
+  <meta name="robots" content="index, follow, max-image-preview:large"/>
+  <meta name="revisit-after" content="7 days"/>
+  <link rel="canonical" href="https://www.jobhub.world/housekeeping"/>
+
+  {/* Open Graph / Facebook Meta Tags */}
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://www.jobhub.world/housekeeping"/>
+  <meta property="og:title" content="🧽 900+ Housekeeping Jobs - Hotels/Hospitals Hiring | JobHub.world"/>
+  <meta property="og:description" content="Urgent hiring for housekeeping staff: Room Attendants (₹10K-20K), Cleaners (₹9K-18K), Supervisors (₹18K-35K). Free accommodation + meals at many hotels. Freshers welcome."/>
+  <meta property="og:image" content="https://www.jobhub.world/images/og/housekeeping-jobs-og.jpg"/>
+  <meta property="og:image:width" content="1200"/>
+  <meta property="og:image:height" content="630"/>
+  <meta property="og:site_name" content="JobHub.world"/>
+  <meta property="og:locale" content="en_IN"/>
+  <meta property="fb:app_id" content="YOUR_FB_APP_ID"/>
+
+  {/* Twitter Meta Tags */}
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:site" content="@JobHubHospitality"/>
+  <meta name="twitter:creator" content="@JobHubClean"/>
+  <meta name="twitter:title" content="Housekeeping Jobs - Hotel & Hospital Openings"/>
+  <meta name="twitter:description" content="900+ housekeeping positions available with accommodation benefits. #HousekeepingJobs #HotelJobs"/>
+  <meta name="twitter:image" content="https://www.jobhub.world/images/twitter/housekeeping-jobs-card.jpg"/>
+
+  {/* Schema.org Markup */}
+  <script type="application/ld+json">
+    {`
+      [{
+        "@context": "https://schema.org",
+        "@type": "JobPosting",
+        "title": "Housekeeping Staff",
+        "description": "Maintaining cleanliness and hygiene standards in hotels, hospitals, and corporate facilities. Positions available for cleaners, room attendants, and supervisors.",
+        "hiringOrganization": {
+          "@type": "Organization",
+          "name": "JobHub.world",
+          "sameAs": "https://www.jobhub.world",
+          "logo": "https://www.jobhub.world/Jobhub%20logo.png"
+        },
+        "industry": "Hospitality",
+        "jobLocation": {
+          "@type": "Place",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Multiple Locations",
+            "addressRegion": "India",
+            "addressCountry": "IN"
+          }
+        },
+        "baseSalary": {
+          "@type": "MonetaryAmount",
+          "currency": "INR",
+          "value": {
+            "@type": "QuantitativeValue",
+            "minValue": 9000,
+            "maxValue": 35000,
+            "unitText": "MONTH"
+          }
+        },
+        "jobBenefits": "Accommodation, Meals, Uniform",
+        "datePosted": "${new Date().toISOString().split('T')[0]}",
+        "validThrough": "${new Date(new Date().setMonth(new Date().getMonth() + 3)).toISOString().split('T')[0]}",
+        "employmentType": ["FULL_TIME", "PART_TIME"],
+        "experienceRequirements": {
+          "@type": "OccupationalExperienceRequirements",
+          "monthsOfExperience": 0
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [{
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Hospitality Jobs",
+          "item": "https://www.jobhub.world/housekeeping"
+        },{
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Housekeeping Jobs",
+          "item": "https://www.jobhub.world/housekeeping"
+        }]
+      }]
+    `}
+  </script>
+
+  {/* Industry-Specific SEO */}
+  <meta name="job-category" content="housekeeping, cleaning, hospitality"/>
+  <meta name="facility-types" content="hotels, hospitals, offices, residential"/>
+  <meta name="shift-timings" content="morning, evening, night"/>
+</Helmet>
         <HeaderPage
           backgroundImage={bgImage}
           headerText=

@@ -11,7 +11,7 @@ import SecImg from '../../../../../assets/Images/WarehouseImages/second.png';
 import tickImg from '../../../../../assets/Images/DocVerifyImage/tickImg.png';
 import WareHouseCat from './Components/WareHouseCat';
 import GlobalJobCard1 from '../../../../GlobalComponents/GlobalGrid2Section/GlobalJobCardOne';
-
+import { Helmet } from 'react-helmet-async';
 
 
 
@@ -37,6 +37,101 @@ const WarehouseStaffJob = () => {
   return (
     <>
       <PageComponent>
+        <Helmet>
+  {/* Primary Meta Tags */}
+  <title>Warehouse Jobs | Hiring Packers, Loaders & Supervisors - JobHub.world</title>
+  <meta name="description" content="📦 1800+ Warehouse Staff Jobs | Packers, Loaders, Forklift Operators | ₹12K-45K/month | Amazon/Flipkart Vendors Hiring | Immediate Openings | Apply Today!"/>
+  <meta name="keywords" content="warehouse jobs, packer jobs, loader jobs, forklift operator jobs, inventory jobs, warehouse supervisor jobs, logistics jobs, e-commerce warehouse jobs, fresher warehouse jobs, night shift warehouse jobs"/>
+  <meta name="author" content="JobHub.world - India's Leading Logistics Job Platform"/>
+  <meta name="robots" content="index, follow, max-image-preview:large"/>
+  <meta name="revisit-after" content="5 days"/>
+  <link rel="canonical" href="https://www.jobhub.world/warehousestaff"/>
+
+  {/* Open Graph / Facebook Meta Tags */}
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://www.jobhub.world/warehousestaff"/>
+  <meta property="og:title" content="🚛 1800+ Warehouse Staff Jobs - Urgent Hiring | JobHub.world"/>
+  <meta property="og:description" content="Hiring for Amazon/Flipkart warehouses: Packers (₹12K-25K), Forklift Operators (₹18K-35K), Supervisors (₹25K-45K). Day/Night shifts available. Freshers welcome for many roles."/>
+  <meta property="og:image" content="https://www.jobhub.world/images/og/warehouse-jobs-og.jpg"/>
+  <meta property="og:image:width" content="1200"/>
+  <meta property="og:image:height" content="630"/>
+  <meta property="og:site_name" content="JobHub.world"/>
+  <meta property="og:locale" content="en_IN"/>
+  <meta property="fb:app_id" content="YOUR_FB_APP_ID"/>
+
+  {/* Twitter Meta Tags */}
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:site" content="@JobHubLogistics"/>
+  <meta name="twitter:creator" content="@JobHubWarehouse"/>
+  <meta name="twitter:title" content="Warehouse Jobs - E-commerce & Logistics Hiring"/>
+  <meta name="twitter:description" content="1800+ warehouse openings with flexible shifts. #WarehouseJobs #LogisticsJobs"/>
+  <meta name="twitter:image" content="https://www.jobhub.world/images/twitter/warehouse-jobs-card.jpg"/>
+
+  {/* Schema.org Markup */}
+  <script type="application/ld+json">
+    {`
+      [{
+        "@context": "https://schema.org",
+        "@type": "JobPosting",
+        "title": "Warehouse Staff",
+        "description": "Multiple roles available in e-commerce and logistics warehouses including packing, loading, inventory management and equipment operation.",
+        "hiringOrganization": {
+          "@type": "Organization",
+          "name": "JobHub.world",
+          "sameAs": "https://www.jobhub.world",
+          "logo": "https://www.jobhub.world/Jobhub%20logo.png"
+        },
+        "industry": "Logistics",
+        "jobLocation": {
+          "@type": "Place",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Multiple Locations",
+            "addressRegion": "India",
+            "addressCountry": "IN"
+          }
+        },
+        "baseSalary": {
+          "@type": "MonetaryAmount",
+          "currency": "INR",
+          "value": {
+            "@type": "QuantitativeValue",
+            "minValue": 12000,
+            "maxValue": 45000,
+            "unitText": "MONTH"
+          }
+        },
+        "jobBenefits": "Shift Allowance, Overtime Pay, Safety Gear",
+        "datePosted": "${new Date().toISOString().split('T')[0]}",
+        "validThrough": "${new Date(new Date().setMonth(new Date().getMonth() + 3)).toISOString().split('T')[0]}",
+        "employmentType": ["FULL_TIME", "PART_TIME", "CONTRACT"],
+        "experienceRequirements": {
+          "@type": "OccupationalExperienceRequirements",
+          "monthsOfExperience": 0
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [{
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Logistics Jobs",
+          "item": "https://www.jobhub.world/warehousestaff"
+        },{
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Warehouse Jobs",
+          "item": "https://www.jobhub.world/warehousestaff"
+        }]
+      }]
+    `}
+  </script>
+
+  {/* Industry-Specific SEO */}
+  <meta name="warehouse-types" content="e-commerce, cold-storage, retail, industrial"/>
+  <meta name="equipment" content="forklift, pallet-jack, barcode-scanner"/>
+  <meta name="shifts" content="day, night, rotational"/>
+</Helmet>
         <HeaderPage
           backgroundImage={bgImage}
           headerText=

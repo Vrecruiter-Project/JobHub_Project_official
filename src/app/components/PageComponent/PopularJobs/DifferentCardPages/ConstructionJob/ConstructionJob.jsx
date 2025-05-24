@@ -12,7 +12,7 @@ import SecImg from '../../../../../assets/Images/ConstructionImages/construction
 import tickImg from '../../../../../assets/Images/DocVerifyImage/tickImg.png';
 import GlobalJobCardOne from '../../../../GlobalComponents/GlobalGrid2Section/GlobalJobCardOne';
 import GlobalJobCardTwo from '../../../../GlobalComponents/GlobalGrid2Section/GlobalJobCardTwo';
-
+import { Helmet } from 'react-helmet-async';
 
 const ConstructionJob = () => {
   const [searchFor, setSearchFor] = useState("");
@@ -34,6 +34,101 @@ const ConstructionJob = () => {
   return (
     <>
       <PageComponent>
+        <Helmet>
+  {/* Primary Meta Tags */}
+  <title>Construction Jobs | Hiring Labor, Supervisors & Engineers - JobHub.world</title>
+  <meta name="description" content="🏗️ 2500+ Construction Jobs in India | Civil Engineers, Masons, Electricians & More | ₹15K-1L/month | Immediate Openings | Residential & Commercial Projects | Apply Today!"/>
+  <meta name="keywords" content="construction jobs, civil engineer jobs, mason jobs, electrician jobs, site supervisor jobs, carpenter jobs, welder jobs, construction labor jobs, real estate jobs, building construction jobs"/>
+  <meta name="author" content="JobHub.world - India's Leading Construction Job Platform"/>
+  <meta name="robots" content="index, follow, max-image-preview:large"/>
+  <meta name="revisit-after" content="5 days"/>
+  <link rel="canonical" href="https://www.jobhub.world/construction"/>
+
+  {/* Open Graph / Facebook Meta Tags */}
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://www.jobhub.world/construction"/>
+  <meta property="og:title" content="🔨 2500+ Construction Jobs - Hiring Now | JobHub.world"/>
+  <meta property="og:description" content="Urgent hiring for construction projects: Civil Engineers (₹35K-1L), Masons (₹18K-40K), Electricians (₹20K-45K). Residential, Commercial & Infrastructure projects across India."/>
+  <meta property="og:image" content="https://www.jobhub.world/images/og/construction-jobs-og.jpg"/>
+  <meta property="og:image:width" content="1200"/>
+  <meta property="og:image:height" content="630"/>
+  <meta property="og:site_name" content="JobHub.world"/>
+  <meta property="og:locale" content="en_IN"/>
+  <meta property="fb:app_id" content="YOUR_FB_APP_ID"/>
+
+  {/* Twitter Meta Tags */}
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:site" content="@JobHubConstruct"/>
+  <meta name="twitter:creator" content="@JobHubBuild"/>
+  <meta name="twitter:title" content="Construction Jobs - 2500+ Openings @JobHub.world"/>
+  <meta name="twitter:description" content="Civil Engineers, Masons, Electricians & Construction Labor needed for projects across India. Daily/weekly payroll available. #ConstructionJobs #HiringNow"/>
+  <meta name="twitter:image" content="https://www.jobhub.world/images/twitter/construction-jobs-card.jpg"/>
+
+  {/* Schema.org Markup */}
+  <script type="application/ld+json">
+    {`
+      [{
+        "@context": "https://schema.org",
+        "@type": "JobPosting",
+        "title": "Construction Worker",
+        "description": "Various construction roles available including Civil Engineers, Masons, Electricians, Welders, and Laborers for ongoing residential and commercial projects.",
+        "hiringOrganization": {
+          "@type": "Organization",
+          "name": "JobHub.world",
+          "sameAs": "https://www.jobhub.world",
+          "logo": "https://www.jobhub.world/Jobhub%20logo.png"
+        },
+        "industry": "Construction",
+        "jobLocation": {
+          "@type": "Place",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Multiple Locations",
+            "addressRegion": "India",
+            "addressCountry": "IN"
+          }
+        },
+        "baseSalary": {
+          "@type": "MonetaryAmount",
+          "currency": "INR",
+          "value": {
+            "@type": "QuantitativeValue",
+            "minValue": 15000,
+            "maxValue": 100000,
+            "unitText": "MONTH"
+          }
+        },
+        "datePosted": "${new Date().toISOString().split('T')[0]}",
+        "validThrough": "${new Date(new Date().setMonth(new Date().getMonth() + 3)).toISOString().split('T')[0]}",
+        "employmentType": ["FULL_TIME", "PART_TIME", "CONTRACTOR"],
+        "experienceRequirements": {
+          "@type": "OccupationalExperienceRequirements",
+          "monthsOfExperience": 0
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [{
+          "@type": "ListItem",
+          "position": 6,
+          "name": "Jobs",
+          "item": "https://www.jobhub.world/construction"
+        },{
+          "@type": "ListItem",
+          "position": 5,
+          "name": "Construction Jobs",
+          "item": "https://www.jobhub.world/construction"
+        }]
+      }]
+    `}
+  </script>
+
+  {/* Industry-Specific SEO */}
+  <meta name="constructionTypes" content="Residential, Commercial, Infrastructure"/>
+  <meta name="skills" content="Masonry, Electrical, Plumbing, Welding, Concrete Work"/>
+  <meta name="certifications" content="ITI, Diploma, BE Civil, Safety Certifications"/>
+  <meta name="geo.region" content="IN"/>
+</Helmet>
         <HeaderPage
           backgroundImage={bgImage}
           headerText=

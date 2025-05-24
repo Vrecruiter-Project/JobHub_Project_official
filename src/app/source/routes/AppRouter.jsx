@@ -29,6 +29,9 @@ const CandidateFullJobDetails = lazy(() => import('../Pages/CandidatePage/Compon
 const FormComponent = lazy(() => import('../Pages/CandidatePage/FormComponent.jsx'));
 const MyJobs = lazy(() => import('../Pages/EmployerPage/EmployerDashboard/Components/Main-Post-Card/MyJobs.jsx'));
 const SelectedCandidates = lazy(() => import('../Pages/EmployerPage/EmployerDashboard/Components/SelectedCandidates/SelectedCandidates.jsx'));
+/**
+ *  Jobs Lists for 
+ */
 const TelecallerJob = lazy(() => import('../../components/PageComponent/PopularJobs/DifferentCardPages/TelecallerJob/TelecallerJob'));
 const DocVerifyJob = lazy(() => import('../../components/PageComponent/PopularJobs/DifferentCardPages/DocVerifyJob/DocVerifyJob'));
 const DataEntryJob = lazy(() => import('../../components/PageComponent/PopularJobs/DifferentCardPages/DataEntryJob/DataEntryJob'));

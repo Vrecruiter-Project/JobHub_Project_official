@@ -12,7 +12,7 @@ import SecImg from '../../../../../assets/Images/HotelImages/second.png';
 import tickImg from '../../../../../assets/Images/DocVerifyImage/tickImg.png';
 import GlobalJobCardOne from '../../../../GlobalComponents/GlobalGrid2Section/GlobalJobCardOne';
 import GlobalJobCardTwo from '../../../../GlobalComponents/GlobalGrid2Section/GlobalJobCardTwo';
-
+import { Helmet } from 'react-helmet-async';
 const HotelStaffJob = () => {
   const [searchFor, setSearchFor] = useState("");
   const navigate = useNavigate();
@@ -34,6 +34,101 @@ const HotelStaffJob = () => {
   return (
     <>
       <PageComponent>
+        <Helmet>
+  {/* Primary Meta Tags */}
+  <title>Hotel Staff Jobs | 2000+ Openings in 5-Star to Budget Hotels - JobHub.world</title>
+  <meta name="description" content="🏨 2000+ Hotel Staff Jobs | Front Office, Housekeeping, F&B Service, Chef & Management Roles | ₹12K-80K/month | Free Accommodation+Meals | Apply Today!"/>
+  <meta name="keywords" content="hotel jobs, front office jobs, housekeeping jobs, chef jobs, waiter jobs, hotel management jobs, banquet staff jobs, hospitality jobs, fresher hotel jobs, 5-star hotel jobs"/>
+  <meta name="author" content="JobHub.world - India's Leading Hospitality Job Platform"/>
+  <meta name="robots" content="index, follow, max-image-preview:large"/>
+  <meta name="revisit-after" content="5 days"/>
+  <link rel="canonical" href="https://www.jobhub.world/hotelstaff"/>
+
+  {/* Open Graph / Facebook Meta Tags */}
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://www.jobhub.world/hotelstaff"/>
+  <meta property="og:title" content="✨ 2000+ Hotel Staff Jobs - 5-Star Chains Hiring | JobHub.world"/>
+  <meta property="og:description" content="Urgent hiring for Taj, Oberoi, Marriott & other chains: Receptionists (₹15K-35K), Chefs (₹25K-80K), Waiters (₹12K-25K). Free accommodation+meals at most properties."/>
+  <meta property="og:image" content="https://www.jobhub.world/images/og/hotel-jobs-og.jpg"/>
+  <meta property="og:image:width" content="1200"/>
+  <meta property="og:image:height" content="630"/>
+  <meta property="og:site_name" content="JobHub.world"/>
+  <meta property="og:locale" content="en_IN"/>
+  <meta property="fb:app_id" content="YOUR_FB_APP_ID"/>
+
+  {/* Twitter Meta Tags */}
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:site" content="@JobHubHotels"/>
+  <meta name="twitter:creator" content="@JobHubHospitality"/>
+  <meta name="twitter:title" content="Hotel Staff Jobs - 2000+ Openings Across India"/>
+  <meta name="twitter:description" content="Front office, housekeeping, F&B service and chef positions available. #HotelJobs #HiringNow"/>
+  <meta name="twitter:image" content="https://www.jobhub.world/images/twitter/hotel-jobs-card.jpg"/>
+
+  {/* Schema.org Markup */}
+  <script type="application/ld+json">
+    {`
+      [{
+        "@context": "https://schema.org",
+        "@type": "JobPosting",
+        "title": "Hotel Staff",
+        "description": "Various positions available in leading hotel chains including front office, food & beverage service, housekeeping, and kitchen departments.",
+        "hiringOrganization": {
+          "@type": "Organization",
+          "name": "JobHub.world",
+          "sameAs": "https://www.jobhub.world",
+          "logo": "https://www.jobhub.world/Jobhub%20logo.png"
+        },
+        "industry": "Hospitality",
+        "jobLocation": {
+          "@type": "Place",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Multiple Locations",
+            "addressRegion": "India",
+            "addressCountry": "IN"
+          }
+        },
+        "baseSalary": {
+          "@type": "MonetaryAmount",
+          "currency": "INR",
+          "value": {
+            "@type": "QuantitativeValue",
+            "minValue": 12000,
+            "maxValue": 80000,
+            "unitText": "MONTH"
+          }
+        },
+        "jobBenefits": "Accommodation, Meals, Uniform, Tips",
+        "datePosted": "${new Date().toISOString().split('T')[0]}",
+        "validThrough": "${new Date(new Date().setMonth(new Date().getMonth() + 3)).toISOString().split('T')[0]}",
+        "employmentType": ["FULL_TIME", "PART_TIME", "CONTRACT"],
+        "experienceRequirements": {
+          "@type": "OccupationalExperienceRequirements",
+          "monthsOfExperience": 0
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [{
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Hospitality Jobs",
+          "item": "https://www.jobhub.world/hotelstaff"
+        },{
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Hotel Staff Jobs",
+          "item": "https://www.jobhub.world/hotelstaff"
+        }]
+      }]
+    `}
+  </script>
+
+  {/* Industry-Specific SEO */}
+  <meta name="hotel-categories" content="5-star, boutique, budget, resort"/>
+  <meta name="hotel-chains" content="Taj, Oberoi, ITC, Marriott, Hyatt"/>
+  <meta name="departments" content="front office, housekeeping, F&B, kitchen"/>
+</Helmet>
         <HeaderPage
           backgroundImage={bgImage}
           headerText=
