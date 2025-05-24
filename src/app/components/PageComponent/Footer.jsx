@@ -258,7 +258,7 @@ export default function Footer() {
                   <i className="fas fa-phone text-[#008000] text-2xl mt-2"></i>
                   <div className="pl-4">
                     <h4 className="text-lg font-semibold mb-1">Call us</h4>
-                    <span className="text-sm text-gray-400">+91 98187 37641 <br />{/**+91 90564 76584**/}</span>
+                    <span className="text-sm text-gray-400">+91 85128 27174 <br />{/**+91 90564 76584**/}</span>
                   </div>
                 </div>
               </div>
