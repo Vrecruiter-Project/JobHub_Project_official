@@ -19,7 +19,7 @@ import EmployerHireNow from '../../../components/PageComponent/EmployerHireNow';
 
 import EmployerDashboard from "../EmployerPage/EmployerDashboard/EmployerDashboard"
 import HomeBanner from '../../../components/Banner/Banner';
-import { Helmet } from 'react-helmet-async';
+
 
 const Home = () => {
   const navigate = useNavigate();
@@ -68,64 +68,6 @@ const Home = () => {
 
   return (
     <>
-    <Helmet>
-      <meta name="description" content="JobHub - Find the best jobs in Chandigarh, India. Post jobs, hire candidates, and manage recruitment with our employer & admin dashboard services." />
-    <meta name="keywords" content="jobs in Chandigarh, job portal, recruitment, employer dashboard, admin dashboard, hiring, fresher jobs, experienced jobs, Chandigarh jobs" />
-    <meta name="author" content="JobHub" />
-    <meta name="robots" content="index, follow" />
-
-    <meta property="og:title" content="JobHub - Best Job Portal in Chandigarh | Hire & Get Hired" />
-    <meta property="og:description" content="Find top jobs in Chandigarh or post vacancies for free. Manage recruitment with our employer & admin dashboard services." />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://www.jobhub.world" />
-    <meta property="og:image" content="https://raw.githubusercontent.com/Vrecruiter-Project/socialAssests/refs/heads/main/socialMediaOG.png" />
-    <meta property="og:site_name" content="JobHub" />
-    <meta property="og:locale" content="en_IN" />
-
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="JobHub - Best Job Portal in Chandigarh | Hire & Get Hired" />
-    <meta name="twitter:description" content="Find top jobs in Chandigarh or post vacancies for free. Manage recruitment with our employer & admin dashboard services." />
-    <meta name="twitter:image" content="https://raw.githubusercontent.com/Vrecruiter-Project/socialAssests/refs/heads/main/socialMediaOG.png" />
-    <meta name="twitter:site" content="@JobHub_world" />
-    <meta name="twitter:creator" content="@JobHub_world" />
-
-    <link rel="canonical" href="https://www.jobhub.world" />
-    
-    <meta name="geo.region" content="IN-CH" />
-    <meta name="geo.placename" content="Chandigarh" />
-    <meta name="geo.position" content="30.638151602504394;76.82510128606455" />
-    <meta name="ICBM" content="30.638151602504394;76.82510128606455" />
-
-    <script type="application/ld+json">
-      {JSON.stringify({
-        "@context": "https://schema.org",
-        "@type": "Organization",
-        "name": "JobHub",
-        "url": "https://www.jobhub.world/",
-        "logo": "https://www.jobhub.world/Jobhub%20logo.png",
-        "description": "Leading job portal in Chandigarh, India, connecting employers and job seekers with advanced dashboard services.",
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "25th Unit, 3rd Floor, Sushma infinium",
-          "addressLocality": "Zirakpur",
-          "addressRegion": "Chandigarh",
-          "postalCode": "140603",
-          "addressCountry": "IN"
-        },
-        "contactPoint": {
-          "@type": "ContactPoint",
-          "telephone": "+91-8512827174",
-          "contactType": "customer service",
-          "email": "info.jobhubworld@gmail.com"
-        },
-        "sameAs": [
-          "https://www.facebook.com/people/JobHubworld/61575148695953/",
-          "https://www.linkedin.com/in/jobhub-world-5559a7361/",
-          "https://www.instagram.com/jobhub_world?igsh=a2hsb3dmdDV1azYw"
-        ]
-      })}
-    </script>
-    </Helmet>
     <HomeBanner/>
     <PageComponent>
 
