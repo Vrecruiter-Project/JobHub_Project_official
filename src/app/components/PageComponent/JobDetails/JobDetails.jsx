@@ -182,6 +182,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import SectionImage from '/JobhubFooterlogo.png'
 import sectiionImage from '../../../assets/Images/SectionImages/image_46.png'
+import { Stats } from "./Stats";
 // const stats = [
 //   {
 //     id: 1,
@@ -325,15 +326,8 @@ export default function JobDetails() {
 </div>
 
         {/* Stats Section */}
-        <div className="text-white text-center text-base sm:text-3xl bg-[#384639] w-full flex flex-col sm:flex-row justify-around items-center py-5 gap-5">
-          <div>
-            Live Jobs: <CountUp start={0} end={1200} duration={6.5} separator="," />
-          </div>
-          <div>Compare Salaries</div>
-          <div>
-            Process: <CountUp start={0} end={550} duration={6.5} separator="," />
-          </div>
-        </div>
+        <Stats/>
+        
       </section>
 
     </>
