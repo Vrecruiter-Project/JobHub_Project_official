@@ -96,7 +96,7 @@ const MissionVisionSection = () => {
                   textAlign: { xs: 'center', md: 'left' },
                 }}
               >
-                Our Vision
+                Our Vision 
               </Typography>
               <Typography
                 variant="body1"
