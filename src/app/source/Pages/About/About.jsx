@@ -231,7 +231,7 @@ const About = () => {
                     textAlign: "center",
                   }}
                 >
-                  Our Mission
+                  Our Vision
                   <Box
                     sx={{
                       position: "absolute",
