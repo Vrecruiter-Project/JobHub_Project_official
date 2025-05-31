@@ -31,7 +31,7 @@ const JobCards = () => {
         width: '100%',
         display: 'flex',
         justifyContent: 'center',
-        py: 7,
+        py:'100px',
         px: 2,
         backgroundColor: '#f9f9f9',
       }}
