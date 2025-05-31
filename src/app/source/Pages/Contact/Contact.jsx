@@ -1,7 +1,7 @@
 import HeaderPage from "../../../components/GlobalComponents/HeaderPage/HeaderPage";
 import PageComponent from "../../../components/PageComponent/PageComponent";
 import ContactBgImage from "../../../assets/Images/bgImages/bgImage.png";
-import ContactHeaderImage from "../../../assets/Images/bgImages/Contact_Headr.svg";
+import ContactHeaderImage from "../../../assets/Images/bgImages/Contact_Headr.png";
 import { Typography, Box } from "@mui/material";
 import FormContentBgImage from "../../../assets/Images/ContactPage/FormContentBackground.png";
 import ContactForm from "../../../components/PageComponent/ContactForm";
@@ -10,16 +10,16 @@ import GlobalFaq from "../../../components/GlobalComponents/faq/GlobalFaq";
 import CompanyAddress from "../../../components/PageComponent/ComapnyAddress";
 import { useEffect, useRef } from "react";
 import AOS from "aos";
-import "aos/dist/aos.css";   
+import "aos/dist/aos.css";
 import MapSection from "../../../components/PageComponent/CompanyMapAddres";
- 
-const Contact = () => {   
+import { Stats } from "../../../components/PageComponent/JobDetails/Stats";
 
+const Contact = () => {
   const targetSectionRef = useRef(null);
 
   const scrollToSection = () => {
     targetSectionRef.current?.scrollIntoView({ behavior: "smooth" });
-  }
+  };
 
   useEffect(() => {
     AOS.init({ duration: 1000 });
@@ -62,8 +62,8 @@ const Contact = () => {
     <>
       <PageComponent>
         {/* Header Section */}
-        <HeaderPage
-          backgroundImage={ContactBgImage}
+        {/* <HeaderPage
+          // backgroundImage={ContactBgImage}
           headerText={
             <>
               Contact Us <span style={{ color: "green" }}>Page</span>
@@ -79,13 +79,54 @@ const Contact = () => {
           }}
           data-aos="fade-up"    
 
-        />
+        /> */}
+
+        <Box
+          sx={{
+            width: "100%",
+            background: "black",
+            display: "flex",
+            justifyContent: {
+              xs: "center",
+              sm: "center",
+              md: "center",
+              lg: "space-around",
+            },
+            pt: "35px",
+          }}
+        >
+          <Box sx={{ color: "white", width: "30%", my: "135px", mx: "150px" }}>
+            <h2 className="text-5xl font-['Marcelluse']">
+              CONTACT US <br />
+              <span className="text-[#008000]">PAGE</span>
+            </h2>
+            <p className="my-5 text-3xl leading">
+              "Let’s Get in Touch – We’re Committed to Providing You with the
+              Best Support Possible."
+            </p>
+          </Box>
+          <Box
+            component="img"
+            src={ContactHeaderImage}
+            alt="jobhub image"
+            sx={{
+              width: { xs: "60%", sm: "75%", md: "45%", lg: "30%" },
+              marginRight: {
+                xs: "30px",
+                sm: "50px",
+                md: "55px",
+                lg: "80px",
+                xl: "0",
+              },
+            }}
+          />
+        </Box>
 
         {/* Form Section */}
         <Box
           sx={{
             textAlign: "center",
-            backgroundImage: `url(${FormContentBgImage})`,
+            // backgroundImage: `url(${FormContentBgImage})`,
             padding: "100px 0 80px 0",
             backgroundRepeat: "no-repeat",
             backgroundSize: "cover",
@@ -101,13 +142,11 @@ const Contact = () => {
           </Typography>
         </Box>
 
-
         <div ref={targetSectionRef}>
           <ContactForm />
         </div>
 
-
-        <JobDetails />
+        <Stats />
 
         <GlobalFaq faqItems={FaqItems} />
 

@@ -18,20 +18,42 @@ const About = () => {
       <HomeBanner />
       <PageComponent>
         <Box
-                  sx={{
-              width:"100%",
+          sx={{
+            width: "100%",
             background: "black",
             display: "flex",
-                      justifyContent: { xs:'center',sm:'center',md: "center", lg: "flex-end" },
+            justifyContent: {
+              xs: "center",
+              sm: "center",
+              md: "center",
+              lg: "space-between",
+            },
           }}
         >
+          <Box sx={{ color: "white", width: "40%", my: "100px", mx: "150px" }}>
+            <h2 className="text-5xl">
+              About <span className="text-[#008000]">Us</span>
+            </h2>
+            <p className="my-5 text-3xl leading-1">
+              Your trusted partner in job search and recruitment. At{" "}
+              <span className="text-[#008000]">JOBHUB</span>, we help job
+              seekers find their dream jobs and assist employers in discovering
+              top talent across industries.
+            </p>
+          </Box>
           <Box
             component="img"
             src={AboutHeaderImage}
             alt="jobhub image"
-                      sx={{
-                width:{xs:'60%',sm:'75%',md:'45%', lg:'45%'},
-                marginRight: {xs:'30px',sm:'50px',md: "55px", lg:"80px", xl:"0px" },
+            sx={{
+              width: { xs: "60%", sm: "75%", md: "45%", lg: "45%" },
+              marginRight: {
+                xs: "30px",
+                sm: "50px",
+                md: "55px",
+                lg: "80px",
+                xl: "0",
+              },
             }}
           />
         </Box>
@@ -83,7 +105,7 @@ const About = () => {
             {/* Background Accent */}
             <Box
               sx={{
-                width:{xs:'30%',sm:'30%',md:'30%',lg:"45%"},
+                width: { xs: "30%", sm: "30%", md: "30%", lg: "45%" },
                 height: {
                   xs: "110svh",
                   sm: "110svh",

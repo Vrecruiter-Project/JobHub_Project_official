@@ -248,8 +248,8 @@ export default function JobDetails() {
       </section> */}
       <section className="hidden w-full flex flex-col items-center bg-black sm:block">
         {/* Top Content */}
-        <div className="text-center text-white pt-12 px-4">
-          <p className="text-[28px] sm:text-[40px] font-semibold font-['Marcelluse']">
+        <div className="text-center text-white pt-12 px-4 py-8 ">
+          <p className="text-[28px] sm:text-[40px] font-semibold font-['Marcelluse'] pt-4">
             Start your Professional journey with
           </p>
           <img

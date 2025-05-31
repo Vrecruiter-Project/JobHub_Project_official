@@ -58,10 +58,12 @@ const PopularJobs = ({ id }) => {
         <Grid2
           container
           sx={{
+            py: 5,
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
             mb: 8,
+
           }}
         >
           <Grid2 item xs={12}>
@@ -114,6 +116,7 @@ const PopularJobs = ({ id }) => {
         </Grid2> */}
         <Box
           sx={{
+            pb:7,
             display: 'grid',
             gridTemplateColumns: {
               xs: 'repeat(2, 1fr)',
