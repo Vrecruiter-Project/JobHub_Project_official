@@ -30,7 +30,7 @@ const About = () => {
             },
           }}
         >
-          <Box sx={{ color: "white", width: "40%", my: "100px", mx: "150px" }}>
+          <Box sx={{ color: "white", width: "40%", my: "100px", mx: "150px", display:{xs: 'none',md: 'block', } }}>
             <h2 className="text-5xl">
               About <span className="text-[#008000]">Us</span>
             </h2>
