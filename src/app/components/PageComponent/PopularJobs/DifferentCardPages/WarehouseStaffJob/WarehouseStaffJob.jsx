@@ -152,7 +152,7 @@ const WarehouseStaffJob = () => {
           }}
         />
         <WareHouseCat />
-        <JobDetails />
+        {/* <JobDetails /> */}
         {/* First Desc */}
         <GlobalJobCard1 content={
           [

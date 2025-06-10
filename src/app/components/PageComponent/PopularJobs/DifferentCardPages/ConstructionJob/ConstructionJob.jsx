@@ -150,7 +150,7 @@ const ConstructionJob = () => {
           }}
         />
         <ConstructionCategories />
-        <JobDetails />
+        {/* <JobDetails /> */}
         {/* First Desc */}
         <GlobalJobCardOne content={
           [

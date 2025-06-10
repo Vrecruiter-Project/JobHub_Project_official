@@ -151,7 +151,7 @@ const HouseKeepingJob = () => {
           }}
         />
         <HouseKeepingCat />
-        <JobDetails />
+        {/* <JobDetails /> */}
 
         {/* First Desc */}
         <GlobalJobCardOne

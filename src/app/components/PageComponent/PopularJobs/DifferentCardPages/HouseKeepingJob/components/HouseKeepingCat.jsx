@@ -27,7 +27,7 @@ const HouseKeepingCat = () => {
     <>
       <Box
         sx={{
-          backgroundImage: `url(${TeleBg})`,
+          // backgroundImage: `url(${TeleBg})`,
           backgroundRepeat: 'no-repeat',
           backgroundPosition: '100%',
           backgroundSize: 'cover',

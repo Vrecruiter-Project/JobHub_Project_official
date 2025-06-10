@@ -157,7 +157,7 @@ const FrontOfficeJob = () => {
         />
 
         <FrontCategories />
-        <JobDetails />
+        {/* <JobDetails /> */}
 
         {/* First Desc */}
         <GlobalJobCard1

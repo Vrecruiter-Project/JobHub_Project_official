@@ -102,7 +102,7 @@ const WebDeveloperJob = () => {
   <meta name="frameworks" content="React, Angular, Vue, Django, Laravel"/>
 </Helmet>
         <HeaderPage
-          backgroundImage={bgImage}
+          // backgroundImage={bgImage}
           headerText=
           {<>
             Web<span style={{ color: "green" }}>Developer</span>
@@ -120,7 +120,7 @@ const WebDeveloperJob = () => {
           }}
         />
         <WebDevCat />
-        <JobDetails />
+        {/* <JobDetails /> */}
         <WebDevFirstDes />
         <WebDevCrousal />
         <WebDevSecDes/>

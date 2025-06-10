@@ -145,7 +145,7 @@ const DeliveryJob = () => {
           }}
         />
         <DeliveryCat />
-        <JobDetails />
+        {/* <JobDetails /> */}
 
         {/* First Desc */}
         <GlobalJobCardOne

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import  { useState } from 'react'
 import PageComponent from '../../../PageComponent'
 import bgImage from '../../../../../assets/Images/bgImages/bgImage.png';
 import HeaderImage from '../../../../../assets/Images/headerImages/HeaderImage02.png';
@@ -109,10 +109,10 @@ const TelecallerJob = () => {
           <meta name="ICBM" content="30.638151602504394;76.82510128606455"/>
       </Helmet>
       <HeaderPage
-          backgroundImage={bgImage}
+          // backgroundImage={bgImage}
           headerText=
           {<>
-            Tele<span style={{ color: "green" }}>caller</span>
+            Tele<span style={{ color: "green"}}>caller</span>
           </>}
           subText="Friendly telecaller providing customer support, handling inquiries, and boosting client satisfaction."
           buttonTitle1="Apply Now"
@@ -122,13 +122,13 @@ const TelecallerJob = () => {
       onButtonClick1={handleSearch}
           onButtonClick2={() => alert("Hire Now clicked!")}
           imgSrc={HeaderImage}
-          style= {{
+          style={{
             width: "75%", 
             height: "auto", 
           }}
         />
       <CategoriesSection/>
-      <JobDetails/>
+      {/* <JobDetails/> */}
       <BusinessServices/>
       <JobhubTelecaller/>
       </PageComponent>
