@@ -148,7 +148,7 @@ export default function Securityguardjob() {
           }}
         />
         <SecCat />
-        <JobDetails />
+        {/* <JobDetails /> */}
 
         <GlobalJobCardOne
           title={'Security Guard'}

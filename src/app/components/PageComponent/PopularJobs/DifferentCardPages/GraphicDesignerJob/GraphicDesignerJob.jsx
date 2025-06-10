@@ -165,7 +165,7 @@ const GraphicDesignerJob = () => {
           }}
         />
         <GraphicCategories />
-        <JobDetails />
+        {/* <JobDetails /> */}
         {/* First Desc */}
         <GlobalJobCardOne
           content={[

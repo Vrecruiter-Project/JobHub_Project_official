@@ -147,7 +147,7 @@ const [searchFor, setSearchFor] = useState("");
           }}
         />
         <BackendCategories />
-        <JobDetails />
+        {/* <JobDetails /> */}
 
         {/* First Desc */}
         <GlobalJobCard1

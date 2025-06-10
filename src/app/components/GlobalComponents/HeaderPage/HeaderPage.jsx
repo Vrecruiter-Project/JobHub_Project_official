@@ -8,7 +8,6 @@
 // import { ArrowDropDown, ArrowDropDownCircleOutlined, BusinessCenterOutlined, InfoOutlined, LocationCity, Search } from '@mui/icons-material';
 // import { useNavigate } from 'react-router-dom';
 
-
 // const HtmlTooltip = styled(({ className, ...props }) => (
 //   <Tooltip {...props} classes={{ popper: className }} />
 // ))(({ theme }) => ({
@@ -21,7 +20,6 @@
 //   },
 // }));
 
-
 // const HeaderPage = ({ backgroundImage, headerText, subText, buttonTitle1, buttonTitle2, onButtonClick1, onButtonClick2, imgSrc, button2, style }) => {
 
 //   const [searchText, setSearchText] = useState('');
@@ -32,11 +30,9 @@
 //       navigate(`/candidatedashboard?search=${encodeURIComponent(searchText)}`);
 //     };
 
-
 //   useEffect(() => {
 //     AOS.init();
 //   }, []);
-
 
 //   return (
 //     <>
@@ -62,7 +58,6 @@
 
 //           {/* Content Section */}
 
-
 //           <Grid2 item xs={12} md={6} sx={{
 //             width: { xs: "none", sm: "none", md: "50%" },
 //             display: "flex",
@@ -70,7 +65,6 @@
 //             alignItems: "center",
 //             flexDirection: "column",
 //           }}>
-
 
 //             <Typography data-aos="zoom-out"
 //               data-aos-easing="ease-in-back"
@@ -226,16 +220,27 @@
 
 // export default HeaderPage;
 
-import { Box, Grid2, TextField, Typography } from '@mui/material';
-import React from 'react';
+import { Box, Grid2, TextField, Typography } from "@mui/material";
+import React from "react";
 
-import ButtonComponent from '../ButtonComponent/ButtonComponent.jsx';
-import AOS from 'aos';
-import { useEffect } from 'react';
-import 'aos/dist/aos.css';
+import ButtonComponent from "../ButtonComponent/ButtonComponent.jsx";
+import AOS from "aos";
+import { useEffect } from "react";
+import "aos/dist/aos.css";
 
-const HeaderPage = ({ backgroundImage, headerText, subText, buttonTitle1, buttonTitle2, onButtonClick1, onButtonClick2, imgSrc, button2, style, onSearchReady }) => {
-
+const HeaderPage = ({
+  backgroundImage,
+  headerText,
+  subText,
+  buttonTitle1,
+  buttonTitle2,
+  onButtonClick1,
+  onButtonClick2,
+  imgSrc,
+  button2,
+  style,
+  onSearchReady,
+}) => {
   useEffect(() => {
     AOS.init();
 
@@ -249,49 +254,58 @@ const HeaderPage = ({ backgroundImage, headerText, subText, buttonTitle1, button
   }, [headerText, onSearchReady]);
   return (
     <>
-    
-      <Box sx={{
-        backgroundImage: `url(${backgroundImage})`,
-        backgroundRepeat: "no-repeat",
-        backgroundPosition: "100%",
-        backgroundSize: "cover",
-        width: '100%',
-        py: { xs: 5, sm: 3 },
-        height: "auto",
-      }}>
-        <Grid2 container
+      <Box
+        sx={{
+          // backgroundImage: `url(${backgroundImage})`,
+          backgroundColor: "black",
+          backgroundRepeat: "no-repeat",
+          backgroundPosition: "100%",
+          backgroundSize: "cover",
+          width: "100%",
+
+          height: "auto",
+        }}
+      >
+        <Grid2
+          container
           sx={{
             width: "80%",
+
             margin: "auto",
             display: "flex",
             alignItems: "center",
-            justifyContent: "space-between",
+            justifyContent: "end",
             flexDirection: { xs: "column", md: "row" },
           }}
         >
-
           {/* Content Section */}
 
-
-          <Grid2 item xs={12} md={6} sx={{
-            width: { xs: "none", sm: "none", md: "50%" },
-            display: "flex",
-            justifyContent: "space-around",
-            alignItems: "center",
-            flexDirection: "column",
-          }}>
-
-
-            <Typography data-aos="zoom-out"
+          <Grid2
+            item
+            xs={12}
+            md={6}
+            sx={{
+              width: { xs: "none", sm: "none", md: "50%" },
+              display: "flex",
+              justifyContent: "space-around",
+              alignItems: "center",
+              flexDirection: "column",
+            }}
+          >
+            <Typography
+              data-aos="zoom-out"
               data-aos-easing="ease-in-back"
               data-aos-delay="500"
               variant="h1"
               sx={{
                 width: { sm: "80%", md: "100%" },
+
                 fontWeight: "bold",
+                color: "white",
                 fontFamily: "Roboto, sans-serif",
                 textAlign: { xs: "center", md: "left" },
                 fontSize: { xs: "40px", sm: "50px", md: "55px" },
+                pt: { xs: 5, sm: 10 },
               }}
             >
               {headerText}
@@ -300,20 +314,27 @@ const HeaderPage = ({ backgroundImage, headerText, subText, buttonTitle1, button
             <Typography
               sx={{
                 width: "100%",
+
                 fontSize: "19px",
                 fontFamily: '"Roboto", sans-serif',
                 fontWeight: "bold",
                 textAlign: { xs: "center", md: "left" },
-                color: "text.primary",
-                pt: { xs: 2 }
+                color: "white",
+                pt: { xs: 2 },
               }}
             >
               {subText}
             </Typography>
             <Box
-              sx={{ width: "100%", display: "flex", flexDirection: { xs: "column", md: "row" }, justifyContent: { xs: "center", md: "flex-start" }, pt: "14%", }}
+              sx={{
+                width: "100%",
+                display: "flex",
+                flexDirection: { xs: "column", md: "row" },
+                justifyContent: { xs: "center", md: "flex-start" },
+                pt: "14%",
+              }}
             >
-              <div data-aos="zoom-in" >
+              <div data-aos="zoom-in">
                 <ButtonComponent
                   title={buttonTitle1}
                   onClick={onButtonClick1}
@@ -329,7 +350,8 @@ const HeaderPage = ({ backgroundImage, headerText, subText, buttonTitle1, button
                     px: 6,
                     fontSize: "14px",
                   }}
-                /></div>
+                />
+              </div>
               {button2 && (
                 <div data-aos="zoom-in">
                   <ButtonComponent
@@ -351,22 +373,27 @@ const HeaderPage = ({ backgroundImage, headerText, subText, buttonTitle1, button
                     //   fontSize: "14px",
                     // }}
                   />
-                </div>)}
+                </div>
+              )}
             </Box>
-
           </Grid2>
 
           {/* Image Section */}
-          <Grid2 data-aos="flip-right" data-aos-easing="ease-out-cubic"
+          <Grid2
+            data-aos="flip-right"
+            data-aos-easing="ease-out-cubic"
             data-aos-duration="2000"
-
-            item xs={12} md={6} sx={{
+            item
+            xs={12}
+            md={6}
+            sx={{
               width: { xs: "none", sm: "none", md: "50%" },
               display: { xs: "none", sm: "none", md: "flex", lg: "flex" },
               justifyContent: { xs: "center", md: "flex-end" },
               mt: { xs: 4, md: 0 },
-            }}>
-            <img src={imgSrc} style={style} alt="HeaderImage" />
+            }}
+          >
+            <img src={imgSrc} className='mt-20' alt="HeaderImage" />
           </Grid2>
         </Grid2>
       </Box>

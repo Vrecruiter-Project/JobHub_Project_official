@@ -150,7 +150,7 @@ const HotelStaffJob = () => {
         />
 
         <HotelCat />
-        <JobDetails />
+        {/* <JobDetails /> */}
 
         {/* First Desc */}
         <GlobalJobCardOne

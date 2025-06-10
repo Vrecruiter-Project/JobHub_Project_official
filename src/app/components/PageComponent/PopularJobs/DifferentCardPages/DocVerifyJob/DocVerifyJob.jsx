@@ -102,7 +102,7 @@ const DocVerifyJob = () => {
   </script>
 </Helmet>
       <HeaderPage
-          backgroundImage={bgImage}
+          // backgroundImage={bgImage}
           headerText=
           {<>
             Document <span style={{ color: "green" }}>Verification Jobs</span>
@@ -120,7 +120,7 @@ const DocVerifyJob = () => {
           }}
         />
         <DocCategories/>
-      <JobDetails/>
+      {/* <JobDetails/> */}
       <EnsuringTrust/>
       <DocVerifyServices/>
       <WhyDocVerify/>

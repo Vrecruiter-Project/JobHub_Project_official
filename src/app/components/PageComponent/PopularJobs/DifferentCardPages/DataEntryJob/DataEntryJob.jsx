@@ -100,7 +100,7 @@ const DataEntryJob = () => {
   </script>
 </Helmet>
       <HeaderPage
-          backgroundImage={bgImage}
+          // backgroundImage={bgImage}
           headerText=
           {<>
             Data <span style={{ color: "green" }}>Entry</span>
@@ -119,7 +119,7 @@ const DataEntryJob = () => {
           }}
         />
       <DataCategories/>
-      <JobDetails/>
+      {/* <JobDetails/> */}
       <JobDescription/>
       <DataEntryTypes/>
       </PageComponent>

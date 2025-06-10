@@ -142,13 +142,10 @@ const FactoryJob = () => {
       onButtonClick1={handleSearch}
           onButtonClick2={() => alert("Hire Now clicked!")}
           imgSrc={HeaderImage}
-          style={{
-            width: "75%",
-            height: "auto",
-          }}
+          
         />
         <FactoryCat />
-        <JobDetails />
+        {/* <JobDetails /> */}
 
 
 

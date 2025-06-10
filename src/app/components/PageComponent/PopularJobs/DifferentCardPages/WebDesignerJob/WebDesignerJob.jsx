@@ -123,7 +123,7 @@ const WebDesignerJob = () => {
           }}
         />
         <WebDesignCategories />
-        <JobDetails />
+        {/* <JobDetails /> */}
         <WebDesignCard />
         <WebDesigningTools />
       </PageComponent>
