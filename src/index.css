@@ -12,16 +12,14 @@ button.MuiButtonBase-root.MuiButton-root.MuiButton-text.MuiButton-textPrimary.Mu
 
 @media (max-width: 426px) {
   .search-box {
-      max-width: 60%;
+    max-width: 60%;
   }
 }
 
-
-
-@media (max-width:769px) {
-    .MuiGrid2-root.MuiGrid2-container.MuiGrid2-direction-xs-row.MuiGrid2-spacing-xs-2.css-1qabwpx-MuiGrid2-root {
-        flex-direction: column-reverse;
-    };
+@media (max-width: 769px) {
+  .MuiGrid2-root.MuiGrid2-container.MuiGrid2-direction-xs-row.MuiGrid2-spacing-xs-2.css-1qabwpx-MuiGrid2-root {
+    flex-direction: column-reverse;
+  }
 }
 
 .MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded.MuiPaper-elevation1.MuiCard-root.css-t6aa9m-MuiPaper-root-MuiCard-root {
@@ -31,7 +29,12 @@ button.MuiButtonBase-root.MuiButton-root.MuiButton-text.MuiButton-textPrimary.Mu
 .MuiGrid2-root.MuiGrid2-direction-xs-row.MuiGrid2-grid-xs-12.MuiGrid2-grid-sm-12.MuiGrid2-grid-md-6.MuiGrid2-grid-lg-6.MuiGrid2-grid-xl-6.css-1fp10fd-MuiGrid2-root {
   background-color: rgb(255, 255, 255);
   box-shadow:
-  rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
+    rgba(0, 0, 0, 0.07) 0px 1px 2px,
+    rgba(0, 0, 0, 0.07) 0px 2px 4px,
+    rgba(0, 0, 0, 0.07) 0px 4px 8px,
+    rgba(0, 0, 0, 0.07) 0px 8px 16px,
+    rgba(0, 0, 0, 0.07) 0px 16px 32px,
+    rgba(0, 0, 0, 0.07) 0px 32px 64px;
   border-radius: 3px;
 }
 
@@ -47,21 +50,72 @@ button.MuiButtonBase-root.MuiButton-root.MuiButton-text.MuiButton-textPrimary.Mu
 }
 
 .MuiBox-root.css-dsw18m {
-    height: 0;
+  height: 0;
 }
 a.inline-block.px-5.py-2.bg-green-700.text-white.rounded-md {
-    margin-bottom: 30px;
+  margin-bottom: 30px;
 }
 
 @font-face {
-  font-family: 'Marcelluse';
+  font-family: "Marcelluse";
   src: url(./app/font/Marcellus-Regular.ttf);
 }
 
 @media (min-width: 980px) {
-    .MuiBox-root.css-yljj99 {
-        padding-left: 21px;
-        padding-right: 21px;
-    }
+  .MuiBox-root.css-yljj99 {
+    padding-left: 21px;
+    padding-right: 21px;
+  }
+}
+
+.image_animation {
+  position: relative;
+  animation: mymove 2s;
+}
+
+@keyframes mymove {
+  0% {
+    top: 200px;
+  }
+  100% {
+    top: 0px;
+  }
+}
+
+.button::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background-color: #fff;
+  /* border-radius: 50%; */
+  transform: translate(-50%, -50%);
+  transition:
+    width 0.7s ease,
+    height 1s ease;
+  z-index: 0;
+}
+
+.button:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+
+.MuiBox-root.css-1oy8f6n {
+    overflow: hidden;
+}
+.MuiBox-root.css-vyvsuu {
+    overflow: hidden;
+}
+
+
+
+.image_arrow{
+    filter: invert(1) brightness(2);
+    width: 14px;
+    rotate: 180deg;
 }
 

@@ -20,6 +20,7 @@ import jungleWorksLogo from '../../assets/Images/companies-list/JungleworksLogo.
 import RBLLogo from '../../assets/Images/companies-list/RBLLogo.png';
 import RGLogo from '../../assets/Images/companies-list/RGGroupsLogo.png';
 import CompanySwiper from '../GlobalComponents/GlobalSwiper/CompanySwiper';
+import { gloabalTheme } from '../../theme/theme';
 
 const PartnerSection = () => {
   const companyItems = [
@@ -74,7 +75,8 @@ const PartnerSection = () => {
             >
               Our{' '}
               <span
-                className='text-[#008000] font-bold'
+                className='font-bold'
+                style={{color: gloabalTheme.colors.primary}}
               >
                 Partners
               </span>

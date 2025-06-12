@@ -24,6 +24,7 @@ import { Button } from '@mui/material';
 import { useTheme, useMediaQuery } from '@mui/material';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import { gloabalTheme } from '../../../theme/theme';
 
 const PopularJobs = ({ id }) => {
   const theme = useTheme();
@@ -76,7 +77,7 @@ const PopularJobs = ({ id }) => {
               //  backgroundImage: `url(${PopularJobsBg})`,
                 backgroundSize: "cover",
               }}>
-              Popular <span className='text-[#008000]  font-bold'>Jobs</span>
+              Popular <span className='font-bold' style={{color: gloabalTheme.colors.primary}}>Jobs</span>
             </Typography>
           </Grid2>
         </Grid2>

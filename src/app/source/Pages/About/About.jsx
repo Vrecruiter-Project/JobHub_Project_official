@@ -27,14 +27,15 @@ const About = () => {
               sm: "center",
               md: "center",
               lg: "space-between",
+              
             },
           }}
         >
-          <Box sx={{ color: "white", width: "40%", my: "100px", mx: "150px", display:{xs: 'none',md: 'block', } }}>
+          <Box sx={{ color: "white", width: "40%", my: "100px", mx: "150px", display:{xs: 'none',lg: 'block', } }}>
             <h2 className="text-5xl">
               About <span className="text-[#008000]">Us</span>
             </h2>
-            <p className="my-5 text-3xl leading-1">
+            <p className="my-5 max-xl:text-2xl text-3xl leading-1 text-justify pt-4">
               Your trusted partner in job search and recruitment. At{" "}
               <span className="text-[#008000]">JOBHUB</span>, we help job
               seekers find their dream jobs and assist employers in discovering
@@ -106,13 +107,7 @@ const About = () => {
             <Box
               sx={{
                 width: { xs: "30%", sm: "30%", md: "30%", lg: "45%" },
-                height: {
-                  xs: "110svh",
-                  sm: "110svh",
-                  md: "110svh",
-                  lg: "115svh",
-                  xl: "104svh",
-                },
+                height: '150vh',
                 backgroundColor: "#008000",
                 position: "absolute",
                 top: "-40px",
@@ -178,8 +173,8 @@ const About = () => {
               {/* Description */}
               <Typography
                 sx={{
-                  textAlign: "center",
-                  fontSize: { xs: "8px", sm: "14px", lg: "12px", xl: "14px" },
+                  textAlign: "justify",
+                  fontSize: { xs: "8px", sm: "14px", lg: "12px", xl: "18px" },
 
                   color: "#333",
                 }}

@@ -49,12 +49,12 @@
 //               alignItems: "center",
 //               mt: {xs: 4, md: 1},
 //             }}>
-//               <Typography variant="h5" gutterBottom component="div" 
+//               <Typography variant="h5" gutterBottom component="div"
 //               style={{
 //                 fontWeight: "bold"
 //               }}
 //               >Companies: </Typography>
-//               <Typography variant="h5" gutterBottom component="div" 
+//               <Typography variant="h5" gutterBottom component="div"
 //               style={{
 //                 fontWeight: "bold"
 //               }}
@@ -70,12 +70,12 @@
 //               alignItems: "center",
 //               mt: {xs: 4, md: 1},
 //             }}>
-//               <Typography variant="h5" gutterBottom component="div" 
+//               <Typography variant="h5" gutterBottom component="div"
 //               style={{
 //                 fontWeight: "bold"
 //               }}
 //               >Process: </Typography>
-//               <Typography variant="h5" gutterBottom component="div" 
+//               <Typography variant="h5" gutterBottom component="div"
 //               style={{
 //                 fontWeight: "bold"
 //               }}
@@ -89,7 +89,6 @@
 // }
 
 // export default JobDetails
-
 
 // import { Box, Grid2, Typography } from "@mui/material";
 // import React from "react";
@@ -156,7 +155,6 @@
 //         }}
 //       >
 
-
 //         {stats.map((stat, index) => (
 //           <Grid2
 //             item
@@ -175,14 +173,14 @@
 
 // export default JobDetails;
 
-
 import React, { useEffect } from "react";
 import CountUp from "react-countup";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import SectionImage from '/JobhubFooterlogo.png'
-import sectiionImage from '../../../assets/Images/SectionImages/image_46.png'
+import SectionImage from "/JobhubFooterlogo.png";
+import sectiionImage from "../../../assets/Images/SectionImages/image_46.png";
 import { Stats } from "./Stats";
+import { gloabalTheme } from "../../../theme/theme";
 // const stats = [
 //   {
 //     id: 1,
@@ -212,8 +210,15 @@ import { Stats } from "./Stats";
 
 export default function JobDetails() {
   useEffect(() => {
-    AOS.init({ duration: 1000 });
-  }, []);
+    const timer = setTimeout(() => {
+      AOS.init({
+      duration: 800,
+      onece: false,
+      delay: 0
+    },2000)
+    }, 2000);
+    return () => clearInterval(timer)
+  }, [])
 
   return (
     <>
@@ -249,87 +254,116 @@ export default function JobDetails() {
       <section className="hidden w-full flex flex-col items-center bg-black sm:block">
         {/* Top Content */}
         <div className="text-center text-white pt-12 px-4 py-8 ">
-          <p className="text-[28px] sm:text-[40px] font-semibold font-['Marcelluse'] pt-4">
+          <p className="text-[28px] sm:text-[40px] font-semibold font-['Marcelluse'] pt-4" data-aos='fade-up' >
             Start your Professional journey with
           </p>
           <img
+            data-aos='fade-down' 
             className="w-[120px] sm:w-[150px]  inline-block mb-10"
             src={SectionImage}
             alt=""
           />
           <div className="flex justify-center w-full mb-5">
             <p className="w-full sm:w-4/5 text-sm sm:text-base leading-relaxed">
-              JobHub is a smart and easy-to-use job search platform designed to help
-              you find the right job, faster. Whether you're a fresher or an
-              experienced professional, JobHub connects you with verified job
-              opportunities across different industries and locations in India. We
-              make job hunting simple with daily job updates, one-click applications,
-              and filters based on your skills, experience, and preferred location.
-              Our goal is to make your career journey smoother by bringing the best
-              job openings to one place — no stress, no confusion, just real
-              opportunities. Start applying today and move one step closer to your
-              dream job with JobHub.
+              JobHub is a smart and easy-to-use job search platform designed to
+              help you find the right job, faster. Whether you're a fresher or
+              an experienced professional, JobHub connects you with verified job
+              opportunities across different industries and locations in India.
+              We make job hunting simple with daily job updates, one-click
+              applications, and filters based on your skills, experience, and
+              preferred location. Our goal is to make your career journey
+              smoother by bringing the best job openings to one place — no
+              stress, no confusion, just real opportunities. Start applying
+              today and move one step closer to your dream job with JobHub.
             </p>
           </div>
-          <a
+          {/* <a
             href="#popularSection"
-            className="inline-block px-5 py-2  bg-green-700 text-white rounded-md"
+            className="inline-block px-6 py-3 font-semibold  text-white rounded-md"
+            style={{backgroundColor: gloabalTheme.colors.primary}}
           >
             Explore Job
-          </a>
+          </a> */}
+          <button
+            className="button relative py-1.5 px-4 text-lg hover:text-black border rounded cursor-pointer overflow-hidden font-semibold"
+            title="Explore Jobs"
+            style={{ backgroundColor: gloabalTheme.colors.primary, border:'none' }}
+            onClick={() =>
+              document
+                .getElementById("popularSection")
+                ?.scrollIntoView({ behavior: "smooth" })
+            }
+          >
+            <span className="relative z-10">Explore Jobs</span>
+          </button>
         </div>
 
         {/* Employer Section */}
         <div className="bg-white w-full mt-5 flex flex-col lg:flex-row justify-center items-center px-4 sm:px-6 lg:px-8 py-8 gap-6 sm:gap-8 lg:gap-12">
-  {/* Text Content (Left Side) */}
-  <div className="w-full lg:w-2/3 xl:w-1/3 px-2 sm:px-4 space-y-4 sm:space-y-6 text-black leading-relaxed my-10 sm:my-20">
-    <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold font-['Marcelluse'] [text-shadow:_0_3px_4px_rgb(51_51_51)]">
-      What we offer to <span className="text-green-700">Employers</span>
-    </h2>
-    
-    {/* Features List */}
-    <div className="space-y-4 sm:space-y-5">
-      <div>
-        <span className="font-bold text-lg sm:text-xl">✅ Excellent Employer Dashboard</span>
-        <p className="text-base sm:text-lg mt-1">Manage job listings, track applications, and shortlist candidates.</p>
-      </div>
-      <div>
-        <span className="font-bold text-lg sm:text-xl">✅ Find the Right Talent</span>
-        <p className="text-base sm:text-lg mt-1">
-          Access a large pool of verified candidates based on skills, experience, location, and job role.
-        </p>
-      </div>
-      <div>
-        <span className="font-bold text-lg sm:text-xl">✅ Post Jobs with Base Salary Details</span>
-        <p className="text-base sm:text-lg mt-1">
-          Clearly mention salary expectations to attract serious candidates and make hiring transparent.
-        </p>
-      </div>
-      <div>
-        <span className="font-bold text-lg sm:text-xl">✅ Smart Filters & Search</span>
-        <p className="text-base sm:text-lg mt-1">
-          Easily search and filter candidates by qualifications, skills, and availability.
-        </p>
-      </div>
-    </div>
-  </div>
+          {/* Text Content (Left Side) */}
+          <div className="w-full lg:w-2/3 xl:w-1/3 px-2 sm:px-4 space-y-4 sm:space-y-6 text-black leading-relaxed my-10 sm:my-20">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold font-['Marcelluse'] [text-shadow:_0_3px_4px_rgb(51_51_51)]">
+              What we offer to{" "}
+              <span style={{ color: gloabalTheme.colors.primary }}>
+                Employers
+              </span>
+            </h2>
 
-  {/* Image (Right Side) */}
-<div className="hidden lg:hidden xl:block w-full lg:w-1/2 justify-center">
-  {/* Your content (e.g., image) */}
-  <img
-    className="w-full max-w-[350px] sm:max-w-[450px] lg:max-w-[750px] rounded-xl"
-    src={sectiionImage}
-    alt="Employer Dashboard"
-  />
-</div>
-</div>
+            {/* Features List */}
+            <div className="space-y-4 sm:space-y-5">
+              <div>
+                <span className="font-bold text-lg sm:text-xl">
+                  ✅ Excellent Employer Dashboard
+                </span>
+                <p className="text-base sm:text-lg mt-1">
+                  Manage job listings, track applications, and shortlist
+                  candidates.
+                </p>
+              </div>
+              <div>
+                <span className="font-bold text-lg sm:text-xl">
+                  ✅ Find the Right Talent
+                </span>
+                <p className="text-base sm:text-lg mt-1">
+                  Access a large pool of verified candidates based on skills,
+                  experience, location, and job role.
+                </p>
+              </div>
+              <div>
+                <span className="font-bold text-lg sm:text-xl">
+                  ✅ Post Jobs with Base Salary Details
+                </span>
+                <p className="text-base sm:text-lg mt-1">
+                  Clearly mention salary expectations to attract serious
+                  candidates and make hiring transparent.
+                </p>
+              </div>
+              <div>
+                <span className="font-bold text-lg sm:text-xl">
+                  ✅ Smart Filters & Search
+                </span>
+                <p className="text-base sm:text-lg mt-1">
+                  Easily search and filter candidates by qualifications, skills,
+                  and availability.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Image (Right Side) */}
+          <div className="hidden lg:hidden xl:block w-full lg:w-1/2 justify-center">
+            {/* Your content (e.g., image) */}
+            <img
+              className="w-full max-w-[350px] sm:max-w-[450px] lg:max-w-[750px] rounded-xl"
+              src={sectiionImage}
+              alt="Employer Dashboard"
+            />
+          </div>
+        </div>
 
         {/* Stats Section */}
-        <Stats/>
-        
+        <Stats />
       </section>
-
     </>
   );
 }

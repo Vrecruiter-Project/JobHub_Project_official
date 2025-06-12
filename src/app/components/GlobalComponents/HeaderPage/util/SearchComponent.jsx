@@ -23,10 +23,14 @@ import {
   Search,
 } from "@mui/icons-material";
 
-import bgImg from "../../../../assets/Images/bgImages/Banner_image.svg";
+// import bgImg from "../../../../assets/Images/bgImages/Banner_image.svg";
 import HeaderImage from "../../../../assets/Images/headerImages/HeaderImage01_1.png";
 import HeaderImage2 from "../../../../assets/Images/headerImages/HeaderImage02.png";
 import "../../../../../../src/index.css";
+import { gloabalTheme } from "../../../../theme/theme";
+import arrowpng from "/arrow.png";
+import AOS from "aos";
+import "aos/dist/aos.css";
 const HtmlTooltip = styled(({ className, ...props }) => (
   <Tooltip {...props} classes={{ popper: className }} />
 ))(({ theme }) => ({
@@ -103,6 +107,18 @@ export const HeroSection = () => {
   const [inputBox, setInputBox] = useState({ top: 0, left: 0, width: 0 });
 
   useEffect(() => {
+    // Delay AOS initialization by 2 seconds after page load
+    const timer = setTimeout(() => {
+      AOS.init({
+        duration: 800, // Animation duration
+        once: true, // Whether animation should happen only once
+        delay: 0, // Delay between animations
+      });
+    }, 2000);
+
+    return () => clearTimeout(timer);
+  }, []);
+  useEffect(() => {
     if (inputRef.current) {
       const rect = inputRef.current.getBoundingClientRect();
       setInputBox({
@@ -150,23 +166,59 @@ export const HeroSection = () => {
         width: "100%",
         height: "auto",
         display: "flex",
-        justifyContent: "center",
+        justifyContent: "space-around",
+        alignItems: "center",
         // backgroundImage: `url(${bgImg})`,
         // backgroundRepeat: 'no-repeat',
         // backgroundPosition: 'center',
         // backgroundSize: 'cover',
         backgroundColor: "#0b0a05",
-        paddingTop: { xs: "20px", sm: "40px", md: "30px" },
-        paddingBottom: { xs: "40px", sm: "50px", md: "60px" },
+        paddingTop: { xs: "20px", sm: "40px", md: "80px" },
+        // paddingBottom: { xs: "40px", sm: "50px", md: "60px" },
       }}
     >
+      <Box
+        sx={{ display: { xs: "none", sm: "none", md: "none", lg: "block" } }}
+      >
+        <Box
+          sx={{
+            color: "white",
+            display: "flex",
+            flexDirection: "column",
+            gap: "30px",
+            alignItems: "center",
+          }}
+        >
+          <div className="flex flex-col gap-2">
+            <a href="https://www.instagram.com/jobhub_world?igsh=a2hsb3dmdDV1azYw">
+              <i className="fa-brands fa-instagram text-xl"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/jobhub-world-5559a7361/">
+              <i className="fa-brands fa-linkedin-in text-xl"></i>
+            </a>
+            <a href="https://www.facebook.com/people/JobHubworld/61575148695953/">
+              <i className="fab fa-facebook-f text-xl"></i>
+            </a>
+          </div>
+          <div>
+            <img
+              className="image_arrow"
+              src={arrowpng}
+              alt="follow jobhub intsa, linkedin, facebook"
+            />
+          </div>
+          <div>
+            <p className="rotate-[-90deg] mr-1 text-lg mt-3">Follow us</p>
+          </div>
+        </Box>
+      </Box>
       <Box
         sx={{
           display: "flex",
           flexDirection: { xs: "row", md: "row" },
           alignItems: "center",
           justifyContent: "space-between",
-          width: {sm:'85%', lg: "92%"},
+          width: { sm: "85%", lg: "92%" },
         }}
       >
         {/* Left Section */}
@@ -177,12 +229,17 @@ export const HeroSection = () => {
               color: "white",
               mb: 2,
               fontWeight: "600",
-              fontSize: { xs: "28px", sm: "42px", md: "34px", lg:'60px' },
-              lineHeight: { xs: "35px", sm: "45px", md: "37px", lg:"60px" },
+              fontSize: { xs: "28px", sm: "42px", md: "34px", lg: "60px" },
+              lineHeight: { xs: "35px", sm: "45px", md: "37px", lg: "60px" },
             }}
           >
-            Find Your Career <br /> With{" "}
-            <span style={{ color: "#008000" }}>JOBHUB</span>
+            <p data-aos="fade-up" data-aos-delay="1000">
+              Find Your Career
+            </p>
+            <p data-aos="fade-down" data-aos-delay="1000">
+              With{" "}
+              <span style={{ color: gloabalTheme.colors.primary }}>JOBHUB</span>
+            </p>
           </Typography>
           <Typography
             sx={{
@@ -229,29 +286,40 @@ export const HeroSection = () => {
               >
                 For Employer
               </Typography>
-              <Button
+              {/* <Button
                 variant="contained"
                 size="small"
                 sx={{
                   padding: "2px 30px",
-                  border: "2px solid #45a049",
+                  border: `2px solid ${gloabalTheme.colors.primary}`,
                   backgroundColor: "transparent",
                   color: "white",
                   ml: 1,
                   textTransform: "none",
-                  "&:hover": { backgroundColor: "#45a049" },
+                  "&:hover": { backgroundColor: gloabalTheme.colors.primary },
                 }}
                 // navigating to /verification
                 onClick={() => navigate("/verification")}
               >
                 Hire Now
-              </Button>
+              </Button> */}
+              <button
+                className="button relative px-4 py-1 text-lg  hover:text-black border  rounded cursor-pointer overflow-hidden  font-semibold"
+                title="Hire now"
+                style={{
+                  backgroundColor: gloabalTheme.colors.primary,
+                  border: "none",
+                }}
+                onClick={() => navigate("/verification")}
+              >
+                <span className="relative z-10">Hire now</span>
+              </button>
             </Box>
           </Box>
           <Box
             className="flex flex-wrap gap-2 bg-white rounded-lg shadow-md p-3 items-center search-box"
             sx={{
-              maxWidth: { xs: "95%", sm: "60%", md: "90%", lg:"65%" },
+              maxWidth: { xs: "95%", sm: "60%", md: "90%", lg: "65%" },
             }}
           >
             {/* Search Input */}
@@ -329,7 +397,7 @@ export const HeroSection = () => {
               onChange={(e) => setExperience(e.target.value)}
               size="small"
               sx={{
-                display: { xs: "none", sm: "none", md: "none", lg:"block" },
+                display: { xs: "none", sm: "none", md: "none", lg: "block" },
                 fontSize: "16px",
                 maxWidth: 120,
                 backgroundColor: "white",
@@ -369,14 +437,22 @@ export const HeroSection = () => {
             </Select>
 
             {/* Search Button */}
-            <Button
+            {/* <Button
               variant="contained"
               color="success"
               onClick={handleSearch}
               sx={{ textTransform: "none", px: 3, fontSize: "16px" }}
             >
               Search
-            </Button>
+            </Button> */}
+            <button
+              className="button relative py-1.5 px-4 text-lg   hover:text-black border rounded cursor-pointer overflow-hidden  font-semibold"
+              title="Login"
+              style={{ backgroundColor: gloabalTheme.colors.primary }}
+              onClick={handleSearch}
+            >
+              <span className="relative z-10">Search</span>
+            </button>
           </Box>
           {showError && (
             <Typography
@@ -392,60 +468,28 @@ export const HeroSection = () => {
             </Typography>
           )}{" "}
         </Box>
-
         {/* Right Section Image */}
-        <Box
-          sx={{
-            position: "relative",
-            display: { xs: "none", sm: "none", md: "block" },
-            width: { sm: "30%", md: "53%" },
-            height: "auto",
-            boxShadow: "0 4px 8px rgba(0, 0, 0, 0.3)", // Stronger shadow
-          }}
-        >
-          {/* Main Image */}
-          <Box
-            component="img"
-            src={HeaderImage}
-            alt="Header"
-            sx={{
-              position: "relative",
-              top:"60px",
-              width: "100%",
-              height: "auto",
-              display: "block", // Ensures no extra space below the image
+        <div className="w-[50%] max-lg:hidden flex relative mr-[4%]">
+          <div className="w-full overflow-hidden flex justify-center items-center">
+            <Box
+              component="img"
+              src={HeaderImage}
+              alt="find your career with jobhub world"
+              sx={{
+                display: { xs: "none", sm: "none", md: "block" },
+                width: { sm: "30%", md: "100%" },
+                height: "auto",
+              }}
+              className="image_animation"
+            />
+          </div>
+          <div
+            className="absolute -bottom-[0] left-0 right-0 h-[20%] pointer-events-none animate-pulse"
+            style={{
+              background: `linear-gradient(to top, ${gloabalTheme.colors.primary} , transparent)`,
             }}
           />
-
-          {/* Top Fade Overlay (Left & Right) */}
-          <Box
-            sx={{
-              position: "absolute",
-              top: 0,
-              left: 0,
-              right: 0,
-              height: "20%",
-              // background:
-              //   "linear-gradient(to bottom, rgba(0, 80, 0, 0.7), transparent)",
-              // pointerEvents: "none",
-            }}
-          />
-
-          {/* Bottom Dark Green Overlay */}
-          <Box
-            sx={{
-              
-              position: "absolute",
-              bottom: '-60px',
-              left: 0,
-              right: 0,
-              height: "20%",
-              background:
-                "linear-gradient(to top,rgba(0, 120, 0, 0.9), transparent)",
-              pointerEvents: "none",
-            }}
-          />
-        </Box>
+        </div>
         <Box
           component="img"
           src={HeaderImage2}

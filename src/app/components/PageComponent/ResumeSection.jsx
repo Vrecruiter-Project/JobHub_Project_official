@@ -12,6 +12,7 @@ import Resume6 from "../../assets/Images/ResumeImages/Resume6.png";
 
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import { gloabalTheme } from '../../theme/theme';
 
 const ResumeSection = () => {
 
@@ -61,7 +62,7 @@ const ResumeSection = () => {
                 fontFamily:"Marcelluse",textShadow: '0 3px 4px #333',
               }}
             >
-              Build <span style={{ color: "green" }}>Your Resume</span> In Two Minutes
+              Build <span style={{ color: gloabalTheme.colors.primary}}>Your Resume</span> In Two Minutes
             </Typography>
           </Grid2>
         </Grid2>
