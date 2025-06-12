@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import { gloabalTheme } from "../../theme/theme";
+import React, { useState } from "react";
 import {
   AppBar,
   Box,
@@ -13,20 +14,20 @@ import {
   useMediaQuery,
   useScrollTrigger,
   useTheme,
-  Slide
-} from '@mui/material';
-import MenuIcon from '@mui/icons-material/Menu';
-import { useLocation, useNavigate } from 'react-router-dom';
+  Slide,
+} from "@mui/material";
+import MenuIcon from "@mui/icons-material/Menu";
+import { useLocation, useNavigate } from "react-router-dom";
 // import jobhublogo from '../../assets/Images/logo2.svg';
-import ButtonComponent from '../GlobalComponents/ButtonComponent/ButtonComponent';
-import jobhublogo from '/Jobhub logo.png';
+import ButtonComponent from "../GlobalComponents/ButtonComponent/ButtonComponent";
+import jobhublogo from "/Jobhub logo.png";
 
 const pages = [
-  { label: 'Home', path: '/' },
-  { label: 'Jobs', path: '/candidatedashboard' },
-  { label: 'Build Resume', path: '/resume', external: true },
-  { label: 'About', path: '/about' },
-  { label: 'Contact Us', path: '/contact' },
+  { label: "Home", path: "/" },
+  { label: "Jobs", path: "/candidatedashboard" },
+  { label: "Build Resume", path: "/resume", external: true },
+  { label: "About", path: "/about" },
+  { label: "Contact Us", path: "/contact" },
 ];
 
 // Slide hide-on-scroll helper
@@ -44,7 +45,7 @@ const NavDrawer = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('md')); // md = 960px
+  const isMobile = useMediaQuery(theme.breakpoints.down("md")); // md = 960px
 
   const toggleDrawer = (open) => () => {
     setDrawerOpen(open);
@@ -52,7 +53,7 @@ const NavDrawer = () => {
 
   const handleNavigate = (path, isExternal = false) => {
     if (isExternal) {
-      window.location.href = 'https://resume-creator.jobhub.world/';
+      window.location.href = "https://resume-creator.jobhub.world/";
     } else {
       navigate(path);
     }
@@ -60,7 +61,7 @@ const NavDrawer = () => {
   };
 
   const handleLogin = () => {
-    window.open('https://admin.jobhub.world/', '_blank');
+    window.open("https://admin.jobhub.world/", "_blank");
   };
 
   const isActiveRoute = (path) => location.pathname === path;
@@ -71,41 +72,61 @@ const NavDrawer = () => {
         <AppBar
           position="fixed"
           sx={{
-            position:'relative',
+            position: "relative",
             // mt: { xs: 3, md: 3 },
-            backgroundColor: 'rgba(255, 255, 255, 0.95)',
-            color: 'black',
-            height: '90px',
-            
-            boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.1)',
-           
-            transition: 'all 0.3s ease-in-out',
-            display: 'flex',
-            justifyContent: 'center',
+            backgroundColor: "rgba(255, 255, 255, 0.95)",
+            color: "black",
+            height: "90px",
+
+            boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
+
+            transition: "all 0.3s ease-in-out",
+            display: "flex",
+            justifyContent: "center",
           }}
         >
-          <Toolbar sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <Toolbar
+            sx={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+            }}
+          >
             {/* Logo */}
             <Box
               component="img"
               src={jobhublogo}
               alt="Logo"
-              sx={{ width: { xs: '80px', sm: '100px', md: '100px', lg: '110px' }, marginLeft:"50px" ,height: 'auto', cursor: 'pointer' }}
-              onClick={() => handleNavigate('/')}
+              sx={{
+                width: { xs: "80px", sm: "100px", md: "100px", lg: "110px" },
+                marginLeft: "50px",
+                height: "auto",
+                cursor: "pointer",
+              }}
+              onClick={() => handleNavigate("/")}
             />
 
             {/* Desktop Menu */}
             {!isMobile && (
-              <Box sx={{ flex: 1, display: 'flex', justifyContent: 'center', gap: 3 }}>
+              <Box
+                sx={{
+                  flex: 1,
+                  display: "flex",
+                  justifyContent: "center",
+                  gap: 3,
+                }}
+              >
                 {pages.map((page) => (
                   <Button
                     key={page.label}
                     onClick={() => handleNavigate(page.path, page.external)}
                     sx={{
-                      fontSize:'18px',
-                      color: isActiveRoute(page.path) ? 'green' : 'black',
+                      fontSize: { md: '15px' , lg: '18px'},
+                      color: isActiveRoute(page.path)
+                        ? gloabalTheme.colors.primary
+                        : "black",
                       fontWeight: 600,
-                      '&:hover': { color: 'green' },
+                      "&:hover": { color: "green" },
                     }}
                   >
                     {page.label}
@@ -117,20 +138,20 @@ const NavDrawer = () => {
             {/* Right - Login or Menu Icon */}
             <Box>
               {!isMobile ? (
-                <ButtonComponent
+                <button
+                  className="button relative px-6 py-1.5 text-lg text-white hover:text-black border border-green-600 rounded cursor-pointer overflow-hidden mr-[55px] font-semibold"
                   title="Login"
+                  style={{backgroundColor: gloabalTheme.colors.primary}}
                   onClick={handleLogin}
-                  sx={{
-                    marginRight: '70px',
-                    px: 4,
-                    py: 1.5,
-                    backgroundColor: 'green',
-                    color: 'white',
-                    fontWeight: 'bold',
-                  }}
-                />
-              ) : (
-                <IconButton onClick={toggleDrawer(true)} edge="end" color="inherit">
+                >
+                  <span className="relative z-10">Login</span>
+                </button>
+              ) : ( 
+                <IconButton
+                  onClick={toggleDrawer(true)}
+                  edge="end"
+                  color="inherit"
+                >
                   <MenuIcon />
                 </IconButton>
               )}
@@ -140,17 +161,17 @@ const NavDrawer = () => {
       </HideOnScroll>
 
       {/* Spacer */}
-      <Box sx={{ height: '90px' }} />
+      <Box sx={{ height: "90px" }} />
 
       {/* Drawer for Mobile */}
       <Drawer anchor="right" open={drawerOpen} onClose={toggleDrawer(false)}>
         <Box
           sx={{
             width: 280,
-            backgroundColor: '#fff',
-            height: '100%',
-            display: 'flex',
-            flexDirection: 'column',
+            backgroundColor: "#fff",
+            height: "100%",
+            display: "flex",
+            flexDirection: "column",
             padding: 2,
           }}
         >
@@ -164,7 +185,6 @@ const NavDrawer = () => {
             />
           </Box>
 
-
           {/* Nav Links */}
           <List>
             {pages.map((page) => (
@@ -174,8 +194,8 @@ const NavDrawer = () => {
                   sx={{
                     borderRadius: 1,
                     mb: 1,
-                    '&:hover': {
-                      backgroundColor: '#f1f1f1',
+                    "&:hover": {
+                      backgroundColor: "#f1f1f1",
                     },
                   }}
                 >
@@ -183,7 +203,7 @@ const NavDrawer = () => {
                     primary={page.label}
                     primaryTypographyProps={{
                       fontWeight: 600,
-                      fontSize: '1rem',
+                      fontSize: "1rem",
                     }}
                   />
                 </ListItemButton>
@@ -196,19 +216,18 @@ const NavDrawer = () => {
             onClick={handleLogin}
             variant="contained"
             sx={{
-              mt: 'auto',
-              backgroundColor: 'green',
-              color: '#fff',
-              fontWeight: 'bold',
-              '&:hover': {
-                backgroundColor: '#228B22',
+              mt: "auto",
+              backgroundColor: "green",
+              color: "#fff",
+              fontWeight: "bold",
+              "&:hover": {
+                backgroundColor: "#228B22",
               },
             }}
           >
             Login
           </Button>
         </Box>
-
       </Drawer>
     </>
   );

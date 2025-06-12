@@ -1,5 +1,6 @@
 import React from 'react';
 import { Box, CardContent, Typography, Button } from '@mui/material';
+import { gloabalTheme } from '../../../theme/theme';
 
 const DifferentJobCard = ({ jobTypes, title, backgroundColor, boxShadow, border, onClick }) => {
   return (
@@ -44,7 +45,7 @@ const DifferentJobCard = ({ jobTypes, title, backgroundColor, boxShadow, border,
           right: 0,
           width: '48px',
           height: '48px',
-          backgroundColor: '#22c55e', // Tailwind green-500
+          backgroundColor: gloabalTheme.colors.primary, // Tailwind green-500
           borderBottomLeftRadius: '999px',
           transition: 'all 0.3s ease-in-out',
           zIndex: 1,

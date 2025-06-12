@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Box, Typography, Grid } from '@mui/material';
 import search from '../../assets/Images/jobCardIcons/Search.png';
 import salary from '../../assets/Images/jobCardIcons/salary.png';
 import frame from '../../assets/Images/jobCardIcons/Frame.png';
 import quickApply from '../../assets/Images/jobCardIcons/quickApply.png';
-
+import { gloabalTheme } from '../../theme/theme';
+import HelperImage from '/Helper.png';
+import Aos from 'aos';
+import 'aos/dist/aos.css';
 const cards = [
   {
     imgSrc: search,
@@ -25,6 +28,9 @@ const cards = [
 ];
 
 const JobCards = () => {
+  useEffect(() => {
+      Aos.init();
+    }, []);
   return (
     <Box
       sx={{
@@ -39,6 +45,7 @@ const JobCards = () => {
       <Box sx={{ maxWidth: '1200px', width: '90%' }}>
         {/* Header */}
         <Typography
+          data-aos="fade-up"
           variant="h4"
           textAlign="center"
           sx={{ fontSize: { xs: '22px', sm: '38px' }, mb: 6 , fontFamily:"Marcelluse",textShadow: '0 3px 4px #333'}}
@@ -48,7 +55,7 @@ const JobCards = () => {
             component="span"
             sx={{
               
-              color: 'green',
+              color: gloabalTheme.colors.primary,
               fontWeight: 'bold',
               borderRadius: 1,
               px: 1,
@@ -61,6 +68,9 @@ const JobCards = () => {
         </Typography>
 
         {/* Cards */}
+        <Box sx={{marginRight:"20px"}}>
+          <img src={HelperImage} alt='helper tips from jobhub' className='mb-[-60px] mr-11 w-full'/>
+        </Box>
         <Grid container spacing={3} justifyContent="center">
           {cards.map((card, index) => (
             <Grid item key={index} xs={12} sm={6} md={3}>
@@ -69,7 +79,7 @@ const JobCards = () => {
                   position: 'relative',
                   width: '100%',
                   height: '160px',
-                  backgroundColor: '#e5e7eb',
+                  backgroundColor: '#fff',
                   borderRadius: 2,
                   overflow: 'hidden',
                   boxShadow: 3,
@@ -98,7 +108,7 @@ const JobCards = () => {
                     right: 0,
                     width: '48px',
                     height: '48px',
-                    backgroundColor: '#22c55e', // Tailwind green-500
+                    backgroundColor: gloabalTheme.colors.primary, // Tailwind green-500
                     borderBottomLeftRadius: '999px',
                     transition: 'all 0.3s ease-in-out',
                     zIndex: 1,

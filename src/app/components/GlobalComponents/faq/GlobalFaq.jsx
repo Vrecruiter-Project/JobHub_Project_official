@@ -12,6 +12,7 @@ import FaqsBg from '../../../assets/Images/bgImages/PartnersBg.png';
 import React, { useEffect } from "react";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import { gloabalTheme } from "../../../theme/theme";
 
 export default function GlobalFaq({ faqItems, id }) {
 
@@ -55,7 +56,7 @@ export default function GlobalFaq({ faqItems, id }) {
                 fontFamily:"Marcelluse",textShadow: '0 3px 4px #333',
               }
             }}>
-            Frequently asked <span className="text-[#008000] font-bold">questions</span>
+            Frequently asked <span className=" font-bold" style={{color: gloabalTheme.colors.primary}}>questions</span>
           </Typography>
           <Box sx={{ width: "100%" }}>
             {faqItems.map((item) => (

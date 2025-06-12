@@ -192,6 +192,7 @@ import emailjs from '@emailjs/browser';
 import { Snackbar, Alert } from '@mui/material';
 import jobhublogo from '/Jobhub_logo-transparent.png';
 import jobhubFooterLogo from '/JobhubFooterlogo.png'
+import { gloabalTheme } from '../../theme/theme';
 // import bgImage from '../../assets/Images/FotterImages/fotterImage.png'
 export default function Footer() {
   const formRef = useRef();
@@ -241,7 +242,7 @@ export default function Footer() {
       {/* Content container */}
       <div className="relative z-10">
         <div className="container mx-auto px-4 lg:w-[90%] xl:w-full">
-          <div className="border-b border-[#008000] py-10">
+          <div className="border-b py-10" style={{borderBottom: `2px solid ${gloabalTheme.colors.primary}`}}> 
             <div className="flex flex-wrap">
               <div className="w-full md:w-1/3 mb-6">
                 <div className="flex items-start">

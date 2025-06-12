@@ -227,6 +227,7 @@ import ButtonComponent from "../ButtonComponent/ButtonComponent.jsx";
 import AOS from "aos";
 import { useEffect } from "react";
 import "aos/dist/aos.css";
+import { gloabalTheme } from "../../../theme/theme.js";
 
 const HeaderPage = ({
   backgroundImage,
@@ -270,7 +271,7 @@ const HeaderPage = ({
           container
           sx={{
             width: "80%",
-
+            pb:{xs: '25px',sm:'25px',md:'0',lg:'0'},
             margin: "auto",
             display: "flex",
             alignItems: "center",
@@ -380,9 +381,6 @@ const HeaderPage = ({
 
           {/* Image Section */}
           <Grid2
-            data-aos="flip-right"
-            data-aos-easing="ease-out-cubic"
-            data-aos-duration="2000"
             item
             xs={12}
             md={6}
@@ -393,7 +391,28 @@ const HeaderPage = ({
               mt: { xs: 4, md: 0 },
             }}
           >
-            <img src={imgSrc} className='mt-20' alt="HeaderImage" />
+            <div className=" max-lg:hidden flex relative">
+              <div className="w-full overflow-hidden flex justify-center items-center">
+                <Box
+                  component="img"
+                  src={imgSrc}
+                  alt="find your career with jobhub world"
+                  sx={{
+                    display: { xs: "none", sm: "none", md: "block" },
+                    width: { sm: "30%", md: "100%" },
+                    height: "auto",
+                    mt: 10,
+                  }}
+                  className="image_animation"
+                />
+              </div>
+              <div
+                className="absolute -bottom-[0] left-0 right-0 h-[20%] pointer-events-none animate-pulse"
+                style={{
+                  background: `linear-gradient(to top, ${gloabalTheme.colors.primary} , transparent)`,
+                }}
+              />
+            </div>
           </Grid2>
         </Grid2>
       </Box>
