@@ -28,7 +28,7 @@ const CategoriesSection = () => {
             }}>
                 <Box sx={{
                     py: 12,
-                    backgroundColor: "rgba(0, 128, 0, 0.2)",
+                    // backgroundColor: "rgba(0, 128, 0, 0.2)",
                     width: "100%",
                 }}>
                     <Grid2 container sx={{

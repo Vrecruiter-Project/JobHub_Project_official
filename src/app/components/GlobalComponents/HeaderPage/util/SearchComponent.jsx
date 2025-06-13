@@ -447,7 +447,7 @@ export const HeroSection = () => {
             </Button> */}
             <button
               className="button relative py-1.5 px-4 text-lg   hover:text-black border rounded cursor-pointer overflow-hidden  font-semibold"
-              title="Login"
+              title="Search"
               style={{ backgroundColor: gloabalTheme.colors.primary }}
               onClick={handleSearch}
             >
