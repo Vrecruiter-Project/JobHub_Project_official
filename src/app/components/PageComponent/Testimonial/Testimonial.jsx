@@ -80,11 +80,11 @@ const Testimonial = () => {
     return (
         <>
             <Box sx={{ width: '100%', mx: 'auto', display: { xs: 'none', md: 'flex' }, flexDirection: 'column', justifyContent: 'center', backgroundColor: 'white', height: "400px", marginBottom:"400px" }}>
-                <Typography data-aos='fade-up' sx={{ textAlign: 'center', fontSize: { xs: '35px', md: '45px' }, color: '#008000', fontWeight: 'bold', position: 'relative', top: "560px",fontFamily:"Marcelluse",textShadow: '0 3px 4px #333', }}>
+                <Typography data-aos='fade-up' sx={{ textAlign: 'center', fontSize: { xs: '35px', md: '45px' }, color: '#008000', fontWeight: 'bold', position: 'relative', top: "360px",fontFamily:"Marcelluse",textShadow: '0 3px 4px #333', }}>
                     Testimonials
                 </Typography>
                 <Box sx={{width:'100%',display:'flex', justifyContent:"end" , position:'relative', zIndex:2}}>
-                <Typography sx={{ width:'40%',  fontSize: '24px'  ,  position: 'relative', top: "650px" }}>Jobs can be categorized as paid or unpaid. Examples of unpaid jobs include volunteer, homemaker, mentor, student, and sometimes intern.</Typography>
+                <Typography sx={{ width:'40%',  fontSize: '24px'  ,  position: 'relative', top: "450px" }}>Jobs can be categorized as paid or unpaid. Examples of unpaid jobs include volunteer, homemaker, mentor, student, and sometimes intern.</Typography>
                 </Box>
                 {/* <Box sx={{ display: 'flex', justifyContent: 'center', width: '100%', padding: '20px' }}>
                     <Box sx={{ display: 'flex', justifyContent: 'center', gap: '20px', alignItems: 'center', position: 'relative', zIndex: 2, top: '650px' }}>
@@ -123,8 +123,8 @@ const Testimonial = () => {
                 </Box> */}
                 <TestimonialSlider/>
                 <Box sx={{ display: 'flex', justifyContent: 'space-between', }}>
-                    <Box sx={{ position: 'relative', top: '100px', width: '35%', zIndex: 1 }}><img style={{ objectFit: 'cover' }} src={Ellipse_1} alt="" /><Typography sx={{position:'relative', top:{sm:'-450px', lg:'-535px'},left:{sm:'4px', lg:"90px"}, paddingInline:'30px', fontSize:'24px', }}>Everyone Should <br /> Believe  In What Our <br /> Client Say.</Typography></Box>
-                    <Box sx={{ position: 'relative', }}><img style={{ objectFit: 'cover' }} src={Ellipse_2} alt="" /></Box>
+                    <Box sx={{ position: 'relative', top: '300px', width: '35%', zIndex: 1 }}><img style={{ objectFit: 'cover' }} src={Ellipse_1} alt="" /><Typography sx={{position:'relative', top:{sm:'-450px', lg:'-285px'},left:{sm:'4px', lg:"90px"}, paddingInline:'30px', fontSize:'24px', }}>Everyone Should <br /> Believe  In What Our <br /> Client Say.</Typography></Box>
+                    <Box sx={{ position: 'relative',top: '200px' }}><img style={{ objectFit: 'cover' }} src={Ellipse_2} alt="" /></Box>
                 </Box>
             </Box>
         </>

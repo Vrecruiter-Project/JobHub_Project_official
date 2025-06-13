@@ -117,5 +117,30 @@ a.inline-block.px-5.py-2.bg-green-700.text-white.rounded-md {
     filter: invert(1) brightness(2);
     width: 14px;
     rotate: 180deg;
+  }
+  
+  
+  .revertbw{
+    filter: invert(1) brightness(2);
+    rotate: 150deg;
+}
+.globalCateImge{
+  /* background-repeat: no-repeat; */
+  /* width: 100%; */
+  height: auto;
+  background-image: url(./app/assets/Images/myjobee/bg.png);
+  
 }
 
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+.spinny {
+    animation: spin 15s linear infinite;
+}
+
+p.font-semibold.whitespace-pre-line {
+    text-align: center;
+}

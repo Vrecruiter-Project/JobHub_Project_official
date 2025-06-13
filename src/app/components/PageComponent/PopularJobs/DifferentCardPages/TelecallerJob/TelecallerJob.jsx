@@ -9,6 +9,15 @@ import BusinessServices from './Components/BusinessServices';
 import JobhubTelecaller from './Components/JobhubTelecaller';
 import { useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
+import img1 from '../TelecallerJob/assets/check.png'
+import GlobalCategories from '../../../../GlobalComponents/Categories/GlobalCategories';
+const categories = [
+  {img: img1, para: "Employment\nVerification"},
+  {img: img1, para: "Identity\nVerification"},
+  {img: img1, para: "Refrence\nCheck"},
+  {img: img1, para: "Employment\nHistory\nVerification"},
+  {img: img1, para: "Work\nAuthorization"},
+]
 const TelecallerJob = () => {
     const [searchFor, setSearchFor] = useState("");
     const navigate = useNavigate();
@@ -127,8 +136,10 @@ const TelecallerJob = () => {
             height: "auto", 
           }}
         />
-      <CategoriesSection/>
-      {/* <JobDetails/> */}
+      {/* <CategoriesSection/> */}
+        {/* <JobDetails/> */}
+        <GlobalCategories categories={categories} />
+        
       <BusinessServices/>
       <JobhubTelecaller/>
       </PageComponent>
