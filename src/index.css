@@ -112,6 +112,9 @@ a.inline-block.px-5.py-2.bg-green-700.text-white.rounded-md {
 }
 
 
+.globaliconColor{
+  filter: invert(1) brightness(2);
+}
 
 .image_arrow{
     filter: invert(1) brightness(2);

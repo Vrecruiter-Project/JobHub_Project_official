@@ -42,7 +42,7 @@ const JobhubTelecaller = () => {
                     <Typography variant="h3" component="h2" sx={{
                         textAlign: "center",
                         fontSize: { xs: "35px", md: "45px" },
-                        backgroundImage: `url(${TelecallerBg})`,
+                        // backgroundImage: `url(${TelecallerBg})`,
                         backgroundRepeat: "no-repeat",
                         backgroundSize: "cover",
                     }}>
@@ -66,7 +66,7 @@ const JobhubTelecaller = () => {
                             variant="h3"
                             component="h2"
                             sx={{
-                                textAlign: "center",
+                                textAlign: "justify",
                                 fontSize: { xs: "15px", md: "17px" },
                                 pt: 2,
                             }}
