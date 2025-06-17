@@ -27,11 +27,11 @@ const JobProcess = () => {
   return (
     <Box
       sx={{
-        backgroundImage: `url(${JobProcesBackgroundImage})`,
-        backgroundRepeat: "no-repeat",
-        backgroundSize: "cover",
+        // backgroundImage: `url(${JobProcesBackgroundImage})`,
+        // backgroundRepeat: "no-repeat",
+        // backgroundSize: "cover",
         width: "100%",
-        paddingTop: "40px",
+        paddingBlock: "80px",
       }}
     >
       <Timeline position="alternate">
@@ -39,7 +39,7 @@ const JobProcess = () => {
         <TimelineItem data-aos="zoom-in">
           <TimelineOppositeContent sx={{ m: "auto 0" }}>
             <Typography variant="h5" color="text.secondary">
-              Account Manager Assigned
+              <span style={{boxShadow:'2px 2px 10px' , padding:"5px", borderRadius:"5px"}}>Account Manager Assigned</span>
             </Typography>
           </TimelineOppositeContent>
           <TimelineSeparator>
@@ -55,7 +55,7 @@ const JobProcess = () => {
         <TimelineItem data-aos="zoom-in">
           <TimelineOppositeContent sx={{ m: "auto 0" }}>
             <Typography variant="h5" color="text.secondary">
-              Candidates Lined Up For Interview
+              <span style={{boxShadow:'2px 2px 10px' , padding:"5px", borderRadius:"5px"}}>Candidates Lined Up For Interview</span>
             </Typography>
           </TimelineOppositeContent>
           <TimelineSeparator>
@@ -71,7 +71,7 @@ const JobProcess = () => {
         <TimelineItem data-aos="zoom-in">
           <TimelineOppositeContent sx={{ m: "auto 0" }}>
             <Typography variant="h5" color="text.secondary">
-              Candidates Selected
+              <span style={{boxShadow:'2px 2px 10px' , padding:"5px", borderRadius:"5px"}}>Candidates Selected</span>
             </Typography>
           </TimelineOppositeContent>
           <TimelineSeparator>
@@ -87,7 +87,9 @@ const JobProcess = () => {
         <TimelineItem data-aos="zoom-in">
           <TimelineOppositeContent sx={{ m: "auto 0" }}>
             <Typography variant="h5" color="text.secondary">
+              <span style={{ boxShadow: '2px 2px 10px', padding: "5px", borderRadius: "5px" }}>                
               Offer Letter Handed By ConsultaHinos
+              </span>
             </Typography>
           </TimelineOppositeContent>
           <TimelineSeparator>
@@ -103,7 +105,9 @@ const JobProcess = () => {
         <TimelineItem data-aos="zoom-in">
           <TimelineOppositeContent sx={{ m: "auto 0" }}>
             <Typography variant="h5" color="text.secondary">
+              <span style={{ boxShadow: '2px 2px 10px', padding: "5px", borderRadius: "5px" }}>
               Checks On DOJ And Background
+              </span>
             </Typography>
           </TimelineOppositeContent>
           <TimelineSeparator>
@@ -119,7 +123,10 @@ const JobProcess = () => {
         <TimelineItem data-aos="zoom-in">
           <TimelineOppositeContent sx={{ m: "auto 0" }}>
             <Typography variant="h5" color="text.secondary">
+              <span style={{ boxShadow: '2px 2px 10px', padding: "5px", borderRadius: "5px" }}>
+                
               Collaborative Induction & Compliance
+              </span>
             </Typography>
           </TimelineOppositeContent>
           <TimelineSeparator>

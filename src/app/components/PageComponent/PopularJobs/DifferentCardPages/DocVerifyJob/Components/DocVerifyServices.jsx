@@ -15,8 +15,9 @@ const DocVerifyServices = () => {
             width: "100%",
             height: "auto",
             border: "2px solid transparent",
-            borderRadius: { xs: "10% 10% 0px 0px", md: "20% 20% 0px 0px" },
-            background: "rgba(50, 205, 50, 0.3)",
+            borderRadius: { xs: "350px 350px 0px 0px", md: "450px 450px 0px 0px" },
+            backgroundColor: "black",
+            color: 'white'
         }
     ]
     const resumeItems1 = [
@@ -88,15 +89,17 @@ const DocVerifyServices = () => {
                         </Grid2>
                     </Grid2>
 
-                    <GlobalSwiper
-                        content={resumeItems1}
-                        sx={{
-                            width: { xs: "230px", sm: "260px", md: "230px" },
-                            height: { xs: "170px", sm: "170px", md: "170px" },
-                        }}
-                        addImg
-                        
-                    />
+                    <Box sx={{display:'flex', justifyContent:'center', gap:"20px", paddingBlock:"50px"}}>
+                        {resumeItems1.slice(0,4).map((img, index) => (
+                            <div className='w-full ' key={index} >
+                                <div className='py-5 rounded-lg gap-4 bg-white text-black flex justify-center flex-col items-center'>
+                                <img className='' src={img.image} alt={img.alt} />
+                                    <p>{img.title}</p>
+                                </div>
+                                    
+                            </div>
+                        ))}
+                    </Box>
                 </Container>
             </Box>
         </>

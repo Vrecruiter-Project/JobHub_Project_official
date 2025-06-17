@@ -123,6 +123,7 @@ const ChoiceSection = () => {
           </Grid>
 
           <Grid
+            
             item
             xs={12}
             md={6}
@@ -134,6 +135,7 @@ const ChoiceSection = () => {
             }}
           >
             <Box
+              
               sx={{
                 display: "flex",
                 justifyContent: "center",
@@ -142,6 +144,7 @@ const ChoiceSection = () => {
               }}
             >
               <img
+                data-aos='fade-left'
                 src={img8}
                 alt="Jobhub Mobile App"
                 className="w-[60%] md:w-[50%]"

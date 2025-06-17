@@ -9,14 +9,23 @@ import BusinessServices from './Components/BusinessServices';
 import JobhubTelecaller from './Components/JobhubTelecaller';
 import { useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import img1 from '../TelecallerJob/assets/check.png'
+
+// import img1 from '../TelecallerJob/assets/1.png'
+import img2 from '../TelecallerJob/assets/1.png'
+import img3 from '../TelecallerJob/assets/2.png'
+import img4 from '../TelecallerJob/assets/3.png'
+import img5 from '../TelecallerJob/assets/4.png'
+import img6 from '../TelecallerJob/assets/5.png'
+
+
 import GlobalCategories from '../../../../GlobalComponents/Categories/GlobalCategories';
+import { Stats } from '../../../JobDetails/Stats';
 const categories = [
-  {img: img1, para: "Employment\nVerification"},
-  {img: img1, para: "Identity\nVerification"},
-  {img: img1, para: "Refrence\nCheck"},
-  {img: img1, para: "Employment\nHistory\nVerification"},
-  {img: img1, para: "Work\nAuthorization"},
+  {img: img2, para: "Employment\nVerification"},
+  {img: img3, para: "Identity\nVerification"},
+  {img: img4, para: "Refrence\nCheck"},
+  {img: img5, para: "History\nVerification"},
+  {img: img6, para: "Work\nAuthorization"},
 ]
 const TelecallerJob = () => {
     const [searchFor, setSearchFor] = useState("");
@@ -139,7 +148,7 @@ const TelecallerJob = () => {
       {/* <CategoriesSection/> */}
         {/* <JobDetails/> */}
         <GlobalCategories categories={categories} />
-        
+        <Stats/>
       <BusinessServices/>
       <JobhubTelecaller/>
       </PageComponent>

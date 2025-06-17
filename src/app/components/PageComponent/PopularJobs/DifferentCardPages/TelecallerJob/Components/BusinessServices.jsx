@@ -25,11 +25,11 @@ const BusinessServices = () => {
         backgroundSize: "cover",
         backgroundAttachment: {xs:"none", sm: "none", md: "fixed", lg: "fixed"},
         zIndex: -1,
-        filter: "blur(4px)", 
+        // filter: "blur(4px)", 
       }} />
 
       <Box sx={{
-        backgroundImage: `url(${Tele3})`,
+        // backgroundImage: `url(${Tele3})`,
         backgroundRepeat: "no-repeat",
         backgroundPosition: "100%",
         backgroundSize: "cover",

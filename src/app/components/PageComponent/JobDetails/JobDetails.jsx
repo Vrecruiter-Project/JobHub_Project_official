@@ -302,7 +302,7 @@ export default function JobDetails() {
         <div className="bg-white w-full mt-5 flex flex-col lg:flex-row justify-center items-center px-4 sm:px-6 lg:px-8 py-8 gap-6 sm:gap-8 lg:gap-12">
           {/* Text Content (Left Side) */}
           <div className="w-full lg:w-2/3 xl:w-1/3 px-2 sm:px-4 space-y-4 sm:space-y-6 text-black leading-relaxed my-10 sm:my-20">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold font-['Marcelluse'] [text-shadow:_0_3px_4px_rgb(51_51_51)]">
+            <h2  data-aos="fade-right"  className="text-2xl sm:text-3xl md:text-4xl font-bold font-['Marcelluse'] [text-shadow:_0_3px_4px_rgb(51_51_51)]">
               What we offer to{" "}
               <span style={{ color: gloabalTheme.colors.primary }}>
                 Employers
@@ -311,8 +311,8 @@ export default function JobDetails() {
 
             {/* Features List */}
             <div className="space-y-4 sm:space-y-5">
-              <div>
-                <span className="font-bold text-lg sm:text-xl">
+              <div data-aos='fade-right' data-aos-delay='250'>
+                <span  className="font-bold text-lg sm:text-xl">
                   ✅ Excellent Employer Dashboard
                 </span>
                 <p className="text-base sm:text-lg mt-1">
@@ -320,7 +320,7 @@ export default function JobDetails() {
                   candidates.
                 </p>
               </div>
-              <div>
+              <div data-aos='fade-right' data-aos-delay='250'>
                 <span className="font-bold text-lg sm:text-xl">
                   ✅ Find the Right Talent
                 </span>
@@ -329,7 +329,7 @@ export default function JobDetails() {
                   experience, location, and job role.
                 </p>
               </div>
-              <div>
+              <div data-aos='fade-right' data-aos-delay='250'>
                 <span className="font-bold text-lg sm:text-xl">
                   ✅ Post Jobs with Base Salary Details
                 </span>
@@ -338,7 +338,7 @@ export default function JobDetails() {
                   candidates and make hiring transparent.
                 </p>
               </div>
-              <div>
+              <div data-aos='fade-right' data-aos-delay='250'>
                 <span className="font-bold text-lg sm:text-xl">
                   ✅ Smart Filters & Search
                 </span>
@@ -351,7 +351,7 @@ export default function JobDetails() {
           </div>
 
           {/* Image (Right Side) */}
-          <div className="hidden lg:hidden xl:block w-full lg:w-1/2 justify-center">
+          <div data-aos="fade-left" className="hidden lg:hidden xl:block w-full lg:w-1/2 justify-center">
             {/* Your content (e.g., image) */}
             <img
               className="w-full max-w-[350px] sm:max-w-[450px] lg:max-w-[750px] rounded-xl"

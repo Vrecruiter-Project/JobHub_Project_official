@@ -189,20 +189,22 @@ export const HeroSection = () => {
             alignItems: "center",
           }}
         >
-          <div className="flex flex-col gap-2">
-            <a href="https://www.instagram.com/jobhub_world?igsh=a2hsb3dmdDV1azYw">
+          <div className="flex flex-col gap-2  overflow-hidden">
+            <a data-aos="fade-down"  data-aos-duration="3000" href="https://www.instagram.com/jobhub_world?igsh=a2hsb3dmdDV1azYw">
               <i className="fa-brands fa-instagram text-xl"></i>
             </a>
-            <a href="https://www.linkedin.com/in/jobhub-world-5559a7361/">
+            <a data-aos="fade-down"  data-aos-duration="2500" href="https://www.linkedin.com/in/jobhub-world-5559a7361/">
               <i className="fa-brands fa-linkedin-in text-xl"></i>
             </a>
-            <a href="https://www.facebook.com/people/JobHubworld/61575148695953/">
+            <a data-aos="fade-down"  data-aos-duration="2000" href="https://www.facebook.com/people/JobHubworld/61575148695953/">
               <i className="fab fa-facebook-f text-xl"></i>
             </a>
           </div>
           <div>
             <img
               className="image_arrow"
+              data-aos='fade-down'
+               data-aos-duration="2000"
               src={arrowpng}
               alt="follow jobhub intsa, linkedin, facebook"
             />

@@ -21,7 +21,7 @@ const EnsuringTrust = () => {
     ];
 
     const typographyStyles = {
-        textAlign: { xs: "center", sm: "center", md: "left" },
+        textAlign: { xs: "center", sm: "center", md: "center" },
         fontSize: { xs: "15px", md: "17px" },
         pt: 3,
     };
@@ -46,7 +46,7 @@ const EnsuringTrust = () => {
                         <Typography variant="h3" component="h2" sx={{
                             textAlign: "center",
                             fontSize: { xs: "35px", md: "45px" },
-                            backgroundImage: `url(${docBg})`,
+                            // backgroundImage: `url(${docBg})`,
                             backgroundRepeat: "no-repeat",
                             backgroundSize: "cover",
                         }}>
@@ -60,17 +60,18 @@ const EnsuringTrust = () => {
                     mx: "auto",
                     gap: { md: 5 }
                 }}>
-                    <Grid2 item xs={12} sm={12} md={12} lg={6} sx={{
+                    {/* <Grid2 item xs={12} sm={12} md={12} lg={6} sx={{
                         width: { xs: "100%", sm: "none", md: "35%" },
                         display: "flex",
                         justifyContent: { xs: "center", md: "center" },
                     }} data-aos="fade-right">
                         <img src={DocImage2} style={{ maxWidth: "100%", height: "auto" }} alt="Document Verification" />
-                    </Grid2>
+                    </Grid2> */}
 
-                    <Grid2 item xs={12} sm={12} md={12} lg={6} data-aos="fade-left"
+                    <Grid2  data-aos="fade-left"
                         sx={{
-                            width: { xs: "100%", sm: "100%", md: "60%" },
+                            textAlign:'center',
+                            width: { xs: "100%", sm: "100%", md: "100%" },
                             pt: 3,
                             px: 4
                         }}

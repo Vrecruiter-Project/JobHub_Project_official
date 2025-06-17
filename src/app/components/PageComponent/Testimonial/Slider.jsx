@@ -29,10 +29,38 @@ const TestimonialSlider = () => {
       src: "https://e7.pngegg.com/pngimages/328/599/png-clipart-male-avatar-user-profile-profile-heroes-necktie-thumbnail.png",
     },
     {
-      name: "Ravi Verma",
-      role: "Marketing Executive, Delhi",
+      name: "Rahul Mehta",
+      role: "Job Seeker",
       quote:
-        "JobHub is the most user-friendly job portal I've ever used. It's clean, simple, and really helped me understand salary expectations and apply confidently.",
+      "JobHub made my job search incredibly smooth! Within a week of registering, I received multiple interview calls. The platform is easy to use, and the support team is always ready to help. Thanks to JobHub, I landed a role that fits my skills perfectly. Highly recommended for all job seekers!",
+      src: "https://e7.pngegg.com/pngimages/328/599/png-clipart-male-avatar-user-profile-profile-heroes-necktie-thumbnail.png",
+    },
+    {
+      name: "Priya Sharma",
+      role: "Job Seeker",
+      quote:
+      "I was struggling to find a job after college until I found JobHub. The platform helped me build a professional resume and apply to relevant jobs in no time. I got hired within 10 days!",
+      src: "https://e7.pngegg.com/pngimages/328/599/png-clipart-male-avatar-user-profile-profile-heroes-necktie-thumbnail.png",
+    },
+    {
+      name: "Neha Desai",
+      role: "Job Seeker",
+      quote:
+      "JobHub’s platform is clean, simple, and full of real opportunities. I received guidance throughout the application process and landed a marketing executive job within a week",
+      src: "https://e7.pngegg.com/pngimages/328/599/png-clipart-male-avatar-user-profile-profile-heroes-necktie-thumbnail.png",
+    },
+    {
+      name: "Priya Iyer",
+      role: "HR Manager, Chennai",
+      quote:
+        "As an employer, JobHub's dashboard made shortlisting candidates fast and accurate. The smart filters saved me a lot of time in hiring.",
+      src: "https://e7.pngegg.com/pngimages/328/599/png-clipart-male-avatar-user-profile-profile-heroes-necktie-thumbnail.png",
+    },
+    {
+      name: "Amit Sharma",
+      role: "Software Engineer, Pune",
+      quote:
+        "JobHub helped me land first developer job within two weeks! Job filters made it so easy to apply. Highly recommended for freshers.",
       src: "https://e7.pngegg.com/pngimages/328/599/png-clipart-male-avatar-user-profile-profile-heroes-necktie-thumbnail.png",
     },
     {
@@ -43,38 +71,10 @@ const TestimonialSlider = () => {
       src: "https://e7.pngegg.com/pngimages/328/599/png-clipart-male-avatar-user-profile-profile-heroes-necktie-thumbnail.png",
     },
     {
-      name: "Ravi Verma",
-      role: "Marketing Executive, Delhi",
+      name: "Priya Sharma",
+      role: "Job Seeker",
       quote:
-        "JobHub is the most user-friendly job portal I've ever used. It's clean, simple, and really helped me understand salary expectations and apply confidently.",
-      src: "https://e7.pngegg.com/pngimages/328/599/png-clipart-male-avatar-user-profile-profile-heroes-necktie-thumbnail.png",
-    },
-    {
-      name: "Ravi Verma",
-      role: "Marketing Executive, Delhi",
-      quote:
-        "JobHub is the most user-friendly job portal I've ever used. It's clean, simple, and really helped me understand salary expectations and apply confidently.",
-      src: "https://e7.pngegg.com/pngimages/328/599/png-clipart-male-avatar-user-profile-profile-heroes-necktie-thumbnail.png",
-    },
-    {
-      name: "Ravi Verma",
-      role: "Marketing Executive, Delhi",
-      quote:
-        "JobHub is the most user-friendly job portal I've ever used. It's clean, simple, and really helped me understand salary expectations and apply confidently.",
-      src: "https://e7.pngegg.com/pngimages/328/599/png-clipart-male-avatar-user-profile-profile-heroes-necktie-thumbnail.png",
-    },
-    {
-      name: "Ravi Verma",
-      role: "Marketing Executive, Delhi",
-      quote:
-        "JobHub is the most user-friendly job portal I've ever used. It's clean, simple, and really helped me understand salary expectations and apply confidently.",
-      src: "https://e7.pngegg.com/pngimages/328/599/png-clipart-male-avatar-user-profile-profile-heroes-necktie-thumbnail.png",
-    },
-    {
-      name: "Ravi Verma",
-      role: "Marketing Executive, Delhi",
-      quote:
-        "JobHub is the most user-friendly job portal I've ever used. It's clean, simple, and really helped me understand salary expectations and apply confidently.",
+      "I was struggling to find a job after college until I found JobHub. The platform helped me build a professional resume and apply to relevant jobs in no time. I got hired within 10 days!",
       src: "https://e7.pngegg.com/pngimages/328/599/png-clipart-male-avatar-user-profile-profile-heroes-necktie-thumbnail.png",
     },
   ];

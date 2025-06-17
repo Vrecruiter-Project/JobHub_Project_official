@@ -245,7 +245,7 @@ const About = () => {
               {/* Description */}
               <Typography
                 sx={{
-                  textAlign: "center",
+                  textAlign: "justify",
                   fontSize: { xs: "8px", sm: "14px", lg: "12px", xl: "14px" },
                   color: "#333",
                 }}
