@@ -134,7 +134,7 @@ const RegistrationPage = ({ onSubmit }) => {
   const [formData, setFormData] = useState({
     fullname: "",
     email: "",
-    position: "",
+    jobprofile: "",
     dob: "",
     number: "",
     qualification: "",
@@ -154,7 +154,7 @@ const RegistrationPage = ({ onSubmit }) => {
       newErrors.email = "Enter a valid email";
     }
 
-    if (!formData.position.trim()) newErrors.position = "Position is required";
+    if (!formData.jobprofile.trim()) newErrors.jobprofile = "JobProfile is required";
     if (!formData.dob) newErrors.dob = "Date of birth is required";
 
     if (!formData.number.trim()) {
@@ -225,7 +225,7 @@ const RegistrationPage = ({ onSubmit }) => {
           {[
             { name: "fullname", label: "Full Name" },
             { name: "email", label: "Email" },
-            { name: "position", label: "Position" },
+            { name: "jobprofile", label: "JobProfile" },
             { name: "dob", label: "Date of Birth", type: "date" },
             { name: "number", label: "Mobile Number" },
             { name: "qualification", label: "Qualification" },
