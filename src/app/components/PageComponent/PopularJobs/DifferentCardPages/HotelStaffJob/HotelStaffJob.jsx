@@ -7,12 +7,27 @@ import JobDetails from '../../../JobDetails/JobDetails';
 import { useNavigate } from 'react-router-dom';
 import HotelCat from './components/HotelCat';
 
+import img2 from '../TelecallerJob/assets/1.png'
+import img3 from '../TelecallerJob/assets/2.png'
+import img4 from '../TelecallerJob/assets/3.png'
+import img5 from '../TelecallerJob/assets/4.png'
+import img6 from '../TelecallerJob/assets/5.png'
+
+const categories = [
+  {img: img2, para: "Employment\nVerification"},
+  {img: img3, para: "Identity\nVerification"},
+  {img: img4, para: "Refrence\nCheck"},
+  {img: img5, para: "History\nVerification"},
+  {img: img6, para: "Work\nAuthorization"},
+]
 import FirImg from '../../../../../assets/Images/HotelImages/first.png';
 import SecImg from '../../../../../assets/Images/HotelImages/second.png';
 import tickImg from '../../../../../assets/Images/DocVerifyImage/tickImg.png';
 import GlobalJobCardOne from '../../../../GlobalComponents/GlobalGrid2Section/GlobalJobCardOne';
 import GlobalJobCardTwo from '../../../../GlobalComponents/GlobalGrid2Section/GlobalJobCardTwo';
 import { Helmet } from 'react-helmet-async';
+import GlobalCategories from '../../../../GlobalComponents/Categories/GlobalCategories';
+import { Stats } from '../../../JobDetails/Stats';
 const HotelStaffJob = () => {
   const [searchFor, setSearchFor] = useState("");
   const navigate = useNavigate();
@@ -149,7 +164,9 @@ const HotelStaffJob = () => {
           }}
         />
 
-        <HotelCat />
+<GlobalCategories categories={categories} />
+                                                <Stats/>
+        {/* <HotelCat /> */}
         {/* <JobDetails /> */}
 
         {/* First Desc */}

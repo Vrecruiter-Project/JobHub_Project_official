@@ -15,7 +15,7 @@ const DocVerifyServices = () => {
             width: "100%",
             height: "auto",
             border: "2px solid transparent",
-            borderRadius: { xs: "350px 350px 0px 0px", md: "450px 450px 0px 0px" },
+            borderRadius: { xs: "350px 350px 0px 0px", md: "350px 350px 10px 0px" },
             backgroundColor: "black",
             color: 'white'
         }

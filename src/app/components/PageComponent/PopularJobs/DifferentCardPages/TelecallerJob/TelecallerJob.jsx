@@ -134,16 +134,9 @@ const TelecallerJob = () => {
           </>}
           subText="Friendly telecaller providing customer support, handling inquiries, and boosting client satisfaction."
           buttonTitle1="Apply Now"
-          buttonTitle2="Search"
-          // onButtonClick1={handleScrollView}
           onSearchReady={setSearchFor} 
       onButtonClick1={handleSearch}
-          onButtonClick2={() => alert("Hire Now clicked!")}
           imgSrc={HeaderImage}
-          style={{
-            width: "75%", 
-            height: "auto", 
-          }}
         />
       {/* <CategoriesSection/> */}
         {/* <JobDetails/> */}

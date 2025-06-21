@@ -109,6 +109,8 @@ const WhyDocVerify = () => {
 
       <Box
         sx={{
+          backgroundColor: "black",
+          color: "white",
           width: "100%",
           display: "flex",
           justifyContent: "center",
