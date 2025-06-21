@@ -13,8 +13,8 @@ const GlobalCategories = ({ categories }) => {
   },[])
   return (
     <>
-      <div className="hidden lg:block pt-10">
-      <h2 data-aos='fade-up' className="text-center text-[28px] sm:text-[40px] font-semibold font-['Marcelluse'] py-10 data-aos='fade-up'">
+      <div className="hidden lg:block ">
+      <h2  className="text-center text-[28px] sm:text-[40px] font-semibold font-['Marcelluse'] py-10 data-aos='fade-up'">
         Explore By More Specific{" "}
         <span style={{ color: gloabalTheme.colors.primary }}> Categories</span>
       </h2>

@@ -9,6 +9,20 @@ import DataCategories from './Components/DataCategories';
 import JobDescription from './Components/JobDescription';
 import DataEntryTypes from './Components/DataEntryTypes';
 import { Helmet } from 'react-helmet-async';
+import img2 from '../TelecallerJob/assets/1.png'
+import img3 from '../TelecallerJob/assets/2.png'
+import img4 from '../TelecallerJob/assets/3.png'
+import img5 from '../TelecallerJob/assets/4.png'
+import img6 from '../TelecallerJob/assets/5.png'
+import GlobalCategories from '../../../../GlobalComponents/Categories/GlobalCategories';
+import { Stats } from '../../../JobDetails/Stats';
+const categories = [
+  {img: img2, para: "Employment\nVerification"},
+  {img: img3, para: "Identity\nVerification"},
+  {img: img4, para: "Refrence\nCheck"},
+  {img: img5, para: "History\nVerification"},
+  {img: img6, para: "Work\nAuthorization"},
+]
 const DataEntryJob = () => {
     const [searchFor, setSearchFor] = useState("");
     const navigate = useNavigate();
@@ -105,7 +119,7 @@ const DataEntryJob = () => {
           {<>
             Data <span style={{ color: "green" }}>Entry</span>
           </>}
-          subText="Accurate, efficient data entry specialist skilled in data integrity, deadlines, and confidentiality."
+          subText="Accurate, efficient data entry specialist skilled in data integrity,\ndeadlines, and confidentiality."
           buttonTitle1="Apply Now"
           buttonTitle2="Search"
           // onButtonClick1={handleScrollView}
@@ -113,12 +127,11 @@ const DataEntryJob = () => {
       onButtonClick1={handleSearch}
           onButtonClick2={() => alert("Hire Now clicked!")}
           imgSrc={HeaderImage}
-          style= {{
-            width: "75%", 
-            height: "auto", 
-          }}
+          
         />
-      <DataCategories/>
+        <GlobalCategories categories={categories} />
+                <Stats/>
+      {/* <DataCategories/> */}
       {/* <JobDetails/> */}
       <JobDescription/>
       <DataEntryTypes/>

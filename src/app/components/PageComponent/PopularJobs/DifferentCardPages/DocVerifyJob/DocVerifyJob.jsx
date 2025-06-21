@@ -10,6 +10,20 @@ import DocVerifyServices from './Components/DocVerifyServices';
 import WhyDocVerify from './Components/WhyDocVerify';
 import { useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
+import { Stats } from '../../../JobDetails/Stats';
+import img2 from '../TelecallerJob/assets/1.png'
+import img3 from '../TelecallerJob/assets/2.png'
+import img4 from '../TelecallerJob/assets/3.png'
+import img5 from '../TelecallerJob/assets/4.png'
+import img6 from '../TelecallerJob/assets/5.png'
+const categories = [
+  {img: img2, para: "Employment\nVerification"},
+  {img: img3, para: "Identity\nVerification"},
+  {img: img4, para: "Refrence\nCheck"},
+  {img: img5, para: "History\nVerification"},
+  {img: img6, para: "Work\nAuthorization"},
+]
+import GlobalCategories from '../../../../GlobalComponents/Categories/GlobalCategories';
 const DocVerifyJob = () => {
     const [searchFor, setSearchFor] = useState("");
     const navigate = useNavigate();
@@ -114,12 +128,10 @@ const DocVerifyJob = () => {
       onButtonClick1={handleSearch}
           onButtonClick2={() => alert("Hire Now clicked!")}
           imgSrc={HeaderImage}
-          style= {{
-            width: "85%", 
-            height: "auto", 
-          }}
         />
-        <DocCategories/>
+  <GlobalCategories categories={categories} />
+        <Stats/>
+        {/* <DocCategories/> */}
       {/* <JobDetails/> */}
       <EnsuringTrust/>
       <DocVerifyServices/>

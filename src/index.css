@@ -147,3 +147,26 @@ a.inline-block.px-5.py-2.bg-green-700.text-white.rounded-md {
 p.font-semibold.whitespace-pre-line {
     text-align: center;
 }
+
+
+.globalJobsHeader {
+  animation-name: headerslide;
+  animation-duration: 2s;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+
+@keyframes headerslide {
+  0% {
+    border-top-left-radius: 0;
+    opacity: 0.5;
+  }
+  50% {
+    border-top-left-radius: 200px;
+    opacity: 1;
+  }
+  100% {
+    border-top-left-radius: 350px;
+    opacity: 0.8;
+  }
+}

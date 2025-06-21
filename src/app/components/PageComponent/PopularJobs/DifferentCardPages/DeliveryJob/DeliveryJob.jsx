@@ -13,7 +13,21 @@ import GlobalJobCardOne from '../../../../GlobalComponents/GlobalGrid2Section/Gl
 import GlobalJobCardTwo from '../../../../GlobalComponents/GlobalGrid2Section/GlobalJobCardTwo';
 import { Helmet } from 'react-helmet-async';
 
+import img2 from '../TelecallerJob/assets/1.png'
+import img3 from '../TelecallerJob/assets/2.png'
+import img4 from '../TelecallerJob/assets/3.png'
+import img5 from '../TelecallerJob/assets/4.png'
+import img6 from '../TelecallerJob/assets/5.png'
+import GlobalCategories from '../../../../GlobalComponents/Categories/GlobalCategories';
+import { Stats } from '../../../JobDetails/Stats';
 
+const categories = [
+  {img: img2, para: "Employment\nVerification"},
+  {img: img3, para: "Identity\nVerification"},
+  {img: img4, para: "Refrence\nCheck"},
+  {img: img5, para: "History\nVerification"},
+  {img: img6, para: "Work\nAuthorization"},
+]
 
 
 const DeliveryJob = () => {
@@ -144,7 +158,9 @@ const DeliveryJob = () => {
             height: "auto",
           }}
         />
-        <DeliveryCat />
+        <GlobalCategories categories={categories} />
+                                        <Stats/>
+        {/* <DeliveryCat /> */}
         {/* <JobDetails /> */}
 
         {/* First Desc */}

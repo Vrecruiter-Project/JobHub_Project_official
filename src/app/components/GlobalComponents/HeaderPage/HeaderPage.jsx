@@ -220,7 +220,7 @@
 
 // export default HeaderPage;
 
-import { Box, Grid2, TextField, Typography } from "@mui/material";
+import { Box, Button, Grid2, TextField, Typography } from "@mui/material";
 import React from "react";
 
 import ButtonComponent from "../ButtonComponent/ButtonComponent.jsx";
@@ -230,16 +230,11 @@ import "aos/dist/aos.css";
 import { gloabalTheme } from "../../../theme/theme.js";
 
 const HeaderPage = ({
-  backgroundImage,
   headerText,
   subText,
   buttonTitle1,
-  buttonTitle2,
   onButtonClick1,
-  onButtonClick2,
   imgSrc,
-  button2,
-  style,
   onSearchReady,
 }) => {
   useEffect(() => {
@@ -255,143 +250,50 @@ const HeaderPage = ({
   }, [headerText, onSearchReady]);
   return (
     <>
-      <Box
-        sx={{
-          // backgroundImage: `url(${backgroundImage})`,
-          backgroundColor: "black",
-          backgroundRepeat: "no-repeat",
-          backgroundPosition: "100%",
-          backgroundSize: "cover",
-          width: "100%",
-
-          height: "auto",
-        }}
-      >
-        <Grid2
-          container
-          sx={{
-            width: "80%",
-            pb:{xs: '25px',sm:'25px',md:'0',lg:'0'},
-            margin: "auto",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "end",
-            flexDirection: { xs: "column", md: "row" },
-          }}
-        >
-          {/* Content Section */}
-
-          <Grid2
-            item
-            xs={12}
-            md={6}
-            sx={{
-              width: { xs: "none", sm: "none", md: "50%" },
-              display: "flex",
-              justifyContent: "space-around",
-              alignItems: "center",
-              flexDirection: "column",
-            }}
-          >
-            <Typography
-              data-aos="zoom-out"
-              data-aos-easing="ease-in-back"
-              data-aos-delay="500"
-              variant="h1"
-              sx={{
-                width: { sm: "80%", md: "100%" },
-
-                fontWeight: "bold",
-                color: "white",
-                fontFamily: "Roboto, sans-serif",
-                textAlign: { xs: "center", md: "left" },
-                fontSize: { xs: "40px", sm: "50px", md: "55px" },
-                pt: { xs: 5, sm: 10 },
-              }}
-            >
-              {headerText}
-            </Typography>
-
-            <Typography
-              sx={{
-                width: "100%",
-
-                fontSize: "19px",
-                fontFamily: '"Roboto", sans-serif',
-                fontWeight: "bold",
-                textAlign: { xs: "center", md: "left" },
-                color: "white",
-                pt: { xs: 2 },
-              }}
-            >
-              {subText}
-            </Typography>
-            <Box
-              sx={{
-                width: "100%",
-                display: "flex",
-                flexDirection: { xs: "column", md: "row" },
-                justifyContent: { xs: "center", md: "flex-start" },
-                pt: "14%",
-              }}
-            >
-              <div data-aos="zoom-in">
-                <ButtonComponent
-                  title={buttonTitle1}
-                  onClick={onButtonClick1}
+      <Box sx={{ width: '100%', backgroundColor:'#19411C', display: 'flex', justifyContent: 'space-between', alignItems: 'center',}}>
+        <Box sx={{ backgroundColor: '#19411C', width: { sm: '100%', md: '50%' }, paddingLeft: {xs:'90px', sm: '140px',md:"100px"},}}>
+          <Box>
+            <Box sx={{color: 'white', width:'100%', py:{xs:3,sm:3}}}>
+              <Typography sx={{fontSize:{xs:'3rem',sm:'3rem',md:"3rem", lg:'4rem'}, fontWeight:"700"}}>{headerText}</Typography>
+              <Typography sx={{fontSize:{md :"14px", lg:"20px"}}}>{subText}</Typography>
+              <Button size="small" sx={{ backgroundColor: gloabalTheme.colors.primary, color: 'white', paddingInline: "20px", mt: 2, fontSize:{md:'10px', lg:"20px"}}} onClick={onButtonClick1}>{buttonTitle1}</Button>
+          </Box>
+          </Box>
+        </Box>
+        <Box className="globalJobsHeader" sx={{backgroundColor: 'black', width: '55%', paddingRight:{md:'10px', lg:"170px"}, paddingLeft:{md:'10px', lg:"170px"}, }}>
+          <Box>
+            <div className=" max-lg:hidden flex relative">
+              <div className="w-full overflow-hidden flex justify-center items-center">
+                <Box
+                  component="img"
+                  src={imgSrc}
+                  alt="find your career with jobhub world"
                   sx={{
-                    background: "green",
-                    border: 0,
-                    borderRadius: 1,
-                    boxShadow: "0 3px 5px 2px rgba(63,59,56 .3)",
-                    color: "white",
-                    height: "50px",
-                    width: { xs: "100%", sm: "auto" },
-                    py: 3.5,
-                    px: 6,
-                    fontSize: "14px",
+                    display: { xs: "none", sm: "none", md: "block" },
+                    width: { sm: "100%", md: "70%", lg: "100%" },
+                    height: "auto",
+                    mt: {md:10, lg:25},
                   }}
+                  className="image_animation"
                 />
               </div>
-              {button2 && (
-                <div data-aos="zoom-in">
-                  <ButtonComponent
-                    title={buttonTitle2}
-                    onClick={onButtonClick2}
-
-                    // sx={{
-                    //   background: "green",
-                    //   border: 0,
-                    //   borderRadius: 1,
-                    //   boxShadow: "0 3px 5px 2px rgba(63,59,56 .3)",
-                    //   color: "white",
-                    //   height: "50px",
-                    //   width: { xs: "100%", sm: "auto" },
-                    //   py: 3.5,
-                    //   px: { lg: 6 },
-                    //   mt: { xs: 2, sm: 2, md: 0, lg: 0 },
-                    //   mx: { xs: 0, sm: 0, md: 2, lg: 2 },
-                    //   fontSize: "14px",
-                    // }}
-                  />
-                </div>
-              )}
-            </Box>
-          </Grid2>
-
-          {/* Image Section */}
-          <Grid2
-            item
-            xs={12}
-            md={6}
-            sx={{
-              width: { xs: "none", sm: "none", md: "50%" },
-              display: { xs: "none", sm: "none", md: "flex", lg: "flex" },
-              justifyContent: { xs: "center", md: "flex-end" },
-              mt: { xs: 4, md: 0 },
-            }}
-          >
-            <div className=" max-lg:hidden flex relative">
+              <div
+                className="absolute -bottom-[0] left-0 right-0 h-[20%] pointer-events-none animate-pulse"
+                // style={{
+                //   background: `linear-gradient(to top, ${gloabalTheme.colors.primary} , transparent)`,
+                // }}
+              />
+            </div>
+          </Box>
+          </Box>
+        {/* <Box sx={{ width: '85%', backgroundColor: 'transparent', display: 'flex',  alignItems: 'center', justifyContent: 'space-between' }}>
+          <Box sx={{color: 'white', width:'50%'}}>
+            <Typography>{headerText}</Typography>
+          <Typography>{subText}</Typography>
+          <Button onClick={onButtonClick1}>{buttonTitle1}</Button>
+          </Box>
+          <Box sx={{backgroundColor: 'black',width:'40%'}}>
+          <div className=" max-lg:hidden flex relative">
               <div className="w-full overflow-hidden flex justify-center items-center">
                 <Box
                   component="img"
@@ -413,11 +315,35 @@ const HeaderPage = ({
                 }}
               />
             </div>
-          </Grid2>
-        </Grid2>
+            </Box>
+      </Box> */}
       </Box>
     </>
   );
 };
 
 export default HeaderPage;
+
+
+/**<div className=" max-lg:hidden flex relative">
+              <div className="w-full overflow-hidden flex justify-center items-center">
+                <Box
+                  component="img"
+                  src={imgSrc}
+                  alt="find your career with jobhub world"
+                  sx={{
+                    display: { xs: "none", sm: "none", md: "block" },
+                    width: { sm: "30%", md: "100%" },
+                    height: "auto",
+                    mt: 10,
+                  }}
+                  className="image_animation"
+                />
+              </div>
+              <div
+                className="absolute -bottom-[0] left-0 right-0 h-[20%] pointer-events-none animate-pulse"
+                style={{
+                  background: `linear-gradient(to top, ${gloabalTheme.colors.primary} , transparent)`,
+                }}
+              />
+            </div> */
