@@ -118,7 +118,7 @@
 // export default RegistrationPage;
 
 
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import {
   Box,
   TextField,
@@ -129,8 +129,30 @@ import {
 } from "@mui/material";
 import { toast, ToastContainer } from "react-toastify";
 import registerCandidate from "../../../service/registercandidates.api";
-
+import Modal from '@mui/material/Modal';
+import confetti from "canvas-confetti";
 const RegistrationPage = ({ onSubmit }) => {
+  const confettiRef = useRef(null);
+  const [open, setOpen] = useState(false);
+
+  const handleOpen = () => {
+    setOpen(true);
+
+    setTimeout(() => {
+      const myConfetti = confetti.create(confettiRef.current, {
+        resize: true,
+        useWorker: true,
+      });
+
+      myConfetti({
+        particleCount: 450,
+        spread: 70,
+        origin: { y: 0.5 },
+      });
+    }, 100); // delay to ensure canvas is mounted inside modal
+  };
+
+  const handleClose = () => setOpen(false);
   const [formData, setFormData] = useState({
     fullname: "",
     email: "",
@@ -192,14 +214,24 @@ const RegistrationPage = ({ onSubmit }) => {
     try {
       await registerCandidate(formData);
       toast.success("Registration Successful!");
-      onSubmit(); // close modal
+
+
+      handleOpen(); // Show modal after successful registration
+      setTimeout(() => {
+        handleClose(); // closes the modal
+        onSubmit();    // then call the parent callback
+      }, 16000);
+      // onSubmit(); // Optional: close parent modal or perform any callback
     } catch (error) {
       toast.error(error.message || "Registration failed.");
     }
   };
 
+
   return (
     <Box>
+
+
       <ToastContainer />
       <Box
         sx={{
@@ -279,6 +311,52 @@ const RegistrationPage = ({ onSubmit }) => {
           >
             Submit
           </Button>
+          <Modal
+            open={open}
+            onClose={handleClose}
+            aria-labelledby="modal-modal-title"
+            aria-describedby="modal-modal-description"
+          >
+
+            <Box
+              sx={{
+                position: 'absolute',
+                top: '50%',
+                left: '50%',
+                transform: 'translate(-50%, -50%)',
+                width: 250,
+                bgcolor: 'background.paper',
+                borderRadius: 2,
+                boxShadow: 24,
+                p: 4,
+                textAlign: 'center',
+              }}
+            >
+              <canvas
+                ref={confettiRef}
+                id="confetti-canvas"
+                style={{
+                  position: "absolute",
+                  top: 0,
+                  left: 0,
+                  width: "100%",
+                  height: "100%",
+                  pointerEvents: "none",
+                  zIndex: 10, // Highest to appear over modal
+                }}
+              ></canvas>
+              <Typography id="modal-modal-title" variant="h6" fontWeight="bold" gutterBottom>
+                Registration Complete!
+              </Typography>
+              <Typography id="modal-modal-description" sx={{ fontSize: '14px', color: 'gray' }}>
+                Thank you for registering. We will get back to you shortly.
+              </Typography>
+              <Button variant="contained" sx={{ mt: 3, backgroundColor: "green" }} onClick={handleClose}>
+                Close
+              </Button>
+            </Box>
+          </Modal>
+
         </form>
       </Box>
     </Box>
