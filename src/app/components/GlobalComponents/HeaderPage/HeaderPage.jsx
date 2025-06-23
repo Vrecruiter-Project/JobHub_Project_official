@@ -250,17 +250,77 @@ const HeaderPage = ({
   }, [headerText, onSearchReady]);
   return (
     <>
-      <Box sx={{ width: '100%', backgroundColor:'#19411C', display: 'flex', justifyContent: 'space-between', alignItems: 'center',}}>
-        <Box sx={{ backgroundColor: '#19411C', width: { sm: '100%', md: '50%' }, paddingLeft: {xs:'90px', sm: '140px',md:"100px"},}}>
+      <Box sx={{px: 4, py: 4, backgroundColor: '#f0f0f0', width: '100%', height: 'auto', display: { xs: 'flex', sm: 'none', md: 'none' }, flexDirection: 'column', alignItems: 'center', justifyContent: 'center'}}>
+        <Box sx={{fontSize:'18px'}}>Your Job Application form <span className="underline font-bold text-2xl">{headerText}</span> </Box>
+        <Box sx={{
+          display: { xs: 'flex', sm: 'none', md: 'none' },
+        }}>
+          
           <Box>
-            <Box sx={{color: 'white', width:'100%', py:{xs:3,sm:3}}}>
-              <Typography sx={{fontSize:{xs:'3rem',sm:'3rem',md:"3rem", lg:'4rem'}, fontWeight:"700"}}>{headerText}</Typography>
-              <Typography sx={{fontSize:{md :"14px", lg:"20px"}}}>{subText}</Typography>
-              <Button size="small" sx={{ backgroundColor: gloabalTheme.colors.primary, color: 'white', paddingInline: "20px", mt: 2, fontSize:{md:'10px', lg:"20px"}}} onClick={onButtonClick1}>{buttonTitle1}</Button>
+            <span className="text-sm font-semibold">Description</span>
+            <p className="text-sm text-gray-600 mb-3">
+              
+              Before attending your first interview with us, please review and prepare the following essential items. These documents and tips help ensure a smooth and professional experience.
+</p>
+
+<span className="text-xl text-black font-semibold">Prerequisites for Interview</span>
+
+<ul className="list-none pl-1 mt-2 text-gray-700 space-y-2 text-sm">
+  <li><i className="fas fa-file-alt text-blue-500 mr-2"></i><strong>Resume:</strong> Updated and printed.</li>
+  <li><i className="fas fa-envelope-open-text text-green-500 mr-2"></i><strong>Cover Letter:</strong> If requested, tailored to the role.</li>
+  <li><i className="fas fa-folder-open text-purple-500 mr-2"></i><strong>Portfolio:</strong> For creative or technical roles.</li>
+  <li><i className="fas fa-id-card text-yellow-500 mr-2"></i><strong>ID Proof:</strong> Government-issued ID.</li>
+  <li><i className="fas fa-certificate text-red-500 mr-2"></i><strong>Certificates:</strong> Relevant educational/professional.</li>
+  <li><i className="fas fa-pen text-indigo-500 mr-2"></i><strong>Notebook & Pen:</strong> Optional, for notes.</li>
+  <li><i className="fas fa-user-tie text-pink-500 mr-2"></i><strong>Dress Code:</strong> Formal or business casual.</li>
+  <li><i className="fas fa-clock text-gray-500 mr-2"></i><strong>Be On Time:</strong> Arrive 10–15 mins early.</li>
+</ul>
+
           </Box>
+        </Box><Box
+          sx={{
+            display: { xs: 'flex', sm: 'none', md: 'none' },
+            position: 'fixed',
+            bottom: '0px', // or `top: '20px'` if you want it at the top
+            right: '0px',  // adjust based on your layout
+            zIndex: 1000,   // to ensure it stays above other elements
+            backgroundColor: 'transparent',
+            width: '100%',
+            justifyContent: 'center',
+            padding: '6px',
+          }}
+        >
+          <Button
+            size="small"
+            sx={{
+              width: '95%',
+              backgroundColor: gloabalTheme.colors.primary,
+              color: 'white',
+              padding: '15px',
+              fontSize: '20px',
+              fontWeight: 'bold',
+              borderRadius: '8px',
+            }}
+            onClick={onButtonClick1}
+          >
+            {buttonTitle1}
+          </Button>
+        </Box>
+      </Box>
+      <Box sx={{ width: '100%', backgroundColor: '#19411C', display: { xs: 'none', sm: 'flex', md: 'flex' }, justifyContent: 'space-between', alignItems: 'center', }}>
+        <Box sx={{ backgroundColor: '#19411C', width: { sm: '100%', md: '50%' }, paddingLeft: { xs: '90px', sm: '140px', md: "100px" }, }}>
+          <Box>
+            <Box sx={{ color: 'white', width: '100%', py: { xs: 3, sm: 3 } }}>
+              <Typography sx={{ fontSize: { xs: '3rem', sm: '3rem', md: "3rem", lg: '4rem' }, fontWeight: "700" }}>{headerText}</Typography>
+              <Typography sx={{ fontSize: { md: "14px", lg: "20px" } }}>{subText}</Typography>
+
+              <Button size="small" sx={{ display: { xs: 'none', sm: 'block', md: 'block' }, backgroundColor: gloabalTheme.colors.primary, color: 'white', paddingInline: "20px", mt: 2, fontSize: { md: '10px', lg: "20px" } }} onClick={onButtonClick1}>{buttonTitle1}</Button>
+
+
+            </Box>
           </Box>
         </Box>
-        <Box className="globalJobsHeader" sx={{backgroundColor: 'black', width: '55%', paddingRight:{md:'10px', lg:"170px"}, paddingLeft:{md:'10px', lg:"170px"}, }}>
+        <Box className="globalJobsHeader" sx={{ backgroundColor: 'black', width: '55%', paddingRight: { md: '10px', lg: "170px" }, paddingLeft: { md: '10px', lg: "170px" }, }}>
           <Box>
             <div className=" max-lg:hidden flex relative">
               <div className="w-full overflow-hidden flex justify-center items-center">
@@ -272,20 +332,20 @@ const HeaderPage = ({
                     display: { xs: "none", sm: "none", md: "block" },
                     width: { sm: "100%", md: "70%", lg: "100%" },
                     height: "auto",
-                    mt: {md:10, lg:25},
+                    mt: { md: 10, lg: 25 },
                   }}
                   className="image_animation"
                 />
               </div>
               <div
                 className="absolute -bottom-[0] left-0 right-0 h-[20%] pointer-events-none animate-pulse"
-                // style={{
-                //   background: `linear-gradient(to top, ${gloabalTheme.colors.primary} , transparent)`,
-                // }}
+              // style={{
+              //   background: `linear-gradient(to top, ${gloabalTheme.colors.primary} , transparent)`,
+              // }}
               />
             </div>
           </Box>
-          </Box>
+        </Box>
         {/* <Box sx={{ width: '85%', backgroundColor: 'transparent', display: 'flex',  alignItems: 'center', justifyContent: 'space-between' }}>
           <Box sx={{color: 'white', width:'50%'}}>
             <Typography>{headerText}</Typography>

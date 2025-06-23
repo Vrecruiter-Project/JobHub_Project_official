@@ -52,7 +52,7 @@ const PopularJobs = ({ id }) => {
     { image: job14, title: 'Ware House Staff', onClick: () => navigate('/warehousestaff') },
     { image: job15, title: 'Factory Workers', onClick: () => navigate('/factory') },
   ];
-  const visibleCards = isMobile && !showAll ? jobTypes.slice(0, 4) : jobTypes;
+  const visibleCards = isMobile && !showAll ? jobTypes.slice(0, 6) : jobTypes;
   return (
     <>
       <Box id={id} sx={{  width: '80%', mx: 'auto' }}>
@@ -63,7 +63,7 @@ const PopularJobs = ({ id }) => {
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
-            mb: 8,
+            mb: -4,
 
           }}
         >
@@ -73,7 +73,6 @@ const PopularJobs = ({ id }) => {
               variant="h3" component="h2" align="center" sx={{
                 fontFamily:"Marcelluse",textShadow: '0 3px 4px #333',
                 fontSize: { xs: "27px", md: "45px" },
-                py: 5,
               //  backgroundImage: `url(${PopularJobsBg})`,
                 backgroundSize: "cover",
               }}>
@@ -152,7 +151,7 @@ const PopularJobs = ({ id }) => {
         </Box>
 
         {isMobile && !showAll && (
-          <Box sx={{ mt: 4, display: 'flex', justifyContent: 'center' }}>
+          <Box sx={{ mt: -4, display: 'flex', justifyContent: 'center' }}>
             <Button
               onClick={() => setShowAll(true)}
               sx={{
@@ -164,7 +163,7 @@ const PopularJobs = ({ id }) => {
                 borderRadius: 2,
               }}
             >
-              <u>Load More</u><span className='px-1 mx-1 bg-green-500 rounded-sm text-white'>JOBS</span>
+              <u className='text-xl'>Load More</u><span className='px-1 mx-1 bg-green-500 rounded-sm text-white text-xl'>JOBS</span>
             </Button>
           </Box>
         )}
