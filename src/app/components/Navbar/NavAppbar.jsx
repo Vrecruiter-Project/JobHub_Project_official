@@ -1,5 +1,6 @@
 import { gloabalTheme } from "../../theme/theme";
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import {
   AppBar,
   Box,
@@ -132,12 +133,14 @@ const NavDrawer = () => {
                     {page.label}
                   </Button>
                 ))}
+               
               </Box>
             )}
 
             {/* Right - Login or Menu Icon */}
             <Box>
               {!isMobile ? (
+                 <>
                 <button
                   className="button relative px-6 py-1.5 text-lg text-white hover:text-black border border-green-600 rounded cursor-pointer overflow-hidden mr-[55px] font-semibold"
                   title="Login"
@@ -146,7 +149,11 @@ const NavDrawer = () => {
                 >
                   <span className="relative z-10">Login</span>
                 </button>
+                 </>
               ) : ( 
+                <>
+                <div className="flex items-center gap-4">
+                  <a href='#popularSection' className="text-lg font-semibold underline text-green-800">Jobs</a>
                 <IconButton
                   onClick={toggleDrawer(true)}
                   edge="end"
@@ -154,6 +161,8 @@ const NavDrawer = () => {
                 >
                   <MenuIcon />
                 </IconButton>
+                </div>
+                </>
               )}
             </Box>
           </Toolbar>
