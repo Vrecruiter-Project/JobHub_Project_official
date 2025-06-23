@@ -53,7 +53,7 @@ const NavDrawer = () => {
 
   const handleNavigate = (path, isExternal = false) => {
     if (isExternal) {
-      window.location.href = "https://resume-creator.jobhub.world/";
+      window.location.href = "https://jobhub-resume-builder.vercel.app";
     } else {
       navigate(path);
     }
