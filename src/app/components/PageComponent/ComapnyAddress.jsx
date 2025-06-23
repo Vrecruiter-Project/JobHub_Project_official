@@ -33,7 +33,7 @@ const CompanyAddress = () => {
       title: "Phone",
       content: (
         <>
-          +91 85128 27174
+          +91 98187-37641
           <br />
           {/* +91 90564 76584 */}
 
