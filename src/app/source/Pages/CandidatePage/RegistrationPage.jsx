@@ -250,6 +250,8 @@ const RegistrationPage = ({ onSubmit }) => {
           Candidate Registration Form
         </Typography>
         <Typography variant="body2" textAlign="center" sx={{ color: "red", fontSize: "12px", mb: 3 }}>
+          <span className="text-sm text-black font-semibold">After fillup this form relevant Jobs unlocked for you </span>
+          <br/>
           Kindly complete the registration form below to apply. Your opportunity awaits!
         </Typography>
 
@@ -356,7 +358,6 @@ const RegistrationPage = ({ onSubmit }) => {
               </Button>
             </Box>
           </Modal>
-
         </form>
       </Box>
     </Box>
