@@ -283,7 +283,7 @@ export default function Footer() {
                   <a href="/"><img src={jobhubFooterLogo} alt="logo" className="max-w-[200px] mb-6" /></a>
                   <p className="text-sm text-gray-400 leading-7 mb-4">
                     Find Your Career With JOBHUB <br />
-                    <span style={{ fontSize: '12px' }}>Comprehensive job portal designed to streamline the employment <br /> process for both job seekers and employers </span>
+                    <span style={{ fontSize: '12px' }}>Comprehensive job portal designed to streamline the employment <br /> process for both job seekers and employers. For Candidate <a href="https://www.jobhub.world/candidatedashboard" className='text-blue-300'>Apply Jobs</a>, <br/> For Employer <a href="https://www.jobhub.world/employerlogin" className='text-blue-200'>Create Jobs</a> </span>
                   </p>
                   <span className="text-lg font-bold block mb-3">Follow us</span>
                   <div className="flex gap-4">

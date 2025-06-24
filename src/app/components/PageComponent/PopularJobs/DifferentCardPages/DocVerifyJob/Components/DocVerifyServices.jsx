@@ -15,7 +15,7 @@ const DocVerifyServices = () => {
             width: "100%",
             height: "auto",
             border: "2px solid transparent",
-            borderRadius: { xs: "350px 350px 0px 0px", md: "350px 350px 10px 0px" },
+            borderRadius: { xs: "40px 40px 0px 0px", md: "350px 350px 10px 0px" },
             backgroundColor: "black",
             color: 'white'
         }
@@ -89,7 +89,7 @@ const DocVerifyServices = () => {
                         </Grid2>
                     </Grid2>
 
-                    <Box sx={{display:'flex', justifyContent:'center', gap:"20px", paddingBlock:"50px"}}>
+                    <Box sx={{display:'flex', justifyContent:'center', gap:"20px", paddingBlock:"50px",flexWrap:{xs:"wrap", md:'nowrap'},  }}>
                         {resumeItems1.slice(0,4).map((img, index) => (
                             <div className='w-full ' key={index} >
                                 <div className='py-5 rounded-lg gap-4 bg-white text-black flex justify-center flex-col items-center'>
