@@ -38,7 +38,7 @@ const Home = () => {
       id: 1,
       question: 'What type of jobs are available on Jobhub?',
       answer:
-        'JobHub is a specialized job search app in India focused exclusively on the blue-collar workforce, linking job seekers directly with employers in this sector. It enables blue-collar workers to find roles suited to their skills by connecting them with company HR departments, facilitating a two-way connection between workers and businesses.',
+        'JobHub World is a modern, versatile job portal connecting global job seekers and employers across industries. We specialize in remote jobs, on-site jobs, hybrid roles, full-time, part-time, and contract opportunities—empowering professionals at every career stage.',
     },
     {
       id: 2,
@@ -48,9 +48,9 @@ const Home = () => {
     },
     {
       id: 3,
-      question: 'Are there remote job opportunities on Job Hub?',
+      question: 'Are there remote job opportunities on JobHub world?',
       answer:
-        'Yes, Job Hub offers a variety of remote job opportunities across multiple industries for flexible work options.',
+        'JobHub World: Find remote jobs | Onsite jobs | Flexible work worldwide. Hire talent (jobhub.world/employerlogin) or browse jobs (jobhubworld.com/candidatedashboard).',
     },
     {
       id: 4,

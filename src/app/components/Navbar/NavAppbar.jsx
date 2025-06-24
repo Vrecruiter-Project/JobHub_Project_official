@@ -25,9 +25,9 @@ import jobhublogo from "/Jobhub logo.png";
 
 const pages = [
   { label: "Home", path: "/" },
-  { label: "Jobs", path: "/candidatedashboard" },
-  { label: "Build Resume", path: "/resume", external: true },
-  { label: "About", path: "/about" },
+  { label: "Apply Jobs", path: "/candidatedashboard" },
+  { label: "Build Resume Quickly", path: "/resume", external: true },
+  { label: "About Us", path: "/about" },
   { label: "Contact Us", path: "/contact" },
 ];
 
