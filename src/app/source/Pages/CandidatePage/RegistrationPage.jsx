@@ -117,7 +117,6 @@
 
 // export default RegistrationPage;
 
-
 import React, { useRef, useState } from "react";
 import {
   Box,
@@ -129,7 +128,7 @@ import {
 } from "@mui/material";
 import { toast, ToastContainer } from "react-toastify";
 import registerCandidate from "../../../service/registercandidates.api";
-import Modal from '@mui/material/Modal';
+import Modal from "@mui/material/Modal";
 import confetti from "canvas-confetti";
 const RegistrationPage = ({ onSubmit }) => {
   const confettiRef = useRef(null);
@@ -185,7 +184,8 @@ const RegistrationPage = ({ onSubmit }) => {
       newErrors.number = "Enter a valid 10-digit number";
     }
 
-    if (!formData.qualification.trim()) newErrors.qualification = "Qualification is required";
+    if (!formData.qualification.trim())
+      newErrors.qualification = "Qualification is required";
     if (!formData.gender) newErrors.gender = "Gender is required";
     if (!formData.address.trim()) newErrors.address = "Address is required";
 
@@ -215,11 +215,10 @@ const RegistrationPage = ({ onSubmit }) => {
       await registerCandidate(formData);
       toast.success("Registration Successful!");
 
-
       handleOpen(); // Show modal after successful registration
       setTimeout(() => {
         handleClose(); // closes the modal
-        onSubmit();    // then call the parent callback
+        onSubmit(); // then call the parent callback
       }, 16000);
       // onSubmit(); // Optional: close parent modal or perform any callback
     } catch (error) {
@@ -227,11 +226,8 @@ const RegistrationPage = ({ onSubmit }) => {
     }
   };
 
-
   return (
     <Box>
-
-
       <ToastContainer />
       <Box
         sx={{
@@ -246,13 +242,26 @@ const RegistrationPage = ({ onSubmit }) => {
           padding: "30px",
         }}
       >
-        <Typography variant="h5" component="h1" gutterBottom fontWeight="bold" textAlign="center">
+        <Typography
+          variant="h5"
+          component="h1"
+          gutterBottom
+          fontWeight="bold"
+          textAlign="center"
+        >
           Candidate Registration Form
         </Typography>
-        <Typography variant="body2" textAlign="center" sx={{ color: "red", fontSize: "12px", mb: 3 }}>
-          <span className="text-sm text-black font-semibold">After fillup this form relevant Jobs unlocked for you </span>
-          <br/>
-          Kindly complete the registration form below to apply. Your opportunity awaits!
+        <Typography
+          variant="body2"
+          textAlign="center"
+          sx={{ color: "red", fontSize: "12px", mb: 3 }}
+        >
+          <span className="text-sm text-black font-semibold">
+            After fillup this form relevant Jobs unlocked for you{" "}
+          </span>
+          <br />
+          Kindly complete the registration form below to apply. Your opportunity
+          awaits!
         </Typography>
 
         <form onSubmit={handleSubmit} style={{ width: "100%" }}>
@@ -301,10 +310,22 @@ const RegistrationPage = ({ onSubmit }) => {
               <MenuItem value="Other">Other</MenuItem>
             </Select>
             {errors.gender && (
-              <Typography sx={{ color: "red", fontSize: "12px", mt: 0.5 }}>{errors.gender}</Typography>
+              <Typography sx={{ color: "red", fontSize: "12px", mt: 0.5 }}>
+                {errors.gender}
+              </Typography>
             )}
           </Box>
 
+          <Box sx={{display: "flex", justifyContent: "center", mb: 3, mt: 2, padding: "10px"
+          }}>
+            <a
+              className="review-btn border-solid border-b-4 rounded-sm border-b-blue-300 text-xl text-center text-blue-500"
+              href="http://search.google.com/local/writereview?placeid=ChIJtzfCMXJuNCQRkPYiWBYEXaw"
+              target="_blank"
+            >
+              🌟Leave a Google Review🌟
+            </a>
+          </Box>
           <Button
             type="submit"
             variant="contained"
@@ -319,19 +340,18 @@ const RegistrationPage = ({ onSubmit }) => {
             aria-labelledby="modal-modal-title"
             aria-describedby="modal-modal-description"
           >
-
             <Box
               sx={{
-                position: 'absolute',
-                top: '50%',
-                left: '50%',
-                transform: 'translate(-50%, -50%)',
+                position: "absolute",
+                top: "50%",
+                left: "50%",
+                transform: "translate(-50%, -50%)",
                 width: 250,
-                bgcolor: 'background.paper',
+                bgcolor: "background.paper",
                 borderRadius: 2,
                 boxShadow: 24,
                 p: 4,
-                textAlign: 'center',
+                textAlign: "center",
               }}
             >
               <canvas
@@ -347,13 +367,25 @@ const RegistrationPage = ({ onSubmit }) => {
                   zIndex: 10, // Highest to appear over modal
                 }}
               ></canvas>
-              <Typography id="modal-modal-title" variant="h6" fontWeight="bold" gutterBottom>
+              <Typography
+                id="modal-modal-title"
+                variant="h6"
+                fontWeight="bold"
+                gutterBottom
+              >
                 Registration Complete!
               </Typography>
-              <Typography id="modal-modal-description" sx={{ fontSize: '14px', color: 'gray' }}>
+              <Typography
+                id="modal-modal-description"
+                sx={{ fontSize: "14px", color: "gray" }}
+              >
                 Thank you for registering. We will get back to you shortly.
               </Typography>
-              <Button variant="contained" sx={{ mt: 3, backgroundColor: "green" }} onClick={handleClose}>
+              <Button
+                variant="contained"
+                sx={{ mt: 3, backgroundColor: "green" }}
+                onClick={handleClose}
+              >
                 Close
               </Button>
             </Box>
@@ -365,4 +397,3 @@ const RegistrationPage = ({ onSubmit }) => {
 };
 
 export default RegistrationPage;
-
