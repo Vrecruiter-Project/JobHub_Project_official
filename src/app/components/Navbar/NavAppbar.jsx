@@ -100,7 +100,7 @@ const NavDrawer = () => {
               alt="Logo"
               sx={{
                 width: { xs: "80px", sm: "100px", md: "100px", lg: "110px" },
-                marginLeft: "50px",
+                marginLeft: {sm:0, lg:"50px"},
                 height: "auto",
                 cursor: "pointer",
               }}
@@ -153,6 +153,7 @@ const NavDrawer = () => {
               ) : ( 
                 <>
                 <div className="flex items-center gap-4">
+                  <a href="/verification" title="for employers hire now" className="underline font-semibold text-lg">For Employer</a>
                   <a href='#popularSection' className="text-lg font-semibold underline text-green-800">Jobs</a>
                 <IconButton
                   onClick={toggleDrawer(true)}

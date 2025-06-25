@@ -57,20 +57,22 @@ const DifferentJobCard = ({ jobTypes, title, backgroundColor, boxShadow, border,
         sx={{
           position: 'relative',
           zIndex: 2,
-          display: 'flex',
+         display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
           justifyContent: 'center',
           textAlign: 'center',
         }}
       >
+        <Box sx={{ display: {xs:'none',sm:'flex',},}}>
         <img src={jobTypes.image} width="55px" height="55px" alt={title} />
+        </Box>
 
         <Typography
           className="hover-text"
           variant="body1"
           sx={{
-            fontSize: { lg: '17px', md: '15px', sm: '16px', xs: '9px' },
+            fontSize: { lg: '17px', md: '15px', sm: '16px', xs: '14px' },
             fontWeight: 'bold',
             pt: 1,
             color: 'black',
