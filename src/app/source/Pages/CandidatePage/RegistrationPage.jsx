@@ -117,7 +117,7 @@
 
 // export default RegistrationPage;
 
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
   Box,
   TextField,
@@ -125,15 +125,20 @@ import {
   Typography,
   Select,
   MenuItem,
+  LinearProgress,
 } from "@mui/material";
 import { toast, ToastContainer } from "react-toastify";
 import registerCandidate from "../../../service/registercandidates.api";
 import Modal from "@mui/material/Modal";
 import confetti from "canvas-confetti";
+import { gloabalTheme } from "../../../theme/theme";
+import { useNavigate } from "react-router-dom";
 const RegistrationPage = ({ onSubmit }) => {
+  const navigate = useNavigate();
   const confettiRef = useRef(null);
   const [open, setOpen] = useState(false);
-
+  const [progress, setProgress] = useState(0);
+  const [timerActive, setTimerActive] = useState(false);
   const handleOpen = () => {
     setOpen(true);
 
@@ -151,7 +156,29 @@ const RegistrationPage = ({ onSubmit }) => {
     }, 100); // delay to ensure canvas is mounted inside modal
   };
 
-  const handleClose = () => setOpen(false);
+   const handleClose = () => {
+    setOpen(false);
+    setTimerActive(false);
+    setProgress(0);
+  };
+  useEffect(() => {
+    let timer;
+    if (timerActive) {
+      timer = setInterval(() => {
+        setProgress((oldProgress) => {
+          if (oldProgress === 100) {
+            clearInterval(timer);
+            navigate("/interviewtips");
+            return 100;
+          }
+          return oldProgress + 1;
+        });
+      }, 40); // 40ms * 100 = 4000ms (4 seconds)
+    }
+    return () => {
+      if (timer) clearInterval(timer);
+    };
+  }, [timerActive, navigate]);
   const [formData, setFormData] = useState({
     fullname: "",
     email: "",
@@ -216,6 +243,7 @@ const RegistrationPage = ({ onSubmit }) => {
       toast.success("Registration Successful!");
 
       handleOpen(); // Show modal after successful registration
+      setTimerActive(true); // Start the timer for progress bar
       setTimeout(() => {
         handleClose(); // closes the modal
         onSubmit(); // then call the parent callback
@@ -316,8 +344,15 @@ const RegistrationPage = ({ onSubmit }) => {
             )}
           </Box>
 
-          <Box sx={{display: "flex", justifyContent: "center", mb: 3, mt: 2, padding: "10px"
-          }}>
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              mb: 3,
+              mt: 2,
+              padding: "10px",
+            }}
+          >
             <a
               className="review-btn border-solid border-b-4 rounded-sm border-b-blue-300 text-xl text-center text-blue-500"
               href="http://search.google.com/local/writereview?placeid=ChIJtzfCMXJuNCQRkPYiWBYEXaw"
@@ -379,14 +414,35 @@ const RegistrationPage = ({ onSubmit }) => {
                 id="modal-modal-description"
                 sx={{ fontSize: "14px", color: "gray" }}
               >
-                Thank you for registering. We will get back to you shortly.
+                Thank you for registering
+              </Typography>
+              <Typography sx={{ fontSize: "14px" }}>
+                After that Interview Prepration page will open !
+              </Typography>
+              <LinearProgress
+                variant="determinate"
+                value={progress}
+                sx={{
+                  p: 2,
+                  height: 8,
+                  borderRadius: 4,
+                  mb: 3,
+                  backgroundColor: "#e0e0e0",
+                  "& .MuiLinearProgress-bar": {
+                    borderRadius: 4,
+                    backgroundColor: gloabalTheme.colors.primary,
+                  },
+                }}
+              />
+              <Typography variant="caption" display="block" sx={{ mb: 2 }}>
+                Redirecting in {(4 - progress * 0.04).toFixed(1)}s...
               </Typography>
               <Button
                 variant="contained"
-                sx={{ mt: 3, backgroundColor: "green" }}
-                onClick={handleClose}
+                sx={{ mt: 1, backgroundColor: gloabalTheme.colors.primary }}
+                onClick={() => navigate("/interviewtips")}
               >
-                Close
+                Go Now
               </Button>
             </Box>
           </Modal>
