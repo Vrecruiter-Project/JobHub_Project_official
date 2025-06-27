@@ -74,7 +74,6 @@ const AppRouter = () => {
             "/backoffice": <BackOfficeJob />,
             "/housekeeping": <HouseKeepingJob />,
             "/delivery": <DeliveryJob />,
-
             "/securityguard": <Securityguardjob />,
             "/hotelstaff": <HotelStaffJob />,
             "/warehousestaff": <WarehouseStaffJob />,

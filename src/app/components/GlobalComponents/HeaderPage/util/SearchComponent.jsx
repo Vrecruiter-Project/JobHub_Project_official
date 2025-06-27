@@ -199,10 +199,10 @@ export const HeroSection = () => {
           <h1 className="text-center text-3xl font-bold">
             Find Your Career with <br />{" "}
             <span
-              className="flex items-center justify-center"
+              className="flex items-end justify-center"
               style={{ color: gloabalTheme.colors.primary }}
             >
-              JOBHUB<sub className="text-sm text-black">.world</sub>
+              JOBHUB<span className="text-sm text-black">.WORLD</span>
             </span>
           </h1>
           <div className="flexible flex-col sm:flex-row md:flex-row lg:flex-row gap-4 items-center justify-center mt-4 bg-gray-50 p-2 rounded-lg">

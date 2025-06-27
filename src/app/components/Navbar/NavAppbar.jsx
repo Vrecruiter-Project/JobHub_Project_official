@@ -26,6 +26,7 @@ import jobhublogo from "/Jobhub logo.png";
 const pages = [
   { label: "Home", path: "/" },
   { label: "Apply Jobs", path: "/candidatedashboard" },
+  { label: "Interview Preparation", path: "/interviewtips" },
   { label: "Build Resume Quickly", path: "/resume", external: true },
   { label: "About Us", path: "/about" },
   { label: "Contact Us", path: "/contact" },
@@ -122,11 +123,11 @@ const NavDrawer = () => {
                     key={page.label}
                     onClick={() => handleNavigate(page.path, page.external)}
                     sx={{
-                      fontSize: { md: '15px' , lg: '18px'},
+                      fontSize: { md: '15px' , lg: '15px'},
                       color: isActiveRoute(page.path)
                         ? gloabalTheme.colors.primary
                         : "black",
-                      fontWeight: 600,
+                      // fontWeight: 600,
                       "&:hover": { color: "green" },
                     }}
                   >
