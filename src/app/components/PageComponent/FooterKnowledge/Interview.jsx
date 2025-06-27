@@ -1,235 +1,417 @@
-import React from 'react';
-import PageComponent from '../PageComponent';
-import { Box, Grid2, Typography, Container } from '@mui/material';
-import leftHandArrow from '../../../assets/Images/eventsImages/leftHandArrow.png'
-
-
+import { useState } from "react";
+import { gloabalTheme } from "../../../theme/theme";
+import PageComponent from "../PageComponent";
+import inter from "./1.mp4";
+import inter1 from "./2.mp4";
+import inter2 from "./3.mp4";
+import confetti from "canvas-confetti";
 export default function InterviewTips() {
+  const videos = [inter, inter1, inter2];
+  const [play, setPlay] = useState(false);
+  const [videoIndex, setVideoIndex] = useState(0);
+  const [num, setNum] = useState(0);
+  const [completed, setCompleted] = useState(false);
+  function handlePlay() {
+    setPlay(!play);
+  }
+
+  const triggerConfetti = () => {
+    confetti({
+      particleCount: 450,
+      spread: 70,
+      origin: { y: 0.5 },
+    });
+  };
+
+
+  function handleNextVideo() {
+    // Handle video switching first
+    if (videoIndex < videos.length - 1) {
+      setVideoIndex(videoIndex + 1);
+    } else {
+      setVideoIndex(0);
+    }
+
+    // Then handle click counting
+    if (num < 2) {
+      // Changed to 2 because we start counting from 0
+      setNum(num + 1);
+    } else {
+      setNum(3); // Ensure it shows 3/3
+      setCompleted(true);
+      triggerConfetti()
+    }
+  }
 
   return (
     <PageComponent>
+      <div className="md:hidden w-full flex justify-center items-center py-9 flex-col">
+        <article className="w-[80%]">
+          <h2 className="text-sm">
+            Most of the Candidates failed in their interview beacuse of{" "}
+            <span className=" border-b  border-b-red-700">bad prepration</span>
+          </h2>
+          <h1 className="text-2xl font-semibold">
+            {`Let's `} Jobhub helps you to{" "}
+            <span
+              className="underline"
+              style={{ color: gloabalTheme.colors.primary }}
+            >
+              Crack your Interviews
+            </span>
+          </h1>
+        </article>
+        <div className="rounded-xl p-2 flex justify-center items mt-4">
+          <div className=" w-[80%] bg-gradient-to-t  from-blue-500 via-lime-300 to-red-400 p-2 rounded-xl ">
+            <video key={videoIndex} controls className="rounded-lg  ">
+              <source
+                src={videos[videoIndex]}
+                type="video/mp4"
+                className="rounded-lg"
+              />
+            </video>
+          </div>
+        </div>
+        <div className="w-[80%] flex flex-col bg-slate-50 p-2 mt-4 rounded-lg">
+          {!completed ? (
+            <div className="flex  justify-between items-center">
+              <span className="underline p-1 text-lg">Left {3 - num}/3</span>
+              <div
+                onClick={handlePlay}
+                className="flex items-center cursor-pointer"
+              >
+                {play ? (
+                  <span className="">
+                    <i className="fa-solid fa-circle-pause text-2xl"></i>
+                  </span>
+                ) : (
+                  <span className="">
+                    <i className="fa-solid fa-circle-play  text-2xl"></i>
+                  </span>
+                )}
+              </div>
+              <div className="flex flex-col">
+                <span className="text-xs">Next</span>
+                <span
+                  onClick={handleNextVideo}
+                  className="bg-lime-300 px-4 rounded-md  font-semibold"
+                >
+                  <i className="fa-solid fa-forward"></i>
+                </span>
+              </div>
+            </div>
+          ) : (
+            <div className="text-center py-4">
+              <p className="text-lg font-semibold">All videos completed!</p>
+              <button
+                onClick={() => {
+                  setNum(0);
+                  setCompleted(false);
+                  setVideoIndex(0);
+                }}
+                className="mt-2 bg-blue-500 text-white px-4 py-1 rounded"
+              >
+                Watch Again
+              </button>
+            </div>
+          )}
+        </div>
+        <div className="p-3">
+          <h2>
+            Quick Videos for{" "}
+            <span className="font-semibold underline">
+              Interview Prepration
+            </span>{" "}
+            by our Experts
+          </h2>
+          <span className="text-xs">
+            What inside in this video from jobhub interview prepration ?
+          </span>
+          <dl className="p-2 bg-gray-200 rounded-lg mt-2">
+            <dt className="font-semibold underline">
+              Self Introduction{" "}
+              <span className="text-xs text-gray-400">90 sec</span>
+            </dt>
+            <dd className="pl-2 text-xs mt-1 font-semibold">
+              - I studied [Degree] at [College] + learned [Top Skill].
+              <span className="text-xs text-gray-800">(30sec)</span>{" "}
+            </dd>
+            <dd className="pl-2 text-xs mt-1 font-semibold">
+              - I practiced this through [Project/Internship/Certificate].{" "}
+              <span className="text-xs text-gray-800">(30sec)</span>{" "}
+            </dd>
+            <dd className="pl-2 text-xs mt-1 font-semibold">
+              - {`I'm excited to join [Company] because [Specific Reason].`}{" "}
+              <span className="text-xs text-gray-800">(30sec)</span>{" "}
+            </dd>
+            <span className="block text-[10px] mt-2">
+              For exapmple <br />
+              {`*"Hello, I’m [Name]. I recently graduated with a [Degree] from [College/University], where I developed skills in [Skill 1] and [Skill 2] through projects like [Brief Example]. I’m passionate about [Industry/Field] and completed a certification in [Relevant Course] to strengthen my knowledge. I’m eager to start my career with [Company Name] and contribute with my enthusiasm and willingness to learn."*`}
+            </span>
+          </dl>
+          <dl className="p-2 bg-gray-200 rounded-lg mt-2">
+            <dt className="font-semibold underline">
+              Previous Achivement/Skills{" "}
+              <span className="text-xs text-gray-400">90 sec</span>
+            </dt>
+            <dd className="pl-2 text-xs mt-1 font-semibold">
+              - Ranked in top 10% of my batch with a [CGPA/Percentage] in
+              [Degree]. <span className="text-xs text-gray-800">(30sec)</span>{" "}
+            </dd>
+            <dd className="pl-2 text-xs mt-1 font-semibold">
+              - Developed a [Project Name] that improved [Metric] by X% using
+              [Skill]. <span className="text-xs text-gray-800">(30sec)</span>{" "}
+            </dd>
+            <dd className="pl-2 text-xs mt-1 font-semibold">
+              - Certified in [Course Name] by [Platform] with expertise in
+              [Tool/Technique].{" "}
+              <span className="text-xs text-gray-800">(30sec)</span>{" "}
+            </dd>
+            <span className="block text-[10px] mt-2">
+              For Example <br />
+              {`*"I ranked in the top 10% of my Computer Science batch with a 9.2 CGPA at XYZ University. I developed an ‘Automated Attendance System’ using Python and facial recognition, which reduced manual tracking time by 60% for my college. Additionally, I’m certified in ‘Data Science with Python’ by Coursera, with hands-on expertise in Pandas and predictive modeling."*`}
+            </span>
+          </dl>
+          <dl className="p-2 bg-gray-200 rounded-lg mt-2">
+            <dt className="font-semibold underline">
+              How your Contributions are value for us !{" "}
+              <span className="text-xs text-gray-400">90 sec</span>
+            </dt>
+            <dd className="pl-2 text-xs mt-1 font-semibold">
+              - Ranked top 10% in class with [X GPA] - I convert knowledge into
+              results fast.{" "}
+              <span className="text-xs text-gray-800">(30sec)</span>{" "}
+            </dd>
+            <dd className="pl-2 text-xs mt-1 font-semibold">
+              - Built [Project] that improved [Metric] by X% using [Skill].{" "}
+              <span className="text-xs text-gray-800">(30sec)</span>{" "}
+            </dd>
+            <dd className="pl-2 text-xs mt-1 font-semibold">
+              - Certified in [Relevant Skill] with hands-on [Tool] experience.{" "}
+              <span className="text-xs text-gray-800">(30sec)</span>{" "}
+            </dd>
+            <span className="block text-[10px] mt-2">
+              For Example <br />
+              {`*"My academic rigor (top 10% rank with 9.2 CGPA) ensures I grasp complex concepts quickly. My project experience—like developing an attendance system that saved 60% time—proves I can turn knowledge into practical solutions. With certified skills in [relevant tools], I’ll deliver measurable results from day one while growing with your team."*`}
+            </span>
+          </dl>
+        </div>
+        <div className="p-5">
+          <span className="text-[9px] block ">
+            The content highlights that many candidates fail interviews due to
+            poor preparation and introduces {"Jobhub.world"} as a resource to
+            help improve interview skills through expert-backed video guidance.
+            It features quick, focused videos covering key areas like
+            self-introduction, broken into concise, easy-to-understand segments.
+            The purpose is to educate and support job seekers in enhancing their
+            preparation. However, this content is intended for general and
+            informational purposes only and should not be considered as
+            assurance of success in any interview.
+          </span>
+        </div>
+      </div>
+      
+  <div className="hidden md:flex w-full max-w-6xl mx-auto px-4 py-12 flex-col items-center">
+    {/* Header Section */}
+    <article className="w-full max-w-4xl text-center mb-8">
+      <h2 className="text-lg text-gray-600 mb-2">
+        Most candidates fail interviews due to{" "}
+        <span className="border-b-2 border-red-500">poor preparation</span>
+      </h2>
+      <h1 className="text-4xl font-bold text-gray-800">
+        {`Let's `} Jobhub help you{" "}
+        <span className="underline" style={{ color: gloabalTheme.colors.primary }}>
+          Crack Your Interviews
+        </span>
+      </h1>
+    </article>
 
+    {/* Video Player Section */}
+    <div className="w-full max-w-4xl mb-8">
+      <div className="relative bg-gradient-to-t from-blue-500 via-lime-300 to-red-400 p-1 rounded-2xl shadow-xl">
+        <video 
+          key={videoIndex} 
+          controls 
+          className="w-full rounded-xl shadow-md aspect-video"
+        >
+          <source src={videos[videoIndex]} type="video/mp4" />
+        </video>
+      </div>
+    </div>
 
-      <Container >
-        <Box sx={{ py: 6 }}>
-          {/* Header */}
-          <Typography variant="h2" sx={{
-            mb: 3,
-            textDecoration: "underline",
-            fontSize: { xs: '25px', sm: '35px', md: '45px', lg: '55px' },
-            textAlign: 'center',
+    {/* Video Controls */}
+    <div className="w-full max-w-4xl bg-white p-4 rounded-xl shadow-md mb-12">
+      {!completed ? (
+        <div className="flex justify-between items-center">
+          <span className="text-lg font-medium text-gray-700">
+            Videos remaining: <span className="text-blue-600">{3 - num}/3</span>
+          </span>
+          <div 
+            onClick={handlePlay} 
+            className="flex items-center cursor-pointer hover:bg-gray-100 p-2 rounded-full transition-colors"
+          >
+            {play ? (
+              <i className="fa-solid fa-circle-pause text-3xl text-blue-600"></i>
+            ) : (
+              <i className="fa-solid fa-circle-play text-3xl text-blue-600"></i>
+            )}
+          </div>
+          <button
+            onClick={handleNextVideo}
+            className="bg-lime-400 hover:bg-lime-500 text-gray-800 font-semibold px-6 py-2 rounded-lg shadow-md transition-all flex items-center gap-2"
+          >
+            Next <i className="fa-solid fa-forward"></i>
+          </button>
+        </div>
+      ) : (
+        <div className="text-center py-6">
+          <p className="text-2xl font-bold text-gray-800 mb-4">🎉 All videos completed!</p>
+          <button
+            onClick={() => {
+              setNum(0);
+              setCompleted(false);
+              setVideoIndex(0);
+            }}
+            className="bg-blue-600 hover:bg-blue-700 text-white font-medium px-6 py-2 rounded-lg shadow-md transition-all"
+          >
+            Watch Again
+          </button>
+        </div>
+      )}
+    </div>
 
-          }}>
-            HR Interview Questions
-          </Typography>
+    {/* Content Sections */}
+    <div className="w-full max-w-4xl">
+      <h2 className="text-2xl font-bold text-gray-800 mb-2">
+        Quick <span className="text-blue-600">Interview Preparation</span> Videos
+      </h2>
+      <p className="text-gray-600 mb-6">
+        Expert tips to help you ace your interviews
+      </p>
 
-          {/* Content */}
-          <Grid2 container spacing={4}>
-            <Grid2 item xs={12}>
-              <Typography variant='h4' sx={{ color: "#1F6331", paddingTop: "30px", fontSize: { xs: '25px', sm: '30px', md: '35px', lg: '40px' } }}>
-                <Box
-                  component="img"
-                  sx={{
-                    display: 'inline',
-                    marginLeft: {
-                      xs: '-30px', 
-                      sm: '-60px', 
-                      md: '-90px', 
-                    },
-                    maxWidth: '100%', 
-                    height: 'auto', 
-                  }}
-                  src={leftHandArrow}
-                  alt="Left Hand Arrow"
-                />
-                Tell me something about yourself ?
-              </Typography>
-              <Typography variant="body1" sx={{ textAlign: 'justify', lineHeight: 2, fontSize: { xs: '12px', sm: '15px', md: '20px', lg: '20px' } }}>
-                Thank you for allowing me to introduce myself. My name is [Your Name] and I am from [Your City]. I have completed my bachelor of technology with the CSE branch from XYZ University. <br />
+      <div className="grid gap-6">
+        {/* Self Introduction */}
+        <div className="bg-gray-50 p-6 rounded-xl shadow-sm border border-gray-100">
+          <div className="flex justify-between items-start mb-3">
+            <h3 className="text-xl font-semibold text-gray-800">
+              Self Introduction
+            </h3>
+            <span className="text-sm text-gray-500 bg-gray-200 px-2 py-1 rounded">90 sec</span>
+          </div>
+          <ul className="space-y-2">
+            <li className="flex items-start">
+              <span className="text-blue-500 mr-2">•</span>
+              <span className="text-gray-700">
+                I studied [Degree] at [College] + learned [Top Skill].{" "}
+                <span className="text-gray-500 text-xs">(30sec)</span>
+              </span>
+            </li>
+            <li className="flex items-start">
+              <span className="text-blue-500 mr-2">•</span>
+              <span className="text-gray-700">
+                I practiced this through [Project/Internship/Certificate].{" "}
+                <span className="text-gray-500 text-xs">(30sec)</span>
+              </span>
+            </li>
+            <li className="flex items-start">
+              <span className="text-blue-500 mr-2">•</span>
+              <span className="text-gray-700">
+                {`I'm excited to join [Company] because [Specific Reason].`}{" "}
+                <span className="text-gray-500 text-xs">(30sec)</span>
+              </span>
+            </li>
+          </ul>
+          <div className="mt-4 p-3 bg-blue-50 rounded-lg">
+            <p className="text-sm text-gray-700 italic">
+              {`Example: "Hello, I'm [Name]. I recently graduated with a [Degree] from [College/University], where I developed skills in [Skill 1] and [Skill 2] through projects like [Brief Example]..."`}
+            </p>
+          </div>
+        </div>
 
-                First of all, I want to introduce myself with my soft skills. I am optimistic, self-confident, hardworking, and have a positive mindset. My technical skills include proficiency in <span style={{ color: "green" }}>Java programming language, C programming,</span> and <span style={{ color: 'green' }}>HTML</span> Also, I have a good command of MS Excel and web technologies. <br />
+        {/* Previous Achievement/Skills */}
+        <div className="bg-gray-50 p-6 rounded-xl shadow-sm border border-gray-100">
+          <div className="flex justify-between items-start mb-3">
+            <h3 className="text-xl font-semibold text-gray-800">
+              Previous Achievements/Skills
+            </h3>
+            <span className="text-sm text-gray-500 bg-gray-200 px-2 py-1 rounded">90 sec</span>
+          </div>
+          <ul className="space-y-2">
+            <li className="flex items-start">
+              <span className="text-blue-500 mr-2">•</span>
+              <span className="text-gray-700">
+                Ranked top 10% in class with [X GPA].{" "}
+                <span className="text-gray-500 text-xs">(30sec)</span>
+              </span>
+            </li>
+            <li className="flex items-start">
+              <span className="text-blue-500 mr-2">•</span>
+              <span className="text-gray-700">
+                Developed [Project] that improved [Metric] by X%.{" "}
+                <span className="text-gray-500 text-xs">(30sec)</span>
+              </span>
+            </li>
+            <li className="flex items-start">
+              <span className="text-blue-500 mr-2">•</span>
+              <span className="text-gray-700">
+                Certified in [Relevant Skill] with hands-on experience.{" "}
+                <span className="text-gray-500 text-xs">(30sec)</span>
+              </span>
+            </li>
+          </ul>
+          <div className="mt-4 p-3 bg-blue-50 rounded-lg">
+            <p className="text-sm text-gray-700 italic">
+              {`Example: "I ranked in the top 10% of my Computer Science batch with a 9.2 CGPA at XYZ University. I developed an 'Automated Attendance System' using Python..."`}
+            </p>
+          </div>
+        </div>
 
-                My interests include dancing, internet, chess, and listening to music. In my leisure time, I enjoy reading news articles on my mobile phone.
+        {/* Value Proposition */}
+        <div className="bg-gray-50 p-6 rounded-xl shadow-sm border border-gray-100">
+          <div className="flex justify-between items-start mb-3">
+            <h3 className="text-xl font-semibold text-gray-800">
+              Your Value Contribution
+            </h3>
+            <span className="text-sm text-gray-500 bg-gray-200 px-2 py-1 rounded">90 sec</span>
+          </div>
+          <ul className="space-y-2">
+            <li className="flex items-start">
+              <span className="text-blue-500 mr-2">•</span>
+              <span className="text-gray-700">
+                Fast learner with proven academic excellence.{" "}
+                <span className="text-gray-500 text-xs">(30sec)</span>
+              </span>
+            </li>
+            <li className="flex items-start">
+              <span className="text-blue-500 mr-2">•</span>
+              <span className="text-gray-700">
+                Practical problem-solving through projects.{" "}
+                <span className="text-gray-500 text-xs">(30sec)</span>
+              </span>
+            </li>
+            <li className="flex items-start">
+              <span className="text-blue-500 mr-2">•</span>
+              <span className="text-gray-700">
+                Certified expertise in relevant tools.{" "}
+                <span className="text-gray-500 text-xs">(30sec)</span>
+              </span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
 
-              </Typography>
-            </Grid2>
-            <Grid2 item xs={12}>
-              <Typography variant='h4' sx={{ color: "#1F6331", fontSize: { xs: '25px', sm: '30px', md: '35px', lg: '40px' } }}>
-                <Box
-                  component="img"
-                  sx={{
-                    display: 'inline',
-                    marginLeft: {
-                      xs: '-30px', 
-                      sm: '-60px', 
-                      md: '-90px', 
-                    },
-                    maxWidth: '100%', 
-                    height: 'auto', 
-                  }}
-                  src={leftHandArrow}
-                  alt="Left Hand Arrow"
-                />
-                What are your strengths and weaknesses ?
-              </Typography>
-              <Typography variant="body1" sx={{ textAlign: 'justify', lineHeight: 2, fontSize: { xs: '12px', sm: '15px', md: '20px', lg: '20px' } }}>
-                I have several strengths namely - I am patient, committed, honest and self-motivated. I am the biggest dreamer I have ever come across! I forgive easily and hate to keep grudges in my heart. my greatest weakness is that I don’t like getting interrupted when I am seriously into something. <br />
-
-                Another one of my weakness is that I trust people very easily. As I already said, I am a very patient person, so I am actively working on this lacuna.
-
-              </Typography>
-            </Grid2>
-            <Grid2 item xs={12}>
-              <Typography variant='h4' sx={{ color: "#1F6331", fontSize: { xs: '25px', sm: '30px', md: '35px', lg: '40px' } }}>
-                <Box
-                  component="img"
-                  sx={{
-                    display: 'inline',
-                    marginLeft: {
-                      xs: '-30px', 
-                      sm: '-60px', 
-                      md: '-90px', 
-                    },
-                    maxWidth: '100%', 
-                    height: 'auto', 
-                  }}
-                  src={leftHandArrow}
-                  alt="Left Hand Arrow"
-                />
-                Why are you interested in this job ?
-              </Typography>
-              <Typography variant="body1" sx={{ textAlign: 'justify', lineHeight: 2, fontSize: { xs: '12px', sm: '15px', md: '20px', lg: '20px' } }}>
-                It’s an honor and a privilege to work for an established company like yours. As I researched the job opening you have, I realized that my abilities align with your requirements. Through this job, I can showcase my technical skills to help the company’s development.
-
-              </Typography>
-            </Grid2>
-            <Grid2 item xs={12}>
-              <Typography variant='h4' sx={{ color: "#1F6331", fontSize: { xs: '25px', sm: '30px', md: '35px', lg: '40px' } }}>
-                <Box
-                  component="img"
-                  sx={{
-                    display: 'inline',
-                    marginLeft: {
-                      xs: '-30px', 
-                      sm: '-60px', 
-                      md: '-90px', 
-                    },
-                    maxWidth: '100%', 
-                    height: 'auto', 
-                  }}
-                  src={leftHandArrow}
-                  alt="Left Hand Arrow"
-                />
-                Where do you see yourself in the next 5 years ?
-              </Typography>
-              <Typography variant="body1" sx={{ textAlign: 'justify', lineHeight: 2, fontSize: { xs: '12px', sm: '15px', md: '20px', lg: '20px' } }}>
-                Over five years, I’d love to take advantage of every opportunity the company will give me to gain knowledge through the external and internal training programs. My dream career objective is to be a <span style={{ color: "green" }}>Full Stack Developer</span>, Hence,  I am looking forward to creating different products that embody the mission of this company and contribute to making a positive impact while speeding up my path to become a Tech Architect.
-
-              </Typography>
-            </Grid2>
-            <Grid2 item xs={12}>
-              <Typography variant='h4' sx={{ color: "#1F6331", fontSize: { xs: '25px', sm: '30px', md: '35px', lg: '40px' } }}>
-                <Box
-                  component="img"
-                  sx={{
-                    display: 'inline',
-                    marginLeft: {
-                      xs: '-30px', 
-                      sm: '-60px', 
-                      md: '-90px', 
-                    },
-                    maxWidth: '100%', 
-                    height: 'auto', 
-                  }}
-                  src={leftHandArrow}
-                  alt="Left Hand Arrow"
-                />
-                Is there anything that makes you different from other candidates ?
-              </Typography>
-              <Typography variant="body1" sx={{ textAlign: 'justify', lineHeight: 2, fontSize: { xs: '12px', sm: '15px', md: '20px', lg: '20px' } }}>
-                There are a few things that make me different from other candidates. First, I have a lot of experience working with different teams and managing projects. I’m also great at communicating with people, so I can easily build relationships with clients and coworkers, Finally, I have a strong interest in learning new things and taking on new challenges.
-
-              </Typography>
-            </Grid2>
-            <Grid2 item xs={12}>
-              <Typography variant='h4' sx={{ color: "#1F6331", fontSize: { xs: '25px', sm: '30px', md: '35px', lg: '40px' } }}>
-                <Box
-                  component="img"
-                  sx={{
-                    display: 'inline',
-                    marginLeft: {
-                      xs: '-30px', 
-                      sm: '-60px', 
-                      md: '-90px', 
-                    },
-                    maxWidth: '100%', 
-                    height: 'auto', 
-                  }}
-                  src={leftHandArrow}
-                  alt="Left Hand Arrow"
-                />
-                Why should we hire you ?
-              </Typography>
-              <Typography variant="body1" sx={{ textAlign: 'justify', lineHeight: 2, fontSize: { xs: '12px', sm: '15px', md: '20px', lg: '20px' } }}>
-                Because I have relevant skills which are required for this job, And also I’m very passionate towards this job if you hire me it will be a great plate-form to showcase my skills and put 100% effort and also learn new things and innovate something new so that which will help to buld my career and help the organization too, I believe that you’re looking someone who is so hard-working and dedicated to his work that’s all abilities in me.
-
-              </Typography>
-            </Grid2>
-            <Grid2 item xs={12}>
-              <Typography variant='h4' sx={{ color: "#1F6331", fontSize: { xs: '25px', sm: '30px', md: '35px', lg: '40px' } }}>
-                <Box
-                  component="img"
-                  sx={{
-                    display: 'inline',
-                    marginLeft: {
-                      xs: '-30px', 
-                      sm: '-60px', 
-                      md: '-90px', 
-                    },
-                    maxWidth: '100%', 
-                    height: 'auto', 
-                  }}
-                  src={leftHandArrow}
-                  alt="Left Hand Arrow"
-                />
-                How much salary do you expect ?
-              </Typography>
-              <Typography variant="body1" sx={{ textAlign: 'justify', lineHeight: 2, fontSize: { xs: '12px', sm: '15px', md: '20px', lg: '20px' } }}>
-                As a fresher, I am looking for a place to start my career as a developer in your company. This is a great opportunity for me.
-
-                My goal is to learn and develop my skills. I believe the salary you offer will cover my basic needs.
-
-              </Typography>
-            </Grid2>
-            <Grid2 item xs={12}>
-              <Typography variant='h4' sx={{ color: "#1F6331", fontSize: { xs: '25px', sm: '30px', md: '35px', lg: '40px' } }}>
-                <Box
-                  component="img"
-                  sx={{
-                    display: 'inline',
-                    marginLeft: {
-                      xs: '-30px', 
-                      sm: '-60px', 
-                      md: '-90px', 
-                    },
-                    maxWidth: '100%', 
-                    height: 'auto', 
-                  }}
-                  src={leftHandArrow}
-                  alt="Left Hand Arrow"
-                />
-                How do you handle stress, pressure and anxiety ?
-              </Typography>
-              <Typography variant="body1" sx={{ textAlign: 'justify', lineHeight: 2, fontSize: { xs: '12px', sm: '15px', md: '20px', lg: '20px' } }}>
-                Under pressure and stress, I usually my soft skills and handle every situation calmly. I also perform physical exercises and mind relaxing activities like mediation to deal with work stress and pressue.
-
-              </Typography>
-            </Grid2>
-
-          </Grid2>
-
-        </Box>
-      </Container>
+    {/* Footer Note */}
+    <div className="w-full max-w-4xl mt-12 p-4 bg-gray-50 rounded-lg border border-gray-200">
+      <p className="text-xs text-gray-600">
+        The content highlights that many candidates fail interviews due to poor preparation
+        and introduces Jobhub.world as a resource to help improve interview skills through
+        expert-backed video guidance. It features quick, focused videos covering key areas
+        like self-introduction. This content is intended for general and informational
+        purposes only and should not be considered as assurance of success in any interview.
+      </p>
+    </div>
+  </div>
 
     </PageComponent>
   );
