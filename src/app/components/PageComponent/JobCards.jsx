@@ -69,11 +69,11 @@ const JobCards = () => {
 
         {/* Cards */}
         <Box sx={{marginRight:"20px"}}>
-          <img src={HelperImage} alt='helper tips from jobhub' className='mb-[-60px] mr-11 w-full'/>
+          <img src={HelperImage} alt='helper tips from jobhub' className='mb-[-60px] max-sm:mb-[-30px]  mr-11 w-full'/>
         </Box>
-        <Grid container spacing={3} justifyContent="center">
+        <Grid container spacing={3}  >
           {cards.map((card, index) => (
-            <Grid item key={index} xs={12} sm={6} md={3}>
+            <Grid item key={index} xs={6} sm={6} md={3}>
               <Box
                 sx={{
                   position: 'relative',
