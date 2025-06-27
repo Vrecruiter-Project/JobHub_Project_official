@@ -31,6 +31,10 @@ import { gloabalTheme } from "../../../../theme/theme";
 import arrowpng from "/arrow.png";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import img1 from './premium_photo-1682089787056-9ac0c78a2ac2.webp'
+import img2 from './premium_photo-1682089804117-cea5d901647f.webp'
+import img3 from './premium_photo-1689539137236-b68e436248de.webp'
+import img4 from './premium_photo-1691030256264-59cdf9414ed1.webp'
 const HtmlTooltip = styled(({ className, ...props }) => (
   <Tooltip {...props} classes={{ popper: className }} />
 ))(({ theme }) => ({
@@ -45,19 +49,19 @@ const HtmlTooltip = styled(({ className, ...props }) => (
 
 const avatarStyles = [
   {
-    url:'https://plus.unsplash.com/premium_photo-1682089804117-cea5d901647f?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    url: img1,
     alt: "Avatar 1",
   },
   {
-    url: "https://plus.unsplash.com/premium_photo-1691030256264-59cdf9414ed1?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    url: img2,
     alt: "Avatar 2",
   },
   {
-    url: "https://plus.unsplash.com/premium_photo-1689539137236-b68e436248de?q=80&w=1171&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    url: img3,
     alt: "Avatar 2",
   },
   {
-    url: "https://plus.unsplash.com/premium_photo-1682089787056-9ac0c78a2ac2?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    url: img4,
     alt: "Avatar 3",
   },
 ];
