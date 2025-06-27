@@ -5,7 +5,7 @@ import salary from '../../assets/Images/jobCardIcons/salary.png';
 import frame from '../../assets/Images/jobCardIcons/Frame.png';
 import quickApply from '../../assets/Images/jobCardIcons/quickApply.png';
 import { gloabalTheme } from '../../theme/theme';
-import HelperImage from '/Helper.png';
+import HelperImage from '/Helper.webp';
 import Aos from 'aos';
 import 'aos/dist/aos.css';
 const cards = [
