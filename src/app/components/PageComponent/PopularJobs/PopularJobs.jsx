@@ -37,7 +37,7 @@ const PopularJobs = ({ id }) => {
   const navigate = useNavigate();
   const jobTypes = [
     { image: job1, title: 'Telecaller', onClick: () => navigate('/telecaller') },
-    { image: job2, title: 'Document Verification', onClick: () => navigate('/documentverification') },
+    { image: job2, title: 'Document Verify', onClick: () => navigate('/documentverification') },
     { image: job3, title: 'Data Entry', onClick: () => navigate('/dataentry') },
     { image: job4, title: 'Web Designer', onClick: () => navigate('/webdesigner') },
     { image: job5, title: 'Graphic Designer', onClick: () => navigate('/graphicdesigner') },
@@ -138,7 +138,7 @@ const PopularJobs = ({ id }) => {
               data-aos="zoom-out"
               data-aos-duration="1000"
               sx={{
-                mb: 5,
+                mb: 3,
                 transition: 'transform 0.3s ease-in-out',
                 '&:hover': {
                   transform: 'scale(1.05)',
