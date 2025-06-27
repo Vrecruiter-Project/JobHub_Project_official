@@ -24,7 +24,7 @@ import {
 } from "@mui/icons-material";
 
 // import bgImg from "../../../../assets/Images/bgImages/Banner_image.svg";
-import HeaderImage from "../../../../assets/Images/headerImages/HeaderImage01_1.png";
+import HeaderImage from "../../../../assets/Images/headerImages/HeaderImage01_1.webp";
 import HeaderImage2 from "../../../../assets/Images/headerImages/HeaderImage02.png";
 import "../../../../../../src/index.css";
 import { gloabalTheme } from "../../../../theme/theme";

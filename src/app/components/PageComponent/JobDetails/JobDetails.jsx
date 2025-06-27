@@ -178,7 +178,7 @@ import CountUp from "react-countup";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import SectionImage from "/JobhubFooterlogo.png";
-import sectiionImage from "../../../assets/Images/SectionImages/image_46.png";
+import sectiionImage from "../../../assets/Images/SectionImages/image_46.webp";
 import { Stats } from "./Stats";
 import { gloabalTheme } from "../../../theme/theme";
 // const stats = [
