@@ -99,7 +99,7 @@ const ChoiceSection = () => {
                   alignItems: "center",
                   mb: 2,
                 }}
-                data-aos="fade-up"
+                data-aos="fade-right"
               >
                 <img
                   src={item.icon}
