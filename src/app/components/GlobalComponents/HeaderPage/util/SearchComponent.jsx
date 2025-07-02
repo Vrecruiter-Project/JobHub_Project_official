@@ -272,6 +272,8 @@ export const HeroSection = () => {
           </div>
         </article>
       </Box>
+
+
       <Box
         sx={{
           width: "100%",
