@@ -170,3 +170,21 @@ p.font-semibold.whitespace-pre-line {
     opacity: 0.8;
   }
 }
+
+@keyframes headerslide2 {
+  0% {
+    border-top-left-radius: 0;
+    /* opacity: 0.5; */
+  }
+  100% {
+    border-top-left-radius: 350px;
+    border-top-right-radius: 350px;
+    /* opacity: 0.8; */
+  }
+}
+
+
+
+.animateBG {
+  animation: headerslide2 1s ease-out forwards;
+}

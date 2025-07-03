@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   Box,
@@ -75,6 +75,39 @@ export const HeroSection = () => {
   const [filteredSuggestions, setFilteredSuggestions] = useState([]);
   const [selectedSuggestion, setSelectedSuggestion] = useState("");
 
+  const [text, setText] = useState('');
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [loopNum, setLoopNum] = useState(0);
+  const [typingSpeed, setTypingSpeed] = useState(150);
+  const textsToType = [
+    "Find your Career",
+    "Find Jobs in Tricity",
+    "Jobs for Smart People",
+    "Work n' Apply Smarter",
+  ];
+
+  useEffect(() => {
+    const handleTyping = () => {
+      const currentText = textsToType[loopNum % textsToType.length ];
+      
+      setText(isDeleting 
+        ? currentText.substring(0, text.length - 1)
+        : currentText.substring(0, text.length + 1)
+      );
+      
+      setTypingSpeed(isDeleting ? 10 : 150);
+
+      if (!isDeleting && text === currentText) {
+        setTimeout(() => setIsDeleting(true), 1000);
+      } else if (isDeleting && text === '') {
+        setIsDeleting(false);
+        setLoopNum(loopNum + 1);
+      }
+    };
+
+    const timer = setTimeout(handleTyping, typingSpeed);
+    return () => clearTimeout(timer);
+  }, [text, isDeleting, loopNum, typingSpeed, textsToType]);
   const suggestions = [
     "Telecaller",
     "Counselor",
@@ -272,14 +305,12 @@ export const HeroSection = () => {
           </div>
         </article>
       </Box>
-
-
       <Box
         sx={{
           width: "100%",
           height: "auto",
           display: { xs: "none", sm: "flex", md: "flex", lg: "flex" },
-          justifyContent: "space-around",
+          justifyContent: "center",
           alignItems: "center",
           // backgroundImage: `url(${bgImg})`,
           // backgroundRepeat: 'no-repeat',
@@ -360,8 +391,8 @@ export const HeroSection = () => {
                 lineHeight: { xs: "35px", sm: "45px", md: "37px", lg: "60px" },
               }}
             >
-              <p data-aos="fade-up" data-aos-delay="1000">
-                Find Your Career
+              <p className=""  data-aos-delay="1000">
+               {text}
               </p>
               <p data-aos="fade-down" data-aos-delay="1000">
                 With{" "}
@@ -626,7 +657,7 @@ export const HeroSection = () => {
             alt="Header"
             sx={{
               //  0 45px 49px -20px green
-              display: { xs: "none", sm: "block", md: "none", lg: "none" },
+              display: { xs: "none", sm: "none", md: "none", lg: "none" },
               width: { sm: "40%", md: "45%" },
 
               height: "auto",

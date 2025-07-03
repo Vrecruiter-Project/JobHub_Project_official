@@ -29,8 +29,8 @@ const cards = [
 
 const JobCards = () => {
   useEffect(() => {
-      Aos.init();
-    }, []);
+  }, []);
+  Aos.init({duration: 1200});
   return (
     <Box
       sx={{

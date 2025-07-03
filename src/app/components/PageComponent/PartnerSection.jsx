@@ -24,16 +24,16 @@ import { gloabalTheme } from '../../theme/theme';
 
 const PartnerSection = () => {
   const companyItems = [
-    { image: aeroPlazaLogo },
-    { image: floranceLogo },
-    { image: rajputLogo },
-    { image: westHighLogo },
-    { image: whiteRayLogo },
+    // { image: aeroPlazaLogo },
+    // { image: floranceLogo },
+    // { image: rajputLogo },
+    // { image: westHighLogo },
+    // { image: whiteRayLogo },
     { image: aadiSoftLogo },
     { image: aboardLogo },
     { image: aeboLogo },
     { image: AmCareLogo },
-    { image: farlexLogo },
+    // { image: farlexLogo },
     { image: IvsLogo },
     { image: JDevelopersLogo },
     { image: eventLogo },
