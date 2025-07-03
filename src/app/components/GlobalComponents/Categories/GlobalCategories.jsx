@@ -14,7 +14,8 @@ const GlobalCategories = ({ categories }) => {
   return (
     <>
       <div className="hidden lg:block ">
-      <h2  className="text-center text-[28px] sm:text-[40px] font-semibold font-['Marcelluse'] py-10 data-aos='fade-up'">
+        
+      <h2  className="text-center text-[28px] sm:text-[40px] font-semibold font-['Marcelluse'] py-10 data-aos='fade-up'" style={{fontFamily:"Marcelluse",textShadow: '0 3px 4px #333'}}>
         Explore By More Specific{" "}
         <span style={{ color: gloabalTheme.colors.primary }}> Categories</span>
       </h2>
@@ -43,7 +44,7 @@ const GlobalCategories = ({ categories }) => {
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="flex flex-col items-center gap-3">
                     <img className="globaliconColor" src={category.img} alt="category icon" />
-                    <p className="font-semibold whitespace-pre-line ">{category.para}</p>
+                    <p className="font-semibold whitespace-pre-line text-white">{category.para}</p>
                   </div>
                 </div>
               </div>

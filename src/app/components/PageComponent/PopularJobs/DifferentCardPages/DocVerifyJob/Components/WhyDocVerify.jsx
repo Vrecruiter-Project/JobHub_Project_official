@@ -109,7 +109,7 @@ const WhyDocVerify = () => {
 
       <Box
         sx={{
-          backgroundColor: "black",
+          // backgroundColor: "black",
           color: "white",
           width: "100%",
           display: "flex",

@@ -132,7 +132,8 @@ const TelecallerJob = () => {
           {<>
             Tele<span style={{ color: "green"}}>caller</span>
           </>}
-          subText="Friendly telecaller providing customer support, handling inquiries, and boosting client satisfaction."
+          subText="Professional Telecaller Delivering Seamless Support & Customer Delight
+Polite, proactive, and persuasive — our telecallers specialize in handling inquiries, resolving issues efficiently, and creating a positive experience for every customer. With every call, we build trust, ensure satisfaction, and add value to your brand."
           buttonTitle1="Apply Now"
           onSearchReady={setSearchFor} 
       onButtonClick1={handleSearch}

@@ -78,7 +78,7 @@ export default function GlobalFaq({ faqItems, id }) {
                   id={`${item.id}d-header`}
                 >
                   <Typography
-                    data-aos="fade-up" component="h2" variant="subtitle2" sx={{ fontSize: "18px" }}>
+                    data-aos="fade-right" component="h2" variant="subtitle2" sx={{ fontSize: "18px" }}>
                     {item.question}
                   </Typography>
                 </AccordionSummary>

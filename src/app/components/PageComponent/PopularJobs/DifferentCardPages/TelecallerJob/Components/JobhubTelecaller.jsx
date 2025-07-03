@@ -45,6 +45,7 @@ const JobhubTelecaller = () => {
                         // backgroundImage: `url(${TelecallerBg})`,
                         backgroundRepeat: "no-repeat",
                         backgroundSize: "cover",
+                        
                     }}>
                         Why apply at JOBHUB for <span style={{ color: "green" }}>Telecaller</span>
                     </Typography>

@@ -24,6 +24,7 @@ const categories = [
   {img: img6, para: "Work\nAuthorization"},
 ]
 import GlobalCategories from '../../../../GlobalComponents/Categories/GlobalCategories';
+
 const DocVerifyJob = () => {
     const [searchFor, setSearchFor] = useState("");
     const navigate = useNavigate();
@@ -133,9 +134,11 @@ const DocVerifyJob = () => {
         <Stats/>
         {/* <DocCategories/> */}
       {/* <JobDetails/> */}
-      <EnsuringTrust/>
+        <EnsuringTrust />
+        <div className='bg-black animateBG '>
       <DocVerifyServices/>
       <WhyDocVerify/>
+        </div>
       </PageComponent>
     </>
   )

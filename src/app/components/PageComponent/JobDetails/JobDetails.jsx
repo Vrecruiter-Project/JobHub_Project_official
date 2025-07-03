@@ -253,7 +253,7 @@ export default function JobDetails() {
       </section> */}
       <section className="hidden w-full flex flex-col items-center bg-black sm:block">
         {/* Top Content */}
-        <div className="text-center text-white pt-12 px-4 py-8 ">
+        <div className="text-center text-white px-4 py-24 ">
           <p className="text-[28px] sm:text-[40px] font-semibold font-['Marcelluse'] pt-4" data-aos='fade-up' >
             Start your Professional journey with
           </p>
@@ -354,6 +354,7 @@ export default function JobDetails() {
           <div data-aos="fade-left" className="hidden lg:hidden xl:block w-full lg:w-1/2 justify-center">
             {/* Your content (e.g., image) */}
             <img
+              data-aos="fade-left"
               className="w-full max-w-[350px] sm:max-w-[450px] lg:max-w-[750px] rounded-xl"
               src={sectiionImage}
               alt="Employer Dashboard"
