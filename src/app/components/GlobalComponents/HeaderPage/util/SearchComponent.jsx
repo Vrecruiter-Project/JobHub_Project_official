@@ -394,7 +394,8 @@ export const HeroSection = () => {
               <p className=""  data-aos-delay="1000">
                {text}
               </p>
-              <p data-aos="fade-down" data-aos-delay="1000">
+{/*               <p data-aos="fade-down" data-aos-delay="1000"> */}
+              <p>
                 With{" "}
                 <span style={{ color: gloabalTheme.colors.primary }}>
                   JOBHUB
