@@ -40,6 +40,7 @@ const PopularJobs = ({ id }) => {
     { image: job2, title: 'Document Verify', onClick: () => navigate('/documentverification') },
     { image: job3, title: 'Data Entry', onClick: () => navigate('/dataentry') },
     { image: job4, title: 'Web Designer', onClick: () => navigate('/webdesigner') },
+    { image: job4, title: 'Sales Executive', onClick: () => navigate('/candidatedashboard') },
     { image: job5, title: 'Graphic Designer', onClick: () => navigate('/graphicdesigner') },
     { image: job6, title: 'Web Developer', onClick: () => navigate('/webdeveloper') },
     { image: job7, title: 'Construction', onClick: () => navigate('/construction') },
