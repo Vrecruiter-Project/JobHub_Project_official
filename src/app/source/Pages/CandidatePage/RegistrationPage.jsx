@@ -297,11 +297,11 @@ const RegistrationPage = ({ onSubmit }) => {
             { name: "fullname", label: "Full Name" },
             { name: "email", label: "Email" },
             { name: "position", label: "Job Profile" },
-            { name: "dob", label: "Date of Birth", type: "date" },
+            { name: "dob", label: "Date of Birth", type: "text", placeholder: "02/02/2004" },
             { name: "number", label: "Mobile Number" },
             { name: "qualification", label: "Qualification" },
             { name: "address", label: "Address" },
-          ].map(({ name, label, type = "text" }) => (
+          ].map(({ name, label, type = "text", placeholder  }) => (
             <Box sx={{ mb: 3 }} key={name}>
               <TextField
                 fullWidth
@@ -312,6 +312,7 @@ const RegistrationPage = ({ onSubmit }) => {
                 value={formData[name]}
                 onChange={handleInputChange}
                 required
+                placeholder={placeholder || ""}
                 InputLabelProps={type === "date" ? { shrink: true } : {}}
                 error={!!errors[name]}
                 helperText={errors[name]}
