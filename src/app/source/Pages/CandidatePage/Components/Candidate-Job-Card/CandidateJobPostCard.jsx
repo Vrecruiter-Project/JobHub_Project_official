@@ -246,7 +246,7 @@ const CandidateJobPostCard = () => {
             >
               Available Jobs
             </Typography>
-            <Grid
+            <Grid 
               container
               sx={{
                 height: "calc(100vh - 64px)",
@@ -316,8 +316,8 @@ const CandidateJobPostCard = () => {
                   </div>
                 </div>
               ) : (
-                filteredJobs.map((data) => (
-                  <Grid key={data.id} item size={12}>
+                filteredJobs.map((data, index) => (
+                  <Grid key={index} item size={12}>
                     <Card
                       sx={{
                         padding: 3,
